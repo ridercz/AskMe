@@ -11,9 +11,10 @@ using System;
 namespace Altairis.AskMe.Data.Migrations
 {
     [DbContext(typeof(AskDbContext))]
-    partial class AskDbContextModelSnapshot : ModelSnapshot
+    [Migration("20171031230700_Add_Questions")]
+    partial class Add_Questions
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

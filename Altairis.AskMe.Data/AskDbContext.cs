@@ -7,5 +7,10 @@ namespace Altairis.AskMe.Data {
         public AskDbContext(DbContextOptions<AskDbContext> options)
             : base(options) { }
 
+        public DbSet<Question> Questions { get; set; }
+
+        public DbSet<Category> Categories { get; set; }
+
+
     }
 }
