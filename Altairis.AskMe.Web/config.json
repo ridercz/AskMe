@@ -1,0 +1,5 @@
+{
+  "ConnectionStrings": {
+    "AskDb" : "Data Source=ask.db"
+  }
+}
