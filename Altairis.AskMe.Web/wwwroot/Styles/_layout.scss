@@ -61,16 +61,16 @@ body {
     > main {
         background-color: $white;
         color: $black;
-        padding: $padding;
-        border-bottom: $padding/3 solid $accent1;
+        padding: $padding * 3;
+        border-bottom: $padding/3 solid $black;
 
         a {
             &:link {
-                color: $accent1;
+                color: $black;
             }
 
             &:visited {
-                color: darken($accent1, 15);
+                color: darken($black, 15);
             }
 
             &:hover {
@@ -95,6 +95,6 @@ a {
     }
 
     &:hover {
-        color: $accent1;
+        color: $black;
     }
 }
