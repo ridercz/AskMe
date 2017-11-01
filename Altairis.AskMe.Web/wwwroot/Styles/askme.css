@@ -48,7 +48,7 @@ body {
     body > main a:visited {
       color: #9f4801; }
     body > main a:hover {
-      color: #eee; }
+      color: #333; }
   body > footer {
     text-align: center;
     font-size: 80%;
