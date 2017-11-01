@@ -1,6 +1,6 @@
 ﻿[
   {
-    "inputFile": "Surface/surface_styles.scss",
-    "outputFile": "wwwroot/Styles/surface.css"
+    "outputFile": "wwwroot/Styles/askme.css",
+    "inputFile": "wwwroot/Styles/askme.scss"
   }
 ]

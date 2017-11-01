@@ -3,16 +3,24 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>@(string.IsNullOrWhiteSpace(ViewBag.Title) ? "ASKme" : ViewBag.Title + " | ASKme")</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" integrity="sha256-HxaKz5E/eBbvhGMNwhWRPrAR9i/lG1JeT4mD6hCQ7s4=" crossorigin="anonymous" />
     <environment include="Development">
-        <link rel="stylesheet" type="text/css" href="~/Styles/surface.css" asp-append-version="true" />
+        <link rel="stylesheet" type="text/css" href="~/Styles/askme.css" asp-append-version="true" />
     </environment>
     <environment exclude="Development">
-        <link rel="stylesheet" type="text/css" href="~/Styles/surface.min.css" asp-append-version="true" />
+        <link rel="stylesheet" type="text/css" href="~/Styles/askme.min.css" asp-append-version="true" />
     </environment>
 </head>
 <body>
-    <div>
-        @RenderBody()
-    </div>
+        <header>
+            <h1>ASKme</h1>
+            <div>zeptej se mě na co chceš, já na co chci odpovím</div>
+        </header>
+        <main>
+            @RenderBody()
+        </main>
+        <footer>
+            <div>Sample app</div>
+        </footer>
 </body>
 </html>
