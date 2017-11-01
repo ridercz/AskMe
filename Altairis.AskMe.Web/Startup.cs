@@ -63,6 +63,7 @@ namespace Altairis.AskMe.Web {
             if (env.IsDevelopment()) {
                 app.UseDeveloperExceptionPage();
                 app.UseDatabaseErrorPage();
+                app.UseBrowserLink();
             }
 
             // Migrate database to last version
