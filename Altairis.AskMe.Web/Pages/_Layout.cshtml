@@ -1,0 +1,18 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@(string.IsNullOrWhiteSpace(ViewBag.Title) ? "ASKme" : ViewBag.Title + " | ASKme")</title>
+    <environment include="Development">
+        <link rel="stylesheet" type="text/css" href="~/Styles/surface.css" asp-append-version="true" />
+    </environment>
+    <environment exclude="Development">
+        <link rel="stylesheet" type="text/css" href="~/Styles/surface.min.css" asp-append-version="true" />
+    </environment>
+</head>
+<body>
+    <div>
+        @RenderBody()
+    </div>
+</body>
+</html>
