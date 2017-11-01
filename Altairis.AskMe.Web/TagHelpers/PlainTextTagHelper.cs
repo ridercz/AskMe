@@ -29,9 +29,10 @@ namespace Altairis.AskMe.Web.TagHelpers {
             if (string.IsNullOrWhiteSpace(this.Text)) return;
 
             // Create HTML output
-            var paragraphs = this.Text.Split(Environment.NewLine);
+            var paragraphs = this.Text.Split('\r','\n');
             var sb = new StringBuilder();
             foreach (var line in paragraphs) {
+                if (string.IsNullOrWhiteSpace(line)) continue;
                 sb.AppendLine(string.Format(this.ParagraphFormatString, this.HtmlEncode ? _encoder.Encode(line) : line));
             }
 
