@@ -1,0 +1,40 @@
+﻿@page "{questionId:int:min(1)}"
+@model QuestionModel
+<article class="answer">
+    <section class="question">
+        <header>
+            <span class="fa-stack fa-lg">
+                <i class="fa fa-square-o fa-stack-2x"></i>
+                <i class="fa fa-question fa-stack-1x"></i>
+            </span>
+            <span class="info">
+                <i class="fa fa-tag"></i> @Model.Data.Category.Name
+                <i class="fa fa-clock-o"></i> <time value="@Model.Data.DateCreated"></time>
+                @if (!string.IsNullOrWhiteSpace(Model.Data.DisplayName)) {
+                    <span><i class="fa fa-user"></i> @Model.Data.DisplayName</span>
+                }
+            </span>
+        </header>
+        <plainText text="@Model.Data.QuestionText" html-encode="true"></plainText>
+    </section>
+    <section class="answer">
+        <header>
+            <span class="fa-stack fa-lg">
+                <i class="fa fa-square-o fa-stack-2x"></i>
+                <i class="fa fa-comment fa-stack-1x"></i>
+            </span>
+            <span class="info">
+                <i class="fa fa-clock-o"></i> <time value="@Model.Data.DateAnswered"></time>
+            </span>
+        </header>
+        @if (string.IsNullOrWhiteSpace(Model.Data.AnswerText)) {
+            <p>Otázka dosud nebyla zodpovězena.</p>
+        }
+        else {
+            <plainText text="@Model.Data.AnswerText" html-encode="true"></plainText>
+        }
+        <footer for-login-status="true">
+            <a asp-page="Admin/Index" asp-route-questionId="@Model.Data.Id" class="button"><i class="fa fa-commenting"></i> Upravit</a>
+        </footer>
+    </section>
+</article>
