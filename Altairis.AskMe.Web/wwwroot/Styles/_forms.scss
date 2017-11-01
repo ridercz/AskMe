@@ -91,3 +91,25 @@ form {
         color: $accent2;
     }
 }
+
+a.button {
+    padding: $padding/2 $padding;
+    border-radius: $padding/3;
+    text-decoration: none;
+    display: inline-block;
+
+    &:link {
+        background-color: $accent2;
+        color: $white;
+    }
+
+    &:visited {
+        background-color: darken($accent2, 10);
+        color: $white;
+    }
+
+    &:hover {
+        background-color: $accent1;
+        color: $white;
+    }
+}

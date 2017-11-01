@@ -128,6 +128,21 @@ form :-ms-input-placeholder {
 form :-moz-placeholder {
   color: #018D8D; }
 
+a.button {
+  padding: 0.5em 1em;
+  border-radius: 0.33333em;
+  text-decoration: none;
+  display: inline-block; }
+  a.button:link {
+    background-color: #018D8D;
+    color: #eee; }
+  a.button:visited {
+    background-color: #015a5a;
+    color: #eee; }
+  a.button:hover {
+    background-color: #EB6B02;
+    color: #eee; }
+
 .pager {
   margin-top: 1em;
   color: #018D8D; }
@@ -140,22 +155,6 @@ form :-moz-placeholder {
     float: left; }
   .pager .next {
     float: right; }
-  .pager a {
-    padding: 0.5em 1em;
-    border-radius: 0.33333em;
-    text-decoration: none;
-    display: inline-block;
-    min-width: 12%;
-    text-align: center; }
-    .pager a:link {
-      background-color: #018D8D;
-      color: #eee; }
-    .pager a:visited {
-      background-color: #015a5a;
-      color: #eee; }
-    .pager a:hover {
-      background-color: #EB6B02;
-      color: #eee; }
 
 article.question {
   border: 1px solid #018D8D;
