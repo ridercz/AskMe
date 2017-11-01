@@ -1,4 +1,23 @@
 ﻿@page "{questionId:int:min(1)}"
 @model IndexModel
-@{
-}
+
+<section class="form">
+    <form method="post">
+        <header>
+            <h2>Editace otázky</h2>
+        </header>
+        <div><textarea asp-for="Input.QuestionText" placeholder="Zadejte text otázky..."></textarea></div>
+        <div>
+            <select asp-for="Input.CategoryId" asp-items="Model.Categories"></select>
+        </div>
+        <div>
+            <input asp-for="Input.DisplayName" placeholder="Jméno (nepovinné)" class="half-width" />
+            <input asp-for="Input.EmailAddress" placeholder="E-mail (nepovinné)" class="half-width" />
+        </div>
+        <div><textarea asp-for="Input.AnswerText" placeholder="Zadejte text odpovědi..." style="height:300px"></textarea></div>
+        <div asp-validation-summary="All"></div>
+        <footer>
+            <input type="submit" value="Odeslat" />
+        </footer>
+    </form>
+</section>
