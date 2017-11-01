@@ -158,3 +158,24 @@ article.question {
     article.question header .info {
       float: right; }
 
+article.answer {
+  border: 1px solid #018D8D;
+  border-radius: 0.33333em;
+  margin-bottom: 1em; }
+  article.answer section.question {
+    padding: 1em;
+    background-color: rgba(1, 141, 141, 0.05); }
+    article.answer section.question header {
+      color: #018D8D;
+      border-bottom: rgba(1, 141, 141, 0.2) 1px solid; }
+      article.answer section.question header .info {
+        float: right; }
+  article.answer section.answer {
+    padding: 1em;
+    background-color: rgba(235, 107, 2, 0.05); }
+    article.answer section.answer header {
+      color: #EB6B02;
+      border-bottom: rgba(235, 107, 2, 0.2) 1px solid; }
+      article.answer section.answer header .info {
+        float: right; }
+
