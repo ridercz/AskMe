@@ -36,7 +36,23 @@ namespace Altairis.AskMe.Web.Pages {
             public int CategoryId { get; set; }
         }
 
-        public void OnGet() {
+        public async Task<IActionResult> OnPostAsync() {
+            // Validate input
+            if (!this.ModelState.IsValid) return this.Page();
+
+            // Create and save question entity
+            var nq = new Question {
+                QuestionText = this.Input.QuestionText,
+                CategoryId = this.Input.CategoryId,
+                DisplayName = this.Input.DisplayName,
+                EmailAddress = this.Input.EmailAddress
+            };
+            await _dc.Questions.AddAsync(nq);
+            await _dc.SaveChangesAsync();
+
+            // Redirect to list of questions
+            return this.RedirectToPage(pageName: "Questions", pageHandler: null, fragment: $"q_{nq.Id}");
         }
+
     }
 }
