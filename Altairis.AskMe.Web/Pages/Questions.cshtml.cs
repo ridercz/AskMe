@@ -15,12 +15,17 @@ namespace Altairis.AskMe.Web.Pages {
     public class QuestionsModel : PagedPageModel<Question> {
         private readonly AskDbContext _dc;
         private readonly AppConfiguration _cfg;
+        private readonly IQueryable<Question> _dataSource;
 
         // Constructor
 
         public QuestionsModel(AskDbContext dc, IOptionsSnapshot<AppConfiguration> optionsSnapshot) {
             _dc = dc;
             _cfg = optionsSnapshot.Value;
+            _dataSource = _dc.Questions
+                .Include(x => x.Category)
+                .Where(x => !x.DateAnswered.HasValue)
+                .OrderByDescending(x => x.DateCreated);
         }
 
         // Model properties
@@ -49,11 +54,11 @@ namespace Altairis.AskMe.Web.Pages {
 
         // Handlers
 
-        public async Task OnGetAsync(int pageNumber = 1) {
-            await base.GetData(_dc.Questions.Where(x => !x.DateAnswered.HasValue).OrderByDescending(x => x.DateCreated), pageNumber, _cfg.PageSize);
+        public async Task OnGetAsync(int pageNumber) {
+            await base.GetData(_dataSource, pageNumber, _cfg.PageSize);
         }
 
-        public async Task<IActionResult> OnPostAsync(int pageNumber = 1) {
+        public async Task<IActionResult> OnPostAsync(int pageNumber) {
             if (this.ModelState.IsValid) {
                 // Create and save question entity
                 var nq = new Question {
@@ -69,7 +74,7 @@ namespace Altairis.AskMe.Web.Pages {
                 return this.RedirectToPage(pageName: "Questions", pageHandler: null, fragment: $"q_{nq.Id}");
             }
 
-            await base.GetData(_dc.Questions.Where(x => !x.DateAnswered.HasValue).OrderByDescending(x => x.DateCreated), pageNumber, _cfg.PageSize);
+            await base.GetData(_dataSource, pageNumber, _cfg.PageSize);
             return this.Page();
         }
 

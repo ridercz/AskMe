@@ -146,3 +146,15 @@ form :-moz-placeholder {
       background-color: #EB6B02;
       color: #eee; }
 
+article.question {
+  border: 1px solid #018D8D;
+  border-radius: 0.33333em;
+  padding: 1em;
+  margin-bottom: 1em;
+  background-color: rgba(1, 141, 141, 0.05); }
+  article.question header {
+    color: #018D8D;
+    border-bottom: rgba(1, 141, 141, 0.2) 1px solid; }
+    article.question header .info {
+      float: right; }
+
