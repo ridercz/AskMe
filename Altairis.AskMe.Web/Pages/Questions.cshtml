@@ -25,10 +25,17 @@
     @foreach (var item in Model.Data) {
         var id = $"q_{item.Id}";
         <article class="question" id="@id">
-            @*@item.QuestionText*@
-            <aside>
-                @item.DateCreated.ToLongDateString()
-            </aside>
+            <span class="fa-stack fa-2x fa-pull-left">
+                <i class="fa fa-square-o fa-stack-2x"></i>
+                <i class="fa fa-question fa-stack-1x"></i>
+            </span>
+            <plainText text="@item.QuestionText" html-encode="true"></plainText>
+            <footer>
+                <i class="fa fa-clock-o"></i> <time value="@item.DateCreated"></time>
+                @if(!string.IsNullOrWhiteSpace(item.DisplayName)) {
+                    <span><i class="fa fa-user"></i> @item.DisplayName</span>
+                }
+            </footer>
         </article>
     }
 
