@@ -1,7 +1,7 @@
 ﻿@page "{pageNumber:int:min(1)=1}"
 @model QuestionsModel
 
-<section class="form">
+<section class="form" id="ask">
     <form method="post">
         <header>
             <h2>Nová otázka</h2>
@@ -41,6 +41,5 @@
             <plainText text="@item.QuestionText" html-encode="true"></plainText>
         </article>
     }
-
     <vc:pager model="Model.Paging"></vc:pager>
 }
