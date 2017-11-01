@@ -1,0 +1,10 @@
+﻿@model Altairis.AskMe.Web.Models.PagingInfo
+<div class="pager">
+    @if (Model.PrevPageNumber > 0) {
+        <span class="prev"><a asp-route-pageNumber="@Model.PrevPageNumber"><i class="fa fa-chevron-left"></i> Předchozí</a></span>
+    }
+    @if (Model.NextPageNumber > 0) {
+        <div class="next"><a asp-route-pageNumber="@Model.NextPageNumber">Následující <i class="fa fa-chevron-right"></i></a></div>
+    }
+    <p>Strana @Model.PageNumber z @Model.TotalPages, celkem @Model.TotalRecords položek.</p>
+</div>

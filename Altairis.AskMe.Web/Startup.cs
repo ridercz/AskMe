@@ -56,6 +56,9 @@ namespace Altairis.AskMe.Web {
                 options.SlidingExpiration = true;
                 options.ExpireTimeSpan = TimeSpan.FromDays(30);
             });
+
+            // Load configuration
+            services.Configure<AppConfiguration>(_config);
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, AskDbContext context, UserManager<ApplicationUser> userManager) {

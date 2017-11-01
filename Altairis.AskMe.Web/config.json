@@ -1,5 +1,6 @@
 {
   "ConnectionStrings": {
-    "AskDb" : "Data Source=ask.db"
-  }
+    "AskDb": "Data Source=ask.db"
+  },
+  "PageSize": 10
 }

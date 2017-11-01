@@ -117,3 +117,32 @@ form :-ms-input-placeholder {
 form :-moz-placeholder {
   color: #018D8D; }
 
+.pager {
+  margin-top: 1em;
+  color: #018D8D; }
+  .pager p {
+    font-size: 80%;
+    text-align: center;
+    margin: 0;
+    padding: 0.5em; }
+  .pager .prev {
+    float: left; }
+  .pager .next {
+    float: right; }
+  .pager a {
+    padding: 0.5em 1em;
+    border-radius: 0.33333em;
+    text-decoration: none;
+    display: inline-block;
+    min-width: 12%;
+    text-align: center; }
+    .pager a:link {
+      background-color: #018D8D;
+      color: #eee; }
+    .pager a:visited {
+      background-color: #015a5a;
+      color: #eee; }
+    .pager a:hover {
+      background-color: #EB6B02;
+      color: #eee; }
+

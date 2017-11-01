@@ -1,0 +1,45 @@
+﻿@import '_vars.scss';
+
+.pager {
+    margin-top: $padding;
+    color: $accent2;
+
+    p {
+        font-size: 80%;
+        text-align: center;
+        margin: 0;
+        padding: $padding/2;
+    }
+
+    .prev {
+        float: left;
+    }
+
+    .next {
+        float: right;
+    }
+
+    a {
+        padding: $padding/2 $padding;
+        border-radius: $padding/3;
+        text-decoration: none;
+        display: inline-block;
+        min-width: 12%;
+        text-align: center;
+
+        &:link {
+            background-color: $accent2;
+            color: $white;
+        }
+
+        &:visited {
+            background-color: darken($accent2, 10);
+            color: $white;
+        }
+
+        &:hover {
+            background-color: $accent1;
+            color: $white;
+        }
+    }
+}

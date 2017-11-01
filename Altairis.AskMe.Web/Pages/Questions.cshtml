@@ -1,4 +1,4 @@
-﻿@page
+﻿@page "{pageNumber:int:min(1)?}"
 @model QuestionsModel
 
 <section class="form">
@@ -20,5 +20,17 @@
         </footer>
     </form>
 </section>
+@if (Model.Paging.TotalRecords > 0) {
+    <h2>Nezodpovězené otázky</h2>
+    @foreach (var item in Model.Data) {
+        var id = $"q_{item.Id}";
+        <article class="question" id="@id">
+            @*@item.QuestionText*@
+            <aside>
+                @item.DateCreated.ToLongDateString()
+            </aside>
+        </article>
+    }
 
-<h2>Nezodpovězené otázky</h2>
+    <vc:pager model="Model.Paging"></vc:pager>
+}

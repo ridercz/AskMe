@@ -4,17 +4,26 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using Altairis.AskMe.Data;
+using Altairis.AskMe.Web.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 
 namespace Altairis.AskMe.Web.Pages {
-    public class QuestionsModel : PageModel {
+    public class QuestionsModel : PagedPageModel<Question> {
         private readonly AskDbContext _dc;
+        private readonly AppConfiguration _cfg;
 
-        public QuestionsModel(AskDbContext dc) {
+        // Constructor
+
+        public QuestionsModel(AskDbContext dc, IOptionsSnapshot<AppConfiguration> optionsSnapshot) {
             _dc = dc;
+            _cfg = optionsSnapshot.Value;
         }
+
+        // Model properties
 
         public IEnumerable<SelectListItem> Categories => _dc.Categories
             .OrderBy(c => c.Name)
@@ -22,6 +31,8 @@ namespace Altairis.AskMe.Web.Pages {
 
         [BindProperty]
         public InputModel Input { get; set; }
+
+        // Input model
 
         public class InputModel {
             [Required(ErrorMessage = "Není zadána otázka"), MaxLength(500), DataType(DataType.MultilineText)]
@@ -36,22 +47,30 @@ namespace Altairis.AskMe.Web.Pages {
             public int CategoryId { get; set; }
         }
 
-        public async Task<IActionResult> OnPostAsync() {
-            // Validate input
-            if (!this.ModelState.IsValid) return this.Page();
+        // Handlers
 
-            // Create and save question entity
-            var nq = new Question {
-                QuestionText = this.Input.QuestionText,
-                CategoryId = this.Input.CategoryId,
-                DisplayName = this.Input.DisplayName,
-                EmailAddress = this.Input.EmailAddress
-            };
-            await _dc.Questions.AddAsync(nq);
-            await _dc.SaveChangesAsync();
+        public async Task OnGetAsync(int pageNumber = 1) {
+            await base.GetData(_dc.Questions.Where(x => !x.DateAnswered.HasValue).OrderByDescending(x => x.DateCreated), pageNumber, _cfg.PageSize);
+        }
 
-            // Redirect to list of questions
-            return this.RedirectToPage(pageName: "Questions", pageHandler: null, fragment: $"q_{nq.Id}");
+        public async Task<IActionResult> OnPostAsync(int pageNumber = 1) {
+            if (this.ModelState.IsValid) {
+                // Create and save question entity
+                var nq = new Question {
+                    QuestionText = this.Input.QuestionText,
+                    CategoryId = this.Input.CategoryId,
+                    DisplayName = this.Input.DisplayName,
+                    EmailAddress = this.Input.EmailAddress
+                };
+                await _dc.Questions.AddAsync(nq);
+                await _dc.SaveChangesAsync();
+
+                // Redirect to list of questions
+                return this.RedirectToPage(pageName: "Questions", pageHandler: null, fragment: $"q_{nq.Id}");
+            }
+
+            await base.GetData(_dc.Questions.Where(x => !x.DateAnswered.HasValue).OrderByDescending(x => x.DateCreated), pageNumber, _cfg.PageSize);
+            return this.Page();
         }
 
     }
