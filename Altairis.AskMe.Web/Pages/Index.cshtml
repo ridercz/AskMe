@@ -30,6 +30,9 @@
                 </span>
             </header>
             <plainText text="@item.AnswerText" html-encode="true"></plainText>
+            <footer for-login-status="true">
+                <a asp-page="Admin/Index" asp-route-questionId="@item.Id" class="button"><i class="fa fa-commenting"></i> Upravit</a>
+            </footer>
         </section>
     </article>
 }

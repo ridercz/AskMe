@@ -1,7 +1,7 @@
 ﻿@page "{pageNumber:int:min(1)=1}"
 @model QuestionsModel
 
-<section class="form" id="ask">
+<section class="form" id="ask" for-login-status="false">
     <form method="post">
         <header>
             <h2>Nová otázka</h2>
@@ -39,6 +39,9 @@
                 </span>
             </header>
             <plainText text="@item.QuestionText" html-encode="true"></plainText>
+            <footer for-login-status="true">
+                <a asp-page="Admin/Index" asp-route-questionId="@item.Id" class="button"><i class="fa fa-commenting"></i> Odpovědět</a>
+            </footer>
         </article>
     }
     <vc:pager model="Model.Paging"></vc:pager>
