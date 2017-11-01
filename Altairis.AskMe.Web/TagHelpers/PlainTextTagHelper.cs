@@ -26,10 +26,13 @@ namespace Altairis.AskMe.Web.TagHelpers {
 
         public override void Process(TagHelperContext context, TagHelperOutput output) {
             base.Process(context, output);
-            if (string.IsNullOrWhiteSpace(this.Text)) return;
+            if (string.IsNullOrWhiteSpace(this.Text)) {
+                output.SuppressOutput();
+                return;
+            }
 
             // Create HTML output
-            var paragraphs = this.Text.Split('\r','\n');
+            var paragraphs = this.Text.Split('\r', '\n');
             var sb = new StringBuilder();
             foreach (var line in paragraphs) {
                 if (string.IsNullOrWhiteSpace(line)) continue;
@@ -37,8 +40,14 @@ namespace Altairis.AskMe.Web.TagHelpers {
             }
 
             // Return outpuut
-            output.Content.SetHtmlContent(sb.ToString());
-            output.TagName = this.ContainerTagName;
+            var html = sb.ToString();
+            if (string.IsNullOrWhiteSpace(html)) {
+                output.SuppressOutput();
+            }
+            else {
+                output.Content.SetHtmlContent(html);
+                output.TagName = this.ContainerTagName;
+            }
         }
 
     }
