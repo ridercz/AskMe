@@ -61,6 +61,20 @@ form {
         }
     }
 
+    .field {
+        clear: both;
+        padding: $padding/2;
+        margin: 0;
+        border: 1px solid $black;
+        background-color: #fff;
+
+        input[type=checkbox] {
+            width: 1.5em;
+            height: 1.5em;
+            vertical-align: middle;
+        }
+    }
+
     ::-webkit-input-placeholder {
         color: $accent2;
     }

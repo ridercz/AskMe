@@ -105,6 +105,17 @@ form input[type=text], form input[type=password], form input[type=email], form t
     float: left;
     width: 50%; }
 
+form .field {
+  clear: both;
+  padding: 0.5em;
+  margin: 0;
+  border: 1px solid #333;
+  background-color: #fff; }
+  form .field input[type=checkbox] {
+    width: 1.5em;
+    height: 1.5em;
+    vertical-align: middle; }
+
 form ::-webkit-input-placeholder {
   color: #018D8D; }
 
