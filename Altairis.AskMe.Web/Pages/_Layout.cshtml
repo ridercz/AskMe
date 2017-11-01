@@ -20,13 +20,7 @@
         <h1>ASKme</h1>
         <div>zeptej se mě na co chceš, já na co chci odpovím</div>
     </header>
-    <nav>
-        <ul>
-            <li><a asp-page="Index"><i class="fa fa-home"></i> Domů</a></li>
-            <li><a asp-page="Questions"><i class="fa fa-question"></i> Otázky</a></li>
-            <li><a asp-page="Contact"><i class="fa fa-envelope"></i> Kontakt</a></li>
-        </ul>
-    </nav>
+<vc:menu></vc:menu>
     <main>
         @RenderBody()
     </main>
