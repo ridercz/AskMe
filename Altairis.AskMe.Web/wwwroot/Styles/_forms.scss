@@ -75,6 +75,10 @@ form {
         }
     }
 
+    textarea {
+        height: 150px;
+    }
+
     ::-webkit-input-placeholder {
         color: $accent2;
     }

@@ -116,6 +116,9 @@ form .field {
     height: 1.5em;
     vertical-align: middle; }
 
+form textarea {
+  height: 150px; }
+
 form ::-webkit-input-placeholder {
   color: #018D8D; }
 
