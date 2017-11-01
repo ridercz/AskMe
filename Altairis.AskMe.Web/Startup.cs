@@ -17,14 +17,14 @@ namespace Altairis.AskMe.Web {
         private readonly IConfigurationRoot _config;
 
         public Startup(IHostingEnvironment env) {
-            this._environment = env;
+            _environment = env;
 
             var builder = new ConfigurationBuilder()
                 .SetBasePath(env.ContentRootPath)
                 .AddJsonFile("config.json", optional: false)
                 .AddJsonFile($"config.{env.EnvironmentName}.json", optional: true)
                 .AddEnvironmentVariables();
-            this._config = builder.Build();
+            _config = builder.Build();
         }
 
         public void ConfigureServices(IServiceCollection services) {
