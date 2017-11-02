@@ -67,7 +67,7 @@ namespace Altairis.AskMe.Web.Controllers {
                     Title = TruncateString(q.QuestionText, TITLE_MAX_LENGTH),
                     Description = _encoder.Encode(TruncateString(q.QuestionText, DESCRIPTION_MAX_LENGTH)),
                     Id = Url.Page("/Question", pageHandler: null, values: new { questionId = q.Id }, protocol: protocol),
-                    Published = (System.DateTimeOffset)q.DateAnswered
+                    Published = q.DateAnswered.Value
                 };
                 item.AddCategory(new SyndicationCategory(q.Category.Name));
                 return item;
