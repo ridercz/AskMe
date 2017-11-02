@@ -1,5 +1,6 @@
 ﻿@page "{pageNumber:int:min(1)=1}"
 @model IndexModel
+
 @foreach (var item in Model.Data) {
     var id = $"q_{item.Id}";
     <article class="answer" id="@id">
