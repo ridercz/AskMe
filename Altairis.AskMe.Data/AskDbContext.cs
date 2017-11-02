@@ -6,7 +6,7 @@ using NLipsum.Core;
 
 namespace Altairis.AskMe.Data {
     public class AskDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, int> {
-        private const int SEED_MAX_QUESTION_PARAGRAPHS = 10;
+        private const int SEED_MAX_QUESTION_SENTENCES = 5;
         private const int SEED_MAX_ANSWER_PARAGRAPHS = 20;
         private const int SEED_MAX_NAME_WORDS = 4;
 
@@ -39,10 +39,11 @@ namespace Altairis.AskMe.Data {
                 var rtg = new LipsumGenerator();
                 for (int i = 0; i < numberOfQuestions; i++) {
                     var nq = new Question {
-                        QuestionText = string.Join(Environment.NewLine, rtg.GenerateParagraphs(rng.Next(SEED_MAX_QUESTION_PARAGRAPHS) + 1)),
+                        QuestionText = string.Join(" ", rtg.GenerateSentences(rng.Next(SEED_MAX_QUESTION_SENTENCES) + 1)),
                         DateCreated = DateTime.Now.AddHours(i - numberOfQuestions),
                         CategoryId = categoryIds[rng.Next(categoryIds.Length)]
                     };
+                    if (nq.QuestionText.Length > 500) nq.QuestionText = nq.QuestionText.Substring(0, 499) + ".";
                     if (rng.Next(100) > anonymousRate) {
                         var name = rtg.GenerateWords(rng.Next(SEED_MAX_NAME_WORDS) + 1);
                         nq.DisplayName = string.Join(' ', name);
