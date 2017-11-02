@@ -51,7 +51,7 @@ namespace Altairis.AskMe.Web.Controllers {
 
                     xmlWriter.Flush();
                 }
-                return this.File(Encoding.UTF8.GetBytes(sw.ToString()), "application/rss+xml");
+                return this.File(Encoding.UTF8.GetBytes(sw.ToString()), "application/rss+xml;charset=utf-8");
             }
         }
 
