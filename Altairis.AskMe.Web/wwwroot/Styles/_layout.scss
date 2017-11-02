@@ -92,9 +92,11 @@ a {
 
     &:link, &:visited {
         color: $white;
+        text-decoration: none;
     }
 
     &:hover {
-        color: $black;
+        color: $accent1;
+        text-decoration: none;
     }
 }

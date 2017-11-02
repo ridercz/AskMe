@@ -56,10 +56,12 @@ body {
     letter-spacing: .5ex; }
 
 a:link, a:visited {
-  color: #eee; }
+  color: #eee;
+  text-decoration: none; }
 
 a:hover {
-  color: #333; }
+  color: #EB6B02;
+  text-decoration: none; }
 
 section.form {
   border: 1px solid #333;
