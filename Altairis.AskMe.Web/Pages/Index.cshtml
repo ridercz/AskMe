@@ -6,13 +6,13 @@
     <article class="answer" id="@id">
         <section class="question">
             <header>
-                <span class="fas-stack fa-lg">
-                    <i class="fas fa-square-o fa-stack-2x"></i>
-                    <i class="fas fa-question fa-stack-1x"></i>
+                <span class="fa-stack fa-lg">
+                    <i class="fas fa-square fa-stack-2x"></i>
+                    <i class="fas fa-question fa-stack-1x fa-inverse"></i>
                 </span>
                 <span class="info">
                     <i class="fas fa-tag"></i> @item.Category.Name
-                    <i class="fas fa-clock-o"></i> <time value="@item.DateCreated"></time>
+                    <i class="fas fa-calendar"></i> <time value="@item.DateCreated"></time>
                     @if (!string.IsNullOrWhiteSpace(item.DisplayName)) {
                         <span><i class="fas fa-user"></i> @item.DisplayName</span>
                     }
@@ -22,12 +22,12 @@
         </section>
         <section class="answer">
             <header>
-                <span class="fas-stack fa-lg">
-                    <i class="fas fa-square-o fa-stack-2x"></i>
-                    <i class="fas fa-comment fa-stack-1x"></i>
+                <span class="fa-stack fa-lg">
+                    <i class="fas fa-square fa-stack-2x"></i>
+                    <i class="fas fa-comment fa-stack-1x fa-inverse"></i>
                 </span>
                 <span class="info">
-                    <i class="fas fa-clock-o"></i> <time value="@item.DateAnswered"></time>
+                    <i class="fas fa-calendar"></i> <time value="@item.DateAnswered"></time>
                 </span>
             </header>
             <plainText text="@item.AnswerText" html-encode="true"></plainText>

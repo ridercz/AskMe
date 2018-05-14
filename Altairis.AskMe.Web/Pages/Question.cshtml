@@ -5,13 +5,13 @@
 <article class="answer">
     <section class="question">
         <header>
-            <span class="fas-stack fa-lg">
-                <i class="fas fa-square-o fa-stack-2x"></i>
-                <i class="fas fa-question fa-stack-1x"></i>
+            <span class="fa-stack fa-lg">
+                <i class="fas fa-square fa-stack-2x"></i>
+                <i class="fas fa-question fa-stack-1x fa-inverse"></i>
             </span>
             <span class="info">
                 <i class="fas fa-tag"></i> @Model.Data.Category.Name
-                <i class="fas fa-clock-o"></i> <time value="@Model.Data.DateCreated"></time>
+                <i class="fas fa-calendar"></i> <time value="@Model.Data.DateCreated"></time>
                 @if (!string.IsNullOrWhiteSpace(Model.Data.DisplayName)) {
                     <span><i class="fas fa-user"></i> @Model.Data.DisplayName</span>
                 }
@@ -21,12 +21,12 @@
     </section>
     <section class="answer">
         <header>
-            <span class="fas-stack fa-lg">
-                <i class="fas fa-square-o fa-stack-2x"></i>
-                <i class="fas fa-comment fa-stack-1x"></i>
+            <span class="fa-stack fa-lg">
+                <i class="fas fa-square fa-stack-2x"></i>
+                <i class="fas fa-comment fa-stack-1x fa-inverse"></i>
             </span>
             <span class="info">
-                <i class="fas fa-clock-o"></i> <time value="@Model.Data.DateAnswered"></time>
+                <i class="fas fa-calendar"></i> <time value="@Model.Data.DateAnswered"></time>
             </span>
         </header>
         @if (string.IsNullOrWhiteSpace(Model.Data.AnswerText)) {
