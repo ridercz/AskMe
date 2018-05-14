@@ -54,6 +54,19 @@ body {
     font-size: 80%;
     padding: 1em;
     letter-spacing: .5ex; }
+    body > footer ul {
+      margin: 0;
+      padding: 0;
+      display: inline;
+      list-style-type: none; }
+      body > footer ul li {
+        margin: 0;
+        padding: 0 0 0 0;
+        display: inline;
+        list-style-type: none;
+        list-style-type: none; }
+        body > footer ul li:nth-last-child(n+2)::after {
+          content: ' |'; }
 
 a:link, a:visited {
   color: #eee;

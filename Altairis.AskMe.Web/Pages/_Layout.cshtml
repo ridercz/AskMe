@@ -26,7 +26,11 @@
         @RenderBody()
     </main>
     <footer>
-        <div>Copyright &copy; <a href="https://www.altairis.cz/">Altairis</a>, 2017-@DateTime.Today.Year | @Environment.EnvironmentName environment | <a asp-route="RssFeed"><i class="fas fa-rss"></i> RSS</a></div>
+        <ul>
+            <li>Copyright &copy; <a href="https://www.altairis.cz/">Altairis</a>, 2017-@DateTime.Today.Year</li>
+            <li>@Environment.EnvironmentName environment</li>
+            <li><a asp-route="RssFeed"><i class="fas fa-rss"></i> RSS</a></li>
+        </ul>
     </footer>
 </body>
 </html>
