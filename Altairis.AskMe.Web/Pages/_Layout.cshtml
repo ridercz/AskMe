@@ -6,8 +6,8 @@
     <title>@(string.IsNullOrWhiteSpace(ViewBag.Title) ? "ASKme" : ViewBag.Title + " | ASKme")</title>
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css"
           integrity="sha256-HxaKz5E/eBbvhGMNwhWRPrAR9i/lG1JeT4mD6hCQ7s4=" crossorigin="anonymous" />
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-          integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+          integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
     <link rel="alternate" type="application/rss+xml" title="RSS" href="@Url.RouteUrl("RssFeed")" />
     <environment include="Development">
         <link rel="stylesheet" type="text/css" href="~/Styles/askme.css" asp-append-version="true" />
@@ -26,7 +26,7 @@
         @RenderBody()
     </main>
     <footer>
-        <div>Copyright &copy; <a href="https://www.altairis.cz/">Altairis</a>, 2017-@DateTime.Today.Year | @Environment.EnvironmentName environment | <a asp-route="RssFeed"><i class="fa fa-rss"></i> RSS</a></div>
+        <div>Copyright &copy; <a href="https://www.altairis.cz/">Altairis</a>, 2017-@DateTime.Today.Year | @Environment.EnvironmentName environment | <a asp-route="RssFeed"><i class="fas fa-rss"></i> RSS</a></div>
     </footer>
 </body>
 </html>

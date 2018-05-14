@@ -6,15 +6,15 @@
     <article class="answer" id="@id">
         <section class="question">
             <header>
-                <span class="fa-stack fa-lg">
-                    <i class="fa fa-square-o fa-stack-2x"></i>
-                    <i class="fa fa-question fa-stack-1x"></i>
+                <span class="fas-stack fa-lg">
+                    <i class="fas fa-square-o fa-stack-2x"></i>
+                    <i class="fas fa-question fa-stack-1x"></i>
                 </span>
                 <span class="info">
-                    <i class="fa fa-tag"></i> @item.Category.Name
-                    <i class="fa fa-clock-o"></i> <time value="@item.DateCreated"></time>
+                    <i class="fas fa-tag"></i> @item.Category.Name
+                    <i class="fas fa-clock-o"></i> <time value="@item.DateCreated"></time>
                     @if (!string.IsNullOrWhiteSpace(item.DisplayName)) {
-                        <span><i class="fa fa-user"></i> @item.DisplayName</span>
+                        <span><i class="fas fa-user"></i> @item.DisplayName</span>
                     }
                 </span>
             </header>
@@ -22,17 +22,17 @@
         </section>
         <section class="answer">
             <header>
-                <span class="fa-stack fa-lg">
-                    <i class="fa fa-square-o fa-stack-2x"></i>
-                    <i class="fa fa-comment fa-stack-1x"></i>
+                <span class="fas-stack fa-lg">
+                    <i class="fas fa-square-o fa-stack-2x"></i>
+                    <i class="fas fa-comment fa-stack-1x"></i>
                 </span>
                 <span class="info">
-                    <i class="fa fa-clock-o"></i> <time value="@item.DateAnswered"></time>
+                    <i class="fas fa-clock-o"></i> <time value="@item.DateAnswered"></time>
                 </span>
             </header>
             <plainText text="@item.AnswerText" html-encode="true"></plainText>
             <footer for-login-status="true">
-                <a asp-page="Admin/Index" asp-route-questionId="@item.Id" class="button"><i class="fa fa-commenting"></i> Upravit</a>
+                <a asp-page="Admin/Index" asp-route-questionId="@item.Id" class="button"><i class="fas fa-commenting"></i> Upravit</a>
             </footer>
         </section>
     </article>
