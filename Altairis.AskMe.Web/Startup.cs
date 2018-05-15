@@ -96,6 +96,7 @@ namespace Altairis.AskMe.Web {
             });
 
             // Use other middleware
+            app.UseStatusCodePagesWithReExecute("/Error/{0}");
             app.UseAuthentication();
             app.UseMvc();
         }
