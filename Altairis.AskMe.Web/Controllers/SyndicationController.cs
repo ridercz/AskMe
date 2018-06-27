@@ -10,7 +10,6 @@ using Altairis.AskMe.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.SyndicationFeed;
-using Microsoft.SyndicationFeed.Atom;
 using Microsoft.SyndicationFeed.Rss;
 
 namespace Altairis.AskMe.Web.Controllers {

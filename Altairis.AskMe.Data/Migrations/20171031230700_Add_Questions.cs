@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 using System;
-using System.Collections.Generic;
 
 namespace Altairis.AskMe.Data.Migrations {
     public partial class Add_Questions : Migration {
