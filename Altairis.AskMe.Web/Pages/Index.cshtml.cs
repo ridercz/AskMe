@@ -18,9 +18,9 @@ namespace Altairis.AskMe.Web.Pages {
         // Constructor
 
         public IndexModel(AskDbContext dc, IOptionsSnapshot<AppConfiguration> optionsSnapshot) {
-            _dc = dc;
-            _cfg = optionsSnapshot.Value;
-            _dataSource = _dc.Questions
+            this._dc = dc;
+            this._cfg = optionsSnapshot.Value;
+            this._dataSource = this._dc.Questions
                 .Include(x => x.Category)
                 .Where(x => x.DateAnswered.HasValue)
                 .OrderByDescending(x => x.DateAnswered);
@@ -29,7 +29,7 @@ namespace Altairis.AskMe.Web.Pages {
         // Handlers
 
         public async Task OnGetAsync(int pageNumber) {
-            await base.GetData(_dataSource, pageNumber, _cfg.PageSize);
+            await base.GetData(this._dataSource, pageNumber, this._cfg.PageSize);
         }
 
     }

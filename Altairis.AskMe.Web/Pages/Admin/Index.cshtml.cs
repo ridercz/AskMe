@@ -17,13 +17,13 @@ namespace Altairis.AskMe.Web.Pages.Admin {
         // Constructor
 
         public IndexModel(AskDbContext dc, IOptionsSnapshot<AppConfiguration> optionsSnapshot) {
-            _dc = dc;
-            _cfg = optionsSnapshot.Value;
+            this._dc = dc;
+            this._cfg = optionsSnapshot.Value;
         }
 
         // Model properties
 
-        public IEnumerable<SelectListItem> Categories => _dc.Categories
+        public IEnumerable<SelectListItem> Categories => this._dc.Categories
             .OrderBy(c => c.Name)
             .Select(c => new SelectListItem { Text = c.Name, Value = c.Id.ToString() });
 
@@ -51,7 +51,7 @@ namespace Altairis.AskMe.Web.Pages.Admin {
 
         public async Task<IActionResult> OnGetAsync(int questionId) {
             // Get question
-            var q = await _dc.Questions.FindAsync(questionId);
+            var q = await this._dc.Questions.FindAsync(questionId);
             if (q == null) return this.NotFound();
 
             // Prepare model
@@ -68,7 +68,7 @@ namespace Altairis.AskMe.Web.Pages.Admin {
 
         public async Task<IActionResult> OnPostAsync(int questionId) {
             // Get question
-            var q = await _dc.Questions.FindAsync(questionId);
+            var q = await this._dc.Questions.FindAsync(questionId);
             if (q == null) return this.NotFound();
 
             if (this.ModelState.IsValid) {
@@ -87,7 +87,7 @@ namespace Altairis.AskMe.Web.Pages.Admin {
                     if (!q.DateAnswered.HasValue) q.DateAnswered = DateTime.Now;
                 }
 
-                await _dc.SaveChangesAsync();
+                await this._dc.SaveChangesAsync();
                 return this.RedirectToPage("/Question", new { questionId = q.Id });
             }
             return this.Page();

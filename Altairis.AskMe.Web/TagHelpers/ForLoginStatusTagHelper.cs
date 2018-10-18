@@ -12,7 +12,7 @@ namespace Altairis.AskMe.Web.TagHelpers {
         private readonly HttpContext _httpContext;
 
         public ForLoginStatusTagHelper(IHttpContextAccessor httpContextAccessor) {
-            _httpContext = httpContextAccessor.HttpContext;
+            this._httpContext = httpContextAccessor.HttpContext;
         }
 
         public bool ForLoginStatus { get; set; }
@@ -20,7 +20,7 @@ namespace Altairis.AskMe.Web.TagHelpers {
         public override void Process(TagHelperContext context, TagHelperOutput output) {
             base.Process(context, output);
 
-            if(_httpContext.User.Identity.IsAuthenticated != this.ForLoginStatus) {
+            if(this._httpContext.User.Identity.IsAuthenticated != this.ForLoginStatus) {
                 output.SuppressOutput();
             }
         }

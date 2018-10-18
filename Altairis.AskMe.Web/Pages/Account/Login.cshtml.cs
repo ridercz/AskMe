@@ -13,7 +13,7 @@ namespace Altairis.AskMe.Web.Pages.Account {
         private readonly SignInManager<ApplicationUser> _signInManager;
 
         public LoginModel(SignInManager<ApplicationUser> signInManager) {
-            _signInManager = signInManager;
+            this._signInManager = signInManager;
         }
 
         [BindProperty]
@@ -31,7 +31,7 @@ namespace Altairis.AskMe.Web.Pages.Account {
 
         public async Task<IActionResult> OnPostAsync(string returnUrl = "/") {
             if (this.ModelState.IsValid) {
-                var result = await _signInManager.PasswordSignInAsync(
+                var result = await this._signInManager.PasswordSignInAsync(
                     this.Input.UserName,
                     this.Input.Password,
                     this.Input.RememberMe,
@@ -44,7 +44,7 @@ namespace Altairis.AskMe.Web.Pages.Account {
                     this.ModelState.AddModelError(string.Empty, "Přihlášení se nezdařilo");
                 }
             }
-            return Page();
+            return this.Page();
         }
     }
 }

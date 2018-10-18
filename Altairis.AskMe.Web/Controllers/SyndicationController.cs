@@ -22,13 +22,13 @@ namespace Altairis.AskMe.Web.Controllers {
         private readonly HtmlEncoder _encoder;
 
         public SyndicationController(AskDbContext dc, HtmlEncoder encoder) {
-            _dc = dc;
-            _encoder = encoder;
+            this._dc = dc;
+            this._encoder = encoder;
         }
 
         [Route("/feed.rss", Name = "RssFeed")]
         public async Task<IActionResult> RssFeed() {
-            var homepageUrl = Url.Page("/Index", pageHandler: null, values: null, protocol: this.Request.Scheme);
+            var homepageUrl = this.Url.Page("/Index", pageHandler: null, values: null, protocol: this.Request.Scheme);
             var items = await this.GetSyndicationItemsAsync(this.Request.Scheme, 15);
 
             using (var sw = new StringWriter()) {
@@ -56,7 +56,7 @@ namespace Altairis.AskMe.Web.Controllers {
         }
 
         private async Task<IEnumerable<SyndicationItem>> GetSyndicationItemsAsync(string protocol, int maxItems) {
-            var questions = await _dc.Questions.Include(x => x.Category)
+            var questions = await this._dc.Questions.Include(x => x.Category)
                 .Where(x => x.DateAnswered.HasValue)
                 .OrderByDescending(x => x.DateAnswered)
                 .Take(maxItems)
@@ -65,8 +65,8 @@ namespace Altairis.AskMe.Web.Controllers {
             return questions.Select(q => {
                 var item = new SyndicationItem {
                     Title = TruncateString(q.QuestionText, TITLE_MAX_LENGTH),
-                    Description = _encoder.Encode(TruncateString(q.QuestionText, DESCRIPTION_MAX_LENGTH)),
-                    Id = Url.Page("/Question", pageHandler: null, values: new { questionId = q.Id }, protocol: protocol),
+                    Description = this._encoder.Encode(TruncateString(q.QuestionText, DESCRIPTION_MAX_LENGTH)),
+                    Id = this.Url.Page("/Question", pageHandler: null, values: new { questionId = q.Id }, protocol: protocol),
                     Published = q.DateAnswered.Value
                 };
                 item.AddCategory(new SyndicationCategory(q.Category.Name));

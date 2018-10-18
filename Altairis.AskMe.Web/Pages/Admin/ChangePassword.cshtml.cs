@@ -14,8 +14,8 @@ namespace Altairis.AskMe.Web.Pages.Admin {
         private readonly SignInManager<ApplicationUser> _signInManager;
 
         public ChangePasswordModel(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager) {
-            _userManager = userManager;
-            _signInManager = signInManager;
+            this._userManager = userManager;
+            this._signInManager = signInManager;
         }
 
         [BindProperty]
@@ -34,19 +34,19 @@ namespace Altairis.AskMe.Web.Pages.Admin {
         }
 
         public async Task<IActionResult> OnPostAsync() {
-            if (ModelState.IsValid) {
+            if (this.ModelState.IsValid) {
                 // Get current user
-                var user = await _userManager.GetUserAsync(this.User);
+                var user = await this._userManager.GetUserAsync(this.User);
 
                 // Try to change password
-                var result = await _userManager.ChangePasswordAsync(
+                var result = await this._userManager.ChangePasswordAsync(
                     user,
                     this.Input.OldPassword,
                     this.Input.NewPassword);
 
                 if (result.Succeeded) {
                     // OK, re-sign and redirect to homepage
-                    await _signInManager.SignInAsync(user, isPersistent: false);
+                    await this._signInManager.SignInAsync(user, isPersistent: false);
                     return this.RedirectToPage("ChangePasswordDone");
                 }
                 else {

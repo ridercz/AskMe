@@ -13,7 +13,7 @@ namespace Altairis.AskMe.Web.TagHelpers {
         private readonly HtmlEncoder _encoder;
 
         public PlainTextTagHelper(HtmlEncoder encoder) {
-            _encoder = encoder;
+            this._encoder = encoder;
         }
 
         public string Text { get; set; }
@@ -36,7 +36,7 @@ namespace Altairis.AskMe.Web.TagHelpers {
             var sb = new StringBuilder();
             foreach (var line in paragraphs) {
                 if (string.IsNullOrWhiteSpace(line)) continue;
-                sb.AppendLine(string.Format(this.ParagraphFormatString, this.HtmlEncode ? _encoder.Encode(line) : line));
+                sb.AppendLine(string.Format(this.ParagraphFormatString, this.HtmlEncode ? this._encoder.Encode(line) : line));
             }
 
             // Return outpuut

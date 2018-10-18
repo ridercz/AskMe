@@ -20,9 +20,9 @@ namespace Altairis.AskMe.Web.Pages {
         // Constructor
 
         public QuestionsModel(AskDbContext dc, IOptionsSnapshot<AppConfiguration> optionsSnapshot) {
-            _dc = dc;
-            _cfg = optionsSnapshot.Value;
-            _dataSource = _dc.Questions
+            this._dc = dc;
+            this._cfg = optionsSnapshot.Value;
+            this._dataSource = this._dc.Questions
                 .Include(x => x.Category)
                 .Where(x => !x.DateAnswered.HasValue)
                 .OrderByDescending(x => x.DateCreated);
@@ -30,7 +30,7 @@ namespace Altairis.AskMe.Web.Pages {
 
         // Model properties
 
-        public IEnumerable<SelectListItem> Categories => _dc.Categories
+        public IEnumerable<SelectListItem> Categories => this._dc.Categories
             .OrderBy(c => c.Name)
             .Select(c => new SelectListItem { Text = c.Name, Value = c.Id.ToString() });
 
@@ -55,7 +55,7 @@ namespace Altairis.AskMe.Web.Pages {
         // Handlers
 
         public async Task OnGetAsync(int pageNumber) {
-            await base.GetData(_dataSource, pageNumber, _cfg.PageSize);
+            await base.GetData(this._dataSource, pageNumber, this._cfg.PageSize);
         }
 
         public async Task<IActionResult> OnPostAsync(int pageNumber) {
@@ -67,14 +67,14 @@ namespace Altairis.AskMe.Web.Pages {
                     DisplayName = this.Input.DisplayName,
                     EmailAddress = this.Input.EmailAddress
                 };
-                await _dc.Questions.AddAsync(nq);
-                await _dc.SaveChangesAsync();
+                await this._dc.Questions.AddAsync(nq);
+                await this._dc.SaveChangesAsync();
 
                 // Redirect to list of questions
                 return this.RedirectToPage(pageName: "Questions", pageHandler: null, fragment: $"q_{nq.Id}");
             }
 
-            await base.GetData(_dataSource, pageNumber, _cfg.PageSize);
+            await base.GetData(this._dataSource, pageNumber, this._cfg.PageSize);
             return this.Page();
         }
 

@@ -12,11 +12,11 @@ namespace Altairis.AskMe.Web.Pages.Account {
         private readonly SignInManager<ApplicationUser> _signInManager;
 
         public LogoutModel(SignInManager<ApplicationUser> signInManager) {
-            _signInManager = signInManager;
+            this._signInManager = signInManager;
         }
 
         public async Task OnGetAsync() {
-            await _signInManager.SignOutAsync();
+            await this._signInManager.SignOutAsync();
         }
     }
 }

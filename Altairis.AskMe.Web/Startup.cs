@@ -17,20 +17,20 @@ namespace Altairis.AskMe.Web {
         private readonly IConfigurationRoot _config;
 
         public Startup(IHostingEnvironment env) {
-            _environment = env;
+            this._environment = env;
 
             var builder = new ConfigurationBuilder()
                 .SetBasePath(env.ContentRootPath)
                 .AddJsonFile("config.json", optional: false)
                 .AddJsonFile($"config.{env.EnvironmentName}.json", optional: true)
                 .AddEnvironmentVariables();
-            _config = builder.Build();
+            this._config = builder.Build();
         }
 
         public void ConfigureServices(IServiceCollection services) {
             // Configure DB context
             services.AddDbContext<AskDbContext>(options => {
-                options.UseSqlite(_config.GetConnectionString("AskDB"));
+                options.UseSqlite(this._config.GetConnectionString("AskDB"));
             });
 
             // Configure Razor Pages
@@ -58,7 +58,7 @@ namespace Altairis.AskMe.Web {
             });
 
             // Load configuration
-            services.Configure<AppConfiguration>(_config);
+            services.Configure<AppConfiguration>(this._config);
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, AskDbContext context, UserManager<ApplicationUser> userManager) {
