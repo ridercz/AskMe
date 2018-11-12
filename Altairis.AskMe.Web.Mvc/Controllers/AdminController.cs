@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Altairis.AskMe.Data;
 using Altairis.AskMe.Web.Mvc.Models.Admin;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -16,11 +17,15 @@ namespace Altairis.AskMe.Web.Mvc.Controllers {
     public class AdminController : Controller {
 
         private readonly AskDbContext _dc;
+        private readonly UserManager<ApplicationUser> _userManager;
+        private readonly SignInManager<ApplicationUser> _signInManager;
 
         // Constructor
 
-        public AdminController(AskDbContext dc) {
+        public AdminController(AskDbContext dc, UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager) {
             this._dc = dc;
+            this._userManager = userManager;
+            this._signInManager = signInManager;
         }
 
         [Route("{questionId:int:min(1)}")]
@@ -71,6 +76,35 @@ namespace Altairis.AskMe.Web.Mvc.Controllers {
                     actionName: "Question",
                     controllerName: "Home",
                     routeValues: new { questionId = q.Id });
+            }
+            return this.View(model);
+        }
+
+        [Route("ChangePassword")]
+        public IActionResult ChangePassword() => this.View();
+
+        [HttpPost, Route("ChangePassword")]
+        public async Task< IActionResult> ChangePassword(ChangePasswordModel model) {
+            if (this.ModelState.IsValid) {
+                // Get current user
+                var user = await this._userManager.GetUserAsync(this.User);
+
+                // Try to change password
+                var result = await this._userManager.ChangePasswordAsync(
+                    user,
+                    model.OldPassword,
+                    model.NewPassword);
+
+                if (result.Succeeded) {
+                    // OK, re-sign and redirect to homepage
+                    await this._signInManager.SignInAsync(user, isPersistent: false);
+                    return this.MessageView("Změna hesla", "Vaše heslo bylo úspěšně změněno.");
+                } else {
+                    // Failed - show why
+                    foreach (var error in result.Errors) {
+                        this.ModelState.AddModelError(string.Empty, error.Description);
+                    }
+                }
             }
             return this.View(model);
         }
