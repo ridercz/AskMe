@@ -12,7 +12,7 @@ body {
   max-width: 1000px;
   margin: 0 auto; }
   body > header {
-    background-color: #EB6B02;
+    background-color: #2c8f01;
     padding: 1em;
     margin-bottom: 0.5em;
     letter-spacing: .5ex; }
@@ -22,7 +22,7 @@ body {
       font-weight: bold;
       text-align: right; }
   body > nav {
-    background-color: #018D8D;
+    background-color: #00415e;
     color: #eee;
     font-size: 125%; }
     body > nav a:link, body > nav a:visited {
@@ -73,7 +73,7 @@ a:link, a:visited {
   text-decoration: none; }
 
 a:hover {
-  color: #EB6B02;
+  color: #2c8f01;
   text-decoration: none; }
 
 section.form {
@@ -83,8 +83,8 @@ section.form {
     border-radius: 0.33333em 0.33333em 0 0;
     border: 1px solid #333;
     padding: 1em;
-    background-color: rgba(1, 141, 141, 0.25);
-    color: #018D8D; }
+    background-color: rgba(0, 65, 94, 0.25);
+    color: #00415e; }
     section.form header h2 {
       margin: 0;
       padding: 0; }
@@ -93,15 +93,15 @@ section.form {
   section.form .validation-summary-errors {
     clear: both;
     border: 1px solid #333;
-    background-color: rgba(235, 107, 2, 0.25); }
+    background-color: rgba(44, 143, 1, 0.25); }
   section.form footer {
     clear: both;
     border: 1px solid #333;
-    background-color: rgba(235, 107, 2, 0.75);
+    background-color: rgba(44, 143, 1, 0.75);
     text-align: right;
     border-radius: 0 0 0.33333em 0.33333em; }
     section.form footer input[type=submit] {
-      background-color: #EB6B02;
+      background-color: #2c8f01;
       color: #eee;
       border: none;
       border-radius: 0 0 0.33333em 0;
@@ -135,16 +135,16 @@ form textarea {
   height: 150px; }
 
 form ::-webkit-input-placeholder {
-  color: #018D8D; }
+  color: #00415e; }
 
 form ::-moz-placeholder {
-  color: #018D8D; }
+  color: #00415e; }
 
 form :-ms-input-placeholder {
-  color: #018D8D; }
+  color: #00415e; }
 
 form :-moz-placeholder {
-  color: #018D8D; }
+  color: #00415e; }
 
 a.button {
   padding: 0.5em 1em;
@@ -152,18 +152,18 @@ a.button {
   text-decoration: none;
   display: inline-block; }
   a.button:link {
-    background-color: #018D8D;
+    background-color: #00415e;
     color: #eee; }
   a.button:visited {
-    background-color: #015a5a;
+    background-color: #001e2b;
     color: #eee; }
   a.button:hover {
-    background-color: #EB6B02;
+    background-color: #2c8f01;
     color: #eee; }
 
 .pager {
   margin-top: 1em;
-  color: #018D8D; }
+  color: #00415e; }
   .pager p {
     font-size: 80%;
     text-align: center;
@@ -175,35 +175,34 @@ a.button {
     float: right; }
 
 article.question {
-  border: 1px solid #018D8D;
+  border: 1px solid #00415e;
   border-radius: 0.33333em;
   padding: 1em;
   margin-bottom: 1em;
-  background-color: rgba(1, 141, 141, 0.05); }
+  background-color: rgba(0, 65, 94, 0.05); }
   article.question header {
-    color: #018D8D;
-    border-bottom: rgba(1, 141, 141, 0.2) 1px solid; }
+    color: #00415e;
+    border-bottom: rgba(0, 65, 94, 0.2) 1px solid; }
     article.question header .info {
       float: right; }
 
 article.answer {
-  border: 1px solid #018D8D;
+  border: 1px solid #00415e;
   border-radius: 0.33333em;
   margin-bottom: 1em; }
   article.answer section.question {
     padding: 1em;
-    background-color: rgba(1, 141, 141, 0.05); }
+    background-color: rgba(0, 65, 94, 0.05); }
     article.answer section.question header {
-      color: #018D8D;
-      border-bottom: rgba(1, 141, 141, 0.2) 1px solid; }
+      color: #00415e;
+      border-bottom: rgba(0, 65, 94, 0.2) 1px solid; }
       article.answer section.question header .info {
         float: right; }
   article.answer section.answer {
     padding: 1em;
-    background-color: rgba(235, 107, 2, 0.05); }
+    background-color: rgba(44, 143, 1, 0.05); }
     article.answer section.answer header {
-      color: #EB6B02;
-      border-bottom: rgba(235, 107, 2, 0.2) 1px solid; }
+      color: #2c8f01;
+      border-bottom: rgba(44, 143, 1, 0.2) 1px solid; }
       article.answer section.answer header .info {
         float: right; }
-
