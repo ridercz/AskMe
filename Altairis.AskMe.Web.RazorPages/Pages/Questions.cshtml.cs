@@ -69,7 +69,7 @@ namespace Altairis.AskMe.Web.RazorPages.Pages {
                 await this._dc.SaveChangesAsync();
 
                 // Redirect to list of questions
-                return this.RedirectToPage(pageName: "Questions", pageHandler: null, routeValues: new { pageNumber = 1 }, fragment: $"q_{nq.Id}");
+                return this.RedirectToPage(pageName: "Questions", pageHandler: null, routeValues: new { pageNumber = string.Empty }, fragment: $"q_{nq.Id}");
             }
 
             await base.GetData(this._dataSource, pageNumber, this._cfg.PageSize);
