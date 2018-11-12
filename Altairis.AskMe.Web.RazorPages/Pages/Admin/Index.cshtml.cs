@@ -12,13 +12,11 @@ using Microsoft.Extensions.Options;
 namespace Altairis.AskMe.Web.RazorPages.Pages.Admin {
     public class IndexModel : PageModel {
         private readonly AskDbContext _dc;
-        private readonly AppConfiguration _cfg;
 
         // Constructor
 
-        public IndexModel(AskDbContext dc, IOptionsSnapshot<AppConfiguration> optionsSnapshot) {
+        public IndexModel(AskDbContext dc) {
             this._dc = dc;
-            this._cfg = optionsSnapshot.Value;
         }
 
         // Model properties
