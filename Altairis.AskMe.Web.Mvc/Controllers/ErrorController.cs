@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Altairis.AskMe.Web.Mvc.Controllers {
-    [Route("error")]
+    [Route("Error")]
     public class ErrorController : Controller {
         [Route("{errorCode:int:min(100):max(599)}")]
         public IActionResult Index(int errorCode) => this.View(errorCode);

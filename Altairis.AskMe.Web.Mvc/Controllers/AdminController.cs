@@ -13,9 +13,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Altairis.AskMe.Web.Mvc.Controllers {
 
-    [Route("admin"), Authorize]
+    [Route("Admin"), Authorize]
     public class AdminController : Controller {
-
         private readonly AskDbContext _dc;
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
@@ -27,6 +26,8 @@ namespace Altairis.AskMe.Web.Mvc.Controllers {
             this._userManager = userManager;
             this._signInManager = signInManager;
         }
+
+        // Actions
 
         [Route("{questionId:int:min(1)}")]
         public async Task<IActionResult> Index(int questionId) {

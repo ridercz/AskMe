@@ -24,7 +24,7 @@ namespace Altairis.AskMe.Web.Mvc.Controllers {
 
         }
 
-        // Action methods
+        // Actions
 
         [Route("{pageNumber:int:min(1)=1}")]
         public async Task<IActionResult> Index(int pageNumber) {
@@ -37,14 +37,14 @@ namespace Altairis.AskMe.Web.Mvc.Controllers {
             return this.View(model);
         }
 
-        [Route("question/{questionId:int:min(1)}")]
+        [Route("Question/{questionId:int:min(1)}")]
         public async Task<IActionResult> Question(int questionId) {
             var model = await this._dc.Questions.Include(x => x.Category).SingleOrDefaultAsync(x => x.Id == questionId);
             if (model == null) return this.NotFound();
             return this.View(model);
         }
 
-        [Route("questions/{pageNumber:int:min(1)=1}")]
+        [Route("Questions/{pageNumber:int:min(1)=1}")]
         public async Task<IActionResult> Questions(int pageNumber) {
             var model = new QuestionsModel {
                 Categories = await this._dc.Categories
@@ -62,7 +62,7 @@ namespace Altairis.AskMe.Web.Mvc.Controllers {
             return this.View(model);
         }
 
-        [HttpPost, Route("questions/{pageNumber:int:min(1)=1}")]
+        [HttpPost, Route("Questions/{pageNumber:int:min(1)=1}")]
         public async Task<IActionResult> Questions(int pageNumber, QuestionsModel model) {
             // Validate posted data
             if (this.ModelState.IsValid) {
@@ -97,7 +97,7 @@ namespace Altairis.AskMe.Web.Mvc.Controllers {
             }
         }
 
-        [Route("contact")]
+        [Route("Contact")]
         public IActionResult Contact() => this.View();
 
     }
