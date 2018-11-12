@@ -96,7 +96,7 @@ namespace Altairis.AskMe.Web.Mvc.Controllers {
                 return this.View(model);
             }
         }
-        
+
         [Route("contact")]
         public IActionResult Contact() => this.View();
 

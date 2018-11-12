@@ -26,6 +26,15 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Update="Views\Error\404.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\Error\500.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\Error\Index.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
     <Content Update="Views\Home\Contact.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
