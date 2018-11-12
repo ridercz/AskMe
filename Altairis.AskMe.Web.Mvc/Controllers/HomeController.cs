@@ -21,6 +21,7 @@ namespace Altairis.AskMe.Web.Mvc.Controllers {
             this._cfg = optionsSnapshot.Value;
 
         }
+
         [Route("{pageNumber:int:min(1)=1}")]
         public async Task<IActionResult> Index(int pageNumber) {
             var q = this._dc.Questions
@@ -28,6 +29,13 @@ namespace Altairis.AskMe.Web.Mvc.Controllers {
                 .Where(x => x.DateAnswered.HasValue)
                 .OrderByDescending(x => x.DateAnswered);
             var model = await PagedModel.CreateAsync(q, pageNumber, this._cfg.PageSize);
+            return this.View(model);
+        }
+
+        [Route("question/{questionId:int:min(1)}")]
+        public async Task<IActionResult> Question(int questionId) {
+            var model = await this._dc.Questions.Include(x => x.Category).SingleOrDefaultAsync(x => x.Id == questionId);
+            if (model == null) return this.NotFound();
             return this.View(model);
         }
     }

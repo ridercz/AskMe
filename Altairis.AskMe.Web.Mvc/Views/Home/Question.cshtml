@@ -1,0 +1,40 @@
+﻿@model Question
+@{ this.ViewBag.Title = $"Otázka číslo {Model.Id}"; }
+
+<article class="answer">
+    <section class="question">
+        <header>
+            <span class="fa-stack fa-lg">
+                <i class="fas fa-square fa-stack-2x"></i>
+                <i class="fas fa-question fa-stack-1x fa-inverse"></i>
+            </span>
+            <span class="info">
+                <i class="fas fa-tag"></i> @Model.Category.Name
+                <i class="fas fa-calendar"></i> <time value="@Model.DateCreated"></time>
+                @if (!string.IsNullOrWhiteSpace(Model.DisplayName)) {
+                    <span><i class="fas fa-user"></i> @Model.DisplayName</span>
+                }
+            </span>
+        </header>
+        <plainText text="@Model.QuestionText" html-encode="true"></plainText>
+    </section>
+    <section class="answer">
+        <header>
+            <span class="fa-stack fa-lg">
+                <i class="fas fa-square fa-stack-2x"></i>
+                <i class="fas fa-comment fa-stack-1x fa-inverse"></i>
+            </span>
+            <span class="info">
+                <i class="fas fa-calendar"></i> <time value="@Model.DateAnswered"></time>
+            </span>
+        </header>
+        @if (string.IsNullOrWhiteSpace(Model.AnswerText)) {
+            <p>Otázka dosud nebyla zodpovězena.</p>
+        } else {
+            <plainText text="@Model.AnswerText" html-encode="true"></plainText>
+        }
+        @*<footer for-login-status="true">
+            <a asp-page="Admin/Index" asp-route-questionId="@Model.Id" class="button"><i class="fas fa-commenting"></i> Upravit</a>
+        </footer>*@
+    </section>
+</article>
