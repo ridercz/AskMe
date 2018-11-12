@@ -1,6 +1,6 @@
 ﻿@page "{questionId:int:min(1)}"
 @model QuestionModel
-@{ this.ViewBag.Title = "Nezodpovězené otázky"; }
+@{ this.ViewBag.Title = $"Otázka číslo {Model.Data.Id}"; }
 
 <article class="answer">
     <section class="question">
