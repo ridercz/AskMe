@@ -1,5 +1,6 @@
 ﻿@page "{errorCode}"
 @model IndexModel
+@{ ViewBag.Title = "HTTP Error " + Model.ErrorCode; }
 
 <h2>HTTP Error @Model.ErrorCode</h2>
 <p>Při zpracování vašeho požadavku došlo k nečekané chybě.</p>
