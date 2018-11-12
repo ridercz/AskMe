@@ -33,8 +33,8 @@
         } else {
             <plainText text="@Model.AnswerText" html-encode="true"></plainText>
         }
-        @*<footer for-login-status="true">
-            <a asp-page="Admin/Index" asp-route-questionId="@Model.Id" class="button"><i class="fas fa-commenting"></i> Upravit</a>
-        </footer>*@
+        <footer for-login-status="true">
+            <a asp-controller="Admin" asp-action="Index" asp-route-questionId="@Model.Id" class="button"><i class="fas fa-commenting"></i> Upravit</a>
+        </footer>
     </section>
 </article>
