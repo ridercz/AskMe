@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -32,7 +33,9 @@ namespace Altairis.AskMe.Web.Mvc {
             });
 
             // Configure Razor Pages
-            services.AddMvc();
+            services.AddMvc(options => {
+                options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute());
+            });
 
             // Configure identity and authentication
             services.AddIdentity<ApplicationUser, ApplicationRole>(options => {
