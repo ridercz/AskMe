@@ -1,0 +1,49 @@
+﻿@model Models.Home.QuestionsModel
+@{ this.ViewBag.Title = "Nezodpovězené otázky"; }
+
+<section class="form" id="ask" for-login-status="false">
+    <form method="post">
+        <header>
+            <h2>Nová otázka</h2>
+        </header>
+        <div><textarea asp-for="Input.QuestionText" placeholder="Zadejte text své otázky..."></textarea></div>
+        <div>
+            <select asp-for="Input.CategoryId" asp-items="Model.Categories"></select>
+        </div>
+        <div>
+            <input asp-for="Input.DisplayName" placeholder="Jméno (nepovinné)" class="half-width" />
+            <input asp-for="Input.EmailAddress" placeholder="E-mail (nepovinné)" class="half-width" />
+        </div>
+        <div asp-validation-summary="All"></div>
+        <footer>
+            <input type="submit" value="Odeslat" />
+        </footer>
+    </form>
+</section>
+
+@if (Model.Paging.TotalRecords > 0) {
+    <h2>Nezodpovězené otázky</h2>
+    @foreach (var item in Model.Data) {
+        var id = $"q_{item.Id}";
+        <article class="question" id="@id">
+            <header>
+                <span class="fa-stack fa-lg">
+                    <i class="fas fa-square fa-stack-2x"></i>
+                    <i class="fas fa-question fa-stack-1x fa-inverse"></i>
+                </span>
+                <span class="info">
+                    <i class="fas fa-tag"></i> @item.Category.Name
+                    <i class="fas fa-calendar"></i> <time value="@item.DateCreated"></time>
+                    @if (!string.IsNullOrWhiteSpace(item.DisplayName)) {
+                        <span><i class="fas fa-user"></i> @item.DisplayName</span>
+                    }
+                </span>
+            </header>
+            <plainText text="@item.QuestionText" html-encode="true"></plainText>
+            <footer for-login-status="true">
+                <a asp-page="Admin/Index" asp-route-questionId="@item.Id" class="button"><i class="fas fa-commenting"></i> Odpovědět</a>
+            </footer>
+        </article>
+    }
+    <vc:pager model="Model.Paging"></vc:pager>
+}
