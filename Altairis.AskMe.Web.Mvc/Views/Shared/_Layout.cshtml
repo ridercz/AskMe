@@ -1,0 +1,37 @@
+﻿@inject Microsoft.AspNetCore.Hosting.IHostingEnvironment Environment
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@(string.IsNullOrWhiteSpace(ViewBag.Title) ? "ASKme" : ViewBag.Title + " | ASKme")</title>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css"
+          integrity="sha256-HxaKz5E/eBbvhGMNwhWRPrAR9i/lG1JeT4mD6hCQ7s4=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+          integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="@Url.RouteUrl("RssFeed")" />
+    <environment include="Development">
+        <link rel="stylesheet" type="text/css" href="~/Styles/askme.css" asp-append-version="true" />
+    </environment>
+    <environment exclude="Development">
+        <link rel="stylesheet" type="text/css" href="~/Styles/askme.min.css" asp-append-version="true" />
+    </environment>
+</head>
+<body>
+    <header>
+        <h1>ASKme</h1>
+        <div>zeptej se mě na co chceš, já na co chci odpovím</div>
+    </header>
+    <vc:menu></vc:menu>
+    <main>
+        @RenderBody()
+    </main>
+    <footer>
+        <ul>
+            <li>Copyright &copy; <a href="https://www.altairis.cz/">Altairis</a>, 2017-@DateTime.Today.Year</li>
+            <li>@Environment.EnvironmentName environment</li>
+            <li><a asp-route="RssFeed"><i class="fas fa-rss"></i> RSS</a></li>
+            <li for-login-status="false"><a asp-controller="Account" asp-action="Login">&pi;</a></li>
+        </ul>
+    </footer>
+</body>
+</html>

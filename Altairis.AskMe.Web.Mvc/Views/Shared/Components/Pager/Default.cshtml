@@ -1,0 +1,20 @@
+﻿@model PagingInfo
+<div class="pager">
+    @if (Model.PrevPageNumber > 0) {
+        <div class="prev">
+            @if (Model.PrevPageNumber > 1) {
+                <a asp-route-pageNumber="1" class="button"><i class="fas fa-chevron-left"></i><i class="fas fa-chevron-left"></i></a>
+            }
+            <a asp-route-pageNumber="@Model.PrevPageNumber" class="button"><i class="fas fa-chevron-left"></i> Předchozí</a>
+        </div>
+    }
+    @if (Model.NextPageNumber > 0) {
+        <div class="next">
+            <a asp-route-pageNumber="@Model.NextPageNumber" class="button">Následující <i class="fas fa-chevron-right"></i></a>
+            @if (Model.NextPageNumber < Model.TotalPages) {
+                <a asp-route-pageNumber="@Model.TotalPages" class="button"><i class="fas fa-chevron-right"></i><i class="fas fa-chevron-right"></i></a>
+            }
+        </div>
+    }
+    <p>Strana @Model.PageNumber z @Model.TotalPages, celkem @Model.TotalRecords položek.</p>
+</div>
