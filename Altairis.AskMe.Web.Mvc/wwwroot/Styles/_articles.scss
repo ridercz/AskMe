@@ -1,0 +1,52 @@
+﻿@import '_vars.scss';
+
+article.question {
+    border: 1px solid $accent2;
+    border-radius: $padding/3;
+    padding: $padding;
+    margin-bottom: $padding;
+    background-color: rgba($accent2, .05);
+
+    header {
+        color: $accent2;
+        border-bottom: rgba($accent2, .2) 1px solid;
+
+        .info {
+            float: right;
+        }
+    }
+}
+
+article.answer {
+    border: 1px solid $accent2;
+    border-radius: $padding/3;
+    margin-bottom: $padding;
+
+    section.question {
+        padding: $padding;
+        background-color: rgba($accent2, .05);
+
+        header {
+            color: $accent2;
+            border-bottom: rgba($accent2, .2) 1px solid;
+
+            .info {
+                float: right;
+            }
+        }
+    }
+
+    section.answer {
+        padding: $padding;
+        background-color: rgba($accent1, .05);
+
+        header {
+            color: $accent1;
+            border-bottom: rgba($accent1, .2) 1px solid;
+
+            .info {
+                float: right;
+            }
+        }
+    }
+}
