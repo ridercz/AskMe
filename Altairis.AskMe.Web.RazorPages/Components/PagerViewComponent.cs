@@ -1,5 +1,4 @@
-﻿using System.Threading.Tasks;
-using Altairis.AskMe.Web.RazorPages.Models;
+﻿using Altairis.AskMe.Web.RazorPages.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Altairis.AskMe.Web.RazorPages.Components {

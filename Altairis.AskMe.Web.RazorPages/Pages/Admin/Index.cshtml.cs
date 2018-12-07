@@ -7,7 +7,6 @@ using Altairis.AskMe.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.Extensions.Options;
 
 namespace Altairis.AskMe.Web.RazorPages.Pages.Admin {
     public class IndexModel : PageModel {
