@@ -1,7 +1,7 @@
 ﻿<nav>
     <ul>
-        <li><a asp-page="/Index"><i class="fas fa-home"></i> Domů</a></li>
-        <li><a asp-page="/Questions"><i class="fas fa-question"></i> Otázky</a></li>
+        <li><a asp-page="/Index" asp-route-pageNumber=""><i class="fas fa-home"></i> Domů</a></li>
+        <li><a asp-page="/Questions" asp-route-pageNumber=""><i class="fas fa-question"></i> Otázky</a></li>
         <li><a asp-page="/Admin/ChangePassword"><i class="fas fa-key"></i> Změna hesla</a></li>
         <li><a asp-page="/Account/Logout"><i class="fas fa-sign-out-alt"></i> Odhlášení</a></li>
     </ul>
