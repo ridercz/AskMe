@@ -3,6 +3,41 @@
 
 <dot:Content ContentPlaceHolderID="MainContent">
 
-
+    <dot:Repeater DataSource="{value: Data}">
+        <ItemTemplate>
+            <article class="answer" ID="{value: Id}">
+                <section class="question">
+                    <header>
+                        <span class="fa-stack fa-lg">
+                            <i class="fas fa-square fa-stack-2x"></i>
+                            <i class="fas fa-question fa-stack-1x fa-inverse"></i>
+                        </span>
+                        <span class="info">
+                            <i class="fas fa-tag"></i> {{value: CategoryName}}
+                            <i class="fas fa-calendar"></i> {{value: DateCreated}}
+                            <span Visible="{value: DisplayName != null}"><i class="fas fa-user"></i> {{value: DisplayName}}</span>
+                        </span>
+                    </header>
+                    {{value: QuestionText}}
+                </section>
+                <section class="answer">
+                    <header>
+                        <span class="fa-stack fa-lg">
+                            <i class="fas fa-square fa-stack-2x"></i>
+                            <i class="fas fa-comment fa-stack-1x fa-inverse"></i>
+                        </span>
+                        <span class="info">
+                            <i class="fas fa-calendar"></i> {{value:  DateAnswered}}
+                        </span>
+                    </header>
+                    {{value:  AnswerText}}
+                    <%--<footer for-login-status="true">
+                        <a asp-page="Admin/Index" asp-route-questionId="@item.Id" class="button"><i class="fas fa-commenting"></i> Upravit</a>
+                    </footer>--%>
+                </section>
+            </article>
+        </ItemTemplate>
+    </dot:Repeater>
+    <my:pager RouteName="Home" DataContext="{value: Data.PagingOptions}" />
 </dot:Content>
 

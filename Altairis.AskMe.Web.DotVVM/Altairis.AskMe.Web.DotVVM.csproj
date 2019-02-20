@@ -6,16 +6,19 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Controls\Pager.dotcontrol" />
     <None Remove="Views\Index.dothtml" />
     <None Remove="Views\MasterPage.dotmaster" />
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="Controls\Pager.dotcontrol" />
     <Content Include="Views\Index.dothtml" />
     <Content Include="Views\MasterPage.dotmaster" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Automapper" Version="8.0.0" />
     <PackageReference Include="DotVVM.AspNetCore" Version="2.1.0" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <!--<PackageReference Include="Microsoft.VisualStudio.Web.BrowserLink" Version="2.2.0" />-->

@@ -55,9 +55,10 @@ namespace Altairis.AskMe.Web.DotVVM {
             services.Configure<AppConfiguration>(this._config);
             services.AddDotVVM<DotvvmStartup>();
 
+            // AutoMapper config
+            MapperConfig.Configure();
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, AskDbContext context, UserManager<ApplicationUser> userManager) {
             // Show detailed errors in development environment
             if (env.IsDevelopment()) {
