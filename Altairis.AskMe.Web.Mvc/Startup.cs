@@ -12,12 +12,9 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace Altairis.AskMe.Web.Mvc {
     public class Startup {
-        private readonly IHostingEnvironment _environment;
         private readonly IConfigurationRoot _config;
 
         public Startup(IHostingEnvironment env) {
-            this._environment = env;
-
             var builder = new ConfigurationBuilder()
                 .SetBasePath(env.ContentRootPath)
                 .AddJsonFile("config.json", optional: false)
