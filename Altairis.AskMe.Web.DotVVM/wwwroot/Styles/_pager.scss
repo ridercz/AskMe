@@ -1,0 +1,21 @@
+﻿@import '_vars.scss';
+
+.pager {
+    margin-top: $padding;
+    color: $accent2;
+
+    p {
+        font-size: 80%;
+        text-align: center;
+        margin: 0;
+        padding: $padding/2;
+    }
+
+    .prev {
+        float: left;
+    }
+
+    .next {
+        float: right;
+    }
+}
