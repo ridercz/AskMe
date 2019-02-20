@@ -1,0 +1,8 @@
+﻿@viewModel Altairis.AskMe.Web.DotVVM.ViewModels.IndexViewModel, Altairis.AskMe.Web.DotVVM
+@masterPage Views/MasterPage.dotmaster
+
+<dot:Content ContentPlaceHolderID="MainContent">
+
+
+</dot:Content>
+

@@ -2,12 +2,23 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
-    <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
+    <!--<AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>-->
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Views\Index.dothtml" />
+    <None Remove="Views\MasterPage.dotmaster" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Views\Index.dothtml" />
+    <Content Include="Views\MasterPage.dotmaster" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="DotVVM.AspNetCore" Version="2.1.0" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
-    <PackageReference Include="Microsoft.VisualStudio.Web.BrowserLink" Version="2.2.0" />
+    <!--<PackageReference Include="Microsoft.VisualStudio.Web.BrowserLink" Version="2.2.0" />-->
   </ItemGroup>
 
   <ItemGroup>

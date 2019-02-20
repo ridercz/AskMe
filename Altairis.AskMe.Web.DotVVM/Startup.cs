@@ -53,6 +53,7 @@ namespace Altairis.AskMe.Web.DotVVM {
 
             // Load configuration
             services.Configure<AppConfiguration>(this._config);
+            services.AddDotVVM<DotvvmStartup>();
 
         }
 
@@ -62,7 +63,7 @@ namespace Altairis.AskMe.Web.DotVVM {
             if (env.IsDevelopment()) {
                 app.UseDeveloperExceptionPage();
                 app.UseDatabaseErrorPage();
-                app.UseBrowserLink();
+                //app.UseBrowserLink();
             }
 
             // Migrate database to last version
@@ -94,6 +95,7 @@ namespace Altairis.AskMe.Web.DotVVM {
             // Use other middleware
             app.UseStatusCodePagesWithReExecute("/Error/{0}");
             app.UseAuthentication();
+            app.UseDotVVM<DotvvmStartup>();
         }
     }
 }
