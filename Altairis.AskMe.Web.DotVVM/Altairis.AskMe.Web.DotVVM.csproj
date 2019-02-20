@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
-    <!--<AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>-->
+    <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
   </PropertyGroup>
 
   <ItemGroup>
@@ -21,7 +21,6 @@
     <PackageReference Include="Automapper" Version="8.0.0" />
     <PackageReference Include="DotVVM.AspNetCore" Version="2.1.0" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
-    <!--<PackageReference Include="Microsoft.VisualStudio.Web.BrowserLink" Version="2.2.0" />-->
   </ItemGroup>
 
   <ItemGroup>

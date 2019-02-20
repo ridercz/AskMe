@@ -14,6 +14,10 @@ namespace Altairis.AskMe.Web.RazorPages {
         private readonly IConfigurationRoot _config;
 
         public Startup(IHostingEnvironment env) {
+            // Set CWD to content root (needed when AspNetCoreHostingModel=InProcess)
+            Environment.CurrentDirectory = env.ContentRootPath;
+
+            // Load configuration
             var builder = new ConfigurationBuilder()
                 .SetBasePath(env.ContentRootPath)
                 .AddJsonFile("config.json", optional: false)
