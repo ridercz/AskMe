@@ -22,6 +22,7 @@
             </footer>
         </form>
     </section>
+    <h2 Visible="{value: Data.PagingOptions.TotalItemsCount > 0}">Nezodpovězené otázky</h2>
     <dot:Repeater DataSource="{value: Data}">
         <ItemTemplate>
             <article class="answer" ID="{value: Id}">
