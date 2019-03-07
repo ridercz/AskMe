@@ -113,6 +113,9 @@ section.form {
       min-width: 25%;
       font-weight: bold; }
 
+form .error {
+  outline: solid 2px #f00; }
+
 form input[type=text], form input[type=password], form input[type=email], form textarea, form select {
   box-sizing: border-box;
   width: 100%;

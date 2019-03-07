@@ -1,0 +1,8 @@
+﻿@viewModel Altairis.AskMe.Web.DotVVM.ViewModels.Account.LogoutViewModel, Altairis.AskMe.Web.DotVVM
+@masterPage Views/MasterPage.dotmaster
+
+<dot:Content ContentPlaceHolderID="MainContent">
+    <h2><i class="fas fa-sign-out-alt"></i> Odhlášení</h2>
+    <p>Byli jste úspěšně odhlášeni.</p>
+</dot:Content>
+

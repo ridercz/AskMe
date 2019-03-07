@@ -9,16 +9,27 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
           integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
 </head>
-<body>
+<body Validator.InvalidCssClass="error">
     <header>
         <h1>ASKme</h1>
         <div>zeptej se mě na co chceš, já na co chci odpovím</div>
     </header>
     <nav>
-        <ul>
-            <li><dot:RouteLink RouteName="Home" Param-pageNumber=""><i class="fas fa-home"></i> Domů</dot:RouteLink></li>
-            <li><dot:RouteLink RouteName="Questions" Param-pageNumber=""><i class="fas fa-question"></i> Otázky</dot:RouteLink></li>
-        </ul>
+        <dot:AuthenticatedView>
+            <AuthenticatedTemplate>
+                <ul>
+                    <li><dot:RouteLink RouteName="Home" Param-pageNumber=""><i class="fas fa-home"></i> Domů</dot:RouteLink></li>
+                    <li><dot:RouteLink RouteName="Questions" Param-pageNumber=""><i class="fas fa-question"></i> Otázky</dot:RouteLink></li>
+                    <li><dot:RouteLink RouteName="Logout"><i class="fas fa-sign-out-alt"></i> Odhlášení</dot:RouteLink></li>
+                </ul>
+            </AuthenticatedTemplate>
+            <NotAuthenticatedTemplate>
+                <ul>
+                    <li><dot:RouteLink RouteName="Home" Param-pageNumber=""><i class="fas fa-home"></i> Domů</dot:RouteLink></li>
+                    <li><dot:RouteLink RouteName="Questions" Param-pageNumber=""><i class="fas fa-question"></i> Otázky</dot:RouteLink></li>
+                </ul>
+            </NotAuthenticatedTemplate>
+        </dot:AuthenticatedView>
     </nav>
     <main>
         <dot:ContentPlaceHolder ID="MainContent" />
@@ -27,8 +38,12 @@
         <ul>
             <li>Copyright &copy; <a href="https://www.altairis.cz/">Altairis</a>, 2017-{{resource: System.DateTime.Today.Year }}</li>
             <li title="{resource: EnvironmentName }">Using DotVVM</li>
-            <%--<li><a asp-route="RssFeed"><i class="fas fa-rss"></i> RSS</a></li>
-            <li for-login-status="false"><a asp-page="Account/Login">&pi;</a></li>--%>
+            <%--<li><a asp-route="RssFeed"><i class="fas fa-rss"></i> RSS</a></li>--%>
+            <dot:AuthenticatedView>
+                <NotAuthenticatedTemplate>
+                    <li><dot:RouteLink RouteName="Login" Text="&pi;" /></li>
+                </NotAuthenticatedTemplate>
+            </dot:AuthenticatedView>
         </ul>
     </footer>
     <dot:RequiredResource Name="Styles" />

@@ -53,6 +53,10 @@ section.form {
 }
 
 form {
+    .error {
+        outline: solid 2px #f00;
+    }
+
     input[type=text], input[type=password], input[type=email], textarea, select {
         box-sizing: border-box;
         width: 100%;

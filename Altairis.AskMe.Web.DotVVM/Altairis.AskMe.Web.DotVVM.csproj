@@ -7,6 +7,8 @@
 
   <ItemGroup>
     <None Remove="Controls\Pager.dotcontrol" />
+    <None Remove="Views\Account\Login.dothtml" />
+    <None Remove="Views\Account\Logout.dothtml" />
     <None Remove="Views\Index.dothtml" />
     <None Remove="Views\MasterPage.dotmaster" />
     <None Remove="Views\Questions.dothtml" />
@@ -14,6 +16,8 @@
 
   <ItemGroup>
     <Content Include="Controls\Pager.dotcontrol" />
+    <Content Include="Views\Account\Login.dothtml" />
+    <Content Include="Views\Account\Logout.dothtml" />
     <Content Include="Views\Index.dothtml" />
     <Content Include="Views\MasterPage.dotmaster" />
     <Content Include="Views\Questions.dothtml" />

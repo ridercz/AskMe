@@ -1,0 +1,24 @@
+﻿@viewModel Altairis.AskMe.Web.DotVVM.ViewModels.Account.LoginViewModel, Altairis.AskMe.Web.DotVVM
+@masterPage Views/MasterPage.dotmaster
+
+<dot:Content ContentPlaceHolderID="MainContent">
+    <section class="form">
+        <header>
+            <h2>Přihlášení</h2>
+        </header>
+        <form DataContext="{value: Input}">
+            <div>
+                <dot:TextBox Text="{value: UserName}" placeholder="Uživatelské jméno" class="half-width" />
+                <dot:TextBox Text="{value: Password}" Type="Password" placeholder="Heslo" class="half-width" />
+            </div>
+            <div class="field">
+                <dot:CheckBox Text="pamatuj si mne na tomto počítači" Checked="{value: RememberMe}" />
+            </div>
+            <dot:ValidationSummary class="validation-summary" Validation.Target="{value: _this}" IncludeErrorsFromTarget="true" />
+            <footer>
+                <dot:Button Text="Odeslat" IsSubmitButton="true" Click="{command: _root.Login()}" />
+            </footer>
+        </form>
+    </section>
+</dot:Content>
+

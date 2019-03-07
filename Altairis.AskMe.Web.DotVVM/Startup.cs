@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Altairis.AskMe.Data;
+using DotVVM.Framework.Hosting;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -50,6 +51,7 @@ namespace Altairis.AskMe.Web.DotVVM {
                 options.LogoutPath = "/Account/Logout";
                 options.SlidingExpiration = true;
                 options.ExpireTimeSpan = TimeSpan.FromDays(30);
+                options.Events.OnRedirectToLogin = context => DotvvmAuthenticationHelper.ApplyRedirectResponse(context.HttpContext, context.RedirectUri);
             });
 
             // Load configuration
