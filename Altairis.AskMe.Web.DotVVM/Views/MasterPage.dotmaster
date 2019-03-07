@@ -14,6 +14,12 @@
         <h1>ASKme</h1>
         <div>zeptej se mě na co chceš, já na co chci odpovím</div>
     </header>
+    <nav>
+        <ul>
+            <li><dot:RouteLink RouteName="Home" Param-pageNumber=""><i class="fas fa-home"></i> Domů</dot:RouteLink></li>
+            <li><dot:RouteLink RouteName="Questions" Param-pageNumber=""><i class="fas fa-question"></i> Otázky</dot:RouteLink></li>
+        </ul>
+    </nav>
     <main>
         <dot:ContentPlaceHolder ID="MainContent" />
     </main>

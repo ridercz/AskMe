@@ -12,6 +12,7 @@ namespace Altairis.AskMe.Web.DotVVM {
         public static void Configure() {
             Mapper.Initialize(m => {
                 m.CreateMap<Question, AnsweredQuestionDto>();
+                m.CreateMap<Question, UnansweredQuestionDto>();
             });
             Mapper.AssertConfigurationIsValid();
         }

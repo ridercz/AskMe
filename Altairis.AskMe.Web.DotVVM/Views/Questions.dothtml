@@ -1,0 +1,47 @@
+﻿@viewModel Altairis.AskMe.Web.DotVVM.ViewModels.QuestionsViewModel, Altairis.AskMe.Web.DotVVM
+@masterPage Views/MasterPage.dotmaster
+
+<dot:Content ContentPlaceHolderID="MainContent">
+    <section class="form" id="ask">
+        <form DataContext="{value: Input}">
+            <header>
+                <h2>Nová otázka</h2>
+            </header>
+            <div><dot:TextBox Type="MultiLine" placeholder="Zadejte text své otázky..." Text="{value: QuestionText}" /></div>
+            <div>
+                <dot:ComboBox SelectedValue="{value: CategoryId}" DataSource="{value: _root.Categories}"
+                              ItemTextBinding="{value: Text}" ItemValueBinding="{value: Value}" />
+            </div>
+            <div>
+                <dot:TextBox Text="{value: DisplayName}" placeholder="Jméno (nepovinné)" class="half-width" />
+                <dot:TextBox Text="{value: EmailAddress}" placeholder="E-mail (nepovinné)" class="half-width" />
+            </div>
+            <dot:ValidationSummary Validation.Target="{value: _this}" />
+            <footer>
+                <dot:Button Text="Odeslat" IsSubmitButton="true" Click="{command: _root.SubmitQuestion()}" />
+            </footer>
+        </form>
+    </section>
+    <dot:Repeater DataSource="{value: Data}">
+        <ItemTemplate>
+            <article class="answer" ID="{value: Id}">
+                <section class="question">
+                    <header>
+                        <span class="fa-stack fa-lg">
+                            <i class="fas fa-square fa-stack-2x"></i>
+                            <i class="fas fa-question fa-stack-1x fa-inverse"></i>
+                        </span>
+                        <span class="info">
+                            <i class="fas fa-tag"></i> {{value: CategoryName}}
+                            <i class="fas fa-calendar"></i> {{value: DateCreated}}
+                            <span Visible="{value: DisplayName != null}"><i class="fas fa-user"></i> {{value: DisplayName}}</span>
+                        </span>
+                    </header>
+                    {{value: QuestionText}}
+                </section>
+            </article>
+        </ItemTemplate>
+    </dot:Repeater>
+    <my:pager RouteName="Home" DataContext="{value: Data.PagingOptions}" />
+</dot:Content>
+

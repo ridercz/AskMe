@@ -9,12 +9,14 @@
     <None Remove="Controls\Pager.dotcontrol" />
     <None Remove="Views\Index.dothtml" />
     <None Remove="Views\MasterPage.dotmaster" />
+    <None Remove="Views\Questions.dothtml" />
   </ItemGroup>
 
   <ItemGroup>
     <Content Include="Controls\Pager.dotcontrol" />
     <Content Include="Views\Index.dothtml" />
     <Content Include="Views\MasterPage.dotmaster" />
+    <Content Include="Views\Questions.dothtml" />
   </ItemGroup>
 
   <ItemGroup>
