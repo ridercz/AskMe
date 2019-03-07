@@ -16,7 +16,7 @@
                 <dot:TextBox Text="{value: DisplayName}" placeholder="Jméno (nepovinné)" class="half-width" />
                 <dot:TextBox Text="{value: EmailAddress}" placeholder="E-mail (nepovinné)" class="half-width" />
             </div>
-            <dot:ValidationSummary Validation.Target="{value: _this}" />
+            <dot:ValidationSummary Validation.Target="{value: _this}" class="validation-summary" />
             <footer>
                 <dot:Button Text="Odeslat" IsSubmitButton="true" Click="{command: _root.SubmitQuestion()}" />
             </footer>
