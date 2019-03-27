@@ -33,7 +33,7 @@ namespace Altairis.AskMe.Web.Mvc {
                 options.UseSqlite(this._config.GetConnectionString("AskDB"));
             });
 
-            // Configure Razor Pages
+            // Configure MVC
             services.AddMvc(options => {
                 options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute());
             });
