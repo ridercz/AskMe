@@ -39,6 +39,13 @@
                         </span>
                     </header>
                     {{value: QuestionText}}
+                    <dot:AuthenticatedView>
+                        <AuthenticatedTemplate>
+                            <footer>
+                                <dot:RouteLink RouteName="EditQuestion" param-questionId="{value: Id}" class="button"><i class="fas fa-commenting"></i> Upravit</dot:RouteLink>
+                            </footer>
+                        </AuthenticatedTemplate>
+                    </dot:AuthenticatedView>
                 </section>
             </article>
         </ItemTemplate>

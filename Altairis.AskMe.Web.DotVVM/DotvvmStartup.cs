@@ -13,7 +13,9 @@ namespace Altairis.AskMe.Web.DotVVM {
             config.RouteTable.Add("Home", "{pageNumber?}", "Views/Index.dothtml", defaultValues: new { pageNumber = 1 });
             config.RouteTable.Add("Login", "account/login", "Views/Account/Login.dothtml");
             config.RouteTable.Add("Logout", "account/logout", "Views/Account/Logout.dothtml");
-            config.RouteTable.Add("ChangePassword", "account/changePassword", "Views/Admin/ChangePassword.dothtml");
+            config.RouteTable.Add("ChangePassword", "admin/changePassword", "Views/Admin/ChangePassword.dothtml");
+            config.RouteTable.Add("EditQuestion", "admin/{questionId:int}", "Views/Admin/Index.dothtml");
+            config.RouteTable.Add("QuestionDetail", "question/{questionId:int}", "Views/Question.dothtml");
 
             config.Resources.Register("Styles", new StylesheetResource(new FileResourceLocation("wwwroot/Styles/askme.css")));
             config.Markup.AddMarkupControl("my", "pager", "Controls/Pager.dotcontrol");

@@ -1,0 +1,41 @@
+﻿@viewModel Altairis.AskMe.Web.DotVVM.ViewModels.QuestionViewModel, Altairis.AskMe.Web.DotVVM
+@masterPage Views/MasterPage.dotmaster
+
+<dot:Content ContentPlaceHolderID="MainContent">
+    <article class="answer" ID="{value: Id}" DataContext="{value: Item}">
+        <section class="question">
+            <header>
+                <span class="fa-stack fa-lg">
+                    <i class="fas fa-square fa-stack-2x"></i>
+                    <i class="fas fa-question fa-stack-1x fa-inverse"></i>
+                </span>
+                <span class="info">
+                    <i class="fas fa-tag"></i> {{value: CategoryName}}
+                    <i class="fas fa-calendar"></i> {{value: DateCreated}}
+                    <span Visible="{value: DisplayName != null}"><i class="fas fa-user"></i> {{value: DisplayName}}</span>
+                </span>
+            </header>
+            {{value: QuestionText}}
+        </section>
+        <section class="answer">
+            <header>
+                <span class="fa-stack fa-lg">
+                    <i class="fas fa-square fa-stack-2x"></i>
+                    <i class="fas fa-comment fa-stack-1x fa-inverse"></i>
+                </span>
+                <span class="info">
+                    <i class="fas fa-calendar"></i> {{value:  DateAnswered}}
+                </span>
+            </header>
+            {{value: AnswerText}}
+            <dot:AuthenticatedView>
+                <AuthenticatedTemplate>
+                    <footer>
+                        <dot:RouteLink RouteName="EditQuestion" param-questionId="{value: Id}" class="button"><i class="fas fa-commenting"></i> Upravit</dot:RouteLink>
+                    </footer>
+                </AuthenticatedTemplate>
+            </dot:AuthenticatedView>
+        </section>
+    </article>
+</dot:Content>
+
