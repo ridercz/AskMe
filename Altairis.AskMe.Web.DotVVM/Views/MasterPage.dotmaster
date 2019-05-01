@@ -20,6 +20,7 @@
                 <ul>
                     <li><dot:RouteLink RouteName="Home" Param-pageNumber=""><i class="fas fa-home"></i> Domů</dot:RouteLink></li>
                     <li><dot:RouteLink RouteName="Questions" Param-pageNumber=""><i class="fas fa-question"></i> Otázky</dot:RouteLink></li>
+                    <li><dot:RouteLink RouteName="ChangePassword"><i class="fas fa-key"></i> Změna hesla</dot:RouteLink></li>
                     <li><dot:RouteLink RouteName="Logout"><i class="fas fa-sign-out-alt"></i> Odhlášení</dot:RouteLink></li>
                 </ul>
             </AuthenticatedTemplate>
