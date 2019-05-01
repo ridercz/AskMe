@@ -21,13 +21,8 @@ namespace Altairis.AskMe.Web.DotVVM.ViewModels {
         public override async Task PreRender() {
             await base.PreRender();
 
-            if (Context.Parameters.TryGetValue("pageNumber", out var pageIndex)) {
-                if (pageIndex != "") {
-                    this.Data.PagingOptions.PageIndex = Convert.ToInt32(pageIndex) - 1;
-                }
-            } else {
-                this.Data.PagingOptions.PageIndex = 0;
-            }
+            var pageNumber = Convert.ToInt32(this.Context.Parameters["pageNumber"]);
+            this.Data.PagingOptions.PageIndex = pageNumber == 0 ? 0 : pageNumber - 1;
             this.Data.LoadFromQueryable(this.DataSource);
         }
 
