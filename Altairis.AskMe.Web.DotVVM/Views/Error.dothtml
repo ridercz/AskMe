@@ -1,0 +1,8 @@
+﻿@viewModel Altairis.AskMe.Web.DotVVM.ViewModels.ErrorViewModel, Altairis.AskMe.Web.DotVVM
+@masterPage Views/MasterPage.dotmaster
+
+<dot:Content ContentPlaceHolderID="MainContent">
+    <h2>{{value: PageTitle }}</h2>
+    <p>{{value: Message}}</p>
+</dot:Content>
+
