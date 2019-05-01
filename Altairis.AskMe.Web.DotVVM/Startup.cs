@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Altairis.AskMe.Data;
+using Altairis.AskMe.Web.DotVVM.Presenters;
 using DotVVM.Framework.Hosting;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -56,7 +57,10 @@ namespace Altairis.AskMe.Web.DotVVM {
 
             // Load configuration
             services.Configure<AppConfiguration>(this._config);
+
             services.AddDotVVM<DotvvmStartup>();
+
+            services.AddScoped<RssPresenter>();
 
             // AutoMapper config
             MapperConfig.Configure();

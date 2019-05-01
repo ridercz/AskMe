@@ -35,6 +35,7 @@
     <PackageReference Include="Automapper" Version="8.0.0" />
     <PackageReference Include="DotVVM.AspNetCore" Version="2.1.0" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.SyndicationFeed.ReaderWriter" Version="1.0.2" />
   </ItemGroup>
 
   <ItemGroup>
