@@ -50,6 +50,6 @@
             </article>
         </ItemTemplate>
     </dot:Repeater>
-    <my:pager RouteName="Home" DataContext="{value: Data.PagingOptions}" />
+    <my:pager RouteName="Questions" DataContext="{value: Data.PagingOptions}" />
 </dot:Content>
 
