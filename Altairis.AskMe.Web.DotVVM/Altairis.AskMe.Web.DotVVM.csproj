@@ -11,6 +11,7 @@
     <None Remove="Views\Account\Logout.dothtml" />
     <None Remove="Views\Admin\ChangePassword.dothtml" />
     <None Remove="Views\Admin\Index.dothtml" />
+    <None Remove="Views\Contact.dothtml" />
     <None Remove="Views\Error.dothtml" />
     <None Remove="Views\Index.dothtml" />
     <None Remove="Views\MasterPage.dotmaster" />
@@ -24,6 +25,7 @@
     <Content Include="Views\Account\Logout.dothtml" />
     <Content Include="Views\Admin\ChangePassword.dothtml" />
     <Content Include="Views\Admin\Index.dothtml" />
+    <Content Include="Views\Contact.dothtml" />
     <Content Include="Views\Error.dothtml" />
     <Content Include="Views\Index.dothtml" />
     <Content Include="Views\MasterPage.dotmaster" />

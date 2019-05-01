@@ -28,6 +28,7 @@
                 <ul>
                     <li><dot:RouteLink RouteName="Home" Param-pageNumber=""><i class="fas fa-home"></i> Domů</dot:RouteLink></li>
                     <li><dot:RouteLink RouteName="Questions" Param-pageNumber=""><i class="fas fa-question"></i> Otázky</dot:RouteLink></li>
+                    <li><dot:RouteLink RouteName="Contact"><i class="fas fa-envelope"></i> Kontakt</dot:RouteLink></li>
                 </ul>
             </NotAuthenticatedTemplate>
         </dot:AuthenticatedView>
@@ -39,7 +40,7 @@
         <ul>
             <li>Copyright &copy; <a href="https://www.altairis.cz/">Altairis</a>, 2017-{{resource: System.DateTime.Today.Year }}</li>
             <li title="{resource: EnvironmentName }">Using DotVVM</li>
-            <%--<li><a asp-route="RssFeed"><i class="fas fa-rss"></i> RSS</a></li>--%>
+            <li><dot:RouteLink RouteName="RssFeed"><i class="fas fa-rss"></i> RSS</dot:RouteLink></li>
             <dot:AuthenticatedView>
                 <NotAuthenticatedTemplate>
                     <li><dot:RouteLink RouteName="Login" Text="&pi;" /></li>

@@ -20,6 +20,7 @@ namespace Altairis.AskMe.Web.DotVVM {
             config.RouteTable.Add("EditQuestion", "admin/{questionId:int}", "Views/Admin/Index.dothtml");
             config.RouteTable.Add("QuestionDetail", "question/{questionId:int}", "Views/Question.dothtml");
             config.RouteTable.Add("Error", "error/{errorCode:int}", "Views/Error.dothtml");
+            config.RouteTable.Add("Contact", "contact", "Views/Contact.dothtml");
             config.RouteTable.Add("RssFeed", "feed.rss", typeof(RssPresenter));
 
             config.Resources.Register("Styles", new StylesheetResource(new FileResourceLocation("wwwroot/Styles/askme.css")));
