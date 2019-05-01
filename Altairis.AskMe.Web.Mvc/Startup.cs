@@ -87,6 +87,9 @@ namespace Altairis.AskMe.Web.Mvc {
                 }
             }
 
+            // HTTP error handling
+            app.UseStatusCodePagesWithReExecute("/Error/{0}");
+
             // Enable static file caching for one year
             app.UseStaticFiles(new StaticFileOptions {
                 OnPrepareResponse = ctx => {
@@ -95,7 +98,6 @@ namespace Altairis.AskMe.Web.Mvc {
             });
 
             // Use other middleware
-            app.UseStatusCodePagesWithReExecute("/Error/{0}");
             app.UseAuthentication();
             app.UseMvc();
         }
