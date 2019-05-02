@@ -6,37 +6,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Controls\Pager.dotcontrol" />
-    <None Remove="Views\Account\Login.dothtml" />
-    <None Remove="Views\Account\Logout.dothtml" />
-    <None Remove="Views\Admin\ChangePassword.dothtml" />
-    <None Remove="Views\Admin\Index.dothtml" />
-    <None Remove="Views\Contact.dothtml" />
-    <None Remove="Views\Error.dothtml" />
-    <None Remove="Views\Index.dothtml" />
-    <None Remove="Views\MasterPage.dotmaster" />
-    <None Remove="Views\Question.dothtml" />
-    <None Remove="Views\Questions.dothtml" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="Controls\Pager.dotcontrol" />
-    <Content Include="Views\Account\Login.dothtml" />
-    <Content Include="Views\Account\Logout.dothtml" />
-    <Content Include="Views\Admin\ChangePassword.dothtml" />
-    <Content Include="Views\Admin\Index.dothtml" />
-    <Content Include="Views\Contact.dothtml" />
-    <Content Include="Views\Error.dothtml" />
-    <Content Include="Views\Index.dothtml" />
-    <Content Include="Views\MasterPage.dotmaster" />
-    <Content Include="Views\Question.dothtml" />
-    <Content Include="Views\Questions.dothtml" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Automapper" Version="8.1.0" />
     <PackageReference Include="DotVVM.AspNetCore" Version="2.2.0.2" />
-    <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.SyndicationFeed.ReaderWriter" Version="1.0.2" />
   </ItemGroup>
 
