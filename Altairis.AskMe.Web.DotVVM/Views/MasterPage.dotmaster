@@ -40,8 +40,8 @@
     </main>
     <footer>
         <ul>
-            <li>Copyright &copy; <a href="https://www.altairis.cz/">Altairis</a>, 2017-{{resource: System.DateTime.Today.Year }}</li>
-            <li title="{resource: EnvironmentName }">Using DotVVM</li>
+            <li>Copyright &copy; <a href="https://www.altairis.cz/">Altairis</a>, 2017-{{resource: System.DateTime.Today.Year}}</li>
+            <li title="{resource: EnvironmentName}">Using DotVVM</li>
             <li><dot:RouteLink RouteName="RssFeed"><i class="fas fa-rss"></i> RSS</dot:RouteLink></li>
             <dot:AuthenticatedView>
                 <NotAuthenticatedTemplate>

@@ -6,8 +6,8 @@
         <dot:RouteLink RouteName="{resource: _control.RouteName}" Param-pageNumber="{value: PageIndex}" class="button"><i class="fas fa-chevron-left"></i> Předchozí</dot:RouteLink>
     </div>
     <div class="next" Visible="{value: !IsLastPage}">
-        <dot:RouteLink RouteName="{resource: _control.RouteName}" Param-pageNumber="{value: PageIndex + 2 }" class="button">Následující <i class="fas fa-chevron-right"></i></dot:RouteLink>
-        <dot:RouteLink Visible="{value: PageIndex < PagesCount - 2}" RouteName="{resource: _control.RouteName}" Param-pageNumber="{value: PagesCount }" class="button"><i class="fas fa-chevron-right"></i><i class="fas fa-chevron-right"></i></dot:RouteLink>
+        <dot:RouteLink RouteName="{resource: _control.RouteName}" Param-pageNumber="{value: PageIndex + 2}" class="button">Následující <i class="fas fa-chevron-right"></i></dot:RouteLink>
+        <dot:RouteLink Visible="{value: PageIndex < PagesCount - 2}" RouteName="{resource: _control.RouteName}" Param-pageNumber="{value: PagesCount}" class="button"><i class="fas fa-chevron-right"></i><i class="fas fa-chevron-right"></i></dot:RouteLink>
     </div>
     <p>Strana {{value: PageIndex + 1}} z {{value: PagesCount}}, celkem {{value: TotalItemsCount}} položek.</p>
 </div>
