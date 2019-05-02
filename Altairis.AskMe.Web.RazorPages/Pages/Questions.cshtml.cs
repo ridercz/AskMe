@@ -11,16 +11,16 @@ using Microsoft.Extensions.Options;
 
 namespace Altairis.AskMe.Web.RazorPages.Pages {
     public class QuestionsModel : PagedPageModel<Question> {
-        private readonly AskDbContext _dc;
-        private readonly AppConfiguration _cfg;
-        private readonly IQueryable<Question> _dataSource;
+        private readonly AskDbContext dbContext;
+        private readonly AppConfiguration config;
+        private readonly IQueryable<Question> dataSource;
 
         // Constructor
 
-        public QuestionsModel(AskDbContext dc, IOptionsSnapshot<AppConfiguration> optionsSnapshot) {
-            this._dc = dc;
-            this._cfg = optionsSnapshot.Value;
-            this._dataSource = this._dc.Questions
+        public QuestionsModel(AskDbContext dbContext, IOptionsSnapshot<AppConfiguration> optionsSnapshot) {
+            this.dbContext = dbContext;
+            this.config = optionsSnapshot.Value;
+            this.dataSource = this.dbContext.Questions
                 .Include(x => x.Category)
                 .Where(x => !x.DateAnswered.HasValue)
                 .OrderByDescending(x => x.DateCreated);
@@ -28,7 +28,7 @@ namespace Altairis.AskMe.Web.RazorPages.Pages {
 
         // Model properties
 
-        public IEnumerable<SelectListItem> Categories => this._dc.Categories
+        public IEnumerable<SelectListItem> Categories => this.dbContext.Categories
             .OrderBy(c => c.Name)
             .Select(c => new SelectListItem { Text = c.Name, Value = c.Id.ToString() });
 
@@ -53,7 +53,7 @@ namespace Altairis.AskMe.Web.RazorPages.Pages {
         // Handlers
 
         public async Task OnGetAsync(int pageNumber) {
-            await base.GetData(this._dataSource, pageNumber, this._cfg.PageSize);
+            await base.GetData(this.dataSource, pageNumber, this.config.PageSize);
         }
 
         public async Task<IActionResult> OnPostAsync(int pageNumber) {
@@ -65,14 +65,14 @@ namespace Altairis.AskMe.Web.RazorPages.Pages {
                     DisplayName = this.Input.DisplayName,
                     EmailAddress = this.Input.EmailAddress
                 };
-                await this._dc.Questions.AddAsync(nq);
-                await this._dc.SaveChangesAsync();
+                await this.dbContext.Questions.AddAsync(nq);
+                await this.dbContext.SaveChangesAsync();
 
                 // Redirect to list of questions
                 return this.RedirectToPage(pageName: "Questions", pageHandler: null, routeValues: new { pageNumber = string.Empty }, fragment: $"q_{nq.Id}");
             }
 
-            await base.GetData(this._dataSource, pageNumber, this._cfg.PageSize);
+            await base.GetData(this.dataSource, pageNumber, this.config.PageSize);
             return this.Page();
         }
 

@@ -7,16 +7,16 @@ using Microsoft.Extensions.Options;
 
 namespace Altairis.AskMe.Web.RazorPages.Pages {
     public class IndexModel : PagedPageModel<Question> {
-        private readonly AskDbContext _dc;
-        private readonly AppConfiguration _cfg;
-        private readonly IQueryable<Question> _dataSource;
+        private readonly AskDbContext dbContext;
+        private readonly AppConfiguration config;
+        private readonly IQueryable<Question> dataSource;
 
         // Constructor
 
-        public IndexModel(AskDbContext dc, IOptionsSnapshot<AppConfiguration> optionsSnapshot) {
-            this._dc = dc;
-            this._cfg = optionsSnapshot.Value;
-            this._dataSource = this._dc.Questions
+        public IndexModel(AskDbContext dbContext, IOptionsSnapshot<AppConfiguration> optionsSnapshot) {
+            this.dbContext = dbContext;
+            this.config = optionsSnapshot.Value;
+            this.dataSource = this.dbContext.Questions
                 .Include(x => x.Category)
                 .Where(x => x.DateAnswered.HasValue)
                 .OrderByDescending(x => x.DateAnswered);
@@ -25,7 +25,7 @@ namespace Altairis.AskMe.Web.RazorPages.Pages {
         // Handlers
 
         public async Task OnGetAsync(int pageNumber) {
-            await base.GetData(this._dataSource, pageNumber, this._cfg.PageSize);
+            await base.GetData(this.dataSource, pageNumber, this.config.PageSize);
         }
 
     }

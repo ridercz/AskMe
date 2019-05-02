@@ -7,11 +7,10 @@ using Microsoft.AspNetCore.Identity;
 
 namespace Altairis.AskMe.Web.DotVVM.ViewModels.Account {
     public class LoginViewModel : Altairis.AskMe.Web.DotVVM.ViewModels.MasterPageViewModel {
-        private readonly SignInManager<ApplicationUser> _signInManager;
+        private readonly SignInManager<ApplicationUser> signInManager;
 
-        public LoginViewModel(SignInManager<ApplicationUser> signInManager, IHostingEnvironment env)
-        : base(env) {
-            this._signInManager = signInManager;
+        public LoginViewModel(SignInManager<ApplicationUser> signInManager, IHostingEnvironment env) : base(env) {
+            this.signInManager = signInManager;
         }
 
         public InputModel Input { get; set; } = new InputModel();
@@ -29,7 +28,7 @@ namespace Altairis.AskMe.Web.DotVVM.ViewModels.Account {
         }
 
         public async Task Login() {
-            var result = await this._signInManager.PasswordSignInAsync(
+            var result = await this.signInManager.PasswordSignInAsync(
                     this.Input.UserName,
                     this.Input.Password,
                     this.Input.RememberMe,
@@ -38,8 +37,7 @@ namespace Altairis.AskMe.Web.DotVVM.ViewModels.Account {
             if (result.Succeeded) {
                 var url = this.Context.Query.TryGetValue("returnUrl", out var x) ? x : "/";
                 this.Context.RedirectToUrl(url);
-            }
-            else {
+            } else {
                 //this.Context.ModelState.Errors.Add(new ViewModelValidationError { ErrorMessage = "Pøihlášení se nezdaøilo" });
                 this.AddModelError(x => x.Input, "Pøihlášení se nezdaøilo");
                 this.Context.FailOnInvalidModelState();

@@ -13,16 +13,16 @@ namespace Altairis.AskMe.Web.Mvc.Controllers {
 
     [Route("Admin"), Authorize]
     public class AdminController : Controller {
-        private readonly AskDbContext _dc;
-        private readonly UserManager<ApplicationUser> _userManager;
-        private readonly SignInManager<ApplicationUser> _signInManager;
+        private readonly AskDbContext dbContext;
+        private readonly UserManager<ApplicationUser> userManager;
+        private readonly SignInManager<ApplicationUser> signInManager;
 
         // Constructor
 
-        public AdminController(AskDbContext dc, UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager) {
-            this._dc = dc;
-            this._userManager = userManager;
-            this._signInManager = signInManager;
+        public AdminController(AskDbContext dbContext, UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager) {
+            this.dbContext = dbContext;
+            this.userManager = userManager;
+            this.signInManager = signInManager;
         }
 
         // Actions
@@ -30,7 +30,7 @@ namespace Altairis.AskMe.Web.Mvc.Controllers {
         [Route("{questionId:int:min(1)}")]
         public async Task<IActionResult> Index(int questionId) {
             // Get question
-            var q = await this._dc.Questions.FindAsync(questionId);
+            var q = await this.dbContext.Questions.FindAsync(questionId);
             if (q == null) return this.NotFound();
 
             // Prepare model
@@ -40,7 +40,7 @@ namespace Altairis.AskMe.Web.Mvc.Controllers {
                 DisplayName = q.DisplayName,
                 EmailAddress = q.EmailAddress,
                 QuestionText = q.QuestionText,
-                Categories = await this._dc.Categories
+                Categories = await this.dbContext.Categories
                     .OrderBy(c => c.Name)
                     .Select(c => new SelectListItem { Text = c.Name, Value = c.Id.ToString() })
                     .ToListAsync()
@@ -52,7 +52,7 @@ namespace Altairis.AskMe.Web.Mvc.Controllers {
         [HttpPost, Route("{questionId:int:min(1)}")]
         public async Task<IActionResult> Index(int questionId, IndexModel model) {
             // Get question
-            var q = await this._dc.Questions.FindAsync(questionId);
+            var q = await this.dbContext.Questions.FindAsync(questionId);
             if (q == null) return this.NotFound();
 
             if (this.ModelState.IsValid) {
@@ -70,7 +70,7 @@ namespace Altairis.AskMe.Web.Mvc.Controllers {
                     if (!q.DateAnswered.HasValue) q.DateAnswered = DateTime.Now;
                 }
 
-                await this._dc.SaveChangesAsync();
+                await this.dbContext.SaveChangesAsync();
                 return this.RedirectToAction(
                     actionName: "Question",
                     controllerName: "Home",
@@ -86,17 +86,17 @@ namespace Altairis.AskMe.Web.Mvc.Controllers {
         public async Task< IActionResult> ChangePassword(ChangePasswordModel model) {
             if (this.ModelState.IsValid) {
                 // Get current user
-                var user = await this._userManager.GetUserAsync(this.User);
+                var user = await this.userManager.GetUserAsync(this.User);
 
                 // Try to change password
-                var result = await this._userManager.ChangePasswordAsync(
+                var result = await this.userManager.ChangePasswordAsync(
                     user,
                     model.OldPassword,
                     model.NewPassword);
 
                 if (result.Succeeded) {
                     // OK, re-sign and redirect to homepage
-                    await this._signInManager.SignInAsync(user, isPersistent: false);
+                    await this.signInManager.SignInAsync(user, isPersistent: false);
                     return this.MessageView("Změna hesla", "Vaše heslo bylo úspěšně změněno.");
                 } else {
                     // Failed - show why

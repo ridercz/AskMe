@@ -17,12 +17,12 @@ namespace Altairis.AskMe.Web.RazorPages.Controllers {
         private const int TITLE_MAX_LENGTH = 50;
         private const int DESCRIPTION_MAX_LENGTH = 200;
 
-        private readonly AskDbContext _dc;
-        private readonly HtmlEncoder _encoder;
+        private readonly AskDbContext dbContext;
+        private readonly HtmlEncoder encoder;
 
-        public SyndicationController(AskDbContext dc, HtmlEncoder encoder) {
-            this._dc = dc;
-            this._encoder = encoder;
+        public SyndicationController(AskDbContext dbContext, HtmlEncoder encoder) {
+            this.dbContext = dbContext;
+            this.encoder = encoder;
         }
 
         [Route("/feed.rss", Name = "RssFeed")]
@@ -55,7 +55,7 @@ namespace Altairis.AskMe.Web.RazorPages.Controllers {
         }
 
         private async Task<IEnumerable<SyndicationItem>> GetSyndicationItemsAsync(string protocol, int maxItems) {
-            var questions = await this._dc.Questions.Include(x => x.Category)
+            var questions = await this.dbContext.Questions.Include(x => x.Category)
                 .Where(x => x.DateAnswered.HasValue)
                 .OrderByDescending(x => x.DateAnswered)
                 .Take(maxItems)
@@ -64,7 +64,7 @@ namespace Altairis.AskMe.Web.RazorPages.Controllers {
             return questions.Select(q => {
                 var item = new SyndicationItem {
                     Title = TruncateString(q.QuestionText, TITLE_MAX_LENGTH),
-                    Description = this._encoder.Encode(TruncateString(q.QuestionText, DESCRIPTION_MAX_LENGTH)),
+                    Description = this.encoder.Encode(TruncateString(q.QuestionText, DESCRIPTION_MAX_LENGTH)),
                     Id = this.Url.Page("/Question", pageHandler: null, values: new { questionId = q.Id }, protocol: protocol),
                     Published = q.DateAnswered.Value
                 };

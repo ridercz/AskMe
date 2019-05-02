@@ -31,8 +31,7 @@
         </header>
         @if (string.IsNullOrWhiteSpace(Model.Data.AnswerText)) {
             <p>Otázka dosud nebyla zodpovězena.</p>
-        }
-        else {
+        } else {
             <plainText text="@Model.Data.AnswerText" html-encode="true"></plainText>
         }
         <footer for-login-status="true">
