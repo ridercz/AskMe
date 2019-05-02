@@ -53,9 +53,12 @@ namespace Altairis.AskMe.Web.DotVVM.Presenters {
             return s;
         }
 
-        public Uri GetAbsoluteUri(string path = "") {
+        public Uri GetAbsoluteUri(string path = null) {
             var rq = this.context.GetAspNetCoreContext().Request;
-            var builder = new UriBuilder() { Scheme = rq.Scheme, Host = rq.Host.Host };
+            var builder = new UriBuilder() {
+                Scheme = rq.Scheme,
+                Host = rq.Host.Host
+            };
             if (rq.Host.Port.HasValue) builder.Port = rq.Host.Port.Value;
             if (!string.IsNullOrEmpty(path)) builder.Path = this.context.TranslateVirtualPath(path);
             return builder.Uri;
