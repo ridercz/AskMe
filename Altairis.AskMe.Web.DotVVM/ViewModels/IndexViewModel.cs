@@ -1,13 +1,8 @@
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using Altairis.AskMe.Data;
 using Altairis.AskMe.Web.DotVVM.Dto;
 using AutoMapper.QueryableExtensions;
-using DotVVM.Framework.ViewModel;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 
 namespace Altairis.AskMe.Web.DotVVM.ViewModels {

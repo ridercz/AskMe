@@ -1,12 +1,6 @@
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Altairis.AskMe.Data;
-using DotVVM.Framework.Hosting;
-using DotVVM.Framework.ViewModel;
 using DotVVM.Framework.ViewModel.Validation;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;

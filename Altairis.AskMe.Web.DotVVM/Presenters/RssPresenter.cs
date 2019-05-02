@@ -8,7 +8,6 @@ using System.Xml;
 using Altairis.AskMe.Data;
 using DotVVM.Framework.Hosting;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.SyndicationFeed;
 using Microsoft.SyndicationFeed.Rss;
 using System.IO;

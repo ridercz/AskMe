@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Altairis.AskMe.Data;
+﻿using Altairis.AskMe.Data;
 using Altairis.AskMe.Web.DotVVM.Dto;
 using AutoMapper;
 
