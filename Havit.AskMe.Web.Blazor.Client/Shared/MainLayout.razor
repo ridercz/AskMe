@@ -1,15 +1,19 @@
 ﻿@inherits LayoutComponentBase
 
-<div class="sidebar">
-    <NavMenu />
-</div>
-
-<div class="main">
-    <div class="top-row px-4">
-        <a href="http://blazor.net" target="_blank" class="ml-md-auto">About</a>
-    </div>
-
-    <div class="content px-4">
-        @Body
-    </div>
-</div>
+<header>
+	<h1>ASKme</h1>
+	<div>zeptej se mě na co chceš, já na co chci odpovím</div>
+</header>
+<NavMenu />
+@*<vc:menu></vc:menu>*@
+<main>
+	@Body
+</main>
+<footer>
+	<ul>
+		<li>Copyright &copy; <a href="https://www.altairis.cz/">Altairis</a>, 2017-@DateTime.Today.Year</li>
+		<li>Using Blazor, ported by Robert Haken, <a href="https://www.havit.cz/">HAVIT</a></li>
+		@*<li><a asp-route="RssFeed"><i class="fas fa-rss"></i> RSS</a></li>
+			<li for-login-status="false"><a asp-page="Account/Login">&pi;</a></li>*@
+	</ul>
+</footer>
