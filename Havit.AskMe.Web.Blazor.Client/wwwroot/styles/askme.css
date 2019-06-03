@@ -8,7 +8,7 @@
   background-attachment: fixed;
   background-size: cover; }
 
-body {
+app {
   max-width: 1000px;
   margin: 0 auto; }
   app > header {
@@ -207,3 +207,27 @@ article.answer {
       article.answer section.answer header .info {
         float: right; }
 
+app > main nav {
+  background-color: #01c0c0;
+  color: #eee;
+  font-size: 125%; }
+  app > main nav a:link, app > main nav a:visited {
+    color: #eee;
+    text-decoration: none; }
+  app > main nav a:hover {
+    color: #333; }
+  app > main nav a.active {
+    color: #333;
+    text-decoration: none; }
+  app > main nav ul {
+    margin: 0;
+    padding: 0; }
+    app > main nav ul li {
+      display: inline-block;
+      list-style-type: none;
+      margin: 0;
+      padding: 0.5em 1em; }
+
+app nav a.active {
+  color: #333;
+  text-decoration: none; }
