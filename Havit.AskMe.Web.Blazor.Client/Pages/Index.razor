@@ -1,7 +1,64 @@
 ﻿@page "/"
+@page "/{PageIndex:int}"
+@inject Havit.AskMe.Web.Blazor.Client.Services.IQuestionsApiClient QuestionsApiClient
 
-<h1>Hello, world!</h1>
+@if (questions == null)
+{
+	<p><em>Loading...</em></p>
+}
+else
+{
+	@foreach (var item in questions.Data)
+	{
+		var id = $"q_{item.QuestionId}";
+		<article class="answer" id="@id">
+			<section class="question">
+				<header>
+					<span class="fa-stack fa-lg">
+						<i class="fas fa-square fa-stack-2x"></i>
+						<i class="fas fa-question fa-stack-1x fa-inverse"></i>
+					</span>
+					<span class="info">
+						<i class="fas fa-tag"></i> @item.CategoryName
+						<i class="fas fa-calendar"></i> @* TODO <time value="@item.DateCreated"></time>*@ @item.DateCreated
+						@if (!string.IsNullOrWhiteSpace(item.DisplayName))
+						{
+							<span><i class="fas fa-user"></i> @item.DisplayName</span>
+						}
+					</span>
+				</header>
+				@* TODO <plainText text="@item.QuestionText" html-encode="true"></plainText>*@ <p>@item.QuestionText</p>
+			</section>
+			<section class="answer">
+				<header>
+					<span class="fa-stack fa-lg">
+						<i class="fas fa-square fa-stack-2x"></i>
+						<i class="fas fa-comment fa-stack-1x fa-inverse"></i>
+					</span>
+					<span class="info">
+						<i class="fas fa-calendar"></i> @* TODO <time value="@item.DateAnswered"></time>*@ @item.DateAnswered
+					</span>
+				</header>
+				@*TODO <plainText text="@item.AnswerText" html-encode="true"></plainText>*@ <p>@item.AnswerText</p>
+				@*TODO <footer for-login-status="true">
+					<a asp-page="Admin/Index" asp-route-questionId="@item.QuestionId" class="button"><i class="fas fa-commenting"></i> Upravit</a>
+				</footer>*@
+			</section>
+		</article>
+	}
+@*TODO <vc:pager model="Model.Paging"></vc:pager>*@
 
-Welcome to your new app.
+}
 
-<SurveyPrompt Title="How is Blazor working for you?" />
+@functions
+{
+	[Parameter]
+	public int PageIndex { get; set; } = 0;
+
+	public CollectionDataResult<List<QuestionListItemVM>> questions;
+
+	protected override async Task OnInitAsync()
+	{
+		questions = await QuestionsApiClient.GetQuestionsAsync(new QuestionListQueryFilter() { PageIndex = this.PageIndex, Answered = true });
+	}
+}

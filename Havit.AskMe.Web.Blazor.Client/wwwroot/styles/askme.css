@@ -8,64 +8,64 @@
   background-attachment: fixed;
   background-size: cover; }
 
-app {
+body {
   max-width: 1000px;
   margin: 0 auto; }
-  app > header {
+  body app > header {
     background-color: #EB6B02;
     padding: 1em;
     margin-bottom: 0.5em;
     letter-spacing: .5ex; }
-    app > header div {
+    body app > header div {
       color: rgba(238, 238, 238, 0.5);
       font-size: 90%;
       font-weight: bold;
       text-align: right; }
-  app > nav {
+  body app > nav {
     background-color: #018D8D;
     color: #eee;
     font-size: 125%; }
-    app > nav a:link, app > nav a:visited {
+    body app > nav a:link, body app > nav a:visited {
       color: #eee;
       text-decoration: none; }
-    app > nav a:hover {
+    body app > nav a:hover {
       color: #333; }
-    app > nav ul {
+    body app > nav ul {
       margin: 0;
       padding: 0; }
-      app > nav ul li {
+      body app > nav ul li {
         display: inline-block;
         list-style-type: none;
         margin: 0;
         padding: 0.5em 1em; }
-  app > main {
+  body app > main {
     background-color: #eee;
     color: #333;
     padding: 3em;
     border-bottom: 0.33333em solid #333; }
-    app > main a:link {
+    body app > main a:link {
       color: #333; }
-    app > main a:visited {
+    body app > main a:visited {
       color: #0d0d0d; }
-    app > main a:hover {
+    body app > main a:hover {
       color: #333; }
-  app > footer {
+  body app > footer {
     text-align: center;
     font-size: 80%;
     padding: 1em;
     letter-spacing: .5ex; }
-    app > footer ul {
+    body app > footer ul {
       margin: 0;
       padding: 0;
       display: inline;
       list-style-type: none; }
-      app > footer ul li {
+      body app > footer ul li {
         margin: 0;
         padding: 0 0 0 0;
         display: inline;
         list-style-type: none;
         list-style-type: none; }
-        app > footer ul li:nth-last-child(n+2)::after {
+        body app > footer ul li:nth-last-child(n+2)::after {
           content: ' |'; }
 
 a:link, a:visited {

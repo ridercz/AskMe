@@ -10,11 +10,22 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="App_Data\deploy.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="App_Data\deploy.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Blazor.Server" Version="3.0.0-preview5-19227-01" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.0.0-preview5-19227-01" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Altairis.AskMe.Data\Altairis.AskMe.Data.csproj" />
     <ProjectReference Include="..\Havit.AskMe.Web.Blazor.Client\Havit.AskMe.Web.Blazor.Client.csproj" />
     <ProjectReference Include="..\Havit.AskMe.Web.Blazor.Shared\Havit.AskMe.Web.Blazor.Shared.csproj" />
   </ItemGroup>

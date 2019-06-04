@@ -11,11 +11,11 @@ html {
     background-size: cover;
 }
 
-app {
+body {
     max-width: 1000px;
     margin: 0 auto;
 
-    > header {
+    app > header {
         background-color: $accent1;
         padding: $padding;
         margin-bottom: $padding/2;
@@ -29,7 +29,7 @@ app {
         }
     }
 
-    > nav {
+    app > nav {
         background-color: $accent2;
         color: $white;
         font-size: 125%;
@@ -58,7 +58,7 @@ app {
         }
     }
 
-    > main {
+    app > main {
         background-color: $white;
         color: $black;
         padding: $padding * 3;
@@ -79,7 +79,7 @@ app {
         }
     }
 
-    > footer {
+    app > footer {
         text-align: center;
         font-size: 80%;
         padding: $padding;
