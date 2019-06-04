@@ -20,7 +20,7 @@ else
 					</span>
 					<span class="info">
 						<i class="fas fa-tag"></i> @item.CategoryName
-						<i class="fas fa-calendar"></i> @* TODO <time value="@item.DateCreated"></time>*@ @item.DateCreated
+						<i class="fas fa-calendar"></i>  <Time Value="@item.DateCreated" />
 						@if (!string.IsNullOrWhiteSpace(item.DisplayName))
 						{
 							<span><i class="fas fa-user"></i> @item.DisplayName</span>
@@ -36,7 +36,7 @@ else
 						<i class="fas fa-comment fa-stack-1x fa-inverse"></i>
 					</span>
 					<span class="info">
-						<i class="fas fa-calendar"></i> @* TODO <time value="@item.DateAnswered"></time>*@ @item.DateAnswered
+						<i class="fas fa-calendar"></i> <Time Value="@item.DateAnswered" />
 					</span>
 				</header>
 				<PlainText Text="@item.AnswerText" HtmlEncode="true" />
