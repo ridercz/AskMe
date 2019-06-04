@@ -27,7 +27,7 @@ else
 						}
 					</span>
 				</header>
-				@* TODO <plainText text="@item.QuestionText" html-encode="true"></plainText>*@ <p>@item.QuestionText</p>
+				<PlainText Text="@item.QuestionText" HtmlEncode="true" />
 			</section>
 			<section class="answer">
 				<header>
@@ -39,14 +39,14 @@ else
 						<i class="fas fa-calendar"></i> @* TODO <time value="@item.DateAnswered"></time>*@ @item.DateAnswered
 					</span>
 				</header>
-				@*TODO <plainText text="@item.AnswerText" html-encode="true"></plainText>*@ <p>@item.AnswerText</p>
+				<PlainText Text="@item.AnswerText" HtmlEncode="true" />
 				@*TODO <footer for-login-status="true">
-					<a asp-page="Admin/Index" asp-route-questionId="@item.QuestionId" class="button"><i class="fas fa-commenting"></i> Upravit</a>
-				</footer>*@
+						<a asp-page="Admin/Index" asp-route-questionId="@item.QuestionId" class="button"><i class="fas fa-commenting"></i> Upravit</a>
+					</footer>*@
 			</section>
 		</article>
 	}
-@*TODO <vc:pager model="Model.Paging"></vc:pager>*@
+	@*TODO <vc:pager model="Model.Paging"></vc:pager>*@
 
 }
 
