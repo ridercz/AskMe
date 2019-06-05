@@ -150,10 +150,9 @@ a.button {
   padding: 0.5em 1em;
   border-radius: 0.33333em;
   text-decoration: none;
-  display: inline-block; }
-  a.button:link {
-    background-color: #018D8D;
-    color: #eee; }
+  display: inline-block;
+  background-color: #018D8D;
+  color: #eee; }
   a.button:visited {
     background-color: #015a5a;
     color: #eee; }

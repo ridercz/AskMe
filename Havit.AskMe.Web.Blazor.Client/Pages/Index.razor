@@ -1,6 +1,7 @@
 ﻿@page "/"
 @page "/{PageIndex:int}"
 @inject Havit.AskMe.Web.Blazor.Client.Services.IQuestionsApiClient QuestionsApiClient
+@inject IUriHelper UriHelper
 
 @if (questions == null)
 {
@@ -46,8 +47,7 @@ else
 			</section>
 		</article>
 	}
-	@*TODO <vc:pager model="Model.Paging"></vc:pager>*@
-
+	<Pager Data="@questions" OnPageChanging="@PageChanging" />
 }
 
 @functions
@@ -59,6 +59,21 @@ else
 
 	protected override async Task OnInitAsync()
 	{
-		questions = await QuestionsApiClient.GetQuestionsAsync(new QuestionListQueryFilter() { PageIndex = this.PageIndex, Answered = true });
+		await LoadQuestions();
+	}
+
+	private async Task PageChanging(PagerBase.PageChangingEventArgs args)
+	{
+		// "redirect"
+		//UriHelper.NavigateTo($"/{args.NewPageNumber}"); // BUG: does not set the PageIndex property (https://github.com/aspnet/AspNetCore/issues/10686)
+
+
+		this.PageIndex = args.NewPageNumber - 1;
+		await LoadQuestions();
+	}
+
+	private async Task LoadQuestions()
+	{
+		this.questions = await QuestionsApiClient.GetQuestionsAsync(new QuestionListQueryFilter() { PageIndex = this.PageIndex, Answered = true });
 	}
 }

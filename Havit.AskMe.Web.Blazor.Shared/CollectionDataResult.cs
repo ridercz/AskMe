@@ -6,11 +6,8 @@ using System.Threading.Tasks;
 
 namespace Havit.AskMe.Web.Blazor.Shared
 {
-    public class CollectionDataResult<TObj>
+    public class CollectionDataResult<TObj> : PagingInfo
     {
-        public int TotalItems { get; set; }
-        public int PageIndex { get; set; }
-        public int PageSize { get; set; }
         public TObj Data { get; set; }
 
         public CollectionDataResult()

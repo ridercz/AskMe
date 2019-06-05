@@ -1,119 +1,116 @@
 ﻿@import '_vars.scss';
 
 section.form {
-    border: 1px solid $black;
-    border-radius: $padding/3;
+	border: 1px solid $black;
+	border-radius: $padding/3;
 
-    header {
-        border-radius: $padding/3 $padding/3 0 0;
-        border: 1px solid $black;
-        padding: $padding;
-        background-color: rgba($accent2, .25);
-        color: $accent2;
+	header {
+		border-radius: $padding/3 $padding/3 0 0;
+		border: 1px solid $black;
+		padding: $padding;
+		background-color: rgba($accent2, .25);
+		color: $accent2;
 
-        h2 {
-            margin: 0;
-            padding: 0;
-        }
-    }
+		h2 {
+			margin: 0;
+			padding: 0;
+		}
+	}
 
-    .validation-summary-valid {
-        display: none;
-    }
+	.validation-summary-valid {
+		display: none;
+	}
 
-    .validation-summary-errors {
-        clear: both;
-        border: 1px solid $black;
-        background-color: rgba($accent1, .25);
-    }
+	.validation-summary-errors {
+		clear: both;
+		border: 1px solid $black;
+		background-color: rgba($accent1, .25);
+	}
 
-    footer {
-        clear: both;
-        border: 1px solid $black;
-        background-color: rgba($accent1, .75);
-        text-align: right;
-        border-radius: 0 0 $padding/3 $padding/3;
+	footer {
+		clear: both;
+		border: 1px solid $black;
+		background-color: rgba($accent1, .75);
+		text-align: right;
+		border-radius: 0 0 $padding/3 $padding/3;
 
-        input[type=submit] {
-            background-color: $accent1;
-            color: $white;
-            border: none;
-            border-radius: 0 0 $padding/3 0;
-            padding: $padding/2 $padding*3;
-            min-width: 25%;
-            font-weight: bold;
-        }
-    }
+		input[type=submit] {
+			background-color: $accent1;
+			color: $white;
+			border: none;
+			border-radius: 0 0 $padding/3 0;
+			padding: $padding/2 $padding*3;
+			min-width: 25%;
+			font-weight: bold;
+		}
+	}
 }
 
 form {
-    input[type=text], input[type=password], input[type=email], textarea, select {
-        box-sizing: border-box;
-        width: 100%;
-        padding: $padding/2;
-        margin: 0;
-        border: 1px solid $black;
-        display: block;
+	input[type=text], input[type=password], input[type=email], textarea, select {
+		box-sizing: border-box;
+		width: 100%;
+		padding: $padding/2;
+		margin: 0;
+		border: 1px solid $black;
+		display: block;
 
-        &.half-width {
-            float: left;
-            width: 50%;
-        }
-    }
+		&.half-width {
+			float: left;
+			width: 50%;
+		}
+	}
 
-    .field {
-        clear: both;
-        padding: $padding/2;
-        margin: 0;
-        border: 1px solid $black;
-        background-color: #fff;
+	.field {
+		clear: both;
+		padding: $padding/2;
+		margin: 0;
+		border: 1px solid $black;
+		background-color: #fff;
 
-        input[type=checkbox] {
-            width: 1.5em;
-            height: 1.5em;
-            vertical-align: middle;
-        }
-    }
+		input[type=checkbox] {
+			width: 1.5em;
+			height: 1.5em;
+			vertical-align: middle;
+		}
+	}
 
-    textarea {
-        height: 150px;
-    }
+	textarea {
+		height: 150px;
+	}
 
-    ::-webkit-input-placeholder {
-        color: $accent2;
-    }
+	::-webkit-input-placeholder {
+		color: $accent2;
+	}
 
-    ::-moz-placeholder {
-        color: $accent2;
-    }
+	::-moz-placeholder {
+		color: $accent2;
+	}
 
-    :-ms-input-placeholder {
-        color: $accent2;
-    }
+	:-ms-input-placeholder {
+		color: $accent2;
+	}
 
-    :-moz-placeholder {
-        color: $accent2;
-    }
+	:-moz-placeholder {
+		color: $accent2;
+	}
 }
 
 a.button {
-    padding: $padding/2 $padding;
-    border-radius: $padding/3;
-    text-decoration: none;
-    display: inline-block;
+	padding: $padding/2 $padding;
+	border-radius: $padding/3;
+	text-decoration: none;
+	display: inline-block;
+	background-color: $accent2;
+	color: $white;
 
-    &:link {
-        background-color: $accent2;
-        color: $white;
-    }
+	&:visited {
+		background-color: darken($accent2, 10);
+		color: $white;
+	}
 
-    &:visited {
-        background-color: darken($accent2, 10);
-        color: $white;
-    }
-
-    &:hover {
-        background-color: $accent1;
-        color: $white;
-    }
+	&:hover {
+		background-color: $accent1;
+		color: $white;
+	}
 }
