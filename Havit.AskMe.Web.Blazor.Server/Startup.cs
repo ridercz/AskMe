@@ -57,8 +57,10 @@ namespace Havit.AskMe.Web.Blazor.Server
             // Migrate database to last version
             context.Database.Migrate();
 
-            // Seed initial data if in development environment
-            if (env.IsDevelopment())
+			context.Seed(); // DEMO PURPOSES, REMOVE AS NEEDED
+
+			// Seed initial data if in development environment
+			if (env.IsDevelopment())
             {
                 // Create categories
                 context.Seed();
