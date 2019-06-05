@@ -21,6 +21,6 @@ namespace Havit.AskMe.Web.Blazor.Shared
         [DataType(DataType.EmailAddress, ErrorMessage = "Nesprávný formát e-mailové adresy")]
 		public string EmailAddress { get; set; }
 
-		public string CategoryId { get; set; } // Blazor WIP: Microsoft.AspNetCore.Components.Forms.InputSelect`1[System.Int32] does not support the type 'System.Int32'.
+		public string CategoryId { get; set; } = "1"; // Blazor WIP: Microsoft.AspNetCore.Components.Forms.InputSelect`1[System.Int32] does not support the type 'System.Int32'.
 	}
 }

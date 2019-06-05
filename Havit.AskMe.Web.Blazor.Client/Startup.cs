@@ -10,6 +10,8 @@ namespace Havit.AskMe.Web.Blazor.Client
         {
 			services.AddTransient<ICategoryClientFacade, CategoryClientFacade>();
             services.AddTransient<IQuestionClientFacade, QuestionClientFacade>();
+
+			services.AddTransient<IJsHelpers, JsHelpers>();
 		}
 
 		public void Configure(IComponentsApplicationBuilder app)

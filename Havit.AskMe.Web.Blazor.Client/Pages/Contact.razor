@@ -1,5 +1,5 @@
 ﻿@page "/contact"
-@*@{ this.ViewBag.Title = "Kontakt"; }*@
+@inject  Havit.AskMe.Web.Blazor.Client.Services.IJsHelpers JsHelpers
 
 <h2><i class="fas fa-envelope"></i> Kontakt</h2>
 <p>Toto je ukázová aplikace pro technologii ASP.NET Core Razor Pages. Využívá zejména:</p>
@@ -27,3 +27,11 @@
 
 <h3><i class="fas fa-cog"></i> Projekt</h3>
 <p>Tento projekt je open source. Další informace najdete na <a href="https://github.com/ridercz/AskMe">GitHubu</a>.</p>
+
+@functions
+{
+	protected override async Task OnAfterRenderAsync()
+	{
+		await JsHelpers.SetPageTitleAsync("Kontakt");
+	}
+}
