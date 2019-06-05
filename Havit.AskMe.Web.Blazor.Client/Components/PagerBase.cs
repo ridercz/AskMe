@@ -16,9 +16,10 @@ namespace Havit.AskMe.Web.Blazor.Client.Components
         [Parameter]
         private EventCallback<PageChangingEventArgs> OnPageChanging { get; set; }
 
-        protected void ChangePage(UIMouseEventArgs e, int pageNumber)
+        protected Task ChangePage(UIMouseEventArgs e, int pageNumber)
         {
-            OnPageChanging.InvokeAsync(new PageChangingEventArgs() { NewPageNumber = pageNumber });
+			var arg = new PageChangingEventArgs() { NewPageNumber = pageNumber };
+			return OnPageChanging.InvokeAsync(arg);
         }
 
         public class PageChangingEventArgs

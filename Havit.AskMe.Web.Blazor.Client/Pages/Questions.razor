@@ -38,30 +38,34 @@
 }
 else if (questions.TotalItems > 0)
 {
-	<h2>Nezodpovězené otázky</h2>
-	@foreach (var item in questions.Data)
-	{
-		var id = $"q_{item.QuestionId}";
-		<article class="question" id="@id">
-			<header>
-				<span class="fa-stack fa-lg">
-					<i class="fas fa-square fa-stack-2x"></i>
-					<i class="fas fa-question fa-stack-1x fa-inverse"></i>
-				</span>
-				<span class="info">
-					<i class="fas fa-tag"></i> @item.CategoryName
-					<i class="fas fa-calendar"></i> <time value="@item.DateCreated"></time>
-					@if (!string.IsNullOrWhiteSpace(item.DisplayName))
-					{
-						<span><i class="fas fa-user"></i> @item.DisplayName</span>
-					}
-				</span>
-			</header>
-			<PlainText Text="@item.QuestionText" HtmlEncode="true" />
-			@*<footer for-login-status="true">
-					<a asp-page="Admin/Index" asp-route-questionId="@item.Id" class="button"><i class="fas fa-commenting"></i> Odpovědět</a>
-				</footer>*@
-		</article>
-	}
-	<Pager Data="questions" OnPageChanging="@PageChanging"></Pager>
+	<Repeater Items="@questions.Data">
+		<HeaderTemplate>
+			<h2>Nezodpovězené otázky</h2>
+		</HeaderTemplate>
+		<ItemTemplate Context="item">
+			<article class="question" id="q_@item.QuestionId">
+				<header>
+					<span class="fa-stack fa-lg">
+						<i class="fas fa-square fa-stack-2x"></i>
+						<i class="fas fa-question fa-stack-1x fa-inverse"></i>
+					</span>
+					<span class="info">
+						<i class="fas fa-tag"></i> @item.CategoryName
+						<i class="fas fa-calendar"></i> <time value="@item.DateCreated"></time>
+						@if (!string.IsNullOrWhiteSpace(item.DisplayName))
+						{
+							<span><i class="fas fa-user"></i> @item.DisplayName</span>
+						}
+					</span>
+				</header>
+				<PlainText Text="@item.QuestionText" HtmlEncode="true" />
+				@*<footer for-login-status="true">
+				<a asp-page="Admin/Index" asp-route-questionId="@item.Id" class="button"><i class="fas fa-commenting"></i> Odpovědět</a>
+			</footer>*@
+			</article>
+		</ItemTemplate>
+		<FooterTemplate>
+			<Pager Data="questions" OnPageChanging="@PageChanging"></Pager>
+		</FooterTemplate>
+	</Repeater>
 }

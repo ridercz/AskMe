@@ -1,0 +1,26 @@
+﻿@typeparam TItem
+
+@if (Items.Any())
+{
+	@HeaderTemplate
+	@foreach (var item in Items)
+	{
+		@ItemTemplate(item)
+	}
+	@FooterTemplate
+}
+
+@functions
+{
+	[Parameter]
+	private RenderFragment HeaderTemplate { get; set; }
+
+	[Parameter]
+	private RenderFragment<TItem> ItemTemplate { get; set; }
+
+	[Parameter]
+	private RenderFragment FooterTemplate { get; set; }
+
+	[Parameter]
+	private IEnumerable<TItem> Items { get; set; }
+}
