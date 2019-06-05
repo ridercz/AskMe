@@ -1,6 +1,6 @@
 ﻿@page "/"
 @page "/{PageIndex:int}"
-@inject Havit.AskMe.Web.Blazor.Client.Services.IQuestionsApiClient QuestionsApiClient
+@inject Havit.AskMe.Web.Blazor.Client.Services.IQuestionClientFacade QuestionClientFacade
 @inject IUriHelper UriHelper
 
 @if (questions == null)
@@ -53,9 +53,9 @@ else
 @functions
 {
 	[Parameter]
-	public int PageIndex { get; set; } = 0;
+	private int PageIndex { get; set; } = 0;
 
-	public CollectionDataResult<List<QuestionListItemVM>> questions;
+	private CollectionDataResult<List<QuestionListItemVM>> questions;
 
 	protected override async Task OnInitAsync()
 	{
@@ -74,6 +74,6 @@ else
 
 	private async Task LoadQuestions()
 	{
-		this.questions = await QuestionsApiClient.GetQuestionsAsync(new QuestionListQueryFilter() { PageIndex = this.PageIndex, Answered = true });
+		this.questions = await QuestionClientFacade.GetQuestionsAsync(new QuestionListQueryFilter() { PageIndex = this.PageIndex, Answered = true });
 	}
 }

@@ -1,0 +1,67 @@
+﻿@page "/questions"
+@inherits QuestionsBase
+<section class="form" id="ask">@* TODO: for-login-status="false" *@
+	<EditForm Model="@newQuestionIM" OnValidSubmit="@HandleNewQuestionValidSubmit">
+		<DataAnnotationsValidator />
+		<header>
+			<h2>Nová otázka</h2>
+		</header>
+		<div><InputTextArea Id="QuestionText" bind-Value="@newQuestionIM.QuestionText" /></div> @* TODO placeholder="Zadejte text své otázky..." *@
+		<div>
+			<InputSelect Id="Category" bind-Value="@newQuestionIM.CategoryId">
+				@if (categories == null)
+				{
+					<option>Loading...</option>
+				}
+				else
+				{
+					@foreach (var category in categories)
+					{
+						<option value="@category.Id">@category.Name</option>
+					}
+				}
+			</InputSelect>
+		</div>
+		<div>
+			<InputText Id="DisplayName" bind-Value="@newQuestionIM.DisplayName" class="text half-width" /> @* TODO placeholder="Jméno (nepovinné)" *@
+			<InputText Id="EmailAddress" bind-Value="@newQuestionIM.EmailAddress" class="text half-width" /> @* TODO placeholder="E-mail (nepovinné)" *@
+		</div>
+		<ValidationSummary />
+		<footer>
+			<input type="submit" value="Odeslat" />
+		</footer>
+	</EditForm>
+</section>
+@if (questions == null)
+{
+	<p><em>Loading...</em></p>
+}
+else if (questions.TotalItems > 0)
+{
+	<h2>Nezodpovězené otázky</h2>
+	@foreach (var item in questions.Data)
+	{
+		var id = $"q_{item.QuestionId}";
+		<article class="question" id="@id">
+			<header>
+				<span class="fa-stack fa-lg">
+					<i class="fas fa-square fa-stack-2x"></i>
+					<i class="fas fa-question fa-stack-1x fa-inverse"></i>
+				</span>
+				<span class="info">
+					<i class="fas fa-tag"></i> @item.CategoryName
+					<i class="fas fa-calendar"></i> <time value="@item.DateCreated"></time>
+					@if (!string.IsNullOrWhiteSpace(item.DisplayName))
+					{
+						<span><i class="fas fa-user"></i> @item.DisplayName</span>
+					}
+				</span>
+			</header>
+			<PlainText Text="@item.QuestionText" HtmlEncode="true" />
+			@*<footer for-login-status="true">
+					<a asp-page="Admin/Index" asp-route-questionId="@item.Id" class="button"><i class="fas fa-commenting"></i> Odpovědět</a>
+				</footer>*@
+		</article>
+	}
+	<Pager Data="questions" OnPageChanging="@PageChanging"></Pager>
+}

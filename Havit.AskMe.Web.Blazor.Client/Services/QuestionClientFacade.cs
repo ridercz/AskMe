@@ -9,11 +9,11 @@ using Microsoft.AspNetCore.Components;
 
 namespace Havit.AskMe.Web.Blazor.Client.Services
 {
-    public class QuestionsApiClient : IQuestionsApiClient
+    public class QuestionClientFacade : IQuestionClientFacade
     {
         private readonly HttpClient httpClient;
 
-        public QuestionsApiClient(HttpClient httpClient)
+        public QuestionClientFacade(HttpClient httpClient)
         {
             this.httpClient = httpClient;
         }
@@ -22,5 +22,10 @@ namespace Havit.AskMe.Web.Blazor.Client.Services
         {
             return httpClient.GetJsonAsync<CollectionDataResult<List<QuestionListItemVM>>>($"api/questions?pageIndex={filter.PageIndex}&answered={filter.Answered}");
         }
+
+		public Task<int> CreateQuestionAsync(QuestionIM inputModel)
+		{
+			return httpClient.PostJsonAsync<int>("api/questions", inputModel);
+		}
     }
 }

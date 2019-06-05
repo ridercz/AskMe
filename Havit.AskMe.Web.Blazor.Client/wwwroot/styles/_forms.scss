@@ -47,7 +47,7 @@ section.form {
 }
 
 form {
-	input[type=text], input[type=password], input[type=email], textarea, select {
+	input[type=text], input.text, input[type=password], input[type=email], textarea, select {
 		box-sizing: border-box;
 		width: 100%;
 		padding: $padding/2;

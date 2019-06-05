@@ -109,14 +109,14 @@ section.form {
       min-width: 25%;
       font-weight: bold; }
 
-form input[type=text], form input[type=password], form input[type=email], form textarea, form select {
+form input[type=text], form input.text, form input[type=password], form input[type=email], form textarea, form select {
   box-sizing: border-box;
   width: 100%;
   padding: 0.5em;
   margin: 0;
   border: 1px solid #333;
   display: block; }
-  form input[type=text].half-width, form input[type=password].half-width, form input[type=email].half-width, form textarea.half-width, form select.half-width {
+  form input[type=text].half-width, form input.text.half-width, form input[type=password].half-width, form input[type=email].half-width, form textarea.half-width, form select.half-width {
     float: left;
     width: 50%; }
 
@@ -227,6 +227,6 @@ app > main nav {
       margin: 0;
       padding: 0.5em 1em; }
 
-app nav a.active {
+app nav a.active, app nav a.active:link, app nav a.active:visited {
   color: #333;
   text-decoration: none; }

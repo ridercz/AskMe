@@ -8,6 +8,7 @@ using Havit.AskMe.Web.Blazor.Shared;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
+using Remotion.Linq.Parsing;
 
 namespace Havit.AskMe.Web.Blazor.Server.Controllers
 {
@@ -25,7 +26,7 @@ namespace Havit.AskMe.Web.Blazor.Server.Controllers
         [HttpGet("api/questions")]
         public async Task<CollectionDataResult<List<QuestionListItemVM>>> GetQuestions([FromQuery]QuestionListQueryFilter filter)
         {
-            filter.PageSize = appConfiguration.PageSize; // forced value ;-)
+            filter.PageSize = appConfiguration.PageSize; // forced value from configuration ;-)
 
             IQueryable<Question> query = askDbContext.Questions;
 
@@ -37,6 +38,7 @@ namespace Havit.AskMe.Web.Blazor.Server.Controllers
             var count = await query.CountAsync();
 
             var data = await query
+					.OrderByDescending(q => q.DateAnswered).ThenByDescending(q => q.DateCreated)
                     .Skip(filter.PageIndex * filter.PageSize)
                     .Take(filter.PageSize)
                     .Select(q => new QuestionListItemVM()
@@ -54,5 +56,27 @@ namespace Havit.AskMe.Web.Blazor.Server.Controllers
 
             return new CollectionDataResult<List<QuestionListItemVM>>(data, filter, count);
         }
-    }
+
+		[HttpPost("api/questions")]
+		public async Task<int> CreateQuestion([FromBody]QuestionIM inputModel)
+		{
+			if (!this.ModelState.IsValid)
+			{
+				throw new InvalidOperationException("Invalid model state.");
+			}
+
+			// Create and save question entity
+			var question = new Question
+			{
+				QuestionText = inputModel.QuestionText,
+				CategoryId = Int32.Parse(inputModel.CategoryId),
+				DisplayName = inputModel.DisplayName,
+				EmailAddress = inputModel.EmailAddress
+			};
+			await this.askDbContext.Questions.AddAsync(question);
+			await this.askDbContext.SaveChangesAsync();
+
+			return question.Id;
+		}
+	}
 }
