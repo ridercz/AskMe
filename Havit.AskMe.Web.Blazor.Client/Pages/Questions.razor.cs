@@ -35,6 +35,7 @@ namespace Havit.AskMe.Web.Blazor.Client.Pages
 
 		protected override async Task OnInitAsync()
 		{
+			this.categories = await CategoryClientFacade.GetAll();
 			await LoadQuestions();
 		}
 
@@ -46,7 +47,6 @@ namespace Havit.AskMe.Web.Blazor.Client.Pages
 
 		private async Task LoadQuestions()
 		{
-			this.categories = await CategoryClientFacade.GetAll();
 			this.questions = await QuestionClientFacade.GetQuestionsAsync(new QuestionListQueryFilter() { PageIndex = this.PageIndex, Answered = false });
 		}
 
