@@ -6,7 +6,7 @@
 		<header>
 			<h2>Nová otázka</h2>
 		</header>
-		<div><InputTextArea Id="QuestionText" @bind-Value="@newQuestionIM.QuestionText" /></div>
+		<div><InputTextArea Id="QuestionText" @bind-Value="@newQuestionIM.QuestionText" placeholder="Zadejte text své otázky..." /></div>
 		<div>
 			<InputSelect Id="Category" @bind-Value="@newQuestionIM.CategoryId">
 				@if (categories == null)
@@ -23,12 +23,12 @@
 			</InputSelect>
 		</div>
 		<div>
-			<InputText Id="DisplayName" @bind-Value="@newQuestionIM.DisplayName" class="text half-width" />
-			<InputText Id="EmailAddress" @bind-Value="@newQuestionIM.EmailAddress" class="text half-width" />
+			<InputText Id="DisplayName" @bind-Value="@newQuestionIM.DisplayName" class="text half-width" placeholder="Jméno (nepovinné)" />
+			<InputText Id="EmailAddress" @bind-Value="@newQuestionIM.EmailAddress" class="text half-width" placeholder="E-mail (nepovinné)" />
 		</div>
 		<ValidationSummary />
 		<footer>
-			<input type="submit" value="Odeslat" @ref="submitInput" />
+			<input type="submit" value="Odeslat" title="Vložit novou otázku" />
 		</footer>
 	</EditForm>
 </section>

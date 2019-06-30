@@ -61,10 +61,6 @@ namespace Havit.AskMe.Web.Blazor.Client.Pages
 
 		protected override async Task OnAfterRenderAsync()
 		{
-			await JsHelpers.SetElementAttributeAsync("QuestionText", "placeholder", "Zadejte text své otázky...");
-			await JsHelpers.SetElementAttributeAsync("DisplayName", "placeholder", "Jméno (nepovinné)");
-			await JsHelpers.SetElementAttributeAsync("EmailAddress", "placeholder", "E-mail (nepovinné)");
-			await JsHelpers.SetElementAttributeAsync(submitInput, "title", "Vložit novou otázku");
 			await JsHelpers.SetPageTitleAsync("Questions");
 		}
 	}
