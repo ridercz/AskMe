@@ -43,7 +43,7 @@ else if (questions.TotalItems > 0)
 			<h2>Nezodpovězené otázky</h2>
 		</HeaderTemplate>
 		<ItemTemplate Context="item">
-			<article class="question" id="q_@item.QuestionId">
+			<article class="question" id="q_@item.QuestionId" @key="@item.QuestionId">
 				<header>
 					<span class="fa-stack fa-lg">
 						<i class="fas fa-square fa-stack-2x"></i>

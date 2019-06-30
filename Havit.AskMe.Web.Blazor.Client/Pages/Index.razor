@@ -13,7 +13,7 @@ else
 	@foreach (var item in questions.Data)
 	{
 		var id = $"q_{item.QuestionId}";
-		<article class="answer" id="@id">
+		<article class="answer" id="@id" @key="@item.QuestionId">
 			<section class="question">
 				<header>
 					<span class="fa-stack fa-lg">
