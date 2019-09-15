@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Rendering;
 using Microsoft.AspNetCore.Components.RenderTree;
 
 namespace Havit.AskMe.Web.Blazor.Client.Components
@@ -11,18 +12,18 @@ namespace Havit.AskMe.Web.Blazor.Client.Components
     public class PlainText : ComponentBase
     {
         [Parameter]
-        private string Text { get; set; }
+        public string Text { get; set; }
 
         [Parameter]
-        private bool HtmlEncode { get; set; } = true;
+        public bool HtmlEncode { get; set; } = true;
 
         [Parameter]
-        private string ContainerElementName { get; set; } = string.Empty;
+        public string ContainerElementName { get; set; } = string.Empty;
 
         [Parameter]
-        private string ParagraphElementName { get; set; } = "p";
+        public string ParagraphElementName { get; set; } = "p";
 
-        protected override void BuildRenderTree(RenderTreeBuilder builder)
+		protected override void BuildRenderTree(RenderTreeBuilder builder)
         {
             if (string.IsNullOrWhiteSpace(this.Text))
             {

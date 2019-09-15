@@ -2,7 +2,7 @@
 @page "/{PageIndex:int}"
 @inject Havit.AskMe.Web.Blazor.Client.Services.IQuestionClientFacade QuestionClientFacade
 @inject Havit.AskMe.Web.Blazor.Client.Services.IJsHelpers JsHelpers
-@inject IUriHelper UriHelper
+@inject NavigationManager NavigationManager
 
 @if (questions == null)
 {
@@ -54,11 +54,11 @@ else
 @code
 {
 	[Parameter]
-	private int PageIndex { get; set; } = 0;
+	public int PageIndex { get; set; } = 0;
 
 	private CollectionDataResult<List<QuestionListItemVM>> questions;
 
-	protected override async Task OnInitAsync()
+	protected override async Task OnInitializedAsync()
 	{
 		await LoadQuestions();
 	}
@@ -66,7 +66,7 @@ else
 	private async Task PageChanging(PagerBase.PageChangingEventArgs args)
 	{
 		// "redirect"
-		//UriHelper.NavigateTo($"/{args.NewPageNumber}"); // BUG: does not set the PageIndex property (https://github.com/aspnet/AspNetCore/issues/10686)
+		//NavigationManager.NavigateTo($"/{args.NewPageNumber}"); // BUG: does not set the PageIndex property (https://github.com/aspnet/AspNetCore/issues/10686)
 
 
 		this.PageIndex = args.NewPageNumber - 1;
@@ -78,7 +78,7 @@ else
 		this.questions = await QuestionClientFacade.GetQuestionsAsync(new QuestionListQueryFilter() { PageIndex = this.PageIndex, Answered = true });
 	}
 
-	protected override async Task OnAfterRenderAsync()
+	protected override async Task OnAfterRenderAsync(bool firstRender)
 	{
 		await JsHelpers.SetPageTitleAsync(String.Empty);
 	}

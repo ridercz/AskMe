@@ -1,3 +1,4 @@
+using System.Globalization;
 using Havit.AskMe.Web.Blazor.Client.Services;
 using Microsoft.AspNetCore.Components.Builder;
 using Microsoft.Extensions.DependencyInjection;
@@ -16,7 +17,9 @@ namespace Havit.AskMe.Web.Blazor.Client
 
 		public void Configure(IComponentsApplicationBuilder app)
         {
-            app.AddComponent<App>("app");
+			CultureInfo.CurrentCulture = CultureInfo.GetCultureInfo("cs-cz");
+
+			app.AddComponent<App>("app");
         }
     }
 }

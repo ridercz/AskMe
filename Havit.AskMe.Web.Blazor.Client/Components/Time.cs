@@ -4,17 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.RenderTree;
+using Microsoft.AspNetCore.Components.Rendering;
 
 namespace Havit.AskMe.Web.Blazor.Client.Components
 {
     public class Time : ComponentBase
     {
         [Parameter]
-        private DateTime? Value { get; set; }
+        public DateTime? Value { get; set; }
 
         [Parameter]
-        private RenderFragment ChildContent { get; set; }
+        public RenderFragment ChildContent { get; set; }
 
         protected override void BuildRenderTree(RenderTreeBuilder builder)
         {

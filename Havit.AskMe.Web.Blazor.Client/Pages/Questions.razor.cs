@@ -20,20 +20,20 @@ namespace Havit.AskMe.Web.Blazor.Client.Pages
 		private IQuestionClientFacade QuestionClientFacade { get; set; }
 
 		[Inject]
-		private IUriHelper UriHelper { get; set; }
+		private NavigationManager NavigationManager { get; set; }
 
 		[Inject]
 		private IJsHelpers JsHelpers { get; set; }
 
 		[Parameter]
-		protected int PageIndex { get; set; } = 0;
+		public int PageIndex { get; set; } = 0;
 
 		protected List<ListItemVM> categories;
 		protected CollectionDataResult<List<QuestionListItemVM>> questions;
 		protected QuestionIM newQuestionIM = new QuestionIM();
-		protected ElementRef submitInput;
+		protected ElementReference submitInput;
 
-		protected override async Task OnInitAsync()
+		protected override async Task OnInitializedAsync()
 		{
 			this.categories = await CategoryClientFacade.GetAll();
 			await LoadQuestions();
@@ -56,10 +56,10 @@ namespace Havit.AskMe.Web.Blazor.Client.Pages
 
 			newQuestionIM = new QuestionIM(); // reset form
 			await LoadQuestions();
-			UriHelper.NavigateTo($"/questions#q_{questionId}", forceLoad: true);
+			NavigationManager.NavigateTo($"/questions#q_{questionId}", forceLoad: true);
 		}
 
-		protected override async Task OnAfterRenderAsync()
+		protected override async Task OnAfterRenderAsync(bool firstRender)
 		{
 			await JsHelpers.SetPageTitleAsync("Questions");
 		}

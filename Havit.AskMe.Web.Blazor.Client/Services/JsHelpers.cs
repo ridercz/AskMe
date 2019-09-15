@@ -17,17 +17,17 @@ namespace Havit.AskMe.Web.Blazor.Client.Services
 			this.runtime = runtime;
 		}
 
-		public Task SetElementAttributeAsync(string elementId, string attributeName, string attributeValue)
+		public ValueTask<object> SetElementAttributeAsync(string elementId, string attributeName, string attributeValue)
 		{	
 			return runtime.InvokeAsync<object>("setElementAttributeById", elementId, attributeName, attributeValue);
 		}
 
-		public Task SetElementAttributeAsync(ElementRef elementRef, string attributeName, string attributeValue)
+		public ValueTask<object> SetElementAttributeAsync(ElementReference elementReference, string attributeName, string attributeValue)
 		{
-			return runtime.InvokeAsync<object>("setElementAttribute", elementRef, attributeName, attributeValue);
+			return runtime.InvokeAsync<object>("setElementAttribute", elementReference, attributeName, attributeValue);
 		}
 
-		public Task SetPageTitleAsync(string title)
+		public ValueTask<object> SetPageTitleAsync(string title)
 		{
 			var titleToSet = String.IsNullOrWhiteSpace(title) ? "ASKme" : (title + " | ASKme");
 			return runtime.InvokeAsync<object>("setPageTitle", titleToSet);

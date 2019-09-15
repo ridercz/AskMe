@@ -13,14 +13,14 @@
 @code
 {
 	[Parameter]
-	private RenderFragment HeaderTemplate { get; set; }
+	public RenderFragment HeaderTemplate { get; set; }
 
 	[Parameter]
-	private RenderFragment<TItem> ItemTemplate { get; set; }
+	public RenderFragment<TItem> ItemTemplate { get; set; }
 
 	[Parameter]
-	private RenderFragment FooterTemplate { get; set; }
+	public RenderFragment FooterTemplate { get; set; }
 
 	[Parameter]
-	private IEnumerable<TItem> Items { get; set; }
+	public IEnumerable<TItem> Items { get; set; }
 }

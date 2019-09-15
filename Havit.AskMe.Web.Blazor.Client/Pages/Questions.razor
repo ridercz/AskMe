@@ -8,7 +8,7 @@
 		</header>
 		<div><InputTextArea Id="QuestionText" @bind-Value="@newQuestionIM.QuestionText" placeholder="Zadejte text své otázky..." /></div>
 		<div>
-			<InputSelect Id="Category" @bind-Value="@newQuestionIM.CategoryId">
+			<InputSelect Id="Category" @bind-Value="@newQuestionIM.CategoryId" T="typeof(string)">
 				@if (categories == null)
 				{
 					<option>Loading...</option>
