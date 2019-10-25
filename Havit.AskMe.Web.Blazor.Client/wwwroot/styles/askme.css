@@ -88,12 +88,14 @@ section.form {
     section.form header h2 {
       margin: 0;
       padding: 0; }
-  section.form .validation-summary-valid {
-    display: none; }
-  section.form .validation-summary-errors {
+  section.form ul.validation-errors {
     clear: both;
     border: 1px solid #333;
-    background-color: rgba(235, 107, 2, 0.25); }
+    background-color: rgba(235, 107, 2, 0.25);
+    margin: 0;
+    padding: 1em; }
+    section.form ul.validation-errors li {
+      margin-left: 1.5em; }
   section.form footer {
     clear: both;
     border: 1px solid #333;

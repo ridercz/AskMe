@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Altairis.AskMe.Data;
 using Havit.AskMe.Web.Blazor.Shared;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
@@ -12,7 +14,9 @@ using Remotion.Linq.Parsing;
 
 namespace Havit.AskMe.Web.Blazor.Server.Controllers
 {
-    public class QuestionsController : Controller
+	// if needed:
+	//[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+	public class QuestionsController : Controller
     {
         private readonly AskDbContext askDbContext;
         private readonly AppConfiguration appConfiguration;

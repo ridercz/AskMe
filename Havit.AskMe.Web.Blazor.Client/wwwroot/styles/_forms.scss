@@ -17,14 +17,16 @@ section.form {
 		}
 	}
 
-	.validation-summary-valid {
-		display: none;
-	}
-
-	.validation-summary-errors {
+	ul.validation-errors {
 		clear: both;
 		border: 1px solid $black;
 		background-color: rgba($accent1, .25);
+		margin: 0;
+		padding: $padding;
+
+		li {
+			margin-left: $padding*1.5;
+		}
 	}
 
 	footer {

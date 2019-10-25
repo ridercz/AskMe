@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Components;
 
 namespace Havit.AskMe.Web.Blazor.Client.Pages
 {
-	public class QuestionsBase : ComponentBase
+	public class QuestionsBase : PageBase
 	{
 		[Inject]
 		private ICategoryClientFacade CategoryClientFacade { get; set; }
@@ -21,9 +21,6 @@ namespace Havit.AskMe.Web.Blazor.Client.Pages
 
 		[Inject]
 		private NavigationManager NavigationManager { get; set; }
-
-		[Inject]
-		private IJsHelpers JsHelpers { get; set; }
 
 		[Parameter]
 		public int PageIndex { get; set; } = 0;
@@ -57,11 +54,6 @@ namespace Havit.AskMe.Web.Blazor.Client.Pages
 			newQuestionIM = new QuestionIM(); // reset form
 			await LoadQuestions();
 			NavigationManager.NavigateTo($"/questions#q_{questionId}", forceLoad: true);
-		}
-
-		protected override async Task OnAfterRenderAsync(bool firstRender)
-		{
-			await JsHelpers.SetPageTitleAsync("Questions");
 		}
 	}
 }

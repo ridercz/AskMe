@@ -1,5 +1,7 @@
 ﻿@page "/questions"
 @inherits QuestionsBase
+@{ Title = "Nezodpovězené otázky"; }
+
 <section class="form" id="ask">@* TODO: for-login-status="false" *@
 	<EditForm Model="@newQuestionIM" OnValidSubmit="@HandleNewQuestionValidSubmit">
 		<DataAnnotationsValidator />
