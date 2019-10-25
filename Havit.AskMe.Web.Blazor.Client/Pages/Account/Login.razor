@@ -11,13 +11,13 @@
 		<ServerSideValidator @ref="ServerSideValidator" />
 		<div>
 			<InputText @bind-Value="InputModel.UserName" type="text" placeholder="Uživatelské jméno" class="half-width" />
-			<InputText @bind-Value="InputModel.Password" type="password" placeholder="Heslo" class="half-width" /> @* TODO Password? *@
+			<InputText @bind-Value="InputModel.Password" type="password" placeholder="Heslo" class="half-width" />
 		</div>
 		<div class="field">
 			<InputCheckbox @bind-Value="InputModel.RememberMe" id="rememberme" />
 			<label for="rememberme">pamatuj si mne na tomto počítači</label>
 		</div>
-		<ValidationSummary class="validation-summary-errors" />
+		<ValidationSummary />
 		<footer>
 			<input type="submit" value="Odeslat" />
 		</footer>

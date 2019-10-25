@@ -13,6 +13,7 @@ using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json.Serialization;
 using System;
 using System.Linq;
+using System.Security.Claims;
 using System.Text;
 
 namespace Havit.AskMe.Web.Blazor.Server
@@ -67,6 +68,7 @@ namespace Havit.AskMe.Web.Blazor.Server
 				options.Password.RequireLowercase = false;
 				options.Password.RequireNonAlphanumeric = false;
 				options.Password.RequireUppercase = false;
+				options.ClaimsIdentity.UserIdClaimType = ClaimTypes.Name;
 			})
 				.AddEntityFrameworkStores<AskDbContext>()
 				.AddDefaultTokenProviders();

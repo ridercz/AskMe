@@ -14,8 +14,6 @@ using Remotion.Linq.Parsing;
 
 namespace Havit.AskMe.Web.Blazor.Server.Controllers
 {
-	// if needed:
-	//[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
 	public class QuestionsController : Controller
     {
         private readonly AskDbContext askDbContext;

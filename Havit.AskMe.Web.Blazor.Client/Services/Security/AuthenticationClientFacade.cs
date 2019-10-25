@@ -30,6 +30,7 @@ namespace Havit.AskMe.Web.Blazor.Client.Services.Security
 			{
 				var result = await httpClient.PostJsonAsync<LoginVM>("api/accounts/login", inputModel);
 
+				// TODO RememberMe!
 				if (result.Successful)
 				{
 					await apiAuthenticationStateProvider.SetAuthenticatedUser(result.Token);
