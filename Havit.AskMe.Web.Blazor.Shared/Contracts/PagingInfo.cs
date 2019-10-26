@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Havit.AskMe.Web.Blazor.Shared
+namespace Havit.AskMe.Web.Blazor.Shared.Contracts
 {
     public class PagingInfo
     {

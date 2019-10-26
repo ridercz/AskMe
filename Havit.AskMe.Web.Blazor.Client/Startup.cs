@@ -2,6 +2,7 @@ using System;
 using System.Globalization;
 using System.Net.Http;
 using Blazor.Extensions.Storage;
+using Havit.AskMe.Web.Blazor.Client.Infrastructure;
 using Havit.AskMe.Web.Blazor.Client.Services;
 using Havit.AskMe.Web.Blazor.Client.Services.Security;
 using Microsoft.AspNetCore.Blazor.Http;
@@ -28,7 +29,7 @@ namespace Havit.AskMe.Web.Blazor.Client
 			{
 				var navigationManager = serviceProvider.GetService<NavigationManager>();
 				return new HttpClient(
-					new AuthenticationDelegatingHandler(
+					new ApiHttpMessageHandler(
 						new WebAssemblyHttpMessageHandler(),
 						navigationManager,
 						serviceProvider.GetRequiredService<ApiAuthenticationStateProvider>()

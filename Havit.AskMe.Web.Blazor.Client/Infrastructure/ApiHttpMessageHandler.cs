@@ -9,14 +9,17 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components;
 
-namespace Havit.AskMe.Web.Blazor.Client.Services.Security
+namespace Havit.AskMe.Web.Blazor.Client.Infrastructure
 {
-	public class AuthenticationDelegatingHandler : DelegatingHandler
+	public class ApiHttpMessageHandler : DelegatingHandler
 	{
 		private readonly NavigationManager navigationManager;
 		private readonly IApiAuthenticationStateProvider apiAuthenticationStateProvider;
 
-		public AuthenticationDelegatingHandler(HttpMessageHandler innerHandler, NavigationManager navigationManager, IApiAuthenticationStateProvider apiAuthenticationStateProvider)
+		public ApiHttpMessageHandler(
+			HttpMessageHandler innerHandler,
+			NavigationManager navigationManager,
+			IApiAuthenticationStateProvider apiAuthenticationStateProvider)
 			: base(innerHandler)
 		{
 			this.navigationManager = navigationManager;
@@ -27,16 +30,21 @@ namespace Havit.AskMe.Web.Blazor.Client.Services.Security
 		{
 			var token = await apiAuthenticationStateProvider.GetToken();
 
-			if (!String.IsNullOrWhiteSpace(token))
+			if (!string.IsNullOrWhiteSpace(token))
 			{
 				request.Headers.Authorization = new AuthenticationHeaderValue("bearer", token);
 			}
 
 			var response = await base.SendAsync(request, cancellationToken);
 
-			if (response.StatusCode == HttpStatusCode.Unauthorized)
+			switch (response.StatusCode)
 			{
-				navigationManager.NavigateTo("/account/login");
+				case HttpStatusCode.Unauthorized:
+					navigationManager.NavigateTo("/account/login");
+					break;
+				case HttpStatusCode.NotFound:
+					navigationManager.NavigateTo("/errors/Error404");
+					break;
 			}
 
 			return response;

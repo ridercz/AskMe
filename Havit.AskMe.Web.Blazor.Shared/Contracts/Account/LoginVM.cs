@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Havit.AskMe.Web.Blazor.Shared
+namespace Havit.AskMe.Web.Blazor.Shared.Contracts.Account
 {
     public class LoginVM
     {

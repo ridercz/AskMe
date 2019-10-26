@@ -5,6 +5,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using Havit.AskMe.Web.Blazor.Shared;
+using Havit.AskMe.Web.Blazor.Shared.Contracts;
 using Microsoft.AspNetCore.Components;
 
 namespace Havit.AskMe.Web.Blazor.Client.Services

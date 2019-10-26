@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Havit.AskMe.Web.Blazor.Client.Services;
+using Havit.AskMe.Web.Blazor.Client.Infrastructure;
 using Microsoft.AspNetCore.Components;
 
 namespace Havit.AskMe.Web.Blazor.Client.Pages
@@ -11,7 +11,7 @@ namespace Havit.AskMe.Web.Blazor.Client.Pages
     public class PageBase : ComponentBase
     {
 		[Inject]
-		private IJsHelpers JsHelpers { get; set; }
+		protected IJsHelpers JsHelpers { get; set; }
 
 		protected string Title { get; set; }
 

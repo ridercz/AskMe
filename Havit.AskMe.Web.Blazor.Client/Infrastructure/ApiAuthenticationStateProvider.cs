@@ -9,13 +9,12 @@ using System.Threading.Tasks;
 using Blazor.Extensions.Storage;
 using Microsoft.AspNetCore.Components.Authorization;
 
-namespace Havit.AskMe.Web.Blazor.Client.Services.Security
+namespace Havit.AskMe.Web.Blazor.Client.Infrastructure
 {
 	public class ApiAuthenticationStateProvider : AuthenticationStateProvider, IApiAuthenticationStateProvider
 	{
 		private const string StorageKey = "AuthenticationToken";
 
-		private readonly HttpClient httpClient;
 		private readonly LocalStorage localStorage;
 
 		private string tokenCache;
@@ -40,7 +39,7 @@ namespace Havit.AskMe.Web.Blazor.Client.Services.Security
 
 		private ClaimsPrincipal GetClaimsPrincipalFromToken(string token)
 		{
-			if (String.IsNullOrWhiteSpace(token))
+			if (string.IsNullOrWhiteSpace(token))
 			{
 				return new ClaimsPrincipal(new ClaimsIdentity());
 			}
@@ -74,7 +73,7 @@ namespace Havit.AskMe.Web.Blazor.Client.Services.Security
 			var jsonBytes = LoadBase64WithoutPadding(payload);
 			var keyValuePairs = JsonSerializer.Deserialize<Dictionary<string, object>>(jsonBytes);
 
-			keyValuePairs.TryGetValue(ClaimTypes.Role, out object roles);
+			keyValuePairs.TryGetValue(ClaimTypes.Role, out var roles);
 
 			if (roles != null)
 			{

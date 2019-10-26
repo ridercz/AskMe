@@ -1,12 +1,13 @@
 ﻿@page "/"
 @page "/{PageIndex:int}"
+@using Havit.AskMe.Web.Blazor.Shared.Contracts
+@using Havit.AskMe.Web.Blazor.Shared.Contracts.Questions
 @inject Havit.AskMe.Web.Blazor.Client.Services.IQuestionClientFacade QuestionClientFacade
-@inject Havit.AskMe.Web.Blazor.Client.Services.IJsHelpers JsHelpers
 @inject NavigationManager NavigationManager
 
 @if (questions == null)
 {
-	<p><em>Loading...</em></p>
+	<p><em>Načítám...</em></p>
 }
 else
 {
@@ -42,9 +43,11 @@ else
 					</span>
 				</header>
 				<PlainText Text="@item.AnswerText" HtmlEncode="true" />
-				@*TODO <footer for-login-status="true">
-						<a asp-page="Admin/Index" asp-route-questionId="@item.QuestionId" class="button"><i class="fas fa-commenting"></i> Upravit</a>
-					</footer>*@
+				<AuthorizeView>
+					<footer>
+						<a href="@("Admin/" + item.QuestionId)" class="button"><i class="fas fa-commenting"></i> Upravit</a>
+					</footer>
+				</AuthorizeView>
 			</section>
 		</article>
 	}
@@ -76,10 +79,5 @@ else
 	private async Task LoadQuestions()
 	{
 		this.questions = await QuestionClientFacade.GetQuestionsAsync(new QuestionListQueryFilter() { PageIndex = this.PageIndex, Answered = true });
-	}
-
-	protected override async Task OnAfterRenderAsync(bool firstRender)
-	{
-		await JsHelpers.SetPageTitleAsync(String.Empty);
 	}
 }

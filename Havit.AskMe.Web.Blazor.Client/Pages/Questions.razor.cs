@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using Havit.AskMe.Web.Blazor.Client.Components;
 using Havit.AskMe.Web.Blazor.Client.Services;
 using Havit.AskMe.Web.Blazor.Shared;
+using Havit.AskMe.Web.Blazor.Shared.Contracts;
+using Havit.AskMe.Web.Blazor.Shared.Contracts.Questions;
 using Microsoft.AspNetCore.Components;
 
 namespace Havit.AskMe.Web.Blazor.Client.Pages
@@ -27,7 +29,7 @@ namespace Havit.AskMe.Web.Blazor.Client.Pages
 
 		protected List<ListItemVM> categories;
 		protected CollectionDataResult<List<QuestionListItemVM>> questions;
-		protected QuestionIM newQuestionIM = new QuestionIM();
+		protected QuestionCreateIM newQuestionIM = new QuestionCreateIM();
 		protected ElementReference submitInput;
 
 		protected override async Task OnInitializedAsync()
@@ -51,7 +53,7 @@ namespace Havit.AskMe.Web.Blazor.Client.Pages
 		{
 			var questionId = await QuestionClientFacade.CreateQuestionAsync(newQuestionIM);
 
-			newQuestionIM = new QuestionIM(); // reset form
+			newQuestionIM = new QuestionCreateIM(); // reset form
 			await LoadQuestions();
 			NavigationManager.NavigateTo($"/questions#q_{questionId}", forceLoad: true);
 		}

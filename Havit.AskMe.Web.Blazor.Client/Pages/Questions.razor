@@ -2,41 +2,42 @@
 @inherits QuestionsBase
 @{ Title = "Nezodpovězené otázky"; }
 
-<section class="form" id="ask">@* TODO: for-login-status="false" *@
-	<EditForm Model="@newQuestionIM" OnValidSubmit="@HandleNewQuestionValidSubmit">
-		<DataAnnotationsValidator />
-		<header>
-			<h2>Nová otázka</h2>
-		</header>
-		<div><InputTextArea Id="QuestionText" @bind-Value="@newQuestionIM.QuestionText" placeholder="Zadejte text své otázky..." /></div>
-		<div>
-			<InputSelect Id="Category" @bind-Value="@newQuestionIM.CategoryId" T="typeof(string)">
-				@if (categories == null)
+<section class="form" id="ask">
+	@* TODO: for-login-status="false" *@
+<EditForm Model="@newQuestionIM" OnValidSubmit="@HandleNewQuestionValidSubmit">
+	<DataAnnotationsValidator />
+	<header>
+		<h2>Nová otázka</h2>
+	</header>
+	<div><InputTextArea Id="QuestionText" @bind-Value="@newQuestionIM.QuestionText" placeholder="Zadejte text své otázky..." /></div>
+	<div>
+		<InputSelect Id="Category" @bind-Value="@newQuestionIM.CategoryId" T="typeof(string)">
+			@if (categories == null)
+			{
+				<option>Načítám...</option>
+			}
+			else
+			{
+				@foreach (var category in categories)
 				{
-					<option>Loading...</option>
+					<option value="@category.Id">@category.Name</option>
 				}
-				else
-				{
-					@foreach (var category in categories)
-					{
-						<option value="@category.Id">@category.Name</option>
-					}
-				}
-			</InputSelect>
-		</div>
-		<div>
-			<InputText Id="DisplayName" @bind-Value="@newQuestionIM.DisplayName" class="text half-width" placeholder="Jméno (nepovinné)" />
-			<InputText Id="EmailAddress" @bind-Value="@newQuestionIM.EmailAddress" class="text half-width" placeholder="E-mail (nepovinné)" />
-		</div>
-		<ValidationSummary />
-		<footer>
-			<input type="submit" value="Odeslat" title="Vložit novou otázku" />
-		</footer>
-	</EditForm>
+			}
+		</InputSelect>
+	</div>
+	<div>
+		<InputText Id="DisplayName" @bind-Value="@newQuestionIM.DisplayName" class="text half-width" placeholder="Jméno (nepovinné)" />
+		<InputText Id="EmailAddress" @bind-Value="@newQuestionIM.EmailAddress" class="text half-width" placeholder="E-mail (nepovinné)" />
+	</div>
+	<ValidationSummary />
+	<footer>
+		<input type="submit" value="Odeslat" title="Vložit novou otázku" />
+	</footer>
+</EditForm>
 </section>
 @if (questions == null)
 {
-	<p><em>Loading...</em></p>
+	<p><em>Načítám...</em></p>
 }
 else if (questions.TotalItems > 0)
 {
@@ -61,9 +62,11 @@ else if (questions.TotalItems > 0)
 					</span>
 				</header>
 				<PlainText Text="@item.QuestionText" HtmlEncode="true" />
-				@*<footer for-login-status="true">
-				<a asp-page="Admin/Index" asp-route-questionId="@item.Id" class="button"><i class="fas fa-commenting"></i> Odpovědět</a>
-			</footer>*@
+				<AuthorizeView>
+					<footer>
+						<a href="@("Admin/" + item.QuestionId)" class="button"><i class="fas fa-commenting"></i> Upravit</a>
+					</footer>
+				</AuthorizeView>
 			</article>
 		</ItemTemplate>
 		<FooterTemplate>

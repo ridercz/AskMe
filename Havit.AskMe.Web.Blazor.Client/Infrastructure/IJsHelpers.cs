@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components;
 
-namespace Havit.AskMe.Web.Blazor.Client.Services
+namespace Havit.AskMe.Web.Blazor.Client.Infrastructure
 {
 	public interface IJsHelpers
 	{

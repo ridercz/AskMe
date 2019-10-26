@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Havit.AskMe.Web.Blazor.Client.Services;
 using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 
-namespace Havit.AskMe.Web.Blazor.Client.Services
+namespace Havit.AskMe.Web.Blazor.Client.Infrastructure
 {
 	public class JsHelpers : IJsHelpers
 	{
@@ -18,7 +19,7 @@ namespace Havit.AskMe.Web.Blazor.Client.Services
 		}
 
 		public ValueTask<object> SetElementAttributeAsync(string elementId, string attributeName, string attributeValue)
-		{	
+		{
 			return runtime.InvokeAsync<object>("setElementAttributeById", elementId, attributeName, attributeValue);
 		}
 
@@ -29,7 +30,7 @@ namespace Havit.AskMe.Web.Blazor.Client.Services
 
 		public ValueTask<object> SetPageTitleAsync(string title)
 		{
-			var titleToSet = String.IsNullOrWhiteSpace(title) ? "ASKme" : (title + " | ASKme");
+			var titleToSet = string.IsNullOrWhiteSpace(title) ? "ASKme" : title + " | ASKme";
 			return runtime.InvokeAsync<object>("setPageTitle", titleToSet);
 		}
 	}

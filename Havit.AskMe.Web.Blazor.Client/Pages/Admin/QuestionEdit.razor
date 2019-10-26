@@ -1,0 +1,46 @@
+﻿@page "/admin/{questionId:int}"
+@inherits QuestionEditBase
+@{ this.Title = "Editace otázky"; }
+
+@if (this.Model == null)
+{
+	<p><em>Načítám...</em></p>
+}
+else
+{
+	<section class="form">
+		<EditForm Model="@Model" OnValidSubmit="@HandleValidSubmit">
+			<DataAnnotationsValidator />
+			<ServerSideValidator @ref="ServerSideValidator" />
+			<header>
+				<h2>Editace otázky</h2>
+			</header>
+			<div><InputTextArea @bind-Value="Model.QuestionText" placeholder="Zadejte text otázky..."></InputTextArea></div>
+			<div>
+				<InputSelect @bind-Value="Model.CategoryId" TValue="int">
+					@if (Categories == null)
+					{
+						<option>Načítám...</option>
+					}
+					else
+					{
+						@foreach (var category in Categories)
+						{
+							<option value="@category.Id">@category.Name</option>
+						}
+					}
+
+				</InputSelect>
+			</div>
+			<div>
+				<InputText @bind-Value="Model.DisplayName" type="text" placeholder="Jméno (nepovinné)" class="half-width" />
+				<InputText @bind-Value="Model.EmailAddress" type="text" placeholder="E-mail (nepovinné)" class="half-width" />
+			</div>
+			<div><InputTextArea @bind-Value="Model.AnswerText" placeholder="Zadejte text odpovědi..." style="height:300px"></InputTextArea></div>
+			<ValidationSummary />
+			<footer>
+				<input type="submit" value="Odeslat" />
+			</footer>
+		</EditForm>
+	</section>
+}

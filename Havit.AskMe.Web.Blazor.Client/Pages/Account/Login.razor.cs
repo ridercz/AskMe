@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Havit.AskMe.Web.Blazor.Client.Components;
 using Havit.AskMe.Web.Blazor.Client.Services.Security;
 using Havit.AskMe.Web.Blazor.Shared;
+using Havit.AskMe.Web.Blazor.Shared.Contracts.Account;
 using Microsoft.AspNetCore.Components;
 
 namespace Havit.AskMe.Web.Blazor.Client.Pages.Account

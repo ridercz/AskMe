@@ -1,5 +1,6 @@
 ﻿@page "/contact"
-@inject  Havit.AskMe.Web.Blazor.Client.Services.IJsHelpers JsHelpers
+@inherits PageBase
+@{ this.Title = "Kontakt"; }
 
 <h2><i class="fas fa-envelope"></i> Kontakt</h2>
 <p>Toto je ukázová aplikace pro technologii Blazor. Využívá zejména:</p>
@@ -28,11 +29,3 @@
 
 <h3><i class="fas fa-cog"></i> Projekt</h3>
 <p>Tento projekt je open source. Další informace najdete na <a href="https://github.com/ridercz/AskMe">GitHubu</a>.</p>
-
-@code
-{
-	protected override async Task OnAfterRenderAsync(bool firstRender)
-	{
-		await JsHelpers.SetPageTitleAsync("Kontakt");
-	}
-}

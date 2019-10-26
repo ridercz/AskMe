@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Havit.AskMe.Web.Blazor.Shared;
+using Havit.AskMe.Web.Blazor.Shared.Contracts;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 

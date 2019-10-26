@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Altairis.AskMe.Data;
 using Havit.AskMe.Web.Blazor.Shared;
+using Havit.AskMe.Web.Blazor.Shared.Contracts;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;

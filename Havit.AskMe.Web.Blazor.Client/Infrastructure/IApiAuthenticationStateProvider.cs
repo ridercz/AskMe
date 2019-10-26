@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components.Authorization;
 
-namespace Havit.AskMe.Web.Blazor.Client.Services.Security
+namespace Havit.AskMe.Web.Blazor.Client.Infrastructure
 {
 	public interface IApiAuthenticationStateProvider
 	{

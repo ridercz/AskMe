@@ -155,6 +155,8 @@ a.button {
   display: inline-block;
   background-color: #018D8D;
   color: #eee; }
+  a.button:link {
+    color: #eee; }
   a.button:visited {
     background-color: #015a5a;
     color: #eee; }

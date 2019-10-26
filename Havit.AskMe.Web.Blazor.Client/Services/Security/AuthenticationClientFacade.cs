@@ -8,7 +8,9 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using Blazor.Extensions.Storage;
+using Havit.AskMe.Web.Blazor.Client.Infrastructure;
 using Havit.AskMe.Web.Blazor.Shared;
+using Havit.AskMe.Web.Blazor.Shared.Contracts.Account;
 using Microsoft.AspNetCore.Components;
 
 namespace Havit.AskMe.Web.Blazor.Client.Services.Security
