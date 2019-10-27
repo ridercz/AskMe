@@ -20,14 +20,14 @@ namespace Havit.AskMe.Web.Blazor.Client.Services
 			this.httpClient = httpClient;
 		}
 
-		public Task<CollectionDataResult<List<QuestionListItemVM>>> GetQuestionsAsync(QuestionListQueryFilter filter)
+		public Task<CollectionDataResult<List<QuestionVM>>> GetQuestionsAsync(QuestionListQueryFilter filter)
 		{
-			return httpClient.GetJsonAsync<CollectionDataResult<List<QuestionListItemVM>>>($"api/questions?pageIndex={filter.PageIndex}&answered={filter.Answered}");
+			return httpClient.GetJsonAsync<CollectionDataResult<List<QuestionVM>>>($"api/questions?pageIndex={filter.PageIndex}&answered={filter.Answered}");
 		}
 
-		public Task<QuestionDto> GetQuestionAsync(int questionId)
+		public Task<QuestionVM> GetQuestionAsync(int questionId)
 		{
-			return httpClient.GetJsonAsync<QuestionDto>($"api/questions/{questionId}");
+			return httpClient.GetJsonAsync<QuestionVM>($"api/questions/{questionId}");
 		}
 
 		public Task<int> CreateQuestionAsync(QuestionCreateIM inputModel)

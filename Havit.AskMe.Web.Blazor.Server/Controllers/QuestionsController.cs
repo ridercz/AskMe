@@ -29,7 +29,7 @@ namespace Havit.AskMe.Web.Blazor.Server.Controllers
 		}
 
 		[HttpGet("api/questions")]
-		public async Task<CollectionDataResult<List<QuestionListItemVM>>> GetQuestions([FromQuery]QuestionListQueryFilter filter)
+		public async Task<CollectionDataResult<List<QuestionVM>>> GetQuestions([FromQuery]QuestionListQueryFilter filter)
 		{
 			filter.PageSize = appConfiguration.PageSize; // forced value from configuration ;-)
 
@@ -46,41 +46,48 @@ namespace Havit.AskMe.Web.Blazor.Server.Controllers
 					.OrderByDescending(q => q.DateAnswered).ThenByDescending(q => q.DateCreated)
 					.Skip(filter.PageIndex * filter.PageSize)
 					.Take(filter.PageSize)
-					.Select(q => new QuestionListItemVM()
+					.Select(q => new QuestionVM() // TODO Mapper
 					{
 						QuestionId = q.Id,
 						DisplayName = q.DisplayName,
+						EmailAddress = q.EmailAddress,
 						QuestionText = q.QuestionText,
+						CategoryId = q.CategoryId.ToString(),
 						CategoryName = q.Category.Name,
 						DateCreated = q.DateCreated,
 						DateAnswered = q.DateAnswered,
-						AnswerText = q.AnswerText
+						AnswerText = q.AnswerText,
 					})
 					.ToListAsync();
 
 
-			return new CollectionDataResult<List<QuestionListItemVM>>(data, filter, count);
+			return new CollectionDataResult<List<QuestionVM>>(data, filter, count);
 		}
 
 		[HttpGet("api/questions/{questionId:int}")]
-		public async Task<ActionResult<QuestionDto>> GetQuestion(int questionId)
+		public async Task<ActionResult<QuestionVM>> GetQuestion(int questionId)
 		{
 			// Get question
-			var q = await askDbContext.Questions.FindAsync(questionId);
-			if (q == null)
+			var question = await askDbContext.Questions.Where(q => q.Id == questionId).Select(q => new QuestionVM()
+			{
+				QuestionId = q.Id,
+				DisplayName = q.DisplayName,
+				EmailAddress = q.EmailAddress,
+				QuestionText = q.QuestionText,
+				CategoryId = q.CategoryId.ToString(),
+				CategoryName = q.Category.Name,
+				DateCreated = q.DateCreated,
+				DateAnswered = q.DateAnswered,
+				AnswerText = q.AnswerText,
+			}).FirstOrDefaultAsync();
+
+			if (question == null)
 			{
 				return NotFound();
 			}
 
 			// Prepare model
-			return Ok(new QuestionDto()
-			{
-				AnswerText = q.AnswerText,
-				CategoryId = q.CategoryId,
-				DisplayName = q.DisplayName,
-				EmailAddress = q.EmailAddress,
-				QuestionText = q.QuestionText
-			});
+			return Ok(question);
 		}
 
 		[HttpPost("api/questions")]
@@ -124,7 +131,7 @@ namespace Havit.AskMe.Web.Blazor.Server.Controllers
 			}
 
 			// Update question
-			question.CategoryId = inputModel.CategoryId;
+			question.CategoryId = Int32.Parse(inputModel.CategoryId);
 			question.DisplayName = inputModel.DisplayName;
 			question.EmailAddress = inputModel.EmailAddress;
 			question.QuestionText = inputModel.QuestionText;

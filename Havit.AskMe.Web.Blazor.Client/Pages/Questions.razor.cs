@@ -28,7 +28,7 @@ namespace Havit.AskMe.Web.Blazor.Client.Pages
 		public int PageIndex { get; set; } = 0;
 
 		protected List<ListItemVM> categories;
-		protected CollectionDataResult<List<QuestionListItemVM>> questions;
+		protected CollectionDataResult<List<QuestionVM>> questions;
 		protected QuestionCreateIM newQuestionIM = new QuestionCreateIM();
 		protected ElementReference submitInput;
 

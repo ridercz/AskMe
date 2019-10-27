@@ -1,15 +1,12 @@
 ﻿using System;
 
-namespace Havit.AskMe.Web.Blazor.Shared
+namespace Havit.AskMe.Web.Blazor.Shared.Contracts.Questions
 {
-    public class QuestionListItemVM
+    public class QuestionVM : QuestionDto
     {
         public int QuestionId { get; set; }
         public string CategoryName { get; set; }
         public DateTime DateCreated { get; set; }
-        public string DisplayName { get; set; }
-        public string QuestionText { get; set; }
         public DateTime? DateAnswered { get; set; }
-        public string AnswerText { get; set; }
     }
 }

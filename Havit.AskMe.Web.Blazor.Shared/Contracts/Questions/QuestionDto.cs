@@ -24,6 +24,6 @@ namespace Havit.AskMe.Web.Blazor.Shared.Contracts.Questions
 		[DataType(DataType.EmailAddress, ErrorMessage = "Nesprávný formát e-mailové adresy")]
 		public string EmailAddress { get; set; }
 
-		public int CategoryId { get; set; }
+		public string CategoryId { get; set; }
 	}
 }

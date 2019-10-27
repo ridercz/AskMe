@@ -1,5 +1,6 @@
 ﻿@page "/"
 @page "/{PageIndex:int}"
+@using Havit.AskMe.Web.Blazor.Client.Components.Questions
 @using Havit.AskMe.Web.Blazor.Shared.Contracts
 @using Havit.AskMe.Web.Blazor.Shared.Contracts.Questions
 @inject Havit.AskMe.Web.Blazor.Client.Services.IQuestionClientFacade QuestionClientFacade
@@ -11,46 +12,11 @@
 }
 else
 {
-	@foreach (var item in questions.Data)
-	{
-		var id = $"q_{item.QuestionId}";
-		<article class="answer" id="@id" @key="@item.QuestionId">
-			<section class="question">
-				<header>
-					<span class="fa-stack fa-lg">
-						<i class="fas fa-square fa-stack-2x"></i>
-						<i class="fas fa-question fa-stack-1x fa-inverse"></i>
-					</span>
-					<span class="info">
-						<i class="fas fa-tag"></i> @item.CategoryName
-						<i class="fas fa-calendar"></i>  <Time Value="@item.DateCreated" />
-						@if (!string.IsNullOrWhiteSpace(item.DisplayName))
-						{
-							<span><i class="fas fa-user"></i> @item.DisplayName</span>
-						}
-					</span>
-				</header>
-				<PlainText Text="@item.QuestionText" HtmlEncode="true" />
-			</section>
-			<section class="answer">
-				<header>
-					<span class="fa-stack fa-lg">
-						<i class="fas fa-square fa-stack-2x"></i>
-						<i class="fas fa-comment fa-stack-1x fa-inverse"></i>
-					</span>
-					<span class="info">
-						<i class="fas fa-calendar"></i> <Time Value="@item.DateAnswered" />
-					</span>
-				</header>
-				<PlainText Text="@item.AnswerText" HtmlEncode="true" />
-				<AuthorizeView>
-					<footer>
-						<a href="@("Admin/" + item.QuestionId)" class="button"><i class="fas fa-commenting"></i> Upravit</a>
-					</footer>
-				</AuthorizeView>
-			</section>
-		</article>
-	}
+	<Repeater Items="questions.Data">
+		<ItemTemplate Context="question">
+			<QuestionDetail Value="question" />
+		</ItemTemplate>
+	</Repeater>
 	<Pager Data="@questions" OnPageChanging="@PageChanging" />
 }
 
@@ -59,7 +25,7 @@ else
 	[Parameter]
 	public int PageIndex { get; set; } = 0;
 
-	private CollectionDataResult<List<QuestionListItemVM>> questions;
+	private CollectionDataResult<List<QuestionVM>> questions;
 
 	protected override async Task OnInitializedAsync()
 	{

@@ -17,7 +17,7 @@ else
 			</header>
 			<div><InputTextArea @bind-Value="Model.QuestionText" placeholder="Zadejte text otázky..."></InputTextArea></div>
 			<div>
-				<InputSelect @bind-Value="Model.CategoryId" TValue="int">
+				<InputSelect @bind-Value="Model.CategoryId">
 					@if (Categories == null)
 					{
 						<option>Načítám...</option>
