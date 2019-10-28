@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Blazor.Hosting;
+﻿using System.Globalization;
+using Microsoft.AspNetCore.Blazor.Hosting;
 
 namespace Havit.AskMe.Web.Blazor.Client
 {
@@ -6,7 +7,9 @@ namespace Havit.AskMe.Web.Blazor.Client
     {
         public static void Main(string[] args)
         {
-            CreateHostBuilder(args).Build().Run();
+			//CultureInfo.CurrentCulture = CultureInfo.GetCultureInfo("cs-cz");
+
+			CreateHostBuilder(args).Build().Run();
         }
 
         public static IWebAssemblyHostBuilder CreateHostBuilder(string[] args) =>

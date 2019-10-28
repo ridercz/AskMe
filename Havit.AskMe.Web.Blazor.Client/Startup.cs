@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components.Builder;
 using Microsoft.Extensions.DependencyInjection;
+using Toolbelt.Blazor.Extensions.DependencyInjection;
 
 namespace Havit.AskMe.Web.Blazor.Client
 {
@@ -51,7 +52,7 @@ namespace Havit.AskMe.Web.Blazor.Client
 
 		public void Configure(IComponentsApplicationBuilder app)
 		{
-			CultureInfo.CurrentCulture = CultureInfo.GetCultureInfo("cs-cz");
+			app.UseLocalTimeZone(); // Blazor (mono) fallbacks to UTC. Local time support not implementated yet.
 
 			app.AddComponent<App>("app");
 		}
