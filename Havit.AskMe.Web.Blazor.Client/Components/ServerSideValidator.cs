@@ -16,7 +16,6 @@ namespace Havit.AskMe.Web.Blazor.Client.Components
 		[CascadingParameter]
 		public EditContext CurrentEditContext { get; set; }
 
-		/// <inheritdoc />
 		protected override void OnInitialized()
 		{
 			base.OnInitialized();
