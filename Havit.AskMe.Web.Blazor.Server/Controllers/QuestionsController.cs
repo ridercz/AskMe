@@ -46,7 +46,7 @@ namespace Havit.AskMe.Web.Blazor.Server.Controllers
 					.OrderByDescending(q => q.DateAnswered).ThenByDescending(q => q.DateCreated)
 					.Skip(filter.PageIndex * filter.PageSize)
 					.Take(filter.PageSize)
-					.Select(q => new QuestionVM() // TODO Mapper
+					.Select(q => new QuestionVM()
 					{
 						QuestionId = q.Id,
 						DisplayName = q.DisplayName,

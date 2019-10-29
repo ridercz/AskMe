@@ -47,7 +47,7 @@ namespace Havit.AskMe.Web.Blazor.Server.Controllers
 
 			if (!result.Succeeded)
 			{
-				return Ok(new LoginVM { Successful = false, Error = "Přihlášení se nezdařilo." }); // TODO return as BadRequest()?
+				return Ok(new LoginVM { Successful = false, Error = "Přihlášení se nezdařilo." }); // BadRequest()?
 			}
 
 			var claims = new[]

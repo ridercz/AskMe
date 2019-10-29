@@ -21,7 +21,7 @@ namespace Havit.AskMe.Web.Blazor.Client.Services
 
 		public Task<List<ListItemVM>> GetAll()
 		{
-			// TODO caching
+			// consider client-side caching
 			return httpClient.GetJsonAsync<List<ListItemVM>>($"api/categories");
 		}
 	}

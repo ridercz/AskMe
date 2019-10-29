@@ -16,13 +16,15 @@ namespace Havit.AskMe.Web.Blazor.Client.Infrastructure
 		private const string StorageKey = "AuthenticationToken";
 
 		private readonly LocalStorage localStorage;
-
+		private readonly SessionStorage sessionStorage;
 		private string tokenCache;
 
 		public ApiAuthenticationStateProvider(
-			LocalStorage localStorage)
+			LocalStorage localStorage,
+			SessionStorage sessionStorage)
 		{
 			this.localStorage = localStorage;
+			this.sessionStorage = sessionStorage;
 		}
 
 		public override async Task<AuthenticationState> GetAuthenticationStateAsync()
@@ -32,7 +34,7 @@ namespace Havit.AskMe.Web.Blazor.Client.Infrastructure
 
 		public async Task<ClaimsPrincipal> GetCurrentClaimsPrincipalAsync()
 		{
-			var token = await GetToken();
+			var token = await GetTokenAsync();
 
 			return GetClaimsPrincipalFromToken(token);
 		}
@@ -47,23 +49,42 @@ namespace Havit.AskMe.Web.Blazor.Client.Infrastructure
 			return new ClaimsPrincipal(new ClaimsIdentity(ExtractClaimsFromJwt(token), "jwt"));
 		}
 
-		public async ValueTask<string> GetToken()
+		public async Task<string> GetTokenAsync()
 		{
-			return tokenCache ?? await localStorage.GetItem<string>(StorageKey);
+			return tokenCache ?? await sessionStorage.GetItem<string>(StorageKey) ?? await localStorage.GetItem<string>(StorageKey);
 		}
 
-		public async Task SetAuthenticatedUser(string token)
+		public async Task SetAuthenticatedUserAsync(string token, bool rememberMe)
 		{
-			await SetToken(token);
+			await SetToken(token, rememberMe);
 
 			var authState = new AuthenticationState(GetClaimsPrincipalFromToken(token));
 			NotifyAuthenticationStateChanged(Task.FromResult(authState));
 		}
 
-		private ValueTask SetToken(string token)
+		public Task SignOutAsync()
+		{
+			return SetAuthenticatedUserAsync(token: null, rememberMe: false);
+		}
+
+		private async ValueTask SetToken(string token, bool rememberMe)
 		{
 			tokenCache = token;
-			return localStorage.SetItem(StorageKey, token);
+			if (token is null)
+			{
+				await sessionStorage.RemoveItem(StorageKey);
+				await localStorage.RemoveItem(StorageKey);
+			}
+			else if (rememberMe)
+			{
+				await localStorage.SetItem(StorageKey, token);
+				await sessionStorage.RemoveItem(StorageKey);
+			}
+			else
+			{
+				await sessionStorage.SetItem(StorageKey, token);
+				await localStorage.RemoveItem(StorageKey);
+			}
 		}
 
 		private IEnumerable<Claim> ExtractClaimsFromJwt(string token)

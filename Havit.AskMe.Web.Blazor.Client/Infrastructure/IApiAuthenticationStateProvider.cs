@@ -8,7 +8,8 @@ namespace Havit.AskMe.Web.Blazor.Client.Infrastructure
 	{
 		Task<AuthenticationState> GetAuthenticationStateAsync();
 		Task<ClaimsPrincipal> GetCurrentClaimsPrincipalAsync();
-		ValueTask<string> GetToken();
-		Task SetAuthenticatedUser(string token);
+		Task<string> GetTokenAsync();
+		Task SetAuthenticatedUserAsync(string token, bool rememberMe);
+		Task SignOutAsync();
 	}
 }

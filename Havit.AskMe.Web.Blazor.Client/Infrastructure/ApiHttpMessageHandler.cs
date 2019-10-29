@@ -28,7 +28,7 @@ namespace Havit.AskMe.Web.Blazor.Client.Infrastructure
 
 		protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
 		{
-			var token = await apiAuthenticationStateProvider.GetToken();
+			var token = await apiAuthenticationStateProvider.GetTokenAsync();
 
 			if (!string.IsNullOrWhiteSpace(token))
 			{

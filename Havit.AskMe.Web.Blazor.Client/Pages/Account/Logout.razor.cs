@@ -17,7 +17,7 @@ namespace Havit.AskMe.Web.Blazor.Client.Pages.Account
 		{
 			await base.OnInitializedAsync();
 
-			await ApiAuthenticationStateProvider.SetAuthenticatedUser(null);
+			await ApiAuthenticationStateProvider.SignOutAsync();
 		}
 	}
 }
