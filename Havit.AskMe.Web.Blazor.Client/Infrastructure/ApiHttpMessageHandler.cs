@@ -39,11 +39,20 @@ namespace Havit.AskMe.Web.Blazor.Client.Infrastructure
 
 			switch (response.StatusCode)
 			{
+				case HttpStatusCode.OK:
+					// NOOP
+					break;
 				case HttpStatusCode.Unauthorized:
 					navigationManager.NavigateTo("/account/login");
 					break;
 				case HttpStatusCode.NotFound:
-					navigationManager.NavigateTo("/errors/Error404");
+					navigationManager.NavigateTo("/error/404");
+					break;
+				case HttpStatusCode.InternalServerError:
+					navigationManager.NavigateTo("/error/500");
+					break;
+				default:
+					navigationManager.NavigateTo($"/error/{response.StatusCode:d}");
 					break;
 			}
 

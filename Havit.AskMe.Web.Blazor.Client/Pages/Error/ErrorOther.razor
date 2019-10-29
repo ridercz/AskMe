@@ -1,0 +1,12 @@
+﻿@page "/error/{errorCode}"
+@inherits PageBase
+@{ this.Title = "HTTP Error " + this.ErrorCode; }
+
+<h2>HTTP Error @ErrorCode</h2>
+<p>Při zpracování vašeho požadavku došlo k nečekané chybě.</p>
+
+@code
+{
+	[Parameter]
+	public string ErrorCode { get; set; }
+}

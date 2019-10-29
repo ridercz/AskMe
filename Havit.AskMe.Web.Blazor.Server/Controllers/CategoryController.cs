@@ -22,10 +22,10 @@ namespace Havit.AskMe.Web.Blazor.Server.Controllers
 		}
 
  		[HttpGet("api/categories")]
-		public async Task<List<ListItemVM>> GetCategories()
+		public async Task<ActionResult<List<ListItemVM>>> GetCategories()
 		{
 			// consider server-side caching / response-caching
-			return await askDbContext.Categories.Select(c => new ListItemVM(c.Id, c.Name)).ToListAsync();
+			return Ok(await askDbContext.Categories.Select(c => new ListItemVM(c.Id, c.Name)).ToListAsync());
 		}
     }
 }
