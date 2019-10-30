@@ -1,0 +1,25 @@
+﻿@inherits PagerBase
+
+<div class="pager">
+	@if (Data.PreviousPageNumber > 0)
+	{
+		<div class="prev">
+			@if (Data.PreviousPageNumber > 1)
+			{
+				<a @onclick="@(e => ChangePage(e, 1))" class="button"><i class="fas fa-chevron-left"></i><i class="fas fa-chevron-left"></i></a>
+			}
+			<a @onclick="@(e => ChangePage(e, Data.PreviousPageNumber))"class="button"><i class="fas fa-chevron-left"></i> Předchozí</a>
+		</div>
+	}
+	@if (Data.NextPageNumber> 0)
+	{
+		<div class="next">
+			<a @onclick="@(e => ChangePage(e, Data.NextPageNumber))" class="button">Následující <i class="fas fa-chevron-right"></i></a>
+			@if (Data.NextPageNumber < Data.TotalPages)
+			{
+				<a @onclick="@(e => ChangePage(e, Data.TotalPages))" class="button"><i class="fas fa-chevron-right"></i><i class="fas fa-chevron-right"></i></a>
+			}
+		</div>
+	}
+	<p>Strana @Data.PageNumber z @Data.TotalPages, celkem @Data.TotalItems položek.</p>
+</div>

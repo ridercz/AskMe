@@ -1,0 +1,10 @@
+{
+	"ConnectionStrings": {
+		"AskDb": "Data Source=App_Data/ask.db"
+	},
+	"PageSize": 5,
+	"JwtSecurityKey": "AskMeSecurityKey",
+	"JwtIssuer": "https://askme.blazor.cz",
+	"JwtAudience": "https://askme.blazor.cz",
+	"JwtExpirationInDays":  7
+}

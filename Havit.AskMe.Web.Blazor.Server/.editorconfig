@@ -1,0 +1,10 @@
+[*.cs]
+# tabs over spaces ;-)
+indent_style = tab
+
+#prefer fields to be prefaced with this. in C# or Me. in Visual Basic
+dotnet_style_qualification_for_field = false:silent
+#prefer methods to be prefaced with this. in C# or Me. in Visual Basic
+dotnet_style_qualification_for_method = false:silent
+#prefer properties to be prefaced with this. in C# or Me. in Visual Basic
+dotnet_style_qualification_for_property = false:silent

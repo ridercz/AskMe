@@ -1,0 +1,51 @@
+﻿@using Havit.AskMe.Web.Blazor.Shared.Contracts.Questions
+
+@if (Value is null)
+{
+	<p><em>Načítám</em></p>
+}
+else
+{
+	<article class="answer" id="@($"q_{Value.QuestionId}")" @key="@Value.QuestionId">
+		<section class="question">
+			<header>
+				<span class="fa-stack fa-lg">
+					<i class="fas fa-square fa-stack-2x"></i>
+					<i class="fas fa-question fa-stack-1x fa-inverse"></i>
+				</span>
+				<span class="info">
+					<i class="fas fa-tag"></i> @Value.CategoryName
+					<i class="fas fa-calendar"></i>  <Time Value="@Value.DateCreated" />
+					@if (!string.IsNullOrWhiteSpace(Value.DisplayName))
+					{
+						<span><i class="fas fa-user"></i> @Value.DisplayName</span>
+					}
+				</span>
+			</header>
+			<PlainText Text="@Value.QuestionText" HtmlEncode="true" />
+		</section>
+		<section class="answer">
+			<header>
+				<span class="fa-stack fa-lg">
+					<i class="fas fa-square fa-stack-2x"></i>
+					<i class="fas fa-comment fa-stack-1x fa-inverse"></i>
+				</span>
+				<span class="info">
+					<i class="fas fa-calendar"></i> <Time Value="@Value.DateAnswered" />
+				</span>
+			</header>
+			<PlainText Text="@Value.AnswerText" HtmlEncode="true" />
+			<AuthorizeView>
+				<footer>
+					<a href="@("Admin/" + Value.QuestionId)" class="button"><i class="fas fa-commenting"></i> Upravit</a>
+				</footer>
+			</AuthorizeView>
+		</section>
+	</article>
+}
+
+@code
+{
+	[Parameter]
+	public QuestionVM Value { get; set; }
+}

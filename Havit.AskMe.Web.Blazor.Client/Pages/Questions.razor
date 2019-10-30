@@ -1,0 +1,80 @@
+﻿@page "/questions"
+@inherits QuestionsBase
+@{ Title = "Nezodpovězené otázky"; }
+
+<AuthorizeView>
+	<NotAuthorized Context="athorizationContext">
+		<section class="form" id="ask">
+			<EditForm Model="@newQuestionIM" OnValidSubmit="@HandleNewQuestionValidSubmit">
+				<DataAnnotationsValidator />
+				<header>
+					<h2>Nová otázka</h2>
+				</header>
+				<div><InputTextArea Id="QuestionText" @bind-Value="@newQuestionIM.QuestionText" placeholder="Zadejte text své otázky..." /></div>
+				<div>
+					<InputSelect Id="Category" @bind-Value="@newQuestionIM.CategoryId" T="typeof(string)">
+						@if (categories == null)
+						{
+							<option>Načítám...</option>
+						}
+						else
+						{
+							@foreach (var category in categories)
+							{
+								<option value="@category.Id">@category.Name</option>
+							}
+						}
+					</InputSelect>
+				</div>
+				<div>
+					<InputText Id="DisplayName" @bind-Value="@newQuestionIM.DisplayName" class="text half-width" placeholder="Jméno (nepovinné)" />
+					<InputText Id="EmailAddress" @bind-Value="@newQuestionIM.EmailAddress" class="text half-width" placeholder="E-mail (nepovinné)" />
+				</div>
+				<ValidationSummary />
+				<footer>
+					<input type="submit" value="Odeslat" title="Vložit novou otázku" />
+				</footer>
+			</EditForm>
+		</section>
+	</NotAuthorized>
+</AuthorizeView>
+
+@if (questions == null)
+{
+	<p><em>Načítám...</em></p>
+}
+else if (questions.TotalItems > 0)
+{
+	<Repeater Items="@questions.Data">
+		<HeaderTemplate>
+			<h2>Nezodpovězené otázky</h2>
+		</HeaderTemplate>
+		<ItemTemplate Context="item">
+			<article class="question" id="q_@item.QuestionId" @key="@item.QuestionId">
+				<header>
+					<span class="fa-stack fa-lg">
+						<i class="fas fa-square fa-stack-2x"></i>
+						<i class="fas fa-question fa-stack-1x fa-inverse"></i>
+					</span>
+					<span class="info">
+						<i class="fas fa-tag"></i> @item.CategoryName
+						<i class="fas fa-calendar"></i> <time value="@item.DateCreated"></time>
+						@if (!string.IsNullOrWhiteSpace(item.DisplayName))
+						{
+							<span><i class="fas fa-user"></i> @item.DisplayName</span>
+						}
+					</span>
+				</header>
+				<PlainText Text="@item.QuestionText" HtmlEncode="true" />
+				<AuthorizeView>
+					<footer>
+						<a href="@("Admin/" + item.QuestionId)" class="button"><i class="fas fa-commenting"></i> Odpovědět</a>
+					</footer>
+				</AuthorizeView>
+			</article>
+		</ItemTemplate>
+		<FooterTemplate>
+			<Pager Data="questions" OnPageChanging="@PageChanging"></Pager>
+		</FooterTemplate>
+	</Repeater>
+}

@@ -1,0 +1,49 @@
+﻿@page "/"
+@page "/{PageIndex:int}"
+@using Havit.AskMe.Web.Blazor.Client.Components.Questions
+@using Havit.AskMe.Web.Blazor.Shared.Contracts
+@using Havit.AskMe.Web.Blazor.Shared.Contracts.Questions
+@inject Havit.AskMe.Web.Blazor.Client.Services.IQuestionClientFacade QuestionClientFacade
+@inject NavigationManager NavigationManager
+
+@if (questions == null)
+{
+	<p><em>Načítám...</em></p>
+}
+else
+{
+	<Repeater Items="questions.Data">
+		<ItemTemplate Context="question">
+			<QuestionDetail Value="question" />
+		</ItemTemplate>
+	</Repeater>
+	<Pager Data="@questions" OnPageChanging="@PageChanging" />
+}
+
+@code
+{
+	[Parameter]
+	public int PageIndex { get; set; } = 0;
+
+	private CollectionDataResult<List<QuestionVM>> questions;
+
+	protected override async Task OnInitializedAsync()
+	{
+		await LoadQuestions();
+	}
+
+	private async Task PageChanging(PagerBase.PageChangingEventArgs args)
+	{
+		// "redirect"
+		//NavigationManager.NavigateTo($"/{args.NewPageNumber}"); // BUG: does not set the PageIndex property (https://github.com/aspnet/AspNetCore/issues/10686)
+
+
+		this.PageIndex = args.NewPageNumber - 1;
+		await LoadQuestions();
+	}
+
+	private async Task LoadQuestions()
+	{
+		this.questions = await QuestionClientFacade.GetQuestionsAsync(new QuestionListQueryFilter() { PageIndex = this.PageIndex, Answered = true });
+	}
+}

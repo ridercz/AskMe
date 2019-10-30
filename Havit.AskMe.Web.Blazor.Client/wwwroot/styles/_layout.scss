@@ -1,0 +1,121 @@
+﻿@import '_vars.scss';
+
+html {
+    font-family: Arial, Helvetica, sans-serif;
+    color: $white;
+    background-color: $black;
+    background-image: url(Images/background.jpg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+body {
+    max-width: 1000px;
+    margin: 0 auto;
+
+    app > header {
+        background-color: $accent1;
+        padding: $padding;
+        margin-bottom: $padding/2;
+        letter-spacing: .5ex;
+
+        div {
+            color: rgba($white, .5);
+            font-size: 90%;
+            font-weight: bold;
+            text-align: right
+        }
+    }
+
+    app > nav {
+        background-color: $accent2;
+        color: $white;
+        font-size: 125%;
+
+        a {
+            &:link, &:visited {
+                color: $white;
+                text-decoration: none;
+            }
+
+            &:hover {
+                color: $black;
+            }
+        }
+
+        ul {
+            margin: 0;
+            padding: 0;
+
+            li {
+                display: inline-block;
+                list-style-type: none;
+                margin: 0;
+                padding: $padding/2 $padding;
+            }
+        }
+    }
+
+    app > main {
+        background-color: $white;
+        color: $black;
+        padding: $padding * 3;
+        border-bottom: $padding/3 solid $black;
+
+        a {
+            &:link {
+                color: $black;
+            }
+
+            &:visited {
+                color: darken($black, 15);
+            }
+
+            &:hover {
+                color: $black;
+            }
+        }
+    }
+
+    app > footer {
+        text-align: center;
+        font-size: 80%;
+        padding: $padding;
+        letter-spacing: .5ex;
+
+        ul {
+            margin: 0;
+            padding: 0;
+            display: inline;
+            list-style-type: none;
+
+            li {
+                margin: 0;
+                padding: 0 0 0 0;
+                display: inline;
+                list-style-type: none;
+                list-style-type: none;
+
+                &:nth-last-child(n+2)::after {
+                    content: ' |';
+                }
+            }
+        }
+    }
+}
+
+
+a {
+
+    &:link, &:visited {
+        color: $white;
+        text-decoration: none;
+    }
+
+    &:hover {
+        color: $accent1;
+        text-decoration: none;
+    }
+}

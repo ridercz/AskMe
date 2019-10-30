@@ -1,0 +1,6 @@
+﻿@page "/question/{questionId:int}"
+@using Havit.AskMe.Web.Blazor.Client.Components.Questions
+@inherits QuestionBase
+@{ this.Title = $"Otázka číslo {QuestionId}"; }
+
+<QuestionDetail Value="Question" />
