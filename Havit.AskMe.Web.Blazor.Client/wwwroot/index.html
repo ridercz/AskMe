@@ -14,7 +14,11 @@
 <body>
 	<app><p><em>Načítám...</em></p></app>
 
-	<script src="_framework/blazor.webassembly.js"></script>
+	<!-- temporary WORKAROUND for Safari https://github.com/mono/mono/issues/15588#issuecomment-529056521 -->
+	<script>var Module;</script>
+	<script src="blazor.webassembly.js"></script> <!-- iOS 13 issue https://github.com/mono/mono/issues/16986 -->
+
+	<!--<script src="_framework/blazor.webassembly.js"></script>-->
 	<script src="MyJsHelpers.js"></script>
 </body>
 </html>
