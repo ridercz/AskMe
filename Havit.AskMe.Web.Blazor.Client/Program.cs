@@ -7,7 +7,7 @@ namespace Havit.AskMe.Web.Blazor.Client
     {
         public static void Main(string[] args)
         {
-			//CultureInfo.CurrentCulture = CultureInfo.GetCultureInfo("cs-cz");
+			CultureInfo.CurrentCulture = CultureInfo.GetCultureInfo("cs-cz");
 
 			CreateHostBuilder(args).Build().Run();
         }
