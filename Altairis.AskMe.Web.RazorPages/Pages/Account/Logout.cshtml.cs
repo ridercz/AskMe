@@ -11,8 +11,6 @@ namespace Altairis.AskMe.Web.RazorPages.Pages.Account {
             this._signInManager = signInManager;
         }
 
-        public async Task OnGetAsync() {
-            await this._signInManager.SignOutAsync();
-        }
+        public async Task OnGetAsync() => await this._signInManager.SignOutAsync();
     }
 }

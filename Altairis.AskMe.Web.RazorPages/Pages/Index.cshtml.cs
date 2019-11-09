@@ -24,9 +24,7 @@ namespace Altairis.AskMe.Web.RazorPages.Pages {
 
         // Handlers
 
-        public async Task OnGetAsync(int pageNumber) {
-            await base.GetData(this._dataSource, pageNumber, this._cfg.PageSize);
-        }
+        public async Task OnGetAsync(int pageNumber) => await base.GetData(this._dataSource, pageNumber, this._cfg.PageSize);
 
     }
 }
