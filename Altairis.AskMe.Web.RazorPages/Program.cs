@@ -10,7 +10,7 @@ namespace Altairis.AskMe.Web.RazorPages {
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder => {
                     webBuilder.UseStartup<Startup>();
-                    //webBuilder.UseUrls("http://0.0.0.0:5002")
+                    //webBuilder.UseUrls("http://0.0.0.0:5002");
                 });
     }
 
