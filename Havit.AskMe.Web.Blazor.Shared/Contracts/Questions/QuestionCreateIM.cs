@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace Havit.AskMe.Web.Blazor.Shared.Contracts.Questions
-{
-	public class QuestionCreateIM
-	{
+namespace Havit.AskMe.Web.Blazor.Shared.Contracts.Questions {
+	public class QuestionCreateIM {
 		[Required(ErrorMessage = "Není zadána otázka")]
 		[MaxLength(500)]
 		[DataType(DataType.MultilineText)]

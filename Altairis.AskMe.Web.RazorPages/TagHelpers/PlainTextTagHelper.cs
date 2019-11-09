@@ -38,8 +38,7 @@ namespace Altairis.AskMe.Web.RazorPages.TagHelpers {
             var html = sb.ToString();
             if (string.IsNullOrWhiteSpace(html)) {
                 output.SuppressOutput();
-            }
-            else {
+            } else {
                 output.Content.SetHtmlContent(html);
                 output.TagName = this.ContainerTagName;
             }

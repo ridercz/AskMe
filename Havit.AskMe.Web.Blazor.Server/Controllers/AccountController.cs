@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using Altairis.AskMe.Data;
-using Havit.AskMe.Web.Blazor.Shared;
 using Havit.AskMe.Web.Blazor.Shared.Contracts.Account;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
@@ -15,12 +13,10 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 
-namespace Havit.AskMe.Web.Blazor.Server.Controllers
-{
+namespace Havit.AskMe.Web.Blazor.Server.Controllers {
 	[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
 	[ApiController]
-	public class AccountController : ControllerBase
-	{
+	public class AccountController : ControllerBase {
 		private readonly SignInManager<ApplicationUser> signInManager;
 		private readonly UserManager<ApplicationUser> userManager;
 		private readonly AppConfiguration appConfiguration;
@@ -28,8 +24,7 @@ namespace Havit.AskMe.Web.Blazor.Server.Controllers
 		public AccountController(
 			SignInManager<ApplicationUser> signInManager,
 			UserManager<ApplicationUser> userManager,
-			IOptions<AppConfiguration> appConfiguration)
-		{
+			IOptions<AppConfiguration> appConfiguration) {
 			this.signInManager = signInManager;
 			this.userManager = userManager;
 			this.appConfiguration = appConfiguration.Value;
@@ -37,16 +32,14 @@ namespace Havit.AskMe.Web.Blazor.Server.Controllers
 
 		[AllowAnonymous]
 		[HttpPost("api/accounts/login")]
-		public async Task<IActionResult> Login(LoginIM model)
-		{
+		public async Task<IActionResult> Login(LoginIM model) {
 			var result = await signInManager.PasswordSignInAsync(
 				model.UserName,
 				model.Password,
 				isPersistent: false,
 				lockoutOnFailure: false);
 
-			if (!result.Succeeded)
-			{
+			if (!result.Succeeded) {
 				return Ok(new LoginVM { Successful = false, Error = "Přihlášení se nezdařilo." }); // BadRequest()?
 			}
 
@@ -72,8 +65,7 @@ namespace Havit.AskMe.Web.Blazor.Server.Controllers
 
 
 		[HttpPost("api/accounts/changepassword")]
-		public async Task<IActionResult> ChangePassword(ChangePasswordIM inputModel)
-		{
+		public async Task<IActionResult> ChangePassword(ChangePasswordIM inputModel) {
 			// Get current user
 			var user = await userManager.FindByNameAsync(this.User.Identity.Name);
 
@@ -83,8 +75,7 @@ namespace Havit.AskMe.Web.Blazor.Server.Controllers
 				inputModel.OldPassword,
 				inputModel.NewPassword);
 
-			return Ok(new ChangePasswordVM()
-			{
+			return Ok(new ChangePasswordVM() {
 				Succeeded = result.Succeeded,
 				Errors = result.Errors.Select(e => e.Description).ToArray()
 			});

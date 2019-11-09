@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
 using Altairis.AskMe.Data;
-using Havit.AskMe.Web.Blazor.Shared;
 using Havit.AskMe.Web.Blazor.Shared.Contracts;
 using Havit.AskMe.Web.Blazor.Shared.Contracts.Questions;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -13,30 +10,24 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
-using Remotion.Linq.Parsing;
 
-namespace Havit.AskMe.Web.Blazor.Server.Controllers
-{
-	public class QuestionsController : Controller
-	{
+namespace Havit.AskMe.Web.Blazor.Server.Controllers {
+	public class QuestionsController : Controller {
 		private readonly AskDbContext askDbContext;
 		private readonly AppConfiguration appConfiguration;
 
-		public QuestionsController(AskDbContext askDbContext, IOptionsSnapshot<AppConfiguration> optionsSnapshot)
-		{
+		public QuestionsController(AskDbContext askDbContext, IOptionsSnapshot<AppConfiguration> optionsSnapshot) {
 			this.askDbContext = askDbContext;
 			this.appConfiguration = optionsSnapshot.Value;
 		}
 
 		[HttpGet("api/questions")]
-		public async Task<CollectionDataResult<List<QuestionVM>>> GetQuestions([FromQuery]QuestionListQueryFilter filter)
-		{
+		public async Task<CollectionDataResult<List<QuestionVM>>> GetQuestions([FromQuery]QuestionListQueryFilter filter) {
 			filter.PageSize = appConfiguration.PageSize; // forced value from configuration ;-)
 
 			IQueryable<Question> query = askDbContext.Questions;
 
-			if (filter.Answered.HasValue)
-			{
+			if (filter.Answered.HasValue) {
 				query = filter.Answered.Value ? query.Where(q => q.DateAnswered.HasValue) : query.Where(q => !q.DateAnswered.HasValue);
 			}
 
@@ -46,8 +37,7 @@ namespace Havit.AskMe.Web.Blazor.Server.Controllers
 					.OrderByDescending(q => q.DateAnswered).ThenByDescending(q => q.DateCreated)
 					.Skip(filter.PageIndex * filter.PageSize)
 					.Take(filter.PageSize)
-					.Select(q => new QuestionVM()
-					{
+					.Select(q => new QuestionVM() {
 						QuestionId = q.Id,
 						DisplayName = q.DisplayName,
 						EmailAddress = q.EmailAddress,
@@ -65,11 +55,9 @@ namespace Havit.AskMe.Web.Blazor.Server.Controllers
 		}
 
 		[HttpGet("api/questions/{questionId:int}")]
-		public async Task<ActionResult<QuestionVM>> GetQuestion(int questionId)
-		{
+		public async Task<ActionResult<QuestionVM>> GetQuestion(int questionId) {
 			// Get question
-			var question = await askDbContext.Questions.Where(q => q.Id == questionId).Select(q => new QuestionVM()
-			{
+			var question = await askDbContext.Questions.Where(q => q.Id == questionId).Select(q => new QuestionVM() {
 				QuestionId = q.Id,
 				DisplayName = q.DisplayName,
 				EmailAddress = q.EmailAddress,
@@ -81,8 +69,7 @@ namespace Havit.AskMe.Web.Blazor.Server.Controllers
 				AnswerText = q.AnswerText,
 			}).FirstOrDefaultAsync();
 
-			if (question == null)
-			{
+			if (question == null) {
 				return NotFound();
 			}
 
@@ -91,18 +78,15 @@ namespace Havit.AskMe.Web.Blazor.Server.Controllers
 		}
 
 		[HttpPost("api/questions")]
-		public async Task<int> CreateQuestion([FromBody]QuestionCreateIM inputModel)
-		{
-			if (!this.ModelState.IsValid)
-			{
+		public async Task<int> CreateQuestion([FromBody]QuestionCreateIM inputModel) {
+			if (!this.ModelState.IsValid) {
 				throw new InvalidOperationException("Invalid model state.");
 			}
 
 			// Create and save question entity
-			var question = new Question
-			{
+			var question = new Question {
 				QuestionText = inputModel.QuestionText,
-				CategoryId = Int32.Parse(inputModel.CategoryId),
+				CategoryId = int.Parse(inputModel.CategoryId),
 				DisplayName = inputModel.DisplayName,
 				EmailAddress = inputModel.EmailAddress
 			};
@@ -114,10 +98,8 @@ namespace Havit.AskMe.Web.Blazor.Server.Controllers
 
 		[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
 		[HttpPut("api/questions/{questionId:int}")]
-		public async Task<ActionResult<QuestionUpdateVM>> UpdateQuestion(int questionId, [FromBody]QuestionDto inputModel)
-		{
-			if (!this.ModelState.IsValid)
-			{
+		public async Task<ActionResult<QuestionUpdateVM>> UpdateQuestion(int questionId, [FromBody]QuestionDto inputModel) {
+			if (!this.ModelState.IsValid) {
 				var result = new QuestionUpdateVM();
 				result.Errors = this.ModelState.SelectMany(e => e.Value.Errors).Select(e => e.ErrorMessage).ToArray();
 				return Ok(result);
@@ -125,27 +107,22 @@ namespace Havit.AskMe.Web.Blazor.Server.Controllers
 
 			// Get question
 			var question = await askDbContext.Questions.FindAsync(questionId);
-			if (question == null)
-			{
+			if (question == null) {
 				return NotFound();
 			}
 
 			// Update question
-			question.CategoryId = Int32.Parse(inputModel.CategoryId);
+			question.CategoryId = int.Parse(inputModel.CategoryId);
 			question.DisplayName = inputModel.DisplayName;
 			question.EmailAddress = inputModel.EmailAddress;
 			question.QuestionText = inputModel.QuestionText;
 
-			if (string.IsNullOrWhiteSpace(inputModel.AnswerText))
-			{
+			if (string.IsNullOrWhiteSpace(inputModel.AnswerText)) {
 				question.AnswerText = null;
 				question.DateAnswered = null;
-			}
-			else
-			{
+			} else {
 				question.AnswerText = inputModel.AnswerText;
-				if (!question.DateAnswered.HasValue)
-				{
+				if (!question.DateAnswered.HasValue) {
 					question.DateAnswered = DateTime.Now;
 				}
 			}

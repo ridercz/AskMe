@@ -11,8 +11,7 @@ namespace Altairis.AskMe.Web.Mvc.TagHelpers {
             if (!this.Value.HasValue) {
                 // Value is not specified
                 if (output.Content.IsEmptyOrWhiteSpace) output.Content.SetContent("nikdy");
-            }
-            else {
+            } else {
                 // Value is specified
                 var dateValue = this.Value.Value;
 
@@ -30,14 +29,11 @@ namespace Altairis.AskMe.Web.Mvc.TagHelpers {
                 if (output.Content.IsEmptyOrWhiteSpace) {
                     if (dateValue.Date == DateTime.Today) {
                         output.Content.SetContent($"dnes, {dateValue:t}");
-                    }
-                    else if (dateValue.Date == DateTime.Today.AddDays(-1)) {
+                    } else if (dateValue.Date == DateTime.Today.AddDays(-1)) {
                         output.Content.SetContent($"včera, {dateValue:t}");
-                    }
-                    else if (dateValue.Date == DateTime.Today.AddDays(1)) {
+                    } else if (dateValue.Date == DateTime.Today.AddDays(1)) {
                         output.Content.SetContent($"zítra, {dateValue:t}");
-                    }
-                    else {
+                    } else {
                         output.Content.SetContent($"{dateValue:d}, {dateValue:t}");
                     }
                 }

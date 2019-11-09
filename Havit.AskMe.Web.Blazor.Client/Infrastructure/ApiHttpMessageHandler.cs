@@ -1,18 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
+﻿using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components;
 
-namespace Havit.AskMe.Web.Blazor.Client.Infrastructure
-{
-	public class ApiHttpMessageHandler : DelegatingHandler
-	{
+namespace Havit.AskMe.Web.Blazor.Client.Infrastructure {
+	public class ApiHttpMessageHandler : DelegatingHandler {
 		private readonly NavigationManager navigationManager;
 		private readonly IApiAuthenticationStateProvider apiAuthenticationStateProvider;
 
@@ -20,25 +14,21 @@ namespace Havit.AskMe.Web.Blazor.Client.Infrastructure
 			HttpMessageHandler innerHandler,
 			NavigationManager navigationManager,
 			IApiAuthenticationStateProvider apiAuthenticationStateProvider)
-			: base(innerHandler)
-		{
+			: base(innerHandler) {
 			this.navigationManager = navigationManager;
 			this.apiAuthenticationStateProvider = apiAuthenticationStateProvider;
 		}
 
-		protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
-		{
+		protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken) {
 			var token = await apiAuthenticationStateProvider.GetTokenAsync();
 
-			if (!string.IsNullOrWhiteSpace(token))
-			{
+			if (!string.IsNullOrWhiteSpace(token)) {
 				request.Headers.Authorization = new AuthenticationHeaderValue("bearer", token);
 			}
 
 			var response = await base.SendAsync(request, cancellationToken);
 
-			switch (response.StatusCode)
-			{
+			switch (response.StatusCode) {
 				case HttpStatusCode.OK:
 					// NOOP
 					break;

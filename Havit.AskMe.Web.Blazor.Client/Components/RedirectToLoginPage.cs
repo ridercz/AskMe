@@ -1,19 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Components;
+﻿using Microsoft.AspNetCore.Components;
 
-namespace Havit.AskMe.Web.Blazor.Client.Components
-{
-    public class RedirectToLoginPage : ComponentBase
-    {
-        [Inject]
+namespace Havit.AskMe.Web.Blazor.Client.Components {
+	public class RedirectToLoginPage : ComponentBase {
+		[Inject]
 		public NavigationManager NavigationManager { get; set; }
 
-		protected override void OnInitialized()
-		{
+		protected override void OnInitialized() {
 			NavigationManager.NavigateTo("/account/login");
 		}
 	}

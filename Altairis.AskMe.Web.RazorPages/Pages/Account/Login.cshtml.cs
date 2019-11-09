@@ -36,8 +36,7 @@ namespace Altairis.AskMe.Web.RazorPages.Pages.Account {
 
                 if (result.Succeeded) {
                     return this.LocalRedirect(returnUrl);
-                }
-                else {
+                } else {
                     this.ModelState.AddModelError(string.Empty, "Přihlášení se nezdařilo");
                 }
             }
