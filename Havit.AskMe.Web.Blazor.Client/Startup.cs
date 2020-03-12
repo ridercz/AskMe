@@ -1,5 +1,4 @@
 using System;
-using System.Globalization;
 using System.Net.Http;
 using Blazor.Extensions.Storage;
 using Havit.AskMe.Web.Blazor.Client.Infrastructure;
@@ -12,12 +11,9 @@ using Microsoft.AspNetCore.Components.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Toolbelt.Blazor.Extensions.DependencyInjection;
 
-namespace Havit.AskMe.Web.Blazor.Client
-{
-	public class Startup
-	{
-		public void ConfigureServices(IServiceCollection services)
-		{
+namespace Havit.AskMe.Web.Blazor.Client {
+	public class Startup {
+		public void ConfigureServices(IServiceCollection services) {
 			services.AddStorage(); // Blazor.Extensions.Storage
 
 			// auth
@@ -26,16 +22,14 @@ namespace Havit.AskMe.Web.Blazor.Client
 			services.AddSingleton<AuthenticationStateProvider>(sp => sp.GetRequiredService<ApiAuthenticationStateProvider>()); // forwarder
 			services.AddSingleton<IApiAuthenticationStateProvider>(sp => sp.GetRequiredService<ApiAuthenticationStateProvider>()); // forwarded
 
-			services.AddSingleton(serviceProvider =>
-			{
+			services.AddSingleton(serviceProvider => {
 				var navigationManager = serviceProvider.GetService<NavigationManager>();
 				return new HttpClient(
 					new ApiHttpMessageHandler(
 						new WebAssemblyHttpMessageHandler(),
 						navigationManager,
 						serviceProvider.GetRequiredService<ApiAuthenticationStateProvider>()
-					))
-				{
+					)) {
 					BaseAddress = new Uri(navigationManager.BaseUri)
 				};
 			});
@@ -50,8 +44,7 @@ namespace Havit.AskMe.Web.Blazor.Client
 			services.AddTransient<IJsHelpers, JsHelpers>();
 		}
 
-		public void Configure(IComponentsApplicationBuilder app)
-		{
+		public void Configure(IComponentsApplicationBuilder app) {
 			app.UseLocalTimeZone(); // Blazor (mono) fallbacks to UTC. Local time support not implementated yet.
 
 			app.AddComponent<App>("app");

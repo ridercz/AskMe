@@ -9,13 +9,14 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 
 namespace Altairis.AskMe.Web.Mvc {
     public class Startup {
-        private readonly IHostingEnvironment _environment;
+        private readonly IWebHostEnvironment _environment;
         private readonly IConfigurationRoot _config;
 
-        public Startup(IHostingEnvironment env) {
+        public Startup(IWebHostEnvironment env) {
             this._environment = env;
 
             var builder = new ConfigurationBuilder()
@@ -35,6 +36,9 @@ namespace Altairis.AskMe.Web.Mvc {
             // Configure Razor Pages
             services.AddMvc(options => {
                 options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute());
+                // We are using legacy MVC instead of endpoint routing, so the
+                // inherited parameter values are propagated when generating links
+                options.EnableEndpointRouting = false;
             });
 
             // Configure identity and authentication
@@ -59,7 +63,7 @@ namespace Altairis.AskMe.Web.Mvc {
             services.Configure<AppConfiguration>(this._config);
         }
 
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, AskDbContext context, UserManager<ApplicationUser> userManager) {
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, AskDbContext context, UserManager<ApplicationUser> userManager) {
             // Show detailed errors in development environment
             if (env.IsDevelopment()) {
                 app.UseDeveloperExceptionPage();

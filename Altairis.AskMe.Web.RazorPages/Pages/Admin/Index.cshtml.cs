@@ -78,8 +78,7 @@ namespace Altairis.AskMe.Web.RazorPages.Pages.Admin {
                 if (string.IsNullOrWhiteSpace(this.Input.AnswerText)) {
                     q.AnswerText = null;
                     q.DateAnswered = null;
-                }
-                else {
+                } else {
                     q.AnswerText = this.Input.AnswerText;
                     if (!q.DateAnswered.HasValue) q.DateAnswered = DateTime.Now;
                 }

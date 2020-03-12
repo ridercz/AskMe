@@ -2,10 +2,8 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components.Authorization;
 
-namespace Havit.AskMe.Web.Blazor.Client.Infrastructure
-{
-	public interface IApiAuthenticationStateProvider
-	{
+namespace Havit.AskMe.Web.Blazor.Client.Infrastructure {
+	public interface IApiAuthenticationStateProvider {
 		Task<AuthenticationState> GetAuthenticationStateAsync();
 		Task<ClaimsPrincipal> GetCurrentClaimsPrincipalAsync();
 		Task<string> GetTokenAsync();

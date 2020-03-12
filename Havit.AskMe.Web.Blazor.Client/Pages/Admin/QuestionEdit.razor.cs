@@ -1,19 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Havit.AskMe.Web.Blazor.Client.Components;
 using Havit.AskMe.Web.Blazor.Client.Services;
-using Havit.AskMe.Web.Blazor.Shared;
 using Havit.AskMe.Web.Blazor.Shared.Contracts;
 using Havit.AskMe.Web.Blazor.Shared.Contracts.Questions;
 using Microsoft.AspNetCore.Components;
 
-namespace Havit.AskMe.Web.Blazor.Client.Pages.Admin
-{
-	public class QuestionEditBase : PageBase
-	{
+namespace Havit.AskMe.Web.Blazor.Client.Pages.Admin {
+	public class QuestionEditBase : PageBase {
 		[Inject]
 		public IQuestionClientFacade QuestionClientFacade { get; set; }
 
@@ -32,29 +26,22 @@ namespace Havit.AskMe.Web.Blazor.Client.Pages.Admin
 		protected ServerSideValidator ServerSideValidator { get; set; }
 
 
-		protected override async Task OnInitializedAsync()
-		{
+		protected override async Task OnInitializedAsync() {
 			this.Categories = await CategoryClientFacade.GetAll();
 		}
 
-		protected override async Task OnParametersSetAsync()
-		{
+		protected override async Task OnParametersSetAsync() {
 			await base.OnParametersSetAsync();
 
 			Model = await QuestionClientFacade.GetQuestionAsync(QuestionId);
 		}
 
-		public async Task HandleValidSubmit()
-		{
+		public async Task HandleValidSubmit() {
 			var result = await QuestionClientFacade.UpdateQuestionAsync(QuestionId, Model);
-			if (result.Success)
-			{
+			if (result.Success) {
 				NavigationManager.NavigateTo($"/Question/{QuestionId}");
-			}
-			else
-			{
-				foreach (var error in result.Errors)
-				{
+			} else {
+				foreach (var error in result.Errors) {
 					ServerSideValidator.AddError(error);
 				}
 			}

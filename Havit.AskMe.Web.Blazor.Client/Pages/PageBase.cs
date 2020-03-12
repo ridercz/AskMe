@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Havit.AskMe.Web.Blazor.Client.Infrastructure;
 using Microsoft.AspNetCore.Components;
 
@@ -18,8 +14,7 @@ namespace Havit.AskMe.Web.Blazor.Client.Pages
 
 		protected string Title { get; set; }
 
-		protected override async Task OnAfterRenderAsync(bool firstRender)
-		{
+		protected override async Task OnAfterRenderAsync(bool firstRender) {
 			await base.OnAfterRenderAsync(firstRender);
 
 			await JsHelpers.SetPageTitleAsync(Title);

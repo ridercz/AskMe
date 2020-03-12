@@ -1,20 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace Havit.AskMe.Web.Blazor.Shared.Contracts.Questions
-{
-	public class QuestionDto
-	{
+namespace Havit.AskMe.Web.Blazor.Shared.Contracts.Questions {
+	public class QuestionDto {
 		[Required(ErrorMessage = "Není zadána otázka")]
 		[MaxLength(500)]
 		[DataType(DataType.MultilineText)]
 		public string QuestionText { get; set; }
 
-		[MaxLength(Int32.MaxValue)]
+		[MaxLength(int.MaxValue)]
 		public string AnswerText { get; set; }
 
 		[MaxLength(100)]

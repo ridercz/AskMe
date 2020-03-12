@@ -45,8 +45,7 @@ namespace Altairis.AskMe.Web.RazorPages.Pages.Admin {
                     // OK, re-sign and redirect to homepage
                     await this._signInManager.SignInAsync(user, isPersistent: false);
                     return this.RedirectToPage("ChangePasswordDone");
-                }
-                else {
+                } else {
                     // Failed - show why
                     foreach (var error in result.Errors) {
                         this.ModelState.AddModelError(string.Empty, error.Description);

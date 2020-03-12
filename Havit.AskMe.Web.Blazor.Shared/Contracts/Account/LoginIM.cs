@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace Havit.AskMe.Web.Blazor.Shared.Contracts.Account
-{
-    public class LoginIM
-    {
+namespace Havit.AskMe.Web.Blazor.Shared.Contracts.Account {
+	public class LoginIM {
 		[Required]
 		public string UserName { get; set; }
 

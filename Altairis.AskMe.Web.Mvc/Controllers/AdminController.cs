@@ -83,7 +83,7 @@ namespace Altairis.AskMe.Web.Mvc.Controllers {
         public IActionResult ChangePassword() => this.View();
 
         [HttpPost, Route("ChangePassword")]
-        public async Task< IActionResult> ChangePassword(ChangePasswordModel model) {
+        public async Task<IActionResult> ChangePassword(ChangePasswordModel model) {
             if (this.ModelState.IsValid) {
                 // Get current user
                 var user = await this._userManager.GetUserAsync(this.User);

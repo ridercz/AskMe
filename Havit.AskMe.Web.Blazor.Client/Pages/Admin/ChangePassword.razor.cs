@@ -1,17 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Havit.AskMe.Web.Blazor.Client.Components;
 using Havit.AskMe.Web.Blazor.Client.Services.Security;
 using Havit.AskMe.Web.Blazor.Shared.Contracts.Account;
 using Microsoft.AspNetCore.Components;
 
-namespace Havit.AskMe.Web.Blazor.Client.Pages.Admin
-{
-    public class ChangePasswordBase : PageBase
-    {
+namespace Havit.AskMe.Web.Blazor.Client.Pages.Admin {
+	public class ChangePasswordBase : PageBase {
 		[Inject]
 		public IAccountClientFacade AccountClientFacade { get; set; }
 
@@ -22,17 +16,12 @@ namespace Havit.AskMe.Web.Blazor.Client.Pages.Admin
 
 		protected ServerSideValidator ServerSideValidator { get; set; }
 
-		public async Task HandleValidSubmit()
-		{
+		public async Task HandleValidSubmit() {
 			var result = await AccountClientFacade.ChangePasswordAsync(InputModel);
-			if (result.Succeeded)
-			{
+			if (result.Succeeded) {
 				NavigationManager.NavigateTo("/Admin/ChangePasswordDone");
-			}
-			else
-			{
-				foreach (var error in result.Errors)
-				{
+			} else {
+				foreach (var error in result.Errors) {
 					ServerSideValidator.AddError(error);
 				}
 			}

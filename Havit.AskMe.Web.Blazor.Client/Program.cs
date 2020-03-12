@@ -10,10 +10,10 @@ namespace Havit.AskMe.Web.Blazor.Client
 			CultureInfo.CurrentCulture = CultureInfo.GetCultureInfo("cs-cz");
 
 			CreateHostBuilder(args).Build().Run();
-        }
+		}
 
-        public static IWebAssemblyHostBuilder CreateHostBuilder(string[] args) =>
-            BlazorWebAssemblyHost.CreateDefaultBuilder()
-                .UseBlazorStartup<Startup>();
-    }
+		public static IWebAssemblyHostBuilder CreateHostBuilder(string[] args) =>
+			BlazorWebAssemblyHost.CreateDefaultBuilder()
+				.UseBlazorStartup<Startup>();
+	}
 }
