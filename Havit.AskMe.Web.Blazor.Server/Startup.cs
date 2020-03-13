@@ -34,7 +34,8 @@ namespace Havit.AskMe.Web.Blazor.Server {
 		// This method gets called by the runtime. Use this method to add services to the container.
 		// For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
 		public void ConfigureServices(IServiceCollection services) {
-			services.AddMvc();
+			services.AddControllersWithViews();
+			services.AddRazorPages();
 			services.AddResponseCompression(opts => {
 				opts.MimeTypes = ResponseCompressionDefaults.MimeTypes.Concat(
 					new[] { "application/octet-stream" });
@@ -76,7 +77,6 @@ namespace Havit.AskMe.Web.Blazor.Server {
 						IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(appConfiguration.JwtSecurityKey))
 					};
 				});
-			services.AddScoped<IAuthenticationClientFacade, AuthenticationClientFacade>();
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -106,16 +106,18 @@ namespace Havit.AskMe.Web.Blazor.Server {
 
 			if (env.IsDevelopment()) {
 				app.UseDeveloperExceptionPage();
-				app.UseBlazorDebugging();
+				app.UseWebAssemblyDebugging();
 			}
 
-			app.UseClientSideBlazorFiles<Client.Startup>();
+			app.UseBlazorFrameworkFiles();
+			app.UseStaticFiles();
 			app.UseRouting();
 			app.UseAuthentication();
 			app.UseAuthorization();
 			app.UseEndpoints(endpoints => {
-				endpoints.MapDefaultControllerRoute();
-				endpoints.MapFallbackToClientSideBlazor<Client.Startup>("index.html");
+				endpoints.MapRazorPages();
+				endpoints.MapControllers();
+				endpoints.MapFallbackToFile("index.html");
 			});
 		}
 	}

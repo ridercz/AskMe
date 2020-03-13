@@ -5,19 +5,20 @@ using System.Security.Claims;
 using System.Text.Json;
 using System.Threading.Tasks;
 using Blazor.Extensions.Storage;
+using Blazor.Extensions.Storage.Interfaces;
 using Microsoft.AspNetCore.Components.Authorization;
 
 namespace Havit.AskMe.Web.Blazor.Client.Infrastructure {
 	public class ApiAuthenticationStateProvider : AuthenticationStateProvider, IApiAuthenticationStateProvider {
 		private const string StorageKey = "AuthenticationToken";
 
-		private readonly LocalStorage localStorage;
-		private readonly SessionStorage sessionStorage;
+		private readonly ILocalStorage localStorage;
+		private readonly ISessionStorage sessionStorage;
 		private string tokenCache;
 
 		public ApiAuthenticationStateProvider(
-			LocalStorage localStorage,
-			SessionStorage sessionStorage) {
+			ILocalStorage localStorage,
+			ISessionStorage sessionStorage) {
 			this.localStorage = localStorage;
 			this.sessionStorage = sessionStorage;
 		}
