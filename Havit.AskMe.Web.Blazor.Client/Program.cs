@@ -30,11 +30,11 @@ namespace Havit.AskMe.Web.Blazor.Client
 
 			// auth
 			builder.Services.AddAuthorizationCore();
-			builder.Services.AddSingleton<ApiAuthenticationStateProvider, ApiAuthenticationStateProvider>();
-			builder.Services.AddSingleton<AuthenticationStateProvider>(sp => sp.GetRequiredService<ApiAuthenticationStateProvider>()); // forwarder
-			builder.Services.AddSingleton<IApiAuthenticationStateProvider>(sp => sp.GetRequiredService<ApiAuthenticationStateProvider>()); // forwarded
+			builder.Services.AddScoped<ApiAuthenticationStateProvider, ApiAuthenticationStateProvider>();
+			builder.Services.AddScoped<AuthenticationStateProvider>(sp => sp.GetRequiredService<ApiAuthenticationStateProvider>()); // forwarder
+			builder.Services.AddScoped<IApiAuthenticationStateProvider>(sp => sp.GetRequiredService<ApiAuthenticationStateProvider>()); // forwarded
 
-			builder.Services.AddSingleton(serviceProvider => {
+			builder.Services.AddScoped(serviceProvider => {
 				var navigationManager = serviceProvider.GetService<NavigationManager>();
 				return new HttpClient(
 					new ApiHttpMessageHandler(
