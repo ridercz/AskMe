@@ -2,8 +2,13 @@
 using Havit.AskMe.Web.Blazor.Client.Infrastructure;
 using Microsoft.AspNetCore.Components;
 
-namespace Havit.AskMe.Web.Blazor.Client.Pages {
-	public class PageBase : ComponentBase {
+namespace Havit.AskMe.Web.Blazor.Client.Pages
+{
+    /// <summary>
+	/// Layer Supertype (design-pattern) for Blazor components serving pages (responding to routes).
+	/// </summary>
+	public class PageBase : ComponentBase
+    {
 		[Inject]
 		protected IJsHelpers JsHelpers { get; set; }
 
