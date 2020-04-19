@@ -24,7 +24,7 @@ namespace Havit.AskMe.Web.Blazor.Client
 			builder.RootComponents.Add<App>("app");
 
 			builder.Services.AddOptions();
-			builder.Services.AddBaseAddressHttpClient();
+			builder.Services.AddSingleton(new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 
 			builder.Services.AddStorage(); // Blazor.Extensions.Storage
 

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Net.Http;
+using System.Net.Http.Json;
 using System.Threading.Tasks;
 using Havit.AskMe.Web.Blazor.Shared.Contracts;
 using Microsoft.AspNetCore.Components;
@@ -12,9 +13,9 @@ namespace Havit.AskMe.Web.Blazor.Client.Services {
 			this.httpClient = httpClient;
 		}
 
-		public Task<List<ListItemVM>> GetAll() {
+		public async Task<List<ListItemVM>> GetAll() {
 			// consider client-side caching
-			return httpClient.GetJsonAsync<List<ListItemVM>>($"api/categories");
+			return await httpClient.GetFromJsonAsync<List<ListItemVM>>($"api/categories");
 		}
 	}
 }

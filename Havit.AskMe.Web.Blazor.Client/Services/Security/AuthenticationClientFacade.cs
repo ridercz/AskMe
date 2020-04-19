@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Net.Http;
+using System.Net.Http.Json;
 using System.Threading.Tasks;
 using Havit.AskMe.Web.Blazor.Client.Infrastructure;
 using Havit.AskMe.Web.Blazor.Shared.Contracts.Account;
@@ -17,7 +18,8 @@ namespace Havit.AskMe.Web.Blazor.Client.Services.Security {
 
 		public async Task<LoginVM> Login(LoginIM inputModel) {
 			try {
-				var result = await httpClient.PostJsonAsync<LoginVM>("api/accounts/login", inputModel);
+				var response = await httpClient.PostAsJsonAsync("api/accounts/login", inputModel);
+				var result = await response.Content.ReadFromJsonAsync<LoginVM>();
 
 				if (result.Successful) {
 					await apiAuthenticationStateProvider.SetAuthenticatedUserAsync(result.Token, inputModel.RememberMe);
