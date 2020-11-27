@@ -2,15 +2,14 @@
 
 	<PropertyGroup>
 		<TargetFramework>net5.0</TargetFramework>
-		<RuntimeIdentifier>browser-wasm</RuntimeIdentifier>
 		<UseBlazorWebAssembly>true</UseBlazorWebAssembly>
 		<OutputType>Exe</OutputType>
 		<RestoreAdditionalProjectSources>
 			https://dotnet.myget.org/F/aspnetcore-dev/api/v3/index.json;
 			https://dotnet.myget.org/F/blazor-dev/api/v3/index.json;
 		</RestoreAdditionalProjectSources>
-		<LangVersion>7.3</LangVersion>
-		<AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath> <!-- Workaround : https://github.com/aspnet/websdk/issues/604 -->
+		<AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>	<!-- Workaround : https://github.com/aspnet/websdk/issues/604 -->
+		<BlazorWebAssemblyLoadAllGlobalizationData>true</BlazorWebAssemblyLoadAllGlobalizationData>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -23,9 +22,9 @@
 
 	<ItemGroup>
 		<PackageReference Include="Blazor.Extensions.Storage" Version="1.1.0-preview3" />
-		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="5.0.0-rc.1.*" />
-		<PackageReference Include="System.Net.Http.Json" Version="5.0.0-rc.1.*" />
-		<PackageReference Include="Microsoft.AspNetCore.Components.Authorization" Version="5.0.0-rc.1.*" />
+		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="5.0.0" />
+		<PackageReference Include="System.Net.Http.Json" Version="5.0.0" />
+		<PackageReference Include="Microsoft.AspNetCore.Components.Authorization" Version="5.0.0" />
 	</ItemGroup>
 
 	<ItemGroup>
