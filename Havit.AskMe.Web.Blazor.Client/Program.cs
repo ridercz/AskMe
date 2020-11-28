@@ -10,7 +10,6 @@ using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.DependencyInjection;
-using Toolbelt.Blazor.Extensions.DependencyInjection;
 
 namespace Havit.AskMe.Web.Blazor.Client
 {
@@ -24,7 +23,7 @@ namespace Havit.AskMe.Web.Blazor.Client
 			builder.RootComponents.Add<App>("app");
 
 			builder.Services.AddOptions();
-			builder.Services.AddBaseAddressHttpClient();
+			builder.Services.AddSingleton(new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 
 			builder.Services.AddStorage(); // Blazor.Extensions.Storage
 
@@ -57,8 +56,6 @@ namespace Havit.AskMe.Web.Blazor.Client
 			builder.Services.AddTransient<IJsHelpers, JsHelpers>();
 
 			var host = builder.Build();
-
-			host.UseLocalTimeZone(); // Blazor (mono) fallbacks to UTC. Local time support not implementated yet.
 
 			await host.RunAsync();
 		}

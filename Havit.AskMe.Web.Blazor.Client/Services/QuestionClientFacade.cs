@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Net.Http;
+using System.Net.Http.Json;
 using System.Threading.Tasks;
 using Havit.AskMe.Web.Blazor.Shared.Contracts;
 using Havit.AskMe.Web.Blazor.Shared.Contracts.Questions;
@@ -13,20 +14,22 @@ namespace Havit.AskMe.Web.Blazor.Client.Services {
 			this.httpClient = httpClient;
 		}
 
-		public Task<CollectionDataResult<List<QuestionVM>>> GetQuestionsAsync(QuestionListQueryFilter filter) {
-			return httpClient.GetJsonAsync<CollectionDataResult<List<QuestionVM>>>($"api/questions?pageIndex={filter.PageIndex}&answered={filter.Answered}");
+		public async Task<CollectionDataResult<List<QuestionVM>>> GetQuestionsAsync(QuestionListQueryFilter filter) {
+			return await httpClient.GetFromJsonAsync<CollectionDataResult<List<QuestionVM>>>($"api/questions?pageIndex={filter.PageIndex}&answered={filter.Answered}");
 		}
 
-		public Task<QuestionVM> GetQuestionAsync(int questionId) {
-			return httpClient.GetJsonAsync<QuestionVM>($"api/questions/{questionId}");
+		public async Task<QuestionVM> GetQuestionAsync(int questionId) {
+			return await httpClient.GetFromJsonAsync<QuestionVM>($"api/questions/{questionId}");
 		}
 
-		public Task<int> CreateQuestionAsync(QuestionCreateIM inputModel) {
-			return httpClient.PostJsonAsync<int>("api/questions", inputModel);
+		public async Task<int> CreateQuestionAsync(QuestionCreateIM inputModel) {
+			var respose = await httpClient.PostAsJsonAsync("api/questions", inputModel);
+			return await respose.Content.ReadFromJsonAsync<int>();
 		}
 
-		public Task<QuestionUpdateVM> UpdateQuestionAsync(int questionId, QuestionDto inputModel) {
-			return httpClient.PutJsonAsync<QuestionUpdateVM>($"api/questions/{questionId}", inputModel);
+		public async Task<QuestionUpdateVM> UpdateQuestionAsync(int questionId, QuestionDto inputModel) {
+			var response = await httpClient.PutAsJsonAsync($"api/questions/{questionId}", inputModel);
+			return await response.Content.ReadFromJsonAsync<QuestionUpdateVM>();
 		}
 	}
 }
