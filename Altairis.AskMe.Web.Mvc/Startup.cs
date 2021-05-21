@@ -67,7 +67,7 @@ namespace Altairis.AskMe.Web.Mvc {
             // Show detailed errors in development environment
             if (env.IsDevelopment()) {
                 app.UseDeveloperExceptionPage();
-                app.UseDatabaseErrorPage();
+                app.UseMigrationsEndPoint();
                 app.UseBrowserLink();
             }
 
