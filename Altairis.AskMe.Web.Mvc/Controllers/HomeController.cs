@@ -11,11 +11,11 @@ using Microsoft.Extensions.Options;
 namespace Altairis.AskMe.Web.Mvc.Controllers {
     public class HomeController : Controller {
         private readonly AskDbContext _dc;
-        private readonly AppConfiguration _cfg;
+        private readonly AppSettings _cfg;
 
         // Constructor
 
-        public HomeController(AskDbContext dc, IOptionsSnapshot<AppConfiguration> optionsSnapshot) {
+        public HomeController(AskDbContext dc, IOptionsSnapshot<AppSettings> optionsSnapshot) {
             this._dc = dc;
             this._cfg = optionsSnapshot.Value;
 

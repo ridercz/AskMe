@@ -13,24 +13,16 @@ using Microsoft.Extensions.Hosting;
 
 namespace Altairis.AskMe.Web.Mvc {
     public class Startup {
-        private readonly IWebHostEnvironment _environment;
-        private readonly IConfigurationRoot _config;
+        private readonly IConfiguration configuration;
 
-        public Startup(IWebHostEnvironment env) {
-            this._environment = env;
-
-            var builder = new ConfigurationBuilder()
-                .SetBasePath(env.ContentRootPath)
-                .AddJsonFile("config.json", optional: false)
-                .AddJsonFile($"config.{env.EnvironmentName}.json", optional: true)
-                .AddEnvironmentVariables();
-            this._config = builder.Build();
+        public Startup(IConfiguration configuration) {
+            this.configuration = configuration;
         }
 
         public void ConfigureServices(IServiceCollection services) {
             // Configure DB context
             services.AddDbContext<AskDbContext>(options => {
-                options.UseSqlite(this._config.GetConnectionString("AskDB"));
+                options.UseSqlite(this.configuration.GetConnectionString("AskDB"));
             });
 
             // Configure MVC
@@ -58,7 +50,7 @@ namespace Altairis.AskMe.Web.Mvc {
             });
 
             // Load configuration
-            services.Configure<AppConfiguration>(this._config);
+            services.Configure<AppSettings>(this.configuration);
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, AskDbContext context, UserManager<ApplicationUser> userManager) {

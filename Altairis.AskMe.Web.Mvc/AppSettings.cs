@@ -1,5 +1,5 @@
 ﻿namespace Altairis.AskMe.Web.Mvc {
-    public class AppConfiguration {
+    public class AppSettings {
 
         public int PageSize { get; set; }
 
