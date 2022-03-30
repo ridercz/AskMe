@@ -1,5 +1,5 @@
 ﻿namespace Altairis.AskMe.Web.RazorPages {
-    public class AppConfiguration {
+    public class AppSettings {
 
         public int PageSize { get; set; }
 

@@ -8,12 +8,12 @@ using Microsoft.Extensions.Options;
 namespace Altairis.AskMe.Web.RazorPages.Pages {
     public class IndexModel : PagedPageModel<Question> {
         private readonly AskDbContext _dc;
-        private readonly AppConfiguration _cfg;
+        private readonly AppSettings _cfg;
         private readonly IQueryable<Question> _dataSource;
 
         // Constructor
 
-        public IndexModel(AskDbContext dc, IOptionsSnapshot<AppConfiguration> optionsSnapshot) {
+        public IndexModel(AskDbContext dc, IOptionsSnapshot<AppSettings> optionsSnapshot) {
             this._dc = dc;
             this._cfg = optionsSnapshot.Value;
             this._dataSource = this._dc.Questions

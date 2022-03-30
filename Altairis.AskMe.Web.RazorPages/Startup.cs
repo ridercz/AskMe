@@ -12,33 +12,21 @@ using Microsoft.Extensions.Hosting;
 
 namespace Altairis.AskMe.Web.RazorPages {
     public class Startup {
-        private readonly IWebHostEnvironment _environment;
-        private readonly IConfigurationRoot _config;
+        private readonly IConfiguration configuration;
 
-        public Startup(IWebHostEnvironment env) {
-            this._environment = env;
-
-            var builder = new ConfigurationBuilder()
-                .SetBasePath(env.ContentRootPath)
-                .AddJsonFile("config.json", optional: false)
-                .AddJsonFile($"config.{env.EnvironmentName}.json", optional: true)
-                .AddEnvironmentVariables();
-            this._config = builder.Build();
+        public Startup(IConfiguration configuration) {
+            this.configuration = configuration;
         }
 
         public void ConfigureServices(IServiceCollection services) {
             // Configure DB context
             services.AddDbContext<AskDbContext>(options => {
-                options.UseSqlite(this._config.GetConnectionString("AskDB"));
+                options.UseSqlite(this.configuration.GetConnectionString("AskDB"));
             });
 
             // Configure Razor Pages
             services.AddRazorPages(options => {
                 options.Conventions.AuthorizeFolder("/Admin");
-            }).AddMvcOptions(options => {
-                // We are using legacy MVC instead of endpoint routing, so the
-                // inherited parameter values are propagated when generating links
-                options.EnableEndpointRouting = false;
             });
 
             // Configure identity and authentication
@@ -60,7 +48,7 @@ namespace Altairis.AskMe.Web.RazorPages {
             });
 
             // Load configuration
-            services.Configure<AppConfiguration>(this._config);
+            services.Configure<AppSettings>(this.configuration);
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, AskDbContext context, UserManager<ApplicationUser> userManager) {
@@ -98,9 +86,15 @@ namespace Altairis.AskMe.Web.RazorPages {
             });
 
             // Use other middleware
+            app.UseRouting();
             app.UseStatusCodePagesWithReExecute("/Error/{0}");
             app.UseAuthentication();
-            app.UseMvc();
+            app.UseAuthorization();
+
+            // Map endpoints
+            app.UseEndpoints(endpoints => {
+                endpoints.MapRazorPages();
+            });
         }
 
     }
