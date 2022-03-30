@@ -33,12 +33,10 @@ namespace Altairis.AskMe.Web.Mvc {
                 options.UseSqlite(this._config.GetConnectionString("AskDB"));
             });
 
-            // Configure Razor Pages
-            services.AddMvc(options => {
+            // Configure MVC
+            services.AddRouting();
+            services.AddControllersWithViews(options => {
                 options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute());
-                // We are using legacy MVC instead of endpoint routing, so the
-                // inherited parameter values are propagated when generating links
-                options.EnableEndpointRouting = false;
             });
 
             // Configure identity and authentication
@@ -98,9 +96,15 @@ namespace Altairis.AskMe.Web.Mvc {
             });
 
             // Use other middleware
+            app.UseRouting();
             app.UseStatusCodePagesWithReExecute("/Error/{0}");
             app.UseAuthentication();
-            app.UseMvc();
+            app.UseAuthorization();
+
+            // Map endpoints
+            app.UseEndpoints(endpoints => {
+                endpoints.MapControllers();
+            });
         }
 
     }
