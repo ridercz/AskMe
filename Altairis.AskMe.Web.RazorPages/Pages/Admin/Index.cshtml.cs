@@ -1,84 +1,83 @@
 using Microsoft.AspNetCore.Mvc.Rendering;
 
-namespace Altairis.AskMe.Web.RazorPages.Pages.Admin {
-    public class IndexModel : PageModel {
-        private readonly AskDbContext _dc;
+namespace Altairis.AskMe.Web.RazorPages.Pages.Admin; 
+public class IndexModel : PageModel {
+    private readonly AskDbContext _dc;
 
-        // Constructor
+    // Constructor
 
-        public IndexModel(AskDbContext dc) {
-            this._dc = dc;
-        }
+    public IndexModel(AskDbContext dc) {
+        this._dc = dc;
+    }
 
-        // Model properties
+    // Model properties
 
-        public IEnumerable<SelectListItem> Categories => this._dc.Categories
-            .OrderBy(c => c.Name)
-            .Select(c => new SelectListItem { Text = c.Name, Value = c.Id.ToString() });
+    public IEnumerable<SelectListItem> Categories => this._dc.Categories
+        .OrderBy(c => c.Name)
+        .Select(c => new SelectListItem { Text = c.Name, Value = c.Id.ToString() });
 
-        [BindProperty]
-        public InputModel Input { get; set; }
+    [BindProperty]
+    public InputModel Input { get; set; }
 
-        // Input model
+    // Input model
 
-        public class InputModel {
-            [Required(ErrorMessage = "Není zadána otázka"), MaxLength(500), DataType(DataType.MultilineText)]
-            public string QuestionText { get; set; }
+    public class InputModel {
+        [Required(ErrorMessage = "Není zadána otázka"), MaxLength(500), DataType(DataType.MultilineText)]
+        public string QuestionText { get; set; }
 
-            public string AnswerText { get; set; }
+        public string AnswerText { get; set; }
 
-            [MaxLength(100)]
-            public string DisplayName { get; set; }
+        [MaxLength(100)]
+        public string DisplayName { get; set; }
 
-            [MaxLength(100), DataType(DataType.EmailAddress, ErrorMessage = "Nesprávný formát e-mailové adresy")]
-            public string EmailAddress { get; set; }
+        [MaxLength(100), DataType(DataType.EmailAddress, ErrorMessage = "Nesprávný formát e-mailové adresy")]
+        public string EmailAddress { get; set; }
 
-            public int CategoryId { get; set; }
-        }
+        public int CategoryId { get; set; }
+    }
 
-        // Handlers
+    // Handlers
 
-        public async Task<IActionResult> OnGetAsync(int questionId) {
-            // Get question
-            var q = await this._dc.Questions.FindAsync(questionId);
-            if (q == null) return this.NotFound();
+    public async Task<IActionResult> OnGetAsync(int questionId) {
+        // Get question
+        var q = await this._dc.Questions.FindAsync(questionId);
+        if (q == null) return this.NotFound();
 
-            // Prepare model
-            this.Input = new InputModel {
-                AnswerText = q.AnswerText,
-                CategoryId = q.CategoryId,
-                DisplayName = q.DisplayName,
-                EmailAddress = q.EmailAddress,
-                QuestionText = q.QuestionText
-            };
+        // Prepare model
+        this.Input = new InputModel {
+            AnswerText = q.AnswerText,
+            CategoryId = q.CategoryId,
+            DisplayName = q.DisplayName,
+            EmailAddress = q.EmailAddress,
+            QuestionText = q.QuestionText
+        };
 
-            return this.Page();
-        }
+        return this.Page();
+    }
 
-        public async Task<IActionResult> OnPostAsync(int questionId) {
-            // Get question
-            var q = await this._dc.Questions.FindAsync(questionId);
-            if (q == null) return this.NotFound();
+    public async Task<IActionResult> OnPostAsync(int questionId) {
+        // Get question
+        var q = await this._dc.Questions.FindAsync(questionId);
+        if (q == null) return this.NotFound();
 
-            if (this.ModelState.IsValid) {
-                // Update question
-                q.CategoryId = this.Input.CategoryId;
-                q.DisplayName = this.Input.DisplayName;
-                q.EmailAddress = this.Input.EmailAddress;
-                q.QuestionText = this.Input.QuestionText;
+        if (this.ModelState.IsValid) {
+            // Update question
+            q.CategoryId = this.Input.CategoryId;
+            q.DisplayName = this.Input.DisplayName;
+            q.EmailAddress = this.Input.EmailAddress;
+            q.QuestionText = this.Input.QuestionText;
 
-                if (string.IsNullOrWhiteSpace(this.Input.AnswerText)) {
-                    q.AnswerText = null;
-                    q.DateAnswered = null;
-                } else {
-                    q.AnswerText = this.Input.AnswerText;
-                    if (!q.DateAnswered.HasValue) q.DateAnswered = DateTime.Now;
-                }
-
-                await this._dc.SaveChangesAsync();
-                return this.RedirectToPage("/Question", new { questionId = q.Id });
+            if (string.IsNullOrWhiteSpace(this.Input.AnswerText)) {
+                q.AnswerText = null;
+                q.DateAnswered = null;
+            } else {
+                q.AnswerText = this.Input.AnswerText;
+                if (!q.DateAnswered.HasValue) q.DateAnswered = DateTime.Now;
             }
-            return this.Page();
+
+            await this._dc.SaveChangesAsync();
+            return this.RedirectToPage("/Question", new { questionId = q.Id });
         }
+        return this.Page();
     }
 }

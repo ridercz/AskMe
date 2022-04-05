@@ -1,26 +1,26 @@
-﻿namespace Altairis.AskMe.Web.RazorPages.Models {
-    public abstract class PagedPageModel<TItem> : PageModel {
+﻿namespace Altairis.AskMe.Web.RazorPages.Models;
 
-        public IEnumerable<TItem> Data { get; set; }
+public abstract class PagedPageModel<TItem> : PageModel {
 
-        public PagingInfo Paging { get; set; } = new PagingInfo();
+    public IEnumerable<TItem> Data { get; set; }
 
-        protected async Task GetData(IQueryable<TItem> dataSource, int pageNumber, int pageSize) {
-            // Validate arguments
-            if (dataSource == null) throw new ArgumentNullException(nameof(dataSource));
-            if (pageNumber < 1) throw new ArgumentOutOfRangeException(nameof(pageNumber));
-            if (pageSize < 1) throw new ArgumentOutOfRangeException(nameof(pageSize));
+    public PagingInfo Paging { get; set; } = new PagingInfo();
 
-            // Get number of records
-            this.Paging.TotalRecords = await dataSource.CountAsync();
-            this.Paging.PageNumber = pageNumber;
-            this.Paging.TotalPages = (int)Math.Ceiling(this.Paging.TotalRecords / (float)pageSize);
-            this.Paging.PrevPageNumber = pageNumber - 1;
-            this.Paging.NextPageNumber = this.Paging.PageNumber == this.Paging.TotalPages ? 0 : pageNumber + 1;
+    protected async Task GetData(IQueryable<TItem> dataSource, int pageNumber, int pageSize) {
+        // Validate arguments
+        if (dataSource == null) throw new ArgumentNullException(nameof(dataSource));
+        if (pageNumber < 1) throw new ArgumentOutOfRangeException(nameof(pageNumber));
+        if (pageSize < 1) throw new ArgumentOutOfRangeException(nameof(pageSize));
 
-            // Get data
-            this.Data = dataSource.Skip(this.Paging.PrevPageNumber * pageSize).Take(pageSize);
-        }
+        // Get number of records
+        this.Paging.TotalRecords = await dataSource.CountAsync();
+        this.Paging.PageNumber = pageNumber;
+        this.Paging.TotalPages = (int)Math.Ceiling(this.Paging.TotalRecords / (float)pageSize);
+        this.Paging.PrevPageNumber = pageNumber - 1;
+        this.Paging.NextPageNumber = this.Paging.PageNumber == this.Paging.TotalPages ? 0 : pageNumber + 1;
 
+        // Get data
+        this.Data = dataSource.Skip(this.Paging.PrevPageNumber * pageSize).Take(pageSize);
     }
+
 }

@@ -1,10 +1,9 @@
-﻿global using Altairis.AskMe.Data;
+﻿global using System.ComponentModel.DataAnnotations;
+global using Altairis.AskMe.Data;
 global using Altairis.AskMe.Web.RazorPages;
-global using Microsoft.EntityFrameworkCore;
 global using Microsoft.AspNetCore.Mvc;
 global using Microsoft.AspNetCore.Mvc.RazorPages;
-global using System.ComponentModel.DataAnnotations;
-
+global using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
