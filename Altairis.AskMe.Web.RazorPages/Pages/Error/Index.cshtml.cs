@@ -1,4 +1,4 @@
-namespace Altairis.AskMe.Web.RazorPages.Pages.Error; 
+namespace Altairis.AskMe.Web.RazorPages.Pages.Error;
 public class IndexModel : PageModel {
 
     public int ErrorCode { get; set; }

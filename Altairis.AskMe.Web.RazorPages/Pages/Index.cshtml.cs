@@ -1,7 +1,7 @@
 using Altairis.AskMe.Web.RazorPages.Models;
 using Microsoft.Extensions.Options;
 
-namespace Altairis.AskMe.Web.RazorPages.Pages; 
+namespace Altairis.AskMe.Web.RazorPages.Pages;
 public class IndexModel : PagedPageModel<Question> {
     private readonly AskDbContext _dc;
     private readonly AppSettings _cfg;

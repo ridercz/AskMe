@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Identity;
 
-namespace Altairis.AskMe.Web.RazorPages.Pages.Admin; 
+namespace Altairis.AskMe.Web.RazorPages.Pages.Admin;
 public class ChangePasswordModel : PageModel {
     private readonly UserManager<ApplicationUser> _userManager;
     private readonly SignInManager<ApplicationUser> _signInManager;

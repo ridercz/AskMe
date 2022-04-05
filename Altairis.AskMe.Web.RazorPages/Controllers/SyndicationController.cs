@@ -4,7 +4,7 @@ using System.Xml;
 using Microsoft.SyndicationFeed;
 using Microsoft.SyndicationFeed.Rss;
 
-namespace Altairis.AskMe.Web.RazorPages.Controllers; 
+namespace Altairis.AskMe.Web.RazorPages.Controllers;
 public class SyndicationController : Controller {
     private const int TITLE_MAX_LENGTH = 50;
     private const int DESCRIPTION_MAX_LENGTH = 200;

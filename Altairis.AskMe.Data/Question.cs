@@ -1,33 +1,29 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿namespace Altairis.AskMe.Data; 
 
-namespace Altairis.AskMe.Data {
-    public class Question {
+public class Question {
 
-        [Key]
-        public int Id { get; set; }
+    [Key]
+    public int Id { get; set; }
 
-        public DateTime DateCreated { get; set; } = DateTime.Now;
+    public DateTime DateCreated { get; set; } = DateTime.Now;
 
-        public DateTime? DateAnswered { get; set; }
+    public DateTime? DateAnswered { get; set; }
 
-        [Required, MaxLength(500)]
-        public string QuestionText { get; set; }
+    [Required, MaxLength(500)]
+    public string QuestionText { get; set; }
 
-        [MaxLength(100)]
-        public string DisplayName { get; set; }
+    [MaxLength(100)]
+    public string DisplayName { get; set; }
 
-        [MaxLength(100), DataType(DataType.EmailAddress)]
-        public string EmailAddress { get; set; }
+    [MaxLength(100), DataType(DataType.EmailAddress)]
+    public string EmailAddress { get; set; }
 
-        public string AnswerText { get; set; }
+    public string AnswerText { get; set; }
 
-        [ForeignKey(nameof(Category))]
-        public int CategoryId { get; set; }
+    [ForeignKey(nameof(Category))]
+    public int CategoryId { get; set; }
 
-        [ForeignKey(nameof(CategoryId))]
-        public Category Category { get; set; }
+    [ForeignKey(nameof(CategoryId))]
+    public Category Category { get; set; }
 
-    }
 }

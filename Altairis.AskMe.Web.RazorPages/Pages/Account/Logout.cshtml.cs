@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Identity;
 
-namespace Altairis.AskMe.Web.RazorPages.Pages.Account; 
+namespace Altairis.AskMe.Web.RazorPages.Pages.Account;
 public class LogoutModel : PageModel {
     private readonly SignInManager<ApplicationUser> _signInManager;
 

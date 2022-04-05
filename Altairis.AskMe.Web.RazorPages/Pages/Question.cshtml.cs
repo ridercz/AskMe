@@ -1,5 +1,5 @@
 
-namespace Altairis.AskMe.Web.RazorPages.Pages; 
+namespace Altairis.AskMe.Web.RazorPages.Pages;
 public class QuestionModel : PageModel {
     private readonly AskDbContext _dc;
 

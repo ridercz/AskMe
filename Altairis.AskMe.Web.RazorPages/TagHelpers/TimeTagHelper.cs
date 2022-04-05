@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Razor.TagHelpers;
 
-namespace Altairis.AskMe.Web.RazorPages.TagHelpers; 
+namespace Altairis.AskMe.Web.RazorPages.TagHelpers;
 [HtmlTargetElement("time", Attributes = "value")]
 public class TimeTagHelper : TagHelper {
 

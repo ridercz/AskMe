@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc.Rendering;
 
-namespace Altairis.AskMe.Web.RazorPages.Pages.Admin; 
+namespace Altairis.AskMe.Web.RazorPages.Pages.Admin;
 public class IndexModel : PageModel {
     private readonly AskDbContext _dc;
 

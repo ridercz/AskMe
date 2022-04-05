@@ -2,7 +2,7 @@ using Altairis.AskMe.Web.RazorPages.Models;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Options;
 
-namespace Altairis.AskMe.Web.RazorPages.Pages; 
+namespace Altairis.AskMe.Web.RazorPages.Pages;
 public class QuestionsModel : PagedPageModel<Question> {
     private readonly AskDbContext _dc;
     private readonly AppSettings _cfg;

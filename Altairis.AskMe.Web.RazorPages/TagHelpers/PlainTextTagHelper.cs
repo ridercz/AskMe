@@ -2,7 +2,7 @@
 using System.Text.Encodings.Web;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 
-namespace Altairis.AskMe.Web.RazorPages.TagHelpers; 
+namespace Altairis.AskMe.Web.RazorPages.TagHelpers;
 [HtmlTargetElement("plainText")]
 public class PlainTextTagHelper : TagHelper {
     private readonly HtmlEncoder _encoder;
