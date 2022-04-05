@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Razor.TagHelpers;
+﻿using Microsoft.AspNetCore.Razor.TagHelpers;
 
 namespace Altairis.AskMe.Web.RazorPages.TagHelpers {
     [HtmlTargetElement(Attributes = "for-login-status")]

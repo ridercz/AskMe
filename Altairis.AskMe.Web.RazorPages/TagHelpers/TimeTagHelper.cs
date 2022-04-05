@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.AspNetCore.Razor.TagHelpers;
+﻿using Microsoft.AspNetCore.Razor.TagHelpers;
 
 namespace Altairis.AskMe.Web.RazorPages.TagHelpers {
     [HtmlTargetElement("time", Attributes = "value")]

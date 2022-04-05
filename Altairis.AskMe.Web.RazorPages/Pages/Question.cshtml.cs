@@ -1,4 +1,3 @@
-using System.Threading.Tasks;
 using Altairis.AskMe.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;

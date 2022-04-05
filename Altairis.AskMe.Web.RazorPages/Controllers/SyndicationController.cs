@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
+﻿using System.Text;
 using System.Text.Encodings.Web;
-using System.Threading.Tasks;
 using System.Xml;
 using Altairis.AskMe.Data;
 using Microsoft.AspNetCore.Mvc;
