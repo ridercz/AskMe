@@ -1,5 +1,4 @@
 ﻿using Altairis.AskMe.Web.RazorPages.Models;
-using Microsoft.AspNetCore.Mvc;
 
 namespace Altairis.AskMe.Web.RazorPages.Components {
     public class PagerViewComponent : ViewComponent {

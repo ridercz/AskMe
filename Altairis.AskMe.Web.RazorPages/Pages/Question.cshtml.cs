@@ -1,7 +1,3 @@
-using Altairis.AskMe.Data;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.EntityFrameworkCore;
 
 namespace Altairis.AskMe.Web.RazorPages.Pages {
     public class QuestionModel : PageModel {

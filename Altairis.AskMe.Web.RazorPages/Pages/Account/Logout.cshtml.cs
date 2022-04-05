@@ -1,6 +1,4 @@
-using Altairis.AskMe.Data;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Altairis.AskMe.Web.RazorPages.Pages.Account {
     public class LogoutModel : PageModel {

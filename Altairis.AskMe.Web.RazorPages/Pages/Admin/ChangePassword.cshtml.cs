@@ -1,8 +1,4 @@
-using System.ComponentModel.DataAnnotations;
-using Altairis.AskMe.Data;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Altairis.AskMe.Web.RazorPages.Pages.Admin {
     public class ChangePasswordModel : PageModel {

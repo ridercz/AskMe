@@ -1,7 +1,3 @@
-using System.ComponentModel.DataAnnotations;
-using Altairis.AskMe.Data;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Altairis.AskMe.Web.RazorPages.Pages.Admin {

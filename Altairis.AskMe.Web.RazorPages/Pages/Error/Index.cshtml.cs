@@ -1,5 +1,3 @@
-using Microsoft.AspNetCore.Mvc.RazorPages;
-
 namespace Altairis.AskMe.Web.RazorPages.Pages.Error {
     public class IndexModel : PageModel {
 

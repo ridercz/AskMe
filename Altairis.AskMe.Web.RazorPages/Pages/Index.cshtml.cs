@@ -1,6 +1,4 @@
-using Altairis.AskMe.Data;
 using Altairis.AskMe.Web.RazorPages.Models;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 
 namespace Altairis.AskMe.Web.RazorPages.Pages {

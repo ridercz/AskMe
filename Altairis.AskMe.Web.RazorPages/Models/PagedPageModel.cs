@@ -1,7 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.EntityFrameworkCore;
-
-namespace Altairis.AskMe.Web.RazorPages.Models {
+﻿namespace Altairis.AskMe.Web.RazorPages.Models {
     public abstract class PagedPageModel<TItem> : PageModel {
 
         public IEnumerable<TItem> Data { get; set; }

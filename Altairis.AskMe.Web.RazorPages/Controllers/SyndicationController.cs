@@ -1,9 +1,6 @@
 ﻿using System.Text;
 using System.Text.Encodings.Web;
 using System.Xml;
-using Altairis.AskMe.Data;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.SyndicationFeed;
 using Microsoft.SyndicationFeed.Rss;
 
