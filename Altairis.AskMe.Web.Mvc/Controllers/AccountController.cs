@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Identity;
 
 namespace Altairis.AskMe.Web.Mvc.Controllers;
+
 [Route("Account")]
 public class AccountController : Controller {
     private readonly SignInManager<ApplicationUser> _signInManager;

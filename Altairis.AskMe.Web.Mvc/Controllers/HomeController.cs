@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Options;
 
 namespace Altairis.AskMe.Web.Mvc.Controllers;
+
 public class HomeController : Controller {
     private readonly AskDbContext _dc;
     private readonly AppSettings _cfg;

@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 
 namespace Altairis.AskMe.Web.RazorPages.Pages.Account;
+
 public class LoginModel : PageModel {
     private readonly SignInManager<ApplicationUser> _signInManager;
 
@@ -9,14 +10,14 @@ public class LoginModel : PageModel {
     }
 
     [BindProperty]
-    public InputModel Input { get; set; }
+    public InputModel Input { get; set; } = new InputModel();
 
     public class InputModel {
         [Required]
-        public string UserName { get; set; }
+        public string UserName { get; set; } = string.Empty;
 
         [Required, DataType(DataType.Password)]
-        public string Password { get; set; }
+        public string Password { get; set; } = string.Empty;
 
         public bool RememberMe { get; set; }
     }

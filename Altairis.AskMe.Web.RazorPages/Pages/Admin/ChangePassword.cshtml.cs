@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 
 namespace Altairis.AskMe.Web.RazorPages.Pages.Admin;
+
 public class ChangePasswordModel : PageModel {
     private readonly UserManager<ApplicationUser> _userManager;
     private readonly SignInManager<ApplicationUser> _signInManager;
@@ -11,18 +12,18 @@ public class ChangePasswordModel : PageModel {
     }
 
     [BindProperty]
-    public InputModel Input { get; set; }
+    public InputModel Input { get; set; } = new InputModel();
 
     public class InputModel {
         [Required, DataType(DataType.Password)]
-        public string OldPassword { get; set; }
+        public string OldPassword { get; set; } = string.Empty;
 
         [Required, DataType(DataType.Password), MinLength(12)]
-        public string NewPassword { get; set; }
+        public string NewPassword { get; set; } = string.Empty;
 
         [DataType(DataType.Password)]
         [Compare("NewPassword")]
-        public string ConfirmPassword { get; set; }
+        public string ConfirmPassword { get; set; } = string.Empty;
     }
 
     public async Task<IActionResult> OnPostAsync() {

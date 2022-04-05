@@ -1,4 +1,5 @@
 ﻿namespace Altairis.AskMe.Web.Mvc.Controllers;
+
 [Route("Error")]
 public class ErrorController : Controller {
     [Route("{errorCode:int:min(100):max(599)}")]

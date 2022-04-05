@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Options;
 
 namespace Altairis.AskMe.Web.RazorPages.Pages;
+
 public class QuestionsModel : PagedPageModel<Question> {
     private readonly AskDbContext _dc;
     private readonly AppSettings _cfg;
@@ -26,19 +27,19 @@ public class QuestionsModel : PagedPageModel<Question> {
         .Select(c => new SelectListItem { Text = c.Name, Value = c.Id.ToString() });
 
     [BindProperty]
-    public InputModel Input { get; set; }
+    public InputModel Input { get; set; } = new InputModel();
 
     // Input model
 
     public class InputModel {
         [Required(ErrorMessage = "Není zadána otázka"), MaxLength(500), DataType(DataType.MultilineText)]
-        public string QuestionText { get; set; }
+        public string QuestionText { get; set; } = string.Empty;
 
         [MaxLength(100)]
-        public string DisplayName { get; set; }
+        public string? DisplayName { get; set; }
 
         [MaxLength(100), DataType(DataType.EmailAddress, ErrorMessage = "Nesprávný formát e-mailové adresy")]
-        public string EmailAddress { get; set; }
+        public string? EmailAddress { get; set; }
 
         public int CategoryId { get; set; }
     }

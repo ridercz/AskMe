@@ -1,12 +1,13 @@
 ﻿using Microsoft.AspNetCore.Razor.TagHelpers;
 
 namespace Altairis.AskMe.Web.RazorPages.TagHelpers;
+
 [HtmlTargetElement(Attributes = "for-login-status")]
 public class ForLoginStatusTagHelper : TagHelper {
-    private readonly HttpContext _httpContext;
+    private readonly HttpContext httpContext;
 
     public ForLoginStatusTagHelper(IHttpContextAccessor httpContextAccessor) {
-        this._httpContext = httpContextAccessor.HttpContext;
+        this.httpContext = httpContextAccessor.HttpContext ?? throw new ArgumentException("HTTP context not available.", nameof(httpContextAccessor));
     }
 
     public bool ForLoginStatus { get; set; }
@@ -14,7 +15,7 @@ public class ForLoginStatusTagHelper : TagHelper {
     public override void Process(TagHelperContext context, TagHelperOutput output) {
         base.Process(context, output);
 
-        if (this._httpContext.User.Identity.IsAuthenticated != this.ForLoginStatus) {
+        if (this.httpContext.User?.Identity?.IsAuthenticated != this.ForLoginStatus) {
             output.SuppressOutput();
         }
     }

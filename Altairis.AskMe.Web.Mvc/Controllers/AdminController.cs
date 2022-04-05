@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Altairis.AskMe.Web.Mvc.Controllers;
+
 [Route("Admin"), Authorize]
 public class AdminController : Controller {
     private readonly AskDbContext _dc;

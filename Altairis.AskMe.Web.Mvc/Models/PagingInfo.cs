@@ -1,4 +1,5 @@
 ﻿namespace Altairis.AskMe.Web.Mvc.Models;
+
 public class PagingInfo {
     public int PageNumber { get; set; }
 

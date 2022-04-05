@@ -1,7 +1,8 @@
 ﻿namespace Altairis.AskMe.Web.Mvc.Models;
+
 public class PagedModel<TItem> {
 
-    public IEnumerable<TItem> Data { get; set; }
+    public IEnumerable<TItem> Data { get; set; } = null!;
 
     public PagingInfo Paging { get; set; } = new PagingInfo();
 

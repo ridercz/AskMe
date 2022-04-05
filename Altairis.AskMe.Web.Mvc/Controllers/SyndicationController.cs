@@ -6,6 +6,7 @@ using Microsoft.SyndicationFeed.Rss;
 using System;
 
 namespace Altairis.AskMe.Web.Mvc.Controllers;
+
 public class SyndicationController : Controller {
     private const int TITLE_MAX_LENGTH = 50;
     private const int DESCRIPTION_MAX_LENGTH = 200;
@@ -20,7 +21,7 @@ public class SyndicationController : Controller {
 
     [Route("/feed.rss", Name = "RssFeed")]
     public async Task<IActionResult> RssFeed() {
-        var homepageUrl = this.Url.Page("/Index", pageHandler: null, values: null, protocol: this.Request.Scheme);
+        var homepageUrl = this.Url.Page("/Index", pageHandler: null, values: null, protocol: this.Request.Scheme) ?? throw new Exception("Missing homepage route.");
         var items = await this.GetSyndicationItemsAsync(this.Request.Scheme, 15);
 
         using var sw = new StringWriter();
@@ -54,12 +55,14 @@ public class SyndicationController : Controller {
             .ToListAsync();
 
         return questions.Select(q => {
+#pragma warning disable CS8629 // Nullable value type may be null.
             var item = new SyndicationItem {
                 Title = TruncateString(q.QuestionText, TITLE_MAX_LENGTH),
                 Description = this._encoder.Encode(TruncateString(q.QuestionText, DESCRIPTION_MAX_LENGTH)),
                 Id = this.Url.Page("/Question", pageHandler: null, values: new { questionId = q.Id }, protocol: protocol),
                 Published = q.DateAnswered.Value
             };
+#pragma warning restore CS8629 // Nullable value type may be null.
             item.AddCategory(new SyndicationCategory(q.Category.Name));
             return item;
         });
