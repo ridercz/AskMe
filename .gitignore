@@ -288,3 +288,5 @@ __pycache__/
 
 # SQLite databases
 *.db
+*.db-shm
+*.db-wal
