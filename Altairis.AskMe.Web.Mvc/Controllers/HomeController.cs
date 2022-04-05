@@ -6,15 +6,14 @@ using Microsoft.Extensions.Options;
 namespace Altairis.AskMe.Web.Mvc.Controllers;
 
 public class HomeController : Controller {
-    private readonly AskDbContext _dc;
-    private readonly AppSettings _cfg;
+    private readonly AskDbContext dc;
+    private readonly AppSettings cfg;
 
     // Constructor
 
     public HomeController(AskDbContext dc, IOptionsSnapshot<AppSettings> optionsSnapshot) {
-        this._dc = dc;
-        this._cfg = optionsSnapshot.Value;
-
+        this.dc = dc;
+        this.cfg = optionsSnapshot.Value;
     }
 
     // Actions
@@ -22,17 +21,17 @@ public class HomeController : Controller {
     [Route("{pageNumber:int:min(1)=1}")]
     public async Task<IActionResult> Index(int pageNumber) {
         var model = new PagedModel<Question>();
-        var query = this._dc.Questions
+        var query = this.dc.Questions
             .Include(x => x.Category)
             .Where(x => x.DateAnswered.HasValue)
             .OrderByDescending(x => x.DateAnswered);
-        await model.GetData(query, pageNumber, this._cfg.PageSize);
+        await model.GetData(query, pageNumber, this.cfg.PageSize);
         return this.View(model);
     }
 
     [Route("Question/{questionId:int:min(1)}")]
     public async Task<IActionResult> Question(int questionId) {
-        var model = await this._dc.Questions.Include(x => x.Category).SingleOrDefaultAsync(x => x.Id == questionId);
+        var model = await this.dc.Questions.Include(x => x.Category).SingleOrDefaultAsync(x => x.Id == questionId);
         if (model == null) return this.NotFound();
         return this.View(model);
     }
@@ -40,17 +39,17 @@ public class HomeController : Controller {
     [Route("Questions/{pageNumber:int:min(1)=1}")]
     public async Task<IActionResult> Questions(int pageNumber) {
         var model = new QuestionsModel {
-            Categories = await this._dc.Categories
+            Categories = await this.dc.Categories
                 .OrderBy(c => c.Name)
                 .Select(c => new SelectListItem { Text = c.Name, Value = c.Id.ToString() })
                 .ToListAsync()
         };
 
-        var query = this._dc.Questions
+        var query = this.dc.Questions
             .Include(x => x.Category)
             .Where(x => !x.DateAnswered.HasValue)
             .OrderByDescending(x => x.DateCreated);
-        await model.GetData(query, pageNumber, this._cfg.PageSize);
+        await model.GetData(query, pageNumber, this.cfg.PageSize);
 
         return this.View(model);
     }
@@ -66,8 +65,8 @@ public class HomeController : Controller {
                 DisplayName = model.Input.DisplayName,
                 EmailAddress = model.Input.EmailAddress
             };
-            await this._dc.Questions.AddAsync(nq);
-            await this._dc.SaveChangesAsync();
+            await this.dc.Questions.AddAsync(nq);
+            await this.dc.SaveChangesAsync();
 
             // Redirect to list of questions
             return this.RedirectToAction(
@@ -77,15 +76,15 @@ public class HomeController : Controller {
                 fragment: $"q_{nq.Id}");
         } else {
             // Invalid data
-            model.Categories = await this._dc.Categories
+            model.Categories = await this.dc.Categories
                 .OrderBy(c => c.Name)
                 .Select(c => new SelectListItem { Text = c.Name, Value = c.Id.ToString() })
                 .ToListAsync();
-            var query = this._dc.Questions
+            var query = this.dc.Questions
                 .Include(x => x.Category)
                 .Where(x => !x.DateAnswered.HasValue)
                 .OrderByDescending(x => x.DateCreated);
-            await model.GetData(query, pageNumber, this._cfg.PageSize);
+            await model.GetData(query, pageNumber, this.cfg.PageSize);
             return this.View(model);
         }
     }

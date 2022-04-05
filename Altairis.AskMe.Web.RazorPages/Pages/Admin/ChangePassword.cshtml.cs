@@ -3,12 +3,12 @@ using Microsoft.AspNetCore.Identity;
 namespace Altairis.AskMe.Web.RazorPages.Pages.Admin;
 
 public class ChangePasswordModel : PageModel {
-    private readonly UserManager<ApplicationUser> _userManager;
-    private readonly SignInManager<ApplicationUser> _signInManager;
+    private readonly UserManager<ApplicationUser> userManager;
+    private readonly SignInManager<ApplicationUser> signInManager;
 
     public ChangePasswordModel(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager) {
-        this._userManager = userManager;
-        this._signInManager = signInManager;
+        this.userManager = userManager;
+        this.signInManager = signInManager;
     }
 
     [BindProperty]
@@ -29,17 +29,17 @@ public class ChangePasswordModel : PageModel {
     public async Task<IActionResult> OnPostAsync() {
         if (this.ModelState.IsValid) {
             // Get current user
-            var user = await this._userManager.GetUserAsync(this.User);
+            var user = await this.userManager.GetUserAsync(this.User);
 
             // Try to change password
-            var result = await this._userManager.ChangePasswordAsync(
+            var result = await this.userManager.ChangePasswordAsync(
                 user,
                 this.Input.OldPassword,
                 this.Input.NewPassword);
 
             if (result.Succeeded) {
                 // OK, re-sign and redirect to homepage
-                await this._signInManager.SignInAsync(user, isPersistent: false);
+                await this.signInManager.SignInAsync(user, isPersistent: false);
                 return this.RedirectToPage("ChangePasswordDone");
             } else {
                 // Failed - show why

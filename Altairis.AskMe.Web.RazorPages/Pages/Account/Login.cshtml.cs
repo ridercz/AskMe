@@ -3,10 +3,10 @@
 namespace Altairis.AskMe.Web.RazorPages.Pages.Account;
 
 public class LoginModel : PageModel {
-    private readonly SignInManager<ApplicationUser> _signInManager;
+    private readonly SignInManager<ApplicationUser> signInManager;
 
     public LoginModel(SignInManager<ApplicationUser> signInManager) {
-        this._signInManager = signInManager;
+        this.signInManager = signInManager;
     }
 
     [BindProperty]
@@ -24,7 +24,7 @@ public class LoginModel : PageModel {
 
     public async Task<IActionResult> OnPostAsync(string returnUrl = "/") {
         if (this.ModelState.IsValid) {
-            var result = await this._signInManager.PasswordSignInAsync(
+            var result = await this.signInManager.PasswordSignInAsync(
                 this.Input.UserName,
                 this.Input.Password,
                 this.Input.RememberMe,

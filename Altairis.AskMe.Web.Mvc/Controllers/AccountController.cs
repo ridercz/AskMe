@@ -5,12 +5,12 @@ namespace Altairis.AskMe.Web.Mvc.Controllers;
 
 [Route("Account")]
 public class AccountController : Controller {
-    private readonly SignInManager<ApplicationUser> _signInManager;
+    private readonly SignInManager<ApplicationUser> signInManager;
 
     // Controller
 
     public AccountController(SignInManager<ApplicationUser> signInManager) {
-        this._signInManager = signInManager;
+        this.signInManager = signInManager;
     }
 
     // Actions
@@ -21,7 +21,7 @@ public class AccountController : Controller {
     [HttpPost, Route("Login")]
     public async Task<IActionResult> Login(LoginModel model, string returnUrl = "/") {
         if (this.ModelState.IsValid) {
-            var result = await this._signInManager.PasswordSignInAsync(
+            var result = await this.signInManager.PasswordSignInAsync(
                 model.UserName,
                 model.Password,
                 model.RememberMe,
@@ -38,7 +38,7 @@ public class AccountController : Controller {
 
     [Route("Logout")]
     public async Task<IActionResult> Logout() {
-        await this._signInManager.SignOutAsync();
+        await this.signInManager.SignOutAsync();
         return this.MessageView("Odhlášení", "Byli jste úspěšně odhlášeni");
     }
 
