@@ -44,7 +44,7 @@ public class AskDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, 
                     DateCreated = DateTime.Now.AddHours(i - numberOfQuestions),
                     CategoryId = categoryIds[rng.Next(categoryIds.Length)]
                 };
-                if (nq.QuestionText.Length > 500) nq.QuestionText = nq.QuestionText.Substring(0, 499) + ".";
+                if (nq.QuestionText.Length > 500) nq.QuestionText = string.Concat(nq.QuestionText.AsSpan(0, 499), ".");
                 if (rng.Next(100) > anonymousRate) {
                     var name = rtg.GenerateWords(rng.Next(SEED_MAX_NAME_WORDS) + 1);
                     nq.DisplayName = string.Join(' ', name);
