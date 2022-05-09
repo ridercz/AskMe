@@ -19,7 +19,7 @@ public class AccountController : Controller {
     public IActionResult Login() => this.View();
 
     [HttpPost, Route("Login")]
-    public async Task<IActionResult> Login(LoginModel model, string returnUrl = "/") {
+    public async Task<IActionResult> Login(LoginModel model, string? returnUrl) {
         if (this.ModelState.IsValid) {
             var result = await this.signInManager.PasswordSignInAsync(
                 model.UserName,
@@ -28,7 +28,7 @@ public class AccountController : Controller {
                 lockoutOnFailure: false);
 
             if (result.Succeeded) {
-                return this.LocalRedirect(returnUrl);
+                return this.LocalRedirect(returnUrl ?? "/");
             } else {
                 this.ModelState.AddModelError(string.Empty, "Přihlášení se nezdařilo");
             }

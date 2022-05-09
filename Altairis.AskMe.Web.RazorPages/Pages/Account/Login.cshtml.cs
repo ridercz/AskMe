@@ -22,7 +22,7 @@ public class LoginModel : PageModel {
         public bool RememberMe { get; set; }
     }
 
-    public async Task<IActionResult> OnPostAsync(string returnUrl = "/") {
+    public async Task<IActionResult> OnPostAsync(string? returnUrl) {
         if (this.ModelState.IsValid) {
             var result = await this.signInManager.PasswordSignInAsync(
                 this.Input.UserName,
@@ -31,7 +31,7 @@ public class LoginModel : PageModel {
                 lockoutOnFailure: false);
 
             if (result.Succeeded) {
-                return this.LocalRedirect(returnUrl);
+                return this.LocalRedirect(returnUrl ?? "/");
             } else {
                 this.ModelState.AddModelError(string.Empty, "Přihlášení se nezdařilo");
             }
