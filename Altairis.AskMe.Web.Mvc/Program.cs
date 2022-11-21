@@ -87,8 +87,6 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 // Map endpoints
-app.UseEndpoints(endpoints => {
-    endpoints.MapControllers();
-});
+app.MapControllers();
 
 await app.RunAsync();

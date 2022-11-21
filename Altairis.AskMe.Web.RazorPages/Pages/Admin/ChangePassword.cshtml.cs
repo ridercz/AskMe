@@ -30,6 +30,7 @@ public class ChangePasswordModel : PageModel {
         if (this.ModelState.IsValid) {
             // Get current user
             var user = await this.userManager.GetUserAsync(this.User);
+            if (user == null) throw new InvalidOperationException();
 
             // Try to change password
             var result = await this.userManager.ChangePasswordAsync(

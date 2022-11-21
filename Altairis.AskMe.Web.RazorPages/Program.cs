@@ -88,8 +88,6 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 // Map endpoints
-app.UseEndpoints(endpoints => {
-    endpoints.MapRazorPages();
-});
+app.MapRazorPages();
 
 await app.RunAsync();
