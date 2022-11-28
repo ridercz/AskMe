@@ -18,14 +18,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Altairis.AskMe.Web.RazorPag
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Altairis.AskMe.Web.Mvc", "Altairis.AskMe.Web.Mvc\Altairis.AskMe.Web.Mvc.csproj", "{5D4CED8D-6EA3-448F-A965-13CE929D9F20}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Havit.AskMe.Web.Blazor.Server", "Havit.AskMe.Web.Blazor.Server\Havit.AskMe.Web.Blazor.Server.csproj", "{E29E1C38-9F7B-48E0-8734-BB2ADAF8AD9F}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Havit.AskMe.Web.Blazor.Client", "Havit.AskMe.Web.Blazor.Client\Havit.AskMe.Web.Blazor.Client.csproj", "{E5ECA9CF-C7F8-44BE-95E4-5C8B5F028A40}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Havit.AskMe.Web.Blazor.Shared", "Havit.AskMe.Web.Blazor.Shared\Havit.AskMe.Web.Blazor.Shared.csproj", "{193CCAF3-6221-48F0-A490-F276DD353B67}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Blazor", "Blazor", "{1DC0DA1F-D3E6-4F7C-990E-3639863D3D74}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -44,26 +36,9 @@ Global
 		{5D4CED8D-6EA3-448F-A965-13CE929D9F20}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5D4CED8D-6EA3-448F-A965-13CE929D9F20}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5D4CED8D-6EA3-448F-A965-13CE929D9F20}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E29E1C38-9F7B-48E0-8734-BB2ADAF8AD9F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E29E1C38-9F7B-48E0-8734-BB2ADAF8AD9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E29E1C38-9F7B-48E0-8734-BB2ADAF8AD9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E29E1C38-9F7B-48E0-8734-BB2ADAF8AD9F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E5ECA9CF-C7F8-44BE-95E4-5C8B5F028A40}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E5ECA9CF-C7F8-44BE-95E4-5C8B5F028A40}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E5ECA9CF-C7F8-44BE-95E4-5C8B5F028A40}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E5ECA9CF-C7F8-44BE-95E4-5C8B5F028A40}.Release|Any CPU.Build.0 = Release|Any CPU
-		{193CCAF3-6221-48F0-A490-F276DD353B67}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{193CCAF3-6221-48F0-A490-F276DD353B67}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{193CCAF3-6221-48F0-A490-F276DD353B67}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{193CCAF3-6221-48F0-A490-F276DD353B67}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{E29E1C38-9F7B-48E0-8734-BB2ADAF8AD9F} = {1DC0DA1F-D3E6-4F7C-990E-3639863D3D74}
-		{E5ECA9CF-C7F8-44BE-95E4-5C8B5F028A40} = {1DC0DA1F-D3E6-4F7C-990E-3639863D3D74}
-		{193CCAF3-6221-48F0-A490-F276DD353B67} = {1DC0DA1F-D3E6-4F7C-990E-3639863D3D74}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F57ECE7F-32E7-440B-81CD-6266928C13F6}

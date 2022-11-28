@@ -41,16 +41,9 @@ builder.Services.ConfigureApplicationCookie(options => {
 // Load configuration
 builder.Services.Configure<AppSettings>(builder.Configuration);
 
-var app = builder.Build();
-
 /* Configure pipeline ****************************************************************************/
 
-// Show detailed errors in development environment
-if (app.Environment.IsDevelopment()) {
-    app.UseMigrationsEndPoint();
-    app.UseBrowserLink();
-}
-
+var app = builder.Build();
 using var scope = app.Services.CreateScope();
 using var context = scope.ServiceProvider.GetRequiredService<AskDbContext>();
 using var userManager = scope.ServiceProvider.GetRequiredService<UserManager<ApplicationUser>>();
