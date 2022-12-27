@@ -92,5 +92,6 @@ app.UseAuthorization();
 
 // Map endpoints
 app.MapRazorPages();
+app.MapControllers();
 
 await app.RunAsync();
