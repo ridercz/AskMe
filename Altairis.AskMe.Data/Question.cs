@@ -1,4 +1,4 @@
-﻿namespace Altairis.AskMe.Data; 
+﻿namespace Altairis.AskMe.Data;
 
 public class Question {
 

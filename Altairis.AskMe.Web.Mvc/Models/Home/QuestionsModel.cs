@@ -4,7 +4,7 @@ namespace Altairis.AskMe.Web.Mvc.Models.Home;
 
 public class QuestionsModel : PagedModel<Question> {
 
-    public IEnumerable<SelectListItem> Categories { get; set; }= new HashSet<SelectListItem>();
+    public IEnumerable<SelectListItem> Categories { get; set; } = new HashSet<SelectListItem>();
 
     public InputModel Input { get; set; } = new InputModel();
 

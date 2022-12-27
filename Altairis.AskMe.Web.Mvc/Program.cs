@@ -50,7 +50,6 @@ builder.Services.ConfigureApplicationCookie(options => {
 // Load configuration
 builder.Services.Configure<AppSettings>(builder.Configuration);
 
-
 /* Configure pipeline ****************************************************************************/
 
 var app = builder.Build();
