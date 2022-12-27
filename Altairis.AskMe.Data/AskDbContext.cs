@@ -6,15 +6,14 @@ using NLipsum.Core;
 
 namespace Altairis.AskMe.Data;
 
-public class AskDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, int> {
+public abstract class AskDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, int> {
     private const int SEED_MAX_QUESTION_SENTENCES = 5;
     private const int SEED_MAX_ANSWER_PARAGRAPHS = 20;
     private const int SEED_MAX_NAME_WORDS = 4;
 
     // Constructor
 
-    public AskDbContext(DbContextOptions<AskDbContext> options)
-        : base(options) { }
+    public AskDbContext(DbContextOptions options) : base(options) { }
 
     // Entities
 

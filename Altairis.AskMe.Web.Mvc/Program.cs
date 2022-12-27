@@ -2,6 +2,8 @@
 global using Altairis.AskMe.Data;
 global using Microsoft.AspNetCore.Mvc;
 global using Microsoft.EntityFrameworkCore;
+using Altairis.AskMe.Data.Sqlite;
+using Altairis.AskMe.Data.SqlServer;
 using Altairis.AskMe.Web.Mvc;
 using Microsoft.AspNetCore.Identity;
 
@@ -9,10 +11,18 @@ var builder = WebApplication.CreateBuilder(args);
 
 /* Add services to the container *****************************************************************/
 
-// Configure DB context
-builder.Services.AddDbContext<AskDbContext>(options => {
-    options.UseSqlite(builder.Configuration.GetConnectionString("AskDB"));
-});
+// Configure DB context (Sqlite or SQL server
+if (AppSettings.DatabaseTypeSqlite.Equals(builder.Configuration["DatabaseType"], StringComparison.OrdinalIgnoreCase)) {
+    builder.Services.AddDbContext<AskDbContext, AskDbContextSqlite>(options => {
+        options.UseSqlite(builder.Configuration.GetConnectionString("AskDB_Sqlite"));
+    });
+} else if (AppSettings.DatabaseTypeSqlServer.Equals(builder.Configuration["DatabaseType"], StringComparison.OrdinalIgnoreCase)) {
+    builder.Services.AddDbContext<AskDbContext, AskDbContextSqlServer>(options => {
+        options.UseSqlServer(builder.Configuration.GetConnectionString("AskDB_SqlServer"));
+    });
+} else {
+    throw new NotSupportedException($"Specified database type '{builder.Configuration["DatabaseType"]}' is not supported.");
+}
 
 // Configure MVC
 builder.Services.AddControllersWithViews(options => {
