@@ -1,5 +1,6 @@
 ﻿using Altairis.AskMe.Web.Mvc.Models;
 using Altairis.AskMe.Web.Mvc.Models.Home;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Options;
 
@@ -8,18 +9,21 @@ namespace Altairis.AskMe.Web.Mvc.Controllers;
 public class HomeController : Controller {
     private readonly AskDbContext dc;
     private readonly AppSettings cfg;
+    private readonly UserManager<ApplicationUser> userManager;
 
     // Constructor
 
-    public HomeController(AskDbContext dc, IOptionsSnapshot<AppSettings> optionsSnapshot) {
+    public HomeController(AskDbContext dc, IOptionsSnapshot<AppSettings> optionsSnapshot, UserManager<ApplicationUser> userManager) {
         this.dc = dc;
         this.cfg = optionsSnapshot.Value;
+        this.userManager = userManager;
     }
 
     // Actions
 
     [Route("{pageNumber:int:min(1)=1}")]
     public async Task<IActionResult> Index(int pageNumber) {
+        if (!await this.dc.Users.AnyAsync()) return this.RedirectToAction("FirstRun");
         var model = new PagedModel<Question>();
         var query = this.dc.Questions
             .Include(x => x.Category)
@@ -28,6 +32,28 @@ public class HomeController : Controller {
         await model.GetData(query, pageNumber, this.cfg.PageSize);
         return this.View(model);
     }
+
+    [Route("FirstRun")]
+    public async Task<IActionResult> FirstRun() => await this.dc.Users.AnyAsync() ? this.NotFound() : this.View();
+
+    [Route("FirstRun"), HttpPost]
+    public async Task<IActionResult> FirstRun(FirstRunModel model) {
+        if (await this.dc.Users.AnyAsync()) return this.NotFound();
+
+        // Create new user
+        if (this.ModelState.IsValid) {
+            var result = await this.userManager.CreateAsync(new ApplicationUser { UserName = model.UserName }, password: model.Password);
+            if (result.Succeeded) {
+                if (model.SeedDemoData) this.dc.Seed();
+                return this.RedirectToAction("Index");
+            }
+            foreach (var item in result.Errors) {
+                this.ModelState.AddModelError(string.Empty, $"{item.Description} [{item.Code}]");
+            }
+        }
+        return this.View(model);
+    }
+
 
     [Route("Question/{questionId:int:min(1)}")]
     public async Task<IActionResult> Question(int questionId) {

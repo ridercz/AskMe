@@ -1,0 +1,24 @@
+﻿@model Altairis.AskMe.Web.Mvc.Models.Home.FirstRunModel
+@{
+    this.ViewBag.Title = "První spuštění";
+}
+<section class="form">
+    <header>
+        <h2>První spuštění - vytvoření uživatele</h2>
+    </header>
+    <form method="post">
+        <div>
+            <input asp-for="@Model.UserName" placeholder="Uživatelské jméno" />
+            <input asp-for="@Model.Password" placeholder="Heslo" class="half-width" />
+            <input asp-for="@Model.PasswordConfirmation" placeholder="Kontrola hesla" class="half-width" />
+        </div>
+        <div class="field">
+            <input asp-for="@Model.SeedDemoData" />
+            <label asp-for="@Model.SeedDemoData">vygenerovat ukázková data</label>
+        </div>
+        <div asp-validation-summary="All"></div>
+        <footer>
+            <input type="submit" value="Vytvořit uživatele" />
+        </footer>
+    </form>
+</section>

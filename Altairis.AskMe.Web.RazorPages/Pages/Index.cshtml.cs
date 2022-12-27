@@ -21,6 +21,11 @@ public class IndexModel : PagedPageModel<Question> {
 
     // Handlers
 
-    public async Task OnGetAsync(int pageNumber) => await base.GetData(this.dataSource, pageNumber, this.cfg.PageSize);
+    public async Task<ActionResult> OnGetAsync(int pageNumber) {
+        // If no users are defined, redirect to first run page
+        if (!await this.dc.Users.AnyAsync()) return this.RedirectToPage("FirstRun");
 
+        await base.GetData(this.dataSource, pageNumber, this.cfg.PageSize);
+        return this.Page();
+    }
 }
