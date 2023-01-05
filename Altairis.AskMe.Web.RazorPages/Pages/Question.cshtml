@@ -1,4 +1,4 @@
-﻿@page "{questionId:int:min(1)}"
+﻿@page "/question/{questionId:int:min(1)}"
 @model QuestionModel
 @{ this.ViewBag.Title = $"Otázka číslo {Model.Data.Id}"; }
 
