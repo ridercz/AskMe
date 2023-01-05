@@ -35,6 +35,7 @@
         }
         <footer for-login-status="true">
             <a asp-controller="Admin" asp-action="EditQuestion" asp-route-questionId="@Model.Id" class="button"><i class="fas fa-commenting"></i> Upravit</a>
+            <a asp-controller="Admin" asp-action="DeleteQuestion" asp-route-questionId="@Model.Id" class="button"><i class="fas fa-trash"></i> Smazat</a>
         </footer>
     </section>
 </article>

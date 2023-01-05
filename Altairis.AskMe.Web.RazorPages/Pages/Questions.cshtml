@@ -41,7 +41,8 @@
             </header>
             <plainText text="@item.QuestionText" html-encode="true"></plainText>
             <footer for-login-status="true">
-                <a asp-page="Admin/Index" asp-route-questionId="@item.Id" class="button"><i class="fas fa-commenting"></i> Odpovědět</a>
+                <a asp-page="Admin/EditQuestion" asp-route-questionId="@item.Id" class="button"><i class="fas fa-commenting"></i> Odpovědět</a>
+                <a asp-page="Admin/DeleteQuestion" asp-route-questionId="@item.Id" class="button"><i class="fas fa-trash"></i> Smazat</a>
             </footer>
         </article>
     }

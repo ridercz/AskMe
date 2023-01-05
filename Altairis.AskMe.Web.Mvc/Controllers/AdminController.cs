@@ -21,14 +21,14 @@ public class AdminController : Controller {
 
     // Actions
 
-    [Route("/question/{questionId:int:min(1)}/edit")]
+    [Route("/Question/{questionId:int:min(1)}/edit")]
     public async Task<IActionResult> EditQuestion(int questionId) {
         // Get question
         var q = await this.dc.Questions.FindAsync(questionId);
         if (q == null) return this.NotFound();
 
         // Prepare model
-        var model = new IndexModel {
+        var model = new EditQuestionModel {
             AnswerText = q.AnswerText,
             CategoryId = q.CategoryId,
             DisplayName = q.DisplayName,
@@ -43,8 +43,8 @@ public class AdminController : Controller {
         return this.View(model);
     }
 
-    [HttpPost, Route("{questionId:int:min(1)}")]
-    public async Task<IActionResult> Index(int questionId, IndexModel model) {
+    [HttpPost, Route("/Question/{questionId:int:min(1)}/edit")]
+    public async Task<IActionResult> EditQuestion(int questionId, EditQuestionModel model) {
         // Get question
         var q = await this.dc.Questions.FindAsync(questionId);
         if (q == null) return this.NotFound();
@@ -71,6 +71,28 @@ public class AdminController : Controller {
                 routeValues: new { questionId = q.Id });
         }
         return this.View(model);
+    }
+
+    [Route("/Question/{questionId:int:min(1)}/delete")]
+    public async Task<IActionResult> DeleteQuestion(int questionId) {
+        // Get question
+        var q = await this.dc.Questions.FindAsync(questionId);
+        if (q == null) return this.NotFound();
+
+        return this.View(new DeleteQuestionModel { QuestionText = q.QuestionText });
+    }
+
+    [HttpPost, Route("/Question/{questionId:int:min(1)}/delete")]
+    public async Task<IActionResult> DeleteQuestion(int questionId, DeleteQuestionModel model) {
+        // Get question
+        var q = await this.dc.Questions.FindAsync(questionId);
+
+        // Delete question
+        if (q != null) {
+            this.dc.Remove(q);
+            await this.dc.SaveChangesAsync();
+        }
+        return this.RedirectToAction("Questions", "Home");
     }
 
     [Route("ChangePassword")]

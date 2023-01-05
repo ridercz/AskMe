@@ -1,0 +1,17 @@
+﻿@page "/question/{questionId:int:min(1)}/delete"
+@model Altairis.AskMe.Web.RazorPages.Pages.Admin.DeleteQuestionModel
+@{
+    this.ViewBag.Title = "Smazání otázky";
+}
+<h2>Smazání otázky</h2>
+<article class="question">
+    <form method="post">
+        <div>
+            <plainText text="@Model.QuestionText"></plainText>
+        </div>
+        <footer>
+            <input type="submit" value="Smazat" class="button" />
+            <input type="button" value="Storno" class="button" onclick="history.back(-1)" />
+        </footer>
+    </form>
+</article>
