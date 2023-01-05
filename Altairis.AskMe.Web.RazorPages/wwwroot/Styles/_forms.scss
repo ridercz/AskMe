@@ -34,7 +34,7 @@ section.form {
         text-align: right;
         border-radius: 0 0 $padding/3 $padding/3;
 
-        input[type=submit] {
+        input[type=submit], input[type=button] {
             background-color: $accent1;
             color: $white;
             border: none;
