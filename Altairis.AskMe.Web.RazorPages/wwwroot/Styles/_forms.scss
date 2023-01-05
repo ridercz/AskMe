@@ -96,14 +96,16 @@ form {
     }
 }
 
-a.button {
+.button {
     padding: $padding/2 $padding;
+    border: none;
     border-radius: $padding/3;
     text-decoration: none;
     display: inline-block;
+    background-color: $accent2;
+    color: $white;
 
     &:link {
-        background-color: $accent2;
         color: $white;
     }
 

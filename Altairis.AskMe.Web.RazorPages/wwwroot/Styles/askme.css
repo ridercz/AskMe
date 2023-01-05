@@ -174,21 +174,23 @@ form :-moz-placeholder {
   color: #018D8D;
 }
 
-a.button {
+.button {
   padding: 0.5em 1em;
+  border: none;
   border-radius: 0.3333333333em;
   text-decoration: none;
   display: inline-block;
-}
-a.button:link {
   background-color: #018D8D;
   color: #eee;
 }
-a.button:visited {
+.button:link {
+  color: #eee;
+}
+.button:visited {
   background-color: #015a5a;
   color: #eee;
 }
-a.button:hover {
+.button:hover {
   background-color: #EB6B02;
   color: #eee;
 }
