@@ -41,7 +41,7 @@
             </header>
             <plainText text="@item.QuestionText" html-encode="true"></plainText>
             <footer for-login-status="true">
-                <a asp-controller="Admin" asp-action="Index" asp-route-questionId="@item.Id" class="button"><i class="fas fa-commenting"></i> Upravit</a>
+                <a asp-controller="Admin" asp-action="EditQuestion" asp-route-questionId="@item.Id" class="button"><i class="fas fa-commenting"></i> Upravit</a>
             </footer>
         </article>
     }

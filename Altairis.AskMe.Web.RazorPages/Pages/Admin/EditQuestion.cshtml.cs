@@ -2,12 +2,12 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Altairis.AskMe.Web.RazorPages.Pages.Admin;
 
-public class IndexModel : PageModel {
+public class EditQuestionModel : PageModel {
     private readonly AskDbContext dc;
 
     // Constructor
 
-    public IndexModel(AskDbContext dc) {
+    public EditQuestionModel(AskDbContext dc) {
         this.dc = dc;
     }
 

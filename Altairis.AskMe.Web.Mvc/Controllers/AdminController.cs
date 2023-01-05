@@ -22,7 +22,7 @@ public class AdminController : Controller {
     // Actions
 
     [Route("/question/{questionId:int:min(1)}/edit")]
-    public async Task<IActionResult> Index(int questionId) {
+    public async Task<IActionResult> EditQuestion(int questionId) {
         // Get question
         var q = await this.dc.Questions.FindAsync(questionId);
         if (q == null) return this.NotFound();
