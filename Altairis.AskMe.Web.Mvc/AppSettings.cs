@@ -6,6 +6,10 @@ public class AppSettings {
 
     public string DatabaseType { get; set; } = DatabaseTypeSqlite;
 
-    public int PageSize { get; set; }
+    public int PageSize { get; set; } = 10;
+
+    public string Title { get; set; } = "ASKme";
+
+    public string Subtitle { get; set; } = "zeptej se mě na co chceš, já na co chci odpovím";
 
 }

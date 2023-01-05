@@ -1,9 +1,10 @@
 ﻿@inject Microsoft.AspNetCore.Hosting.IWebHostEnvironment Environment
+@inject Microsoft.Extensions.Options.IOptions<AppSettings> Options
 <!DOCTYPE html>
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>@(string.IsNullOrWhiteSpace(ViewBag.Title) ? "ASKme" : ViewBag.Title + " | ASKme")</title>
+    <title>@(string.IsNullOrWhiteSpace(ViewBag.Title) ? this.Options.Value.Title : ViewBag.Title + " | " + this.Options.Value.Title)</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
           integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css"
@@ -18,8 +19,8 @@
 </head>
 <body>
     <header>
-        <h1>ASKme</h1>
-        <div>zeptej se mě na co chceš, já na co chci odpovím</div>
+        <h1>@this.Options.Value.Title</h1>
+        <div>@this.Options.Value.Subtitle</div>
     </header>
     <vc:menu></vc:menu>
     <main>
