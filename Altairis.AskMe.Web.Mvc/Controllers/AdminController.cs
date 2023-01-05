@@ -21,7 +21,7 @@ public class AdminController : Controller {
 
     // Actions
 
-    [Route("{questionId:int:min(1)}")]
+    [Route("/question/{questionId:int:min(1)}/edit")]
     public async Task<IActionResult> Index(int questionId) {
         // Get question
         var q = await this.dc.Questions.FindAsync(questionId);
