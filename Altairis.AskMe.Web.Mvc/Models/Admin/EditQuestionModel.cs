@@ -2,7 +2,7 @@
 
 namespace Altairis.AskMe.Web.Mvc.Models.Admin;
 
-public class IndexModel {
+public class EditQuestionModel {
     [Required(ErrorMessage = "Není zadána otázka"), MaxLength(500), DataType(DataType.MultilineText)]
     public string QuestionText { get; set; } = string.Empty;
 
