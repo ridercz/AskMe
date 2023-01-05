@@ -12,7 +12,7 @@
                 </span>
                 <span class="info">
                     <i class="fas fa-tag"></i> @item.Category.Name
-                    <i class="fas fa-calendar"></i> <time value="@item.DateCreated"></time>
+                    <i class="fas fa-calendar"></i> <a asp-page="Question" asp-route-questionId="@item.Id"><time value="@item.DateCreated"></time></a>
                     @if (!string.IsNullOrWhiteSpace(item.DisplayName)) {
                         <span><i class="fas fa-user"></i> @item.DisplayName</span>
                     }
