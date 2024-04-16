@@ -60,8 +60,6 @@ public class SyndicationController(AskDbContext dc, HtmlEncoder encoder) : Contr
     }
 
     private static string TruncateString(string s, int maxLength) {
-        if (s == null) throw new ArgumentNullException(nameof(s));
-
         if (s.Length >= maxLength) s = string.Concat(s.AsSpan(0, maxLength), "...");
         return s;
     }

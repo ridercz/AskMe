@@ -48,8 +48,7 @@ public class HomeController(AskDbContext dc, IOptionsSnapshot<AppSettings> optio
     [Route("Question/{questionId:int:min(1)}")]
     public async Task<IActionResult> Question(int questionId) {
         var model = await dc.Questions.Include(x => x.Category).SingleOrDefaultAsync(x => x.Id == questionId);
-        if (model == null) return this.NotFound();
-        return this.View(model);
+        return model == null ? this.NotFound() : this.View(model);
     }
 
     [Route("Questions/{pageNumber:int:min(1)=1}")]

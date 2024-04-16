@@ -21,8 +21,7 @@ public class ChangePasswordModel(UserManager<ApplicationUser> userManager, SignI
     public async Task<IActionResult> OnPostAsync() {
         if (this.ModelState.IsValid) {
             // Get current user
-            var user = await userManager.GetUserAsync(this.User);
-            if (user == null) throw new InvalidOperationException();
+            var user = await userManager.GetUserAsync(this.User) ?? throw new InvalidOperationException();
 
             // Try to change password
             var result = await userManager.ChangePasswordAsync(

@@ -8,9 +8,8 @@ public class PagedModel<TItem> {
 
     public async Task GetData(IQueryable<TItem> dataSource, int pageNumber, int pageSize) {
         // Validate arguments
-        if (dataSource == null) throw new ArgumentNullException(nameof(dataSource));
-        if (pageNumber < 1) throw new ArgumentOutOfRangeException(nameof(pageNumber));
-        if (pageSize < 1) throw new ArgumentOutOfRangeException(nameof(pageSize));
+        ArgumentOutOfRangeException.ThrowIfLessThan(pageNumber, 1);
+        ArgumentOutOfRangeException.ThrowIfLessThan(pageSize, 1);
 
         // Get number of records
         this.Paging.TotalRecords = await dataSource.CountAsync();

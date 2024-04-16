@@ -8,6 +8,6 @@ public class Category {
     [Required, MaxLength(50)]
     public string Name { get; set; } = string.Empty;
 
-    public ICollection<Question> Questions { get; set; } = new HashSet<Question>();
+    public ICollection<Question> Questions { get; set; } = [];
 
 }

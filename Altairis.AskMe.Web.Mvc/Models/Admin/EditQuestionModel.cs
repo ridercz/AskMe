@@ -16,5 +16,5 @@ public class EditQuestionModel {
 
     public int CategoryId { get; set; }
 
-    public IEnumerable<SelectListItem> Categories { get; set; } = new HashSet<SelectListItem>();
+    public IEnumerable<SelectListItem> Categories { get; set; } = [];
 }

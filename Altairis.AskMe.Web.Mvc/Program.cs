@@ -13,21 +13,15 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Configure DB context (Sqlite or SQL server
 if (AppSettings.DatabaseTypeSqlite.Equals(builder.Configuration["DatabaseType"], StringComparison.OrdinalIgnoreCase)) {
-    builder.Services.AddDbContext<AskDbContext, AskDbContextSqlite>(options => {
-        options.UseSqlite(builder.Configuration.GetConnectionString("AskDB_Sqlite"));
-    });
+    builder.Services.AddDbContext<AskDbContext, AskDbContextSqlite>(options => options.UseSqlite(builder.Configuration.GetConnectionString("AskDB_Sqlite")));
 } else if (AppSettings.DatabaseTypeSqlServer.Equals(builder.Configuration["DatabaseType"], StringComparison.OrdinalIgnoreCase)) {
-    builder.Services.AddDbContext<AskDbContext, AskDbContextSqlServer>(options => {
-        options.UseSqlServer(builder.Configuration.GetConnectionString("AskDB_SqlServer"));
-    });
+    builder.Services.AddDbContext<AskDbContext, AskDbContextSqlServer>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("AskDB_SqlServer")));
 } else {
     throw new NotSupportedException($"Specified database type '{builder.Configuration["DatabaseType"]}' is not supported.");
 }
 
 // Configure MVC
-builder.Services.AddControllersWithViews(options => {
-    options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute());
-});
+builder.Services.AddControllersWithViews(options => options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute()));
 
 // Configure identity and authentication
 builder.Services.AddIdentity<ApplicationUser, ApplicationRole>(options => {
@@ -62,9 +56,7 @@ context.Database.Migrate();
 
 // Enable static file caching for one year
 app.UseStaticFiles(new StaticFileOptions {
-    OnPrepareResponse = ctx => {
-        ctx.Context.Response.Headers.Append("Cache-Control", "public,max-age=31536000");
-    }
+    OnPrepareResponse = ctx => ctx.Context.Response.Headers.Append("Cache-Control", "public,max-age=31536000")
 });
 
 // Use other middleware

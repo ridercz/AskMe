@@ -66,12 +66,11 @@ public class AdminController(AskDbContext dc, UserManager<ApplicationUser> userM
     public async Task<IActionResult> DeleteQuestion(int questionId) {
         // Get question
         var q = await dc.Questions.FindAsync(questionId);
-        if (q == null) return this.NotFound();
-
-        return this.View(new DeleteQuestionModel { QuestionText = q.QuestionText });
+        return q == null ? this.NotFound() : this.View(new DeleteQuestionModel { QuestionText = q.QuestionText });
     }
 
     [HttpPost, Route("/Question/{questionId:int:min(1)}/delete")]
+#pragma warning disable IDE0060 // Remove unused parameter
     public async Task<IActionResult> DeleteQuestion(int questionId, DeleteQuestionModel model) {
         // Get question
         var q = await dc.Questions.FindAsync(questionId);
@@ -83,6 +82,7 @@ public class AdminController(AskDbContext dc, UserManager<ApplicationUser> userM
         }
         return this.RedirectToAction("Questions", "Home");
     }
+#pragma warning restore IDE0060 // Remove unused parameter
 
     [Route("ChangePassword")]
     public IActionResult ChangePassword() => this.View();
@@ -91,8 +91,7 @@ public class AdminController(AskDbContext dc, UserManager<ApplicationUser> userM
     public async Task<IActionResult> ChangePassword(ChangePasswordModel model) {
         if (this.ModelState.IsValid) {
             // Get current user
-            var user = await userManager.GetUserAsync(this.User);
-            if (user == null) throw new InvalidOperationException();
+            var user = await userManager.GetUserAsync(this.User) ?? throw new InvalidOperationException();
 
             // Try to change password
             var result = await userManager.ChangePasswordAsync(
