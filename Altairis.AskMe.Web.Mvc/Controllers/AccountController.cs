@@ -4,14 +4,7 @@ using Microsoft.AspNetCore.Identity;
 namespace Altairis.AskMe.Web.Mvc.Controllers;
 
 [Route("Account")]
-public class AccountController : Controller {
-    private readonly SignInManager<ApplicationUser> signInManager;
-
-    // Controller
-
-    public AccountController(SignInManager<ApplicationUser> signInManager) {
-        this.signInManager = signInManager;
-    }
+public class AccountController(SignInManager<ApplicationUser> signInManager) : Controller {
 
     // Actions
 
@@ -21,7 +14,7 @@ public class AccountController : Controller {
     [HttpPost, Route("Login")]
     public async Task<IActionResult> Login(LoginModel model, string? returnUrl) {
         if (this.ModelState.IsValid) {
-            var result = await this.signInManager.PasswordSignInAsync(
+            var result = await signInManager.PasswordSignInAsync(
                 model.UserName,
                 model.Password,
                 model.RememberMe,
@@ -38,7 +31,7 @@ public class AccountController : Controller {
 
     [Route("Logout")]
     public async Task<IActionResult> Logout() {
-        await this.signInManager.SignOutAsync();
+        await signInManager.SignOutAsync();
         return this.MessageView("Odhlášení", "Byli jste úspěšně odhlášeni");
     }
 

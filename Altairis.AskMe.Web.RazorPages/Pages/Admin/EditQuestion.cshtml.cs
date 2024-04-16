@@ -2,18 +2,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Altairis.AskMe.Web.RazorPages.Pages.Admin;
 
-public class EditQuestionModel : PageModel {
-    private readonly AskDbContext dc;
-
-    // Constructor
-
-    public EditQuestionModel(AskDbContext dc) {
-        this.dc = dc;
-    }
+public class EditQuestionModel(AskDbContext dc) : PageModel {
 
     // Model properties
 
-    public IEnumerable<SelectListItem> Categories => this.dc.Categories
+    public IEnumerable<SelectListItem> Categories => dc.Categories
         .OrderBy(c => c.Name)
         .Select(c => new SelectListItem { Text = c.Name, Value = c.Id.ToString() });
 
@@ -41,7 +34,7 @@ public class EditQuestionModel : PageModel {
 
     public async Task<IActionResult> OnGetAsync(int questionId) {
         // Get question
-        var q = await this.dc.Questions.FindAsync(questionId);
+        var q = await dc.Questions.FindAsync(questionId);
         if (q == null) return this.NotFound();
 
         // Prepare model
@@ -58,7 +51,7 @@ public class EditQuestionModel : PageModel {
 
     public async Task<IActionResult> OnPostAsync(int questionId) {
         // Get question
-        var q = await this.dc.Questions.FindAsync(questionId);
+        var q = await dc.Questions.FindAsync(questionId);
         if (q == null) return this.NotFound();
 
         if (this.ModelState.IsValid) {
@@ -76,7 +69,7 @@ public class EditQuestionModel : PageModel {
                 if (!q.DateAnswered.HasValue) q.DateAnswered = DateTime.Now;
             }
 
-            await this.dc.SaveChangesAsync();
+            await dc.SaveChangesAsync();
             return this.RedirectToPage("/Question", new { questionId = q.Id });
         }
         return this.Page();

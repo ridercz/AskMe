@@ -2,10 +2,7 @@
 
 namespace Altairis.AskMe.Data.SqlServer;
 
-public class AskDbContextSqlServer : AskDbContext {
-
-    public AskDbContextSqlServer(DbContextOptions options) : base(options) { }
-
+public class AskDbContextSqlServer(DbContextOptions options) : AskDbContext(options) {
 }
 
 public class AskDbContextSqlServerDesignTimeFactory : IDesignTimeDbContextFactory<AskDbContextSqlServer> {

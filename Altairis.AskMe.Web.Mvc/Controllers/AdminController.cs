@@ -6,25 +6,14 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 namespace Altairis.AskMe.Web.Mvc.Controllers;
 
 [Route("Admin"), Authorize]
-public class AdminController : Controller {
-    private readonly AskDbContext dc;
-    private readonly UserManager<ApplicationUser> userManager;
-    private readonly SignInManager<ApplicationUser> signInManager;
-
-    // Constructor
-
-    public AdminController(AskDbContext dc, UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager) {
-        this.dc = dc;
-        this.userManager = userManager;
-        this.signInManager = signInManager;
-    }
+public class AdminController(AskDbContext dc, UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager) : Controller {
 
     // Actions
 
     [Route("/Question/{questionId:int:min(1)}/edit")]
     public async Task<IActionResult> EditQuestion(int questionId) {
         // Get question
-        var q = await this.dc.Questions.FindAsync(questionId);
+        var q = await dc.Questions.FindAsync(questionId);
         if (q == null) return this.NotFound();
 
         // Prepare model
@@ -34,7 +23,7 @@ public class AdminController : Controller {
             DisplayName = q.DisplayName,
             EmailAddress = q.EmailAddress,
             QuestionText = q.QuestionText,
-            Categories = await this.dc.Categories
+            Categories = await dc.Categories
                 .OrderBy(c => c.Name)
                 .Select(c => new SelectListItem { Text = c.Name, Value = c.Id.ToString() })
                 .ToListAsync()
@@ -46,7 +35,7 @@ public class AdminController : Controller {
     [HttpPost, Route("/Question/{questionId:int:min(1)}/edit")]
     public async Task<IActionResult> EditQuestion(int questionId, EditQuestionModel model) {
         // Get question
-        var q = await this.dc.Questions.FindAsync(questionId);
+        var q = await dc.Questions.FindAsync(questionId);
         if (q == null) return this.NotFound();
 
         if (this.ModelState.IsValid) {
@@ -64,7 +53,7 @@ public class AdminController : Controller {
                 if (!q.DateAnswered.HasValue) q.DateAnswered = DateTime.Now;
             }
 
-            await this.dc.SaveChangesAsync();
+            await dc.SaveChangesAsync();
             return this.RedirectToAction(
                 actionName: "Question",
                 controllerName: "Home",
@@ -76,7 +65,7 @@ public class AdminController : Controller {
     [Route("/Question/{questionId:int:min(1)}/delete")]
     public async Task<IActionResult> DeleteQuestion(int questionId) {
         // Get question
-        var q = await this.dc.Questions.FindAsync(questionId);
+        var q = await dc.Questions.FindAsync(questionId);
         if (q == null) return this.NotFound();
 
         return this.View(new DeleteQuestionModel { QuestionText = q.QuestionText });
@@ -85,12 +74,12 @@ public class AdminController : Controller {
     [HttpPost, Route("/Question/{questionId:int:min(1)}/delete")]
     public async Task<IActionResult> DeleteQuestion(int questionId, DeleteQuestionModel model) {
         // Get question
-        var q = await this.dc.Questions.FindAsync(questionId);
+        var q = await dc.Questions.FindAsync(questionId);
 
         // Delete question
         if (q != null) {
-            this.dc.Remove(q);
-            await this.dc.SaveChangesAsync();
+            dc.Remove(q);
+            await dc.SaveChangesAsync();
         }
         return this.RedirectToAction("Questions", "Home");
     }
@@ -102,18 +91,18 @@ public class AdminController : Controller {
     public async Task<IActionResult> ChangePassword(ChangePasswordModel model) {
         if (this.ModelState.IsValid) {
             // Get current user
-            var user = await this.userManager.GetUserAsync(this.User);
+            var user = await userManager.GetUserAsync(this.User);
             if (user == null) throw new InvalidOperationException();
 
             // Try to change password
-            var result = await this.userManager.ChangePasswordAsync(
+            var result = await userManager.ChangePasswordAsync(
                 user,
                 model.OldPassword,
                 model.NewPassword);
 
             if (result.Succeeded) {
                 // OK, re-sign and redirect to homepage
-                await this.signInManager.SignInAsync(user, isPersistent: false);
+                await signInManager.SignInAsync(user, isPersistent: false);
                 return this.MessageView("Změna hesla", "Vaše heslo bylo úspěšně změněno.");
             } else {
                 // Failed - show why

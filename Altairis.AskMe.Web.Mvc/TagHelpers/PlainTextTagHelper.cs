@@ -5,13 +5,7 @@ using Microsoft.AspNetCore.Razor.TagHelpers;
 namespace Altairis.AskMe.Web.Mvc.TagHelpers;
 
 [HtmlTargetElement("plainText")]
-public class PlainTextTagHelper : TagHelper {
-    private readonly HtmlEncoder encoder;
-
-    public PlainTextTagHelper(HtmlEncoder encoder) {
-        this.encoder = encoder;
-    }
-
+public class PlainTextTagHelper(HtmlEncoder encoder) : TagHelper {
     public string? Text { get; set; }
 
     public bool HtmlEncode { get; set; } = true;
@@ -32,7 +26,7 @@ public class PlainTextTagHelper : TagHelper {
         var sb = new StringBuilder();
         foreach (var line in paragraphs) {
             if (string.IsNullOrWhiteSpace(line)) continue;
-            sb.AppendLine(string.Format(this.ParagraphFormatString, this.HtmlEncode ? this.encoder.Encode(line) : line));
+            sb.AppendLine(string.Format(this.ParagraphFormatString, this.HtmlEncode ? encoder.Encode(line) : line));
         }
 
         // Return outpuut

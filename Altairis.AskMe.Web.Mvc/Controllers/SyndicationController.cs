@@ -6,17 +6,9 @@ using Microsoft.SyndicationFeed.Rss;
 
 namespace Altairis.AskMe.Web.Mvc.Controllers;
 
-public class SyndicationController : Controller {
+public class SyndicationController(AskDbContext dc, HtmlEncoder encoder) : Controller {
     private const int TITLE_MAX_LENGTH = 50;
     private const int DESCRIPTION_MAX_LENGTH = 200;
-
-    private readonly AskDbContext dc;
-    private readonly HtmlEncoder encoder;
-
-    public SyndicationController(AskDbContext dc, HtmlEncoder encoder) {
-        this.dc = dc;
-        this.encoder = encoder;
-    }
 
     [Route("/feed.rss", Name = "RssFeed")]
     public async Task<IActionResult> RssFeed() {
@@ -47,7 +39,7 @@ public class SyndicationController : Controller {
     }
 
     private async Task<IEnumerable<SyndicationItem>> GetSyndicationItemsAsync(string protocol, int maxItems) {
-        var questions = await this.dc.Questions.Include(x => x.Category)
+        var questions = await dc.Questions.Include(x => x.Category)
             .Where(x => x.DateAnswered.HasValue)
             .OrderByDescending(x => x.DateAnswered)
             .Take(maxItems)
@@ -57,7 +49,7 @@ public class SyndicationController : Controller {
 #pragma warning disable CS8629 // Nullable value type may be null.
             var item = new SyndicationItem {
                 Title = TruncateString(q.QuestionText, TITLE_MAX_LENGTH),
-                Description = this.encoder.Encode(TruncateString(q.QuestionText, DESCRIPTION_MAX_LENGTH)),
+                Description = encoder.Encode(TruncateString(q.QuestionText, DESCRIPTION_MAX_LENGTH)),
                 Id = this.Url.Page("/Question", pageHandler: null, values: new { questionId = q.Id }, protocol: protocol),
                 Published = q.DateAnswered.Value
             };

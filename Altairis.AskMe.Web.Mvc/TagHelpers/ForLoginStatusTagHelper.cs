@@ -3,12 +3,8 @@
 namespace Altairis.AskMe.Web.Mvc.TagHelpers;
 
 [HtmlTargetElement(Attributes = "for-login-status")]
-public class ForLoginStatusTagHelper : TagHelper {
-    private readonly HttpContext httpContext;
-
-    public ForLoginStatusTagHelper(IHttpContextAccessor httpContextAccessor) {
-        this.httpContext = httpContextAccessor.HttpContext ?? throw new ArgumentException("HTTP context not available.", nameof(httpContextAccessor));
-    }
+public class ForLoginStatusTagHelper(IHttpContextAccessor httpContextAccessor) : TagHelper {
+    private readonly HttpContext httpContext = httpContextAccessor.HttpContext ?? throw new ArgumentException("HTTP context not available.", nameof(httpContextAccessor));
 
     public bool ForLoginStatus { get; set; }
 

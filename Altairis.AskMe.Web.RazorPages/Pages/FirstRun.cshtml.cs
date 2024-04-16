@@ -2,15 +2,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace Altairis.AskMe.Web.RazorPages.Pages;
 
-public class FirstRunModel : PageModel {
-    private readonly AskDbContext dc;
-    private readonly UserManager<ApplicationUser> userManager;
-
-    public FirstRunModel(AskDbContext dc, UserManager<ApplicationUser> userManager) {
-        this.dc = dc;
-        this.userManager = userManager;
-    }
-
+public class FirstRunModel(AskDbContext dc, UserManager<ApplicationUser> userManager) : PageModel {
     [BindProperty]
     public InputModel Input { get; set; } = new InputModel();
 
@@ -29,16 +21,16 @@ public class FirstRunModel : PageModel {
 
     }
 
-    public async Task<ActionResult> OnGetAsync() => await this.dc.Users.AnyAsync() ? this.NotFound() : this.Page();
+    public async Task<ActionResult> OnGetAsync() => await dc.Users.AnyAsync() ? this.NotFound() : this.Page();
 
     public async Task<ActionResult> OnPostAsync() {
-        if (await this.dc.Users.AnyAsync()) return this.NotFound();
+        if (await dc.Users.AnyAsync()) return this.NotFound();
 
         // Create new user
         if (this.ModelState.IsValid) {
-            var result = await this.userManager.CreateAsync(new ApplicationUser { UserName = this.Input.UserName }, password: this.Input.Password);
+            var result = await userManager.CreateAsync(new ApplicationUser { UserName = this.Input.UserName }, password: this.Input.Password);
             if (result.Succeeded) {
-                if (this.Input.SeedDemoData) this.dc.Seed();
+                if (this.Input.SeedDemoData) dc.Seed();
                 return this.RedirectToPage("Index");
             }
             foreach (var item in result.Errors) {

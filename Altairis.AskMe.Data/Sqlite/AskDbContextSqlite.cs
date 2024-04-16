@@ -2,10 +2,7 @@
 
 namespace Altairis.AskMe.Data.Sqlite;
 
-public class AskDbContextSqlite : AskDbContext {
-
-    public AskDbContextSqlite(DbContextOptions options) : base(options) { }
-
+public class AskDbContextSqlite(DbContextOptions options) : AskDbContext(options) {
 }
 
 public class DesignTimeDbContextFactory : IDesignTimeDbContextFactory<AskDbContextSqlite> {
