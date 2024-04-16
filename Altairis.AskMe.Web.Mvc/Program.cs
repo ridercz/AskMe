@@ -60,22 +60,6 @@ using var userManager = scope.ServiceProvider.GetRequiredService<UserManager<App
 // Migrate database to last version
 context.Database.Migrate();
 
-// Seed initial data if in development environment
-if (app.Environment.IsDevelopment()) {
-    // Create categories
-    context.Seed();
-
-    // Create default user
-    if (!userManager.Users.Any()) {
-        var adminUser = new ApplicationUser { UserName = "admin" };
-        var r = userManager.CreateAsync(adminUser, "pass.word123").Result;
-        if (r != IdentityResult.Success) {
-            var errors = string.Join(", ", r.Errors.Select(x => x.Description));
-            throw new Exception("Seeding default user failed: " + errors);
-        }
-    }
-}
-
 // Enable static file caching for one year
 app.UseStaticFiles(new StaticFileOptions {
     OnPrepareResponse = ctx => {
