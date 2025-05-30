@@ -55,11 +55,6 @@ using var userManager = scope.ServiceProvider.GetRequiredService<UserManager<App
 // Migrate database to last version
 context.Database.Migrate();
 
-// Enable static file caching for one year
-app.UseStaticFiles(new StaticFileOptions {
-    OnPrepareResponse = ctx => ctx.Context.Response.Headers.Append("Cache-Control", "public,max-age=31536000")
-});
-
 // Use other middleware
 app.UseRouting();
 app.UseStatusCodePagesWithReExecute("/Error/{0}");
@@ -67,7 +62,8 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 // Map endpoints
-app.MapRazorPages();
+app.MapStaticAssets();
+app.MapRazorPages().WithStaticAssets();
 app.MapControllers();
 
 await app.RunAsync();
