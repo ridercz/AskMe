@@ -1,0 +1,930 @@
+{
+  "settings": {
+    "components": {
+      "code": true,
+      "binaries": false
+    },
+    "targetId": "net10.0",
+    "targetDisplayName": ".NETCoreApp,Version=v10.0"
+  },
+  "analysisStartTime": "2026-03-13T22:42:32.3832782Z",
+  "analysisEndTime": "2026-03-13T22:42:36.9917496Z",
+  "privacyModeHelpUrl": "https://go.microsoft.com/fwlink/?linkid=2270980",
+  "stats": {
+    "summary": {
+      "projects": 3,
+      "issues": 7,
+      "incidents": 29,
+      "effort": 29
+    },
+    "charts": {
+      "severity": {
+        "Mandatory": 7,
+        "Optional": 2,
+        "Potential": 20,
+        "Information": 0
+      },
+      "category": {
+        "NuGet": 12,
+        "Project": 3,
+        "Api": 14
+      }
+    }
+  },
+  "projects": [
+    {
+      "path": "Altairis.AskMe.Data\\Altairis.AskMe.Data.csproj",
+      "startingProject": true,
+      "issues": 2,
+      "storyPoints": 5,
+      "properties": {
+        "appName": "Altairis.AskMe.Data",
+        "projectKind": "ClassLibrary",
+        "frameworks": [
+          "net9.0"
+        ],
+        "languages": [
+          "C#"
+        ],
+        "tools": [
+          "MSBuild"
+        ],
+        "isSdkStyle": true,
+        "numberOfFiles": 13,
+        "numberOfCodeFiles": 13,
+        "linesTotal": 2015,
+        "linesOfCode": 2015,
+        "totalApiScanned": 2817,
+        "minLinesOfCodeToChange": 0,
+        "maxLinesOfCodeToChange": 0
+      },
+      "ruleInstances": [
+        {
+          "incidentId": "d44a7ad9-6f75-43b1-8e49-83a94b672ae7",
+          "ruleId": "NuGet.0002",
+          "projectPath": "Altairis.AskMe.Data\\Altairis.AskMe.Data.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.AspNetCore.Identity.EntityFrameworkCore, 9.0.5\n\nRecommendation:\n\nRemove Microsoft.AspNetCore.Identity.EntityFrameworkCore, and replace with new package Microsoft.AspNetCore.Identity.EntityFrameworkCore 10.0.5",
+              "protected": "Microsoft.AspNetCore.Identity.EntityFrameworkCore, 9.0.5\n\nRecommendation:\n\nRemove Microsoft.AspNetCore.Identity.EntityFrameworkCore, and replace with new package Microsoft.AspNetCore.Identity.EntityFrameworkCore 10.0.5"
+            },
+            "kind": "File",
+            "path": "Altairis.AskMe.Data\\Altairis.AskMe.Data.csproj",
+            "snippet": "Microsoft.AspNetCore.Identity.EntityFrameworkCore, 9.0.5\n\nRecommendation:\n\nRemove Microsoft.AspNetCore.Identity.EntityFrameworkCore, and replace with new package Microsoft.AspNetCore.Identity.EntityFrameworkCore 10.0.5",
+            "protectedSnippet": "Microsoft.AspNetCore.Identity.EntityFrameworkCore, 9.0.5\n\nRecommendation:\n\nRemove Microsoft.AspNetCore.Identity.EntityFrameworkCore, and replace with new package Microsoft.AspNetCore.Identity.EntityFrameworkCore 10.0.5",
+            "label": "Microsoft.AspNetCore.Identity.EntityFrameworkCore 9.0.5",
+            "properties": {
+              "PackageId": "Microsoft.AspNetCore.Identity.EntityFrameworkCore",
+              "PackageVersion": "9.0.5",
+              "PackageNewVersion": "10.0.5",
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "73af4491-9b21-4f20-95ef-eb27626e5f57",
+          "ruleId": "NuGet.0002",
+          "projectPath": "Altairis.AskMe.Data\\Altairis.AskMe.Data.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.EntityFrameworkCore.Sqlite, 9.0.5\n\nRecommendation:\n\nRemove Microsoft.EntityFrameworkCore.Sqlite, and replace with new package Microsoft.EntityFrameworkCore.Sqlite 10.0.5",
+              "protected": "Microsoft.EntityFrameworkCore.Sqlite, 9.0.5\n\nRecommendation:\n\nRemove Microsoft.EntityFrameworkCore.Sqlite, and replace with new package Microsoft.EntityFrameworkCore.Sqlite 10.0.5"
+            },
+            "kind": "File",
+            "path": "Altairis.AskMe.Data\\Altairis.AskMe.Data.csproj",
+            "snippet": "Microsoft.EntityFrameworkCore.Sqlite, 9.0.5\n\nRecommendation:\n\nRemove Microsoft.EntityFrameworkCore.Sqlite, and replace with new package Microsoft.EntityFrameworkCore.Sqlite 10.0.5",
+            "protectedSnippet": "Microsoft.EntityFrameworkCore.Sqlite, 9.0.5\n\nRecommendation:\n\nRemove Microsoft.EntityFrameworkCore.Sqlite, and replace with new package Microsoft.EntityFrameworkCore.Sqlite 10.0.5",
+            "label": "Microsoft.EntityFrameworkCore.Sqlite 9.0.5",
+            "properties": {
+              "PackageId": "Microsoft.EntityFrameworkCore.Sqlite",
+              "PackageVersion": "9.0.5",
+              "PackageNewVersion": "10.0.5",
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "19ba3e74-df38-4536-9944-70b0a3f375bb",
+          "ruleId": "NuGet.0002",
+          "projectPath": "Altairis.AskMe.Data\\Altairis.AskMe.Data.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.EntityFrameworkCore.SqlServer, 9.0.5\n\nRecommendation:\n\nRemove Microsoft.EntityFrameworkCore.SqlServer, and replace with new package Microsoft.EntityFrameworkCore.SqlServer 10.0.5",
+              "protected": "Microsoft.EntityFrameworkCore.SqlServer, 9.0.5\n\nRecommendation:\n\nRemove Microsoft.EntityFrameworkCore.SqlServer, and replace with new package Microsoft.EntityFrameworkCore.SqlServer 10.0.5"
+            },
+            "kind": "File",
+            "path": "Altairis.AskMe.Data\\Altairis.AskMe.Data.csproj",
+            "snippet": "Microsoft.EntityFrameworkCore.SqlServer, 9.0.5\n\nRecommendation:\n\nRemove Microsoft.EntityFrameworkCore.SqlServer, and replace with new package Microsoft.EntityFrameworkCore.SqlServer 10.0.5",
+            "protectedSnippet": "Microsoft.EntityFrameworkCore.SqlServer, 9.0.5\n\nRecommendation:\n\nRemove Microsoft.EntityFrameworkCore.SqlServer, and replace with new package Microsoft.EntityFrameworkCore.SqlServer 10.0.5",
+            "label": "Microsoft.EntityFrameworkCore.SqlServer 9.0.5",
+            "properties": {
+              "PackageId": "Microsoft.EntityFrameworkCore.SqlServer",
+              "PackageVersion": "9.0.5",
+              "PackageNewVersion": "10.0.5",
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "faf1c29e-4825-4d09-a56c-55cc031d4331",
+          "ruleId": "NuGet.0002",
+          "projectPath": "Altairis.AskMe.Data\\Altairis.AskMe.Data.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.EntityFrameworkCore.Tools, 9.0.5\n\nRecommendation:\n\nRemove Microsoft.EntityFrameworkCore.Tools, and replace with new package Microsoft.EntityFrameworkCore.Tools 10.0.5",
+              "protected": "Microsoft.EntityFrameworkCore.Tools, 9.0.5\n\nRecommendation:\n\nRemove Microsoft.EntityFrameworkCore.Tools, and replace with new package Microsoft.EntityFrameworkCore.Tools 10.0.5"
+            },
+            "kind": "File",
+            "path": "Altairis.AskMe.Data\\Altairis.AskMe.Data.csproj",
+            "snippet": "Microsoft.EntityFrameworkCore.Tools, 9.0.5\n\nRecommendation:\n\nRemove Microsoft.EntityFrameworkCore.Tools, and replace with new package Microsoft.EntityFrameworkCore.Tools 10.0.5",
+            "protectedSnippet": "Microsoft.EntityFrameworkCore.Tools, 9.0.5\n\nRecommendation:\n\nRemove Microsoft.EntityFrameworkCore.Tools, and replace with new package Microsoft.EntityFrameworkCore.Tools 10.0.5",
+            "label": "Microsoft.EntityFrameworkCore.Tools 9.0.5",
+            "properties": {
+              "PackageId": "Microsoft.EntityFrameworkCore.Tools",
+              "PackageVersion": "9.0.5",
+              "PackageNewVersion": "10.0.5",
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "098c1a94-0254-43ad-a69a-92980b64f4b1",
+          "ruleId": "Project.0002",
+          "projectPath": "Altairis.AskMe.Data\\Altairis.AskMe.Data.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Current target framework: net9.0\nRecommended target framework: net10.0",
+              "protected": "Current target framework: net9.0\nRecommended target framework: net10.0"
+            },
+            "kind": "File",
+            "path": "Altairis.AskMe.Data\\Altairis.AskMe.Data.csproj",
+            "snippet": "Current target framework: net9.0\nRecommended target framework: net10.0",
+            "protectedSnippet": "Current target framework: net9.0\nRecommended target framework: net10.0",
+            "properties": {
+              "CurrentTargetFramework": "net9.0",
+              "RecommendedTargetFramework": "net10.0"
+            }
+          }
+        }
+      ],
+      "features": []
+    },
+    {
+      "path": "Altairis.AskMe.Web.Mvc\\Altairis.AskMe.Web.Mvc.csproj",
+      "startingProject": true,
+      "issues": 7,
+      "storyPoints": 12,
+      "properties": {
+        "appName": "Altairis.AskMe.Web.Mvc",
+        "projectKind": "AspNetCore",
+        "frameworks": [
+          "net9.0"
+        ],
+        "languages": [
+          "C#"
+        ],
+        "tools": [
+          "MSBuild"
+        ],
+        "isSdkStyle": true,
+        "numberOfFiles": 51,
+        "numberOfCodeFiles": 40,
+        "linesTotal": 2727,
+        "linesOfCode": 1043,
+        "totalApiScanned": 6674,
+        "minLinesOfCodeToChange": 7,
+        "maxLinesOfCodeToChange": 7
+      },
+      "ruleInstances": [
+        {
+          "incidentId": "243df286-6c6d-4298-b9c6-3c37484d8fa5",
+          "ruleId": "NuGet.0002",
+          "projectPath": "Altairis.AskMe.Web.Mvc\\Altairis.AskMe.Web.Mvc.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore, 9.0.5\n\nRecommendation:\n\nRemove Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore, and replace with new package Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore 10.0.5",
+              "protected": "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore, 9.0.5\n\nRecommendation:\n\nRemove Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore, and replace with new package Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore 10.0.5"
+            },
+            "kind": "File",
+            "path": "Altairis.AskMe.Web.Mvc\\Altairis.AskMe.Web.Mvc.csproj",
+            "snippet": "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore, 9.0.5\n\nRecommendation:\n\nRemove Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore, and replace with new package Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore 10.0.5",
+            "protectedSnippet": "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore, 9.0.5\n\nRecommendation:\n\nRemove Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore, and replace with new package Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore 10.0.5",
+            "label": "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore 9.0.5",
+            "properties": {
+              "PackageId": "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore",
+              "PackageVersion": "9.0.5",
+              "PackageNewVersion": "10.0.5",
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "34df2c40-099e-4d9e-8650-a12c6b2c3136",
+          "ruleId": "NuGet.0002",
+          "projectPath": "Altairis.AskMe.Web.Mvc\\Altairis.AskMe.Web.Mvc.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.EntityFrameworkCore.Design, 9.0.5\n\nRecommendation:\n\nRemove Microsoft.EntityFrameworkCore.Design, and replace with new package Microsoft.EntityFrameworkCore.Design 10.0.5",
+              "protected": "Microsoft.EntityFrameworkCore.Design, 9.0.5\n\nRecommendation:\n\nRemove Microsoft.EntityFrameworkCore.Design, and replace with new package Microsoft.EntityFrameworkCore.Design 10.0.5"
+            },
+            "kind": "File",
+            "path": "Altairis.AskMe.Web.Mvc\\Altairis.AskMe.Web.Mvc.csproj",
+            "snippet": "Microsoft.EntityFrameworkCore.Design, 9.0.5\n\nRecommendation:\n\nRemove Microsoft.EntityFrameworkCore.Design, and replace with new package Microsoft.EntityFrameworkCore.Design 10.0.5",
+            "protectedSnippet": "Microsoft.EntityFrameworkCore.Design, 9.0.5\n\nRecommendation:\n\nRemove Microsoft.EntityFrameworkCore.Design, and replace with new package Microsoft.EntityFrameworkCore.Design 10.0.5",
+            "label": "Microsoft.EntityFrameworkCore.Design 9.0.5",
+            "properties": {
+              "PackageId": "Microsoft.EntityFrameworkCore.Design",
+              "PackageVersion": "9.0.5",
+              "PackageNewVersion": "10.0.5",
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "8458e1e4-cac6-43fc-9648-ff2fb30cf81f",
+          "ruleId": "NuGet.0003",
+          "projectPath": "Altairis.AskMe.Web.Mvc\\Altairis.AskMe.Web.Mvc.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.VisualStudio.Web.BrowserLink, 2.2.0\n\nRecommendation:\n\nPackage functionality included with new framework reference",
+              "protected": "Microsoft.VisualStudio.Web.BrowserLink, 2.2.0\n\nRecommendation:\n\nPackage functionality included with new framework reference"
+            },
+            "kind": "File",
+            "path": "Altairis.AskMe.Web.Mvc\\Altairis.AskMe.Web.Mvc.csproj",
+            "snippet": "Microsoft.VisualStudio.Web.BrowserLink, 2.2.0\n\nRecommendation:\n\nPackage functionality included with new framework reference",
+            "protectedSnippet": "Microsoft.VisualStudio.Web.BrowserLink, 2.2.0\n\nRecommendation:\n\nPackage functionality included with new framework reference",
+            "label": "Microsoft.VisualStudio.Web.BrowserLink 2.2.0",
+            "properties": {
+              "PackageId": "Microsoft.VisualStudio.Web.BrowserLink",
+              "PackageVersion": "2.2.0",
+              "PackageNewVersion": null,
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "b2e2a8fe-9c02-475a-879d-f5f1ef22b384",
+          "ruleId": "NuGet.0005",
+          "projectPath": "Altairis.AskMe.Web.Mvc\\Altairis.AskMe.Web.Mvc.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.VisualStudio.Web.BrowserLink, 2.2.0\n\nRecommendation:\n\nThis package has been deprecated as part of the .NET Package Deprecation effort. You can learn more about it from https://github.com/dotnet/announcements/issues/217\nRemove Microsoft.VisualStudio.Web.BrowserLink, and replace with new package Microsoft.VisualStudio.Web.BrowserLink, 2.2.0",
+              "protected": "Microsoft.VisualStudio.Web.BrowserLink, 2.2.0\n\nRecommendation:\n\nThis package has been deprecated as part of the .NET Package Deprecation effort. You can learn more about it from https://github.com/dotnet/announcements/issues/217\nRemove Microsoft.VisualStudio.Web.BrowserLink, and replace with new package Microsoft.VisualStudio.Web.BrowserLink, 2.2.0"
+            },
+            "kind": "File",
+            "path": "Altairis.AskMe.Web.Mvc\\Altairis.AskMe.Web.Mvc.csproj",
+            "snippet": "Microsoft.VisualStudio.Web.BrowserLink, 2.2.0\n\nRecommendation:\n\nThis package has been deprecated as part of the .NET Package Deprecation effort. You can learn more about it from https://github.com/dotnet/announcements/issues/217\nRemove Microsoft.VisualStudio.Web.BrowserLink, and replace with new package Microsoft.VisualStudio.Web.BrowserLink, 2.2.0",
+            "protectedSnippet": "Microsoft.VisualStudio.Web.BrowserLink, 2.2.0\n\nRecommendation:\n\nThis package has been deprecated as part of the .NET Package Deprecation effort. You can learn more about it from https://github.com/dotnet/announcements/issues/217\nRemove Microsoft.VisualStudio.Web.BrowserLink, and replace with new package Microsoft.VisualStudio.Web.BrowserLink, 2.2.0",
+            "label": "Microsoft.VisualStudio.Web.BrowserLink 2.2.0",
+            "properties": {
+              "PackageId": "Microsoft.VisualStudio.Web.BrowserLink",
+              "PackageVersion": "2.2.0",
+              "PackageNewVersion": null,
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "24e9bb28-e881-4d36-b9cd-b91a267ab9cc",
+          "ruleId": "Project.0002",
+          "projectPath": "Altairis.AskMe.Web.Mvc\\Altairis.AskMe.Web.Mvc.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Current target framework: net9.0\nRecommended target framework: net10.0",
+              "protected": "Current target framework: net9.0\nRecommended target framework: net10.0"
+            },
+            "kind": "File",
+            "path": "Altairis.AskMe.Web.Mvc\\Altairis.AskMe.Web.Mvc.csproj",
+            "snippet": "Current target framework: net9.0\nRecommended target framework: net10.0",
+            "protectedSnippet": "Current target framework: net9.0\nRecommended target framework: net10.0",
+            "properties": {
+              "CurrentTargetFramework": "net9.0",
+              "RecommendedTargetFramework": "net10.0"
+            }
+          }
+        },
+        {
+          "incidentId": "9ef93e3c-9ccb-4284-93ce-f6908ae5c35e",
+          "ruleId": "Api.0003",
+          "description": "Breaking change: URI length limits removed ",
+          "projectPath": "Altairis.AskMe.Web.Mvc\\Altairis.AskMe.Web.Mvc.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "await writer.Write(new SyndicationLink(new Uri(homepageUrl)));",
+              "protected": "T:System.Uri"
+            },
+            "kind": "File",
+            "path": "Altairis.AskMe.Web.Mvc\\Controllers\\SyndicationController.cs",
+            "snippet": "await writer.Write(new SyndicationLink(new Uri(homepageUrl)));",
+            "protectedSnippet": "T:System.Uri",
+            "label": "T:System.Uri",
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://github.com/dotnet/docs/blob/main/docs/core/compatibility/networking/10.0/uri-length-limits-removed.md",
+                "isCustom": false
+              }
+            ],
+            "line": 28,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "ece6f592-4243-4dfe-9cb1-a339e77280ad",
+          "ruleId": "Api.0003",
+          "description": "Breaking change: URI length limits removed ",
+          "projectPath": "Altairis.AskMe.Web.Mvc\\Altairis.AskMe.Web.Mvc.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "await writer.Write(new SyndicationLink(new Uri(homepageUrl)));",
+              "protected": "M:System.Uri.#ctor(System.String)"
+            },
+            "kind": "File",
+            "path": "Altairis.AskMe.Web.Mvc\\Controllers\\SyndicationController.cs",
+            "snippet": "await writer.Write(new SyndicationLink(new Uri(homepageUrl)));",
+            "protectedSnippet": "M:System.Uri.#ctor(System.String)",
+            "label": "M:System.Uri.#ctor(System.String)",
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://github.com/dotnet/docs/blob/main/docs/core/compatibility/networking/10.0/uri-length-limits-removed.md",
+                "isCustom": false
+              }
+            ],
+            "line": 28,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "81a0227c-f41c-4e43-8454-502253a8b43c",
+          "ruleId": "Api.0002",
+          "description": "Breaking change: C# overload resolution prefers \u0060params\u0060 span-type overloads ",
+          "projectPath": "Altairis.AskMe.Web.Mvc\\Altairis.AskMe.Web.Mvc.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "var paragraphs = this.Text.Split(\u0027\\r\u0027, \u0027\\n\u0027);",
+              "protected": "M:System.String.Split(System.ReadOnlySpan{System.Char})"
+            },
+            "kind": "File",
+            "path": "Altairis.AskMe.Web.Mvc\\TagHelpers\\PlainTextTagHelper.cs",
+            "snippet": "var paragraphs = this.Text.Split(\u0027\\r\u0027, \u0027\\n\u0027);",
+            "protectedSnippet": "M:System.String.Split(System.ReadOnlySpan{System.Char})",
+            "label": "M:System.String.Split(System.ReadOnlySpan{System.Char})",
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://github.com/dotnet/docs/blob/main/docs/core/compatibility/core-libraries/9.0/params-overloads.md",
+                "isCustom": false
+              }
+            ],
+            "line": 24,
+            "column": 8
+          }
+        },
+        {
+          "incidentId": "c91e305f-8c5d-464c-9dd0-15170ee93006",
+          "ruleId": "Api.0001",
+          "description": "Breaking change: DynamicallyAccessedMembers annotation removed from trim-unsafe configuration APIs ",
+          "projectPath": "Altairis.AskMe.Web.Mvc\\Altairis.AskMe.Web.Mvc.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "builder.Services.Configure\u003CAppSettings\u003E(builder.Configuration);",
+              "protected": "M:Microsoft.Extensions.DependencyInjection.OptionsConfigurationServiceCollectionExtensions.Configure\u0060\u00601(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)"
+            },
+            "kind": "File",
+            "path": "Altairis.AskMe.Web.Mvc\\Program.cs",
+            "snippet": "builder.Services.Configure\u003CAppSettings\u003E(builder.Configuration);",
+            "protectedSnippet": "M:Microsoft.Extensions.DependencyInjection.OptionsConfigurationServiceCollectionExtensions.Configure\u0060\u00601(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)",
+            "label": "M:Microsoft.Extensions.DependencyInjection.OptionsConfigurationServiceCollectionExtensions.Configure\u0060\u00601(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)",
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://github.com/dotnet/docs/blob/main/docs/core/compatibility/extensions/10.0/dynamically-accessed-members-configuration.md",
+                "isCustom": false
+              }
+            ],
+            "line": 44,
+            "column": 0
+          }
+        },
+        {
+          "incidentId": "3b94bc6f-b383-47a5-9d6c-b315f504473d",
+          "ruleId": "Api.0002",
+          "description": "Breaking change: New TimeSpan.From*() overloads that take integers ",
+          "projectPath": "Altairis.AskMe.Web.Mvc\\Altairis.AskMe.Web.Mvc.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "options.ExpireTimeSpan = TimeSpan.FromDays(30);",
+              "protected": "M:System.TimeSpan.FromDays(System.Int32)"
+            },
+            "kind": "File",
+            "path": "Altairis.AskMe.Web.Mvc\\Program.cs",
+            "snippet": "options.ExpireTimeSpan = TimeSpan.FromDays(30);",
+            "protectedSnippet": "M:System.TimeSpan.FromDays(System.Int32)",
+            "label": "M:System.TimeSpan.FromDays(System.Int32)",
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://github.com/dotnet/docs/blob/main/docs/core/compatibility/core-libraries/9.0/timespan-from-overloads.md",
+                "isCustom": false
+              }
+            ],
+            "line": 40,
+            "column": 4
+          }
+        },
+        {
+          "incidentId": "197095d8-2ac3-4ff1-932b-1c7ea1afa063",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.AspNetCore.Identity.EntityFrameworkCore, 8.0.6. Add package reference to Microsoft.AspNetCore.Identity.EntityFrameworkCore, 8.0.6",
+          "projectPath": "Altairis.AskMe.Web.Mvc\\Altairis.AskMe.Web.Mvc.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "builder.Services.AddIdentity\u003CApplicationUser, ApplicationRole\u003E(options =\u003E {\r\n    options.Password.RequiredLength = 12;\r\n    options.Password.RequiredUniqueChars = 4;\r\n    options.Password.RequireDigit = false;\r\n    options.Password.RequireLowercase = false;\r\n    options.Password.RequireNonAlphanumeric = false;\r\n    options.Password.RequireUppercase = false;\r\n})\r\n    .AddEntityFrameworkStores\u003CAskDbContext\u003E()\r\n    .AddDefaultTokenProviders();",
+              "protected": "T:Microsoft.Extensions.DependencyInjection.IdentityEntityFrameworkBuilderExtensions"
+            },
+            "kind": "File",
+            "path": "Altairis.AskMe.Web.Mvc\\Program.cs",
+            "snippet": "builder.Services.AddIdentity\u003CApplicationUser, ApplicationRole\u003E(options =\u003E {\r\n    options.Password.RequiredLength = 12;\r\n    options.Password.RequiredUniqueChars = 4;\r\n    options.Password.RequireDigit = false;\r\n    options.Password.RequireLowercase = false;\r\n    options.Password.RequireNonAlphanumeric = false;\r\n    options.Password.RequireUppercase = false;\r\n})\r\n    .AddEntityFrameworkStores\u003CAskDbContext\u003E()\r\n    .AddDefaultTokenProviders();",
+            "protectedSnippet": "T:Microsoft.Extensions.DependencyInjection.IdentityEntityFrameworkBuilderExtensions",
+            "label": "T:Microsoft.Extensions.DependencyInjection.IdentityEntityFrameworkBuilderExtensions",
+            "properties": {
+              "PackageId": "Microsoft.AspNetCore.Identity.EntityFrameworkCore",
+              "PackageNewVersion": "8.0.6"
+            },
+            "line": 26,
+            "column": 0
+          }
+        },
+        {
+          "incidentId": "7c9c9fa9-58e9-421b-b27c-b56d585f95d5",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.AspNetCore.Identity.EntityFrameworkCore, 8.0.6. Add package reference to Microsoft.AspNetCore.Identity.EntityFrameworkCore, 8.0.6",
+          "projectPath": "Altairis.AskMe.Web.Mvc\\Altairis.AskMe.Web.Mvc.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "builder.Services.AddIdentity\u003CApplicationUser, ApplicationRole\u003E(options =\u003E {\r\n    options.Password.RequiredLength = 12;\r\n    options.Password.RequiredUniqueChars = 4;\r\n    options.Password.RequireDigit = false;\r\n    options.Password.RequireLowercase = false;\r\n    options.Password.RequireNonAlphanumeric = false;\r\n    options.Password.RequireUppercase = false;\r\n})\r\n    .AddEntityFrameworkStores\u003CAskDbContext\u003E()\r\n    .AddDefaultTokenProviders();",
+              "protected": "M:Microsoft.Extensions.DependencyInjection.IdentityEntityFrameworkBuilderExtensions.AddEntityFrameworkStores\u0060\u00601(Microsoft.AspNetCore.Identity.IdentityBuilder)"
+            },
+            "kind": "File",
+            "path": "Altairis.AskMe.Web.Mvc\\Program.cs",
+            "snippet": "builder.Services.AddIdentity\u003CApplicationUser, ApplicationRole\u003E(options =\u003E {\r\n    options.Password.RequiredLength = 12;\r\n    options.Password.RequiredUniqueChars = 4;\r\n    options.Password.RequireDigit = false;\r\n    options.Password.RequireLowercase = false;\r\n    options.Password.RequireNonAlphanumeric = false;\r\n    options.Password.RequireUppercase = false;\r\n})\r\n    .AddEntityFrameworkStores\u003CAskDbContext\u003E()\r\n    .AddDefaultTokenProviders();",
+            "protectedSnippet": "M:Microsoft.Extensions.DependencyInjection.IdentityEntityFrameworkBuilderExtensions.AddEntityFrameworkStores\u0060\u00601(Microsoft.AspNetCore.Identity.IdentityBuilder)",
+            "label": "M:Microsoft.Extensions.DependencyInjection.IdentityEntityFrameworkBuilderExtensions.AddEntityFrameworkStores\u0060\u00601(Microsoft.AspNetCore.Identity.IdentityBuilder)",
+            "properties": {
+              "PackageId": "Microsoft.AspNetCore.Identity.EntityFrameworkCore",
+              "PackageNewVersion": "8.0.6"
+            },
+            "line": 26,
+            "column": 0
+          }
+        }
+      ],
+      "features": []
+    },
+    {
+      "path": "Altairis.AskMe.Web.RazorPages\\Altairis.AskMe.Web.RazorPages.csproj",
+      "startingProject": true,
+      "issues": 7,
+      "storyPoints": 12,
+      "properties": {
+        "appName": "Altairis.AskMe.Web.RazorPages",
+        "projectKind": "AspNetCore",
+        "frameworks": [
+          "net9.0"
+        ],
+        "languages": [
+          "C#"
+        ],
+        "tools": [
+          "MSBuild"
+        ],
+        "isSdkStyle": true,
+        "numberOfFiles": 51,
+        "numberOfCodeFiles": 40,
+        "linesTotal": 2724,
+        "linesOfCode": 1041,
+        "totalApiScanned": 6469,
+        "minLinesOfCodeToChange": 7,
+        "maxLinesOfCodeToChange": 7
+      },
+      "ruleInstances": [
+        {
+          "incidentId": "386314eb-ec1b-4ad8-91b6-9cd37e0b5fa8",
+          "ruleId": "NuGet.0002",
+          "projectPath": "Altairis.AskMe.Web.RazorPages\\Altairis.AskMe.Web.RazorPages.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore, 9.0.5\n\nRecommendation:\n\nRemove Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore, and replace with new package Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore 10.0.5",
+              "protected": "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore, 9.0.5\n\nRecommendation:\n\nRemove Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore, and replace with new package Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore 10.0.5"
+            },
+            "kind": "File",
+            "path": "Altairis.AskMe.Web.RazorPages\\Altairis.AskMe.Web.RazorPages.csproj",
+            "snippet": "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore, 9.0.5\n\nRecommendation:\n\nRemove Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore, and replace with new package Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore 10.0.5",
+            "protectedSnippet": "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore, 9.0.5\n\nRecommendation:\n\nRemove Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore, and replace with new package Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore 10.0.5",
+            "label": "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore 9.0.5",
+            "properties": {
+              "PackageId": "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore",
+              "PackageVersion": "9.0.5",
+              "PackageNewVersion": "10.0.5",
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "95ae2b08-ecca-463e-8f0e-7847777f627a",
+          "ruleId": "NuGet.0002",
+          "projectPath": "Altairis.AskMe.Web.RazorPages\\Altairis.AskMe.Web.RazorPages.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.EntityFrameworkCore.Design, 9.0.5\n\nRecommendation:\n\nRemove Microsoft.EntityFrameworkCore.Design, and replace with new package Microsoft.EntityFrameworkCore.Design 10.0.5",
+              "protected": "Microsoft.EntityFrameworkCore.Design, 9.0.5\n\nRecommendation:\n\nRemove Microsoft.EntityFrameworkCore.Design, and replace with new package Microsoft.EntityFrameworkCore.Design 10.0.5"
+            },
+            "kind": "File",
+            "path": "Altairis.AskMe.Web.RazorPages\\Altairis.AskMe.Web.RazorPages.csproj",
+            "snippet": "Microsoft.EntityFrameworkCore.Design, 9.0.5\n\nRecommendation:\n\nRemove Microsoft.EntityFrameworkCore.Design, and replace with new package Microsoft.EntityFrameworkCore.Design 10.0.5",
+            "protectedSnippet": "Microsoft.EntityFrameworkCore.Design, 9.0.5\n\nRecommendation:\n\nRemove Microsoft.EntityFrameworkCore.Design, and replace with new package Microsoft.EntityFrameworkCore.Design 10.0.5",
+            "label": "Microsoft.EntityFrameworkCore.Design 9.0.5",
+            "properties": {
+              "PackageId": "Microsoft.EntityFrameworkCore.Design",
+              "PackageVersion": "9.0.5",
+              "PackageNewVersion": "10.0.5",
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "2bb866ba-be7f-4e7d-b5eb-13a8d6fc706a",
+          "ruleId": "NuGet.0003",
+          "projectPath": "Altairis.AskMe.Web.RazorPages\\Altairis.AskMe.Web.RazorPages.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.VisualStudio.Web.BrowserLink, 2.2.0\n\nRecommendation:\n\nPackage functionality included with new framework reference",
+              "protected": "Microsoft.VisualStudio.Web.BrowserLink, 2.2.0\n\nRecommendation:\n\nPackage functionality included with new framework reference"
+            },
+            "kind": "File",
+            "path": "Altairis.AskMe.Web.RazorPages\\Altairis.AskMe.Web.RazorPages.csproj",
+            "snippet": "Microsoft.VisualStudio.Web.BrowserLink, 2.2.0\n\nRecommendation:\n\nPackage functionality included with new framework reference",
+            "protectedSnippet": "Microsoft.VisualStudio.Web.BrowserLink, 2.2.0\n\nRecommendation:\n\nPackage functionality included with new framework reference",
+            "label": "Microsoft.VisualStudio.Web.BrowserLink 2.2.0",
+            "properties": {
+              "PackageId": "Microsoft.VisualStudio.Web.BrowserLink",
+              "PackageVersion": "2.2.0",
+              "PackageNewVersion": null,
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "65cbc31b-0c95-4233-b814-760949fce30c",
+          "ruleId": "NuGet.0005",
+          "projectPath": "Altairis.AskMe.Web.RazorPages\\Altairis.AskMe.Web.RazorPages.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.VisualStudio.Web.BrowserLink, 2.2.0\n\nRecommendation:\n\nThis package has been deprecated as part of the .NET Package Deprecation effort. You can learn more about it from https://github.com/dotnet/announcements/issues/217\nRemove Microsoft.VisualStudio.Web.BrowserLink, and replace with new package Microsoft.VisualStudio.Web.BrowserLink, 2.2.0",
+              "protected": "Microsoft.VisualStudio.Web.BrowserLink, 2.2.0\n\nRecommendation:\n\nThis package has been deprecated as part of the .NET Package Deprecation effort. You can learn more about it from https://github.com/dotnet/announcements/issues/217\nRemove Microsoft.VisualStudio.Web.BrowserLink, and replace with new package Microsoft.VisualStudio.Web.BrowserLink, 2.2.0"
+            },
+            "kind": "File",
+            "path": "Altairis.AskMe.Web.RazorPages\\Altairis.AskMe.Web.RazorPages.csproj",
+            "snippet": "Microsoft.VisualStudio.Web.BrowserLink, 2.2.0\n\nRecommendation:\n\nThis package has been deprecated as part of the .NET Package Deprecation effort. You can learn more about it from https://github.com/dotnet/announcements/issues/217\nRemove Microsoft.VisualStudio.Web.BrowserLink, and replace with new package Microsoft.VisualStudio.Web.BrowserLink, 2.2.0",
+            "protectedSnippet": "Microsoft.VisualStudio.Web.BrowserLink, 2.2.0\n\nRecommendation:\n\nThis package has been deprecated as part of the .NET Package Deprecation effort. You can learn more about it from https://github.com/dotnet/announcements/issues/217\nRemove Microsoft.VisualStudio.Web.BrowserLink, and replace with new package Microsoft.VisualStudio.Web.BrowserLink, 2.2.0",
+            "label": "Microsoft.VisualStudio.Web.BrowserLink 2.2.0",
+            "properties": {
+              "PackageId": "Microsoft.VisualStudio.Web.BrowserLink",
+              "PackageVersion": "2.2.0",
+              "PackageNewVersion": null,
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "b56dfc78-c691-4860-aa6d-db00e466db0c",
+          "ruleId": "Project.0002",
+          "projectPath": "Altairis.AskMe.Web.RazorPages\\Altairis.AskMe.Web.RazorPages.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Current target framework: net9.0\nRecommended target framework: net10.0",
+              "protected": "Current target framework: net9.0\nRecommended target framework: net10.0"
+            },
+            "kind": "File",
+            "path": "Altairis.AskMe.Web.RazorPages\\Altairis.AskMe.Web.RazorPages.csproj",
+            "snippet": "Current target framework: net9.0\nRecommended target framework: net10.0",
+            "protectedSnippet": "Current target framework: net9.0\nRecommended target framework: net10.0",
+            "properties": {
+              "CurrentTargetFramework": "net9.0",
+              "RecommendedTargetFramework": "net10.0"
+            }
+          }
+        },
+        {
+          "incidentId": "b7759616-8132-4b5f-8f6c-78396105cb67",
+          "ruleId": "Api.0003",
+          "description": "Breaking change: URI length limits removed ",
+          "projectPath": "Altairis.AskMe.Web.RazorPages\\Altairis.AskMe.Web.RazorPages.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "await writer.Write(new SyndicationLink(new Uri(homepageUrl)));",
+              "protected": "T:System.Uri"
+            },
+            "kind": "File",
+            "path": "Altairis.AskMe.Web.RazorPages\\Controllers\\SyndicationController.cs",
+            "snippet": "await writer.Write(new SyndicationLink(new Uri(homepageUrl)));",
+            "protectedSnippet": "T:System.Uri",
+            "label": "T:System.Uri",
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://github.com/dotnet/docs/blob/main/docs/core/compatibility/networking/10.0/uri-length-limits-removed.md",
+                "isCustom": false
+              }
+            ],
+            "line": 28,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "e6ea0fbf-0829-42d6-8a02-18b68a36e0a5",
+          "ruleId": "Api.0003",
+          "description": "Breaking change: URI length limits removed ",
+          "projectPath": "Altairis.AskMe.Web.RazorPages\\Altairis.AskMe.Web.RazorPages.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "await writer.Write(new SyndicationLink(new Uri(homepageUrl)));",
+              "protected": "M:System.Uri.#ctor(System.String)"
+            },
+            "kind": "File",
+            "path": "Altairis.AskMe.Web.RazorPages\\Controllers\\SyndicationController.cs",
+            "snippet": "await writer.Write(new SyndicationLink(new Uri(homepageUrl)));",
+            "protectedSnippet": "M:System.Uri.#ctor(System.String)",
+            "label": "M:System.Uri.#ctor(System.String)",
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://github.com/dotnet/docs/blob/main/docs/core/compatibility/networking/10.0/uri-length-limits-removed.md",
+                "isCustom": false
+              }
+            ],
+            "line": 28,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "05d8ded2-1b42-4b60-b958-e8414751ada8",
+          "ruleId": "Api.0002",
+          "description": "Breaking change: C# overload resolution prefers \u0060params\u0060 span-type overloads ",
+          "projectPath": "Altairis.AskMe.Web.RazorPages\\Altairis.AskMe.Web.RazorPages.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "var paragraphs = this.Text.Split(\u0027\\r\u0027, \u0027\\n\u0027);",
+              "protected": "M:System.String.Split(System.ReadOnlySpan{System.Char})"
+            },
+            "kind": "File",
+            "path": "Altairis.AskMe.Web.RazorPages\\TagHelpers\\PlainTextTagHelper.cs",
+            "snippet": "var paragraphs = this.Text.Split(\u0027\\r\u0027, \u0027\\n\u0027);",
+            "protectedSnippet": "M:System.String.Split(System.ReadOnlySpan{System.Char})",
+            "label": "M:System.String.Split(System.ReadOnlySpan{System.Char})",
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://github.com/dotnet/docs/blob/main/docs/core/compatibility/core-libraries/9.0/params-overloads.md",
+                "isCustom": false
+              }
+            ],
+            "line": 24,
+            "column": 8
+          }
+        },
+        {
+          "incidentId": "cc599588-df0f-420b-acf4-2448ee0578d1",
+          "ruleId": "Api.0001",
+          "description": "Breaking change: DynamicallyAccessedMembers annotation removed from trim-unsafe configuration APIs ",
+          "projectPath": "Altairis.AskMe.Web.RazorPages\\Altairis.AskMe.Web.RazorPages.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "builder.Services.Configure\u003CAppSettings\u003E(builder.Configuration);",
+              "protected": "M:Microsoft.Extensions.DependencyInjection.OptionsConfigurationServiceCollectionExtensions.Configure\u0060\u00601(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)"
+            },
+            "kind": "File",
+            "path": "Altairis.AskMe.Web.RazorPages\\Program.cs",
+            "snippet": "builder.Services.Configure\u003CAppSettings\u003E(builder.Configuration);",
+            "protectedSnippet": "M:Microsoft.Extensions.DependencyInjection.OptionsConfigurationServiceCollectionExtensions.Configure\u0060\u00601(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)",
+            "label": "M:Microsoft.Extensions.DependencyInjection.OptionsConfigurationServiceCollectionExtensions.Configure\u0060\u00601(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)",
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://github.com/dotnet/docs/blob/main/docs/core/compatibility/extensions/10.0/dynamically-accessed-members-configuration.md",
+                "isCustom": false
+              }
+            ],
+            "line": 45,
+            "column": 0
+          }
+        },
+        {
+          "incidentId": "950baaab-dede-4f00-976d-09aa9b27f849",
+          "ruleId": "Api.0002",
+          "description": "Breaking change: New TimeSpan.From*() overloads that take integers ",
+          "projectPath": "Altairis.AskMe.Web.RazorPages\\Altairis.AskMe.Web.RazorPages.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "options.ExpireTimeSpan = TimeSpan.FromDays(30);",
+              "protected": "M:System.TimeSpan.FromDays(System.Int32)"
+            },
+            "kind": "File",
+            "path": "Altairis.AskMe.Web.RazorPages\\Program.cs",
+            "snippet": "options.ExpireTimeSpan = TimeSpan.FromDays(30);",
+            "protectedSnippet": "M:System.TimeSpan.FromDays(System.Int32)",
+            "label": "M:System.TimeSpan.FromDays(System.Int32)",
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://github.com/dotnet/docs/blob/main/docs/core/compatibility/core-libraries/9.0/timespan-from-overloads.md",
+                "isCustom": false
+              }
+            ],
+            "line": 41,
+            "column": 4
+          }
+        },
+        {
+          "incidentId": "c845f0b2-aa82-464e-b504-74de5bcac595",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.AspNetCore.Identity.EntityFrameworkCore, 8.0.6. Add package reference to Microsoft.AspNetCore.Identity.EntityFrameworkCore, 8.0.6",
+          "projectPath": "Altairis.AskMe.Web.RazorPages\\Altairis.AskMe.Web.RazorPages.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "builder.Services.AddIdentity\u003CApplicationUser, ApplicationRole\u003E(options =\u003E {\r\n    options.Password.RequiredLength = 12;\r\n    options.Password.RequiredUniqueChars = 4;\r\n    options.Password.RequireDigit = false;\r\n    options.Password.RequireLowercase = false;\r\n    options.Password.RequireNonAlphanumeric = false;\r\n    options.Password.RequireUppercase = false;\r\n})\r\n    .AddEntityFrameworkStores\u003CAskDbContext\u003E()\r\n    .AddDefaultTokenProviders();",
+              "protected": "T:Microsoft.Extensions.DependencyInjection.IdentityEntityFrameworkBuilderExtensions"
+            },
+            "kind": "File",
+            "path": "Altairis.AskMe.Web.RazorPages\\Program.cs",
+            "snippet": "builder.Services.AddIdentity\u003CApplicationUser, ApplicationRole\u003E(options =\u003E {\r\n    options.Password.RequiredLength = 12;\r\n    options.Password.RequiredUniqueChars = 4;\r\n    options.Password.RequireDigit = false;\r\n    options.Password.RequireLowercase = false;\r\n    options.Password.RequireNonAlphanumeric = false;\r\n    options.Password.RequireUppercase = false;\r\n})\r\n    .AddEntityFrameworkStores\u003CAskDbContext\u003E()\r\n    .AddDefaultTokenProviders();",
+            "protectedSnippet": "T:Microsoft.Extensions.DependencyInjection.IdentityEntityFrameworkBuilderExtensions",
+            "label": "T:Microsoft.Extensions.DependencyInjection.IdentityEntityFrameworkBuilderExtensions",
+            "properties": {
+              "PackageId": "Microsoft.AspNetCore.Identity.EntityFrameworkCore",
+              "PackageNewVersion": "8.0.6"
+            },
+            "line": 27,
+            "column": 0
+          }
+        },
+        {
+          "incidentId": "f5abd64c-f9ec-4427-b934-c3936e0b077e",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.AspNetCore.Identity.EntityFrameworkCore, 8.0.6. Add package reference to Microsoft.AspNetCore.Identity.EntityFrameworkCore, 8.0.6",
+          "projectPath": "Altairis.AskMe.Web.RazorPages\\Altairis.AskMe.Web.RazorPages.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "builder.Services.AddIdentity\u003CApplicationUser, ApplicationRole\u003E(options =\u003E {\r\n    options.Password.RequiredLength = 12;\r\n    options.Password.RequiredUniqueChars = 4;\r\n    options.Password.RequireDigit = false;\r\n    options.Password.RequireLowercase = false;\r\n    options.Password.RequireNonAlphanumeric = false;\r\n    options.Password.RequireUppercase = false;\r\n})\r\n    .AddEntityFrameworkStores\u003CAskDbContext\u003E()\r\n    .AddDefaultTokenProviders();",
+              "protected": "M:Microsoft.Extensions.DependencyInjection.IdentityEntityFrameworkBuilderExtensions.AddEntityFrameworkStores\u0060\u00601(Microsoft.AspNetCore.Identity.IdentityBuilder)"
+            },
+            "kind": "File",
+            "path": "Altairis.AskMe.Web.RazorPages\\Program.cs",
+            "snippet": "builder.Services.AddIdentity\u003CApplicationUser, ApplicationRole\u003E(options =\u003E {\r\n    options.Password.RequiredLength = 12;\r\n    options.Password.RequiredUniqueChars = 4;\r\n    options.Password.RequireDigit = false;\r\n    options.Password.RequireLowercase = false;\r\n    options.Password.RequireNonAlphanumeric = false;\r\n    options.Password.RequireUppercase = false;\r\n})\r\n    .AddEntityFrameworkStores\u003CAskDbContext\u003E()\r\n    .AddDefaultTokenProviders();",
+            "protectedSnippet": "M:Microsoft.Extensions.DependencyInjection.IdentityEntityFrameworkBuilderExtensions.AddEntityFrameworkStores\u0060\u00601(Microsoft.AspNetCore.Identity.IdentityBuilder)",
+            "label": "M:Microsoft.Extensions.DependencyInjection.IdentityEntityFrameworkBuilderExtensions.AddEntityFrameworkStores\u0060\u00601(Microsoft.AspNetCore.Identity.IdentityBuilder)",
+            "properties": {
+              "PackageId": "Microsoft.AspNetCore.Identity.EntityFrameworkCore",
+              "PackageNewVersion": "8.0.6"
+            },
+            "line": 27,
+            "column": 0
+          }
+        }
+      ],
+      "features": []
+    }
+  ],
+  "rules": {
+    "NuGet.0002": {
+      "id": "NuGet.0002",
+      "isFeature": false,
+      "description": "NuGet package upgrade is recommended for selected target framework.\n\nStandard .NET packages are recommended to have versions matching version of .NET that project targets.\n\nSome other packages also are known to work better for selected target frameworks.",
+      "label": "NuGet package upgrade is recommended",
+      "severity": "Potential",
+      "effort": 1,
+      "links": [
+        {
+          "url": "https://go.microsoft.com/fwlink/?linkid=2262530",
+          "isCustom": false
+        }
+      ]
+    },
+    "Project.0002": {
+      "id": "Project.0002",
+      "isFeature": false,
+      "description": "Project\u0027s target framework(s) needs to be changed to the new target framework that you selected for this upgrade.\n\nDuring upgrade target framework will be adjusted to corresponding platform when applicable. In some cases project would result in multiple target frameworks after the upgrade if it was using features that now have their own platforms in modern .NET frameworks (windows, iOS, Android etc).",
+      "label": "Project\u0027s target framework(s) needs to be changed",
+      "severity": "Mandatory",
+      "effort": 1,
+      "links": [
+        {
+          "title": "Overview of porting from .NET Framework to .NET",
+          "url": "https://go.microsoft.com/fwlink/?linkid=2265227",
+          "isCustom": false
+        },
+        {
+          "title": ".NET project SDKs",
+          "url": "https://go.microsoft.com/fwlink/?linkid=2265226",
+          "isCustom": false
+        }
+      ]
+    },
+    "NuGet.0003": {
+      "id": "NuGet.0003",
+      "isFeature": false,
+      "description": "NuGet package functionality is included with framework reference.\n\nPackage needs to be removed.",
+      "label": "NuGet package functionality is included with framework reference",
+      "severity": "Mandatory",
+      "effort": 1,
+      "links": [
+        {
+          "url": "https://go.microsoft.com/fwlink/?linkid=2262609",
+          "isCustom": false
+        }
+      ]
+    },
+    "NuGet.0005": {
+      "id": "NuGet.0005",
+      "isFeature": false,
+      "description": "NuGet package is deprecated.\n\nGo to its documentation and if there is a guidance for replacement of functionality provided by this package.",
+      "label": "NuGet package is deprecated",
+      "severity": "Optional",
+      "effort": 1,
+      "links": [
+        {
+          "url": "https://go.microsoft.com/fwlink/?linkid=2262531",
+          "isCustom": false
+        }
+      ]
+    },
+    "Api.0003": {
+      "id": "Api.0003",
+      "isFeature": false,
+      "description": "API has a behavioral change in selected .NET version: code and binaries may behave differently at runtime without needing recompilation, but the new behavior might be undesirable and require updates.",
+      "label": "Behavioral change in selected .NET version",
+      "severity": "Potential",
+      "effort": 1
+    },
+    "Api.0002": {
+      "id": "Api.0002",
+      "isFeature": false,
+      "description": "API is source incompatible for selected .NET version: requires code changes to compile successfully when targeting a new version, such as removing obsolete APIs or changing method signatures.",
+      "label": "Source incompatible for selected .NET version",
+      "severity": "Potential",
+      "effort": 1,
+      "links": [
+        {
+          "title": "Breaking changes in .NET",
+          "url": "https://go.microsoft.com/fwlink/?linkid=2262679",
+          "isCustom": false
+        }
+      ]
+    },
+    "Api.0001": {
+      "id": "Api.0001",
+      "isFeature": false,
+      "description": "API is binary incompatible for selected .NET version: affects existing binaries, often requiring recompilation, because the API has changed in a way that prevents older binaries from loading or executing.",
+      "label": "Binary incompatible for selected .NET version",
+      "severity": "Mandatory",
+      "effort": 1,
+      "links": [
+        {
+          "title": "Breaking changes in .NET",
+          "url": "https://go.microsoft.com/fwlink/?linkid=2262679",
+          "isCustom": false
+        }
+      ]
+    }
+  }
+}
