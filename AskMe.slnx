@@ -1,0 +1,12 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path=".editorconfig" />
+    <File Path=".gitignore" />
+    <File Path="CODE_OF_CONDUCT.md" />
+    <File Path="LICENSE" />
+    <File Path="README.md" />
+  </Folder>
+  <Project Path="Altairis.AskMe.Data/Altairis.AskMe.Data.csproj" />
+  <Project Path="Altairis.AskMe.Web.Mvc/Altairis.AskMe.Web.Mvc.csproj" />
+  <Project Path="Altairis.AskMe.Web.RazorPages/Altairis.AskMe.Web.RazorPages.csproj" />
+</Solution>
